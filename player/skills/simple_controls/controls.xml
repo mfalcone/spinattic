@@ -1,0 +1,344 @@
+<krpano >
+
+
+<events name="skill_controls_events" keep="true"
+	onxmlcomplete="skill_controls_build(); set(events[skill_controls_events].onxmlcomplete,null);"
+	onenterfullscreen="set(plugin[skill_controls_enterfull_icon].visible,false);set(plugin[skill_controls_exitfull_icon].visible,true);"
+	onexitfullscreen="set(plugin[skill_controls_enterfull_icon].visible,true);set(plugin[skill_controls_exitfull_icon].visible,false);"
+	/>
+
+
+
+	<action name="skill_controls_build" >
+	skill_controls_style(); 
+
+set(layer[skill_controls_full].visible,false);
+set(layer[skill_controls_autorotate].visible,false);
+set(layer[skill_controls_zoom].visible,false);
+set(layer[skill_controls].visible,true);
+
+if(skill_controls_settings.orientation == vertical,
+
+			set(layer[skill_controls_full].align,top);
+			set(layer[skill_controls_autorotate].align,top);
+			set(layer[skill_controls_zoom].align,top);
+			set(layer[skill_controls_zoomin].align,top);
+			set(layer[skill_controls_zoomout].align,top);
+
+			set(layer[skill_controls_zoom].width,get(skill_controls_settings.width));
+			mul(layer[skill_controls_zoom].height,get(skill_controls_settings.height),2);
+			set(layer[skill_controls_zoomout].y,get(skill_controls_settings.height));
+			set(layer[skill_controls_zoomout].x,0);
+			
+
+			if(skill_controls_settings.order_1 !== false, 
+				set(layer[get(skill_controls_settings.order_1)].y,0);
+				set(layer[get(skill_controls_settings.order_1)].x,0);
+				set(layer[get(skill_controls_settings.order_1)].visible,true);
+
+				set(skill_controls_Height1,get(layer[get(skill_controls_settings.order_1)].height));
+				,
+				set(skill_controls_Height1,0);
+			);
+			if(skill_controls_settings.order_2 !== false, 
+				calc(layer[get(skill_controls_settings.order_2)].y,
+					skill_controls_Height1 +
+					skill_controls_settings.buttons_margin
+				);
+				set(layer[get(skill_controls_settings.order_2)].x,0);
+				set(layer[get(skill_controls_settings.order_2)].visible,true);
+
+				calc(skill_controls_Height2, layer[get(skill_controls_settings.order_2)].y + layer[get(skill_controls_settings.order_2)].height);
+				,
+				calc(skill_controls_Height2,skill_controls_Height1 + 0);
+			);
+			if(skill_controls_settings.order_3 !== false, 
+				calc(layer[get(skill_controls_settings.order_3)].y,
+					skill_controls_Height2 +
+					skill_controls_settings.buttons_margin
+				);
+				set(layer[get(skill_controls_settings.order_3)].x,0);
+				set(layer[get(skill_controls_settings.order_3)].visible,true);
+
+				calc(skill_controls_Height3, layer[get(skill_controls_settings.order_3)].y + layer[get(skill_controls_settings.order_3)].height);
+				,
+				calc(skill_controls_Height3,skill_controls_Height2 + 0);
+			);
+			
+			
+			calc(layer[skill_controls].height,
+				skill_controls_Height3
+			);
+			set(layer[skill_controls].width,get(skill_controls_settings.width));
+
+			if( (skill_controls_settings.order_1 == false) AND (skill_controls_settings.order_2 == false) AND (skill_controls_settings.order_3 == false),
+				set(layer[skill_controls].height,0);
+				set(layer[skill_controls].visible,false);
+			);
+
+
+
+
+		);
+
+
+if(skill_controls_settings.orientation == horizontal,
+
+			set(layer[skill_controls_full].align,left);
+			set(layer[skill_controls_autorotate].align,left);
+			set(layer[skill_controls_zoom].align,left);
+			set(layer[skill_controls_zoomin].align,left);
+			set(layer[skill_controls_zoomout].align,left);
+
+			set(layer[skill_controls_zoom].height,get(skill_controls_settings.height));
+			mul(layer[skill_controls_zoom].width,get(skill_controls_settings.width),2);
+			set(layer[skill_controls_zoomout].x,get(skill_controls_settings.width));
+			set(layer[skill_controls_zoomout].y,0);
+
+
+
+			if(skill_controls_settings.order_1 !== false, 
+				set(layer[get(skill_controls_settings.order_1)].y,0);
+				set(layer[get(skill_controls_settings.order_1)].x,0);
+				set(layer[get(skill_controls_settings.order_1)].visible,true);
+
+				set(skill_controls_Width1,get(layer[get(skill_controls_settings.order_1)].width));
+				,
+				set(skill_controls_Width1,0);
+
+			);
+			if(skill_controls_settings.order_2 !== false, 
+				calc(layer[get(skill_controls_settings.order_2)].x,
+					skill_controls_Width1 +
+					skill_controls_settings.buttons_margin
+				);
+				set(layer[get(skill_controls_settings.order_2)].y,0);
+				set(layer[get(skill_controls_settings.order_2)].visible,true);
+
+				calc(skill_controls_Width2, layer[get(skill_controls_settings.order_2)].x + layer[get(skill_controls_settings.order_2)].width);
+				,
+				calc(skill_controls_Width2,skill_controls_Width1 + 0);
+			);
+			if(skill_controls_settings.order_3 !== false, 
+				calc(layer[get(skill_controls_settings.order_3)].x,
+					skill_controls_Width2 +
+					skill_controls_settings.buttons_margin
+				);
+				set(layer[get(skill_controls_settings.order_3)].y,0);
+				set(layer[get(skill_controls_settings.order_3)].visible,true);
+
+				calc(skill_controls_Width3, layer[get(skill_controls_settings.order_3)].x + layer[get(skill_controls_settings.order_3)].width);
+				,
+				calc(skill_controls_Width3,skill_controls_width2 + 0);
+			);
+
+			calc(layer[skill_controls].width,
+				skill_controls_Width3
+			);
+			set(layer[skill_controls].height,get(skill_controls_settings.height));
+
+			if( (skill_controls_settings.order_1 == false) AND (skill_controls_settings.order_2 == false) AND (skill_controls_settings.order_3 == false),
+				set(layer[skill_controls].width,0);
+				set(layer[skill_controls].visible,false);
+			);
+
+);
+
+
+
+
+if((skill_controls_settings.direction_arrows) AND (device.normal),
+	
+	set(layer[skill_controls_arrows].visible,true);
+	set(layer[skill_controls_arrows].align,get(skill_controls_settings.arrows_position)); 
+	
+
+	if((skill_controls_settings.arrows_position == top) OR (skill_controls_settings.arrows_position == bottom),
+		if(skill_controls_settings.arrows_container_size GT layer[skill_controls].width,
+			set(layer[skill_controls_container].width,get(skill_controls_settings.arrows_container_size));
+			,
+			set(layer[skill_controls_container].width,get(layer[skill_controls].width));
+		);
+		calc(layer[skill_controls_container].height,
+			layer[skill_controls].height +
+			skill_controls_settings.arrows_container_size +
+			skill_controls_settings.arrows_y_margin
+		);
+		set(layer[skill_controls_arrows].x,get(skill_controls_settings.arrows_x_margin));
+		calc(layer[skill_controls_arrows].y,skill_controls_settings.arrows_container_size / 2 );
+		if(skill_controls_settings.arrows_position == top,
+			set(layer[skill_controls].align,bottom), set(layer[skill_controls].align,top);
+		);
+	);
+
+	if((skill_controls_settings.arrows_position == left) OR (skill_controls_settings.arrows_position == right),
+		if(skill_controls_settings.arrows_container_size GT layer[skill_controls].height,
+			set(layer[skill_controls_container].height,get(skill_controls_settings.arrows_container_size));
+			,
+			set(layer[skill_controls_container].height,get(layer[skill_controls].height));
+		);
+		calc(layer[skill_controls_container].width,
+			layer[skill_controls].width +
+			skill_controls_settings.arrows_container_size +
+			skill_controls_settings.arrows_x_margin
+		);
+		set(layer[skill_controls_arrows].y,get(skill_controls_settings.arrows_y_margin));
+		calc(layer[skill_controls_arrows].x,skill_controls_settings.arrows_container_size / 2 );
+		if(skill_controls_settings.arrows_position == left,
+			set(layer[skill_controls].align,right), set(layer[skill_controls].align,left);
+		);
+	);
+
+	,
+	set(layer[skill_controls_container].height,get(layer[skill_controls].height));
+	set(layer[skill_controls_container].width,get(layer[skill_controls].width));
+	set(layer[skill_controls_arrows].visible,false);
+);
+
+
+
+set(layer[skill_controls_container].x,get(skill_controls_settings.x_offset));
+set(layer[skill_controls_container].y,get(skill_controls_settings.y_offset));
+		
+if((layer[simple_menu_scroll_layer]) AND (scene.count GT 1),
+		if((skill_controls_settings.position == bottomright) OR (skill_controls_settings.position == bottomleft) OR (skill_controls_settings.position == bottom),
+			set(layer[skill_controls_container].parent,simple_menu_scroll_layer);
+			calc(layer[skill_controls_container].y,
+				(layer[skill_controls_container].height + skill_controls_settings.y_offset) * -1
+			);
+			if(skill_controls_settings.position == bottomright, set(layer[skill_controls_container].align,topright) );
+			if(skill_controls_settings.position == bottomleft, set(layer[skill_controls_container].align,topleft) );
+			if(skill_controls_settings.position == bottom, set(layer[skill_controls_container].align,top) );
+			,
+			set(layer[skill_controls_container].parent,STAGE);
+			set(layer[skill_controls_container].align,get(skill_controls_settings.position));
+		);
+	,
+		set(layer[skill_controls_container].parent,STAGE);
+		set(layer[skill_controls_container].align,get(skill_controls_settings.position));
+);
+</action>
+
+<action name="skill_controls_style">
+
+		if(skill_controls_settings.layout == unified,
+			set(layer[skill_controls].bgalpha,get(skill_controls_settings.bgalpha));
+			set(layer[skill_controls].bgcolor,get(skill_controls_settings.bgcolor));
+			set(layer[skill_controls].bgborder,get(skill_controls_settings.bgborder));
+			set(layer[skill_controls].bgroundedge,get(skill_controls_settings.bgroundedge));
+
+			set(layer[skill_controls_full].bgalpha,0);
+			set(layer[skill_controls_autorotate].bgalpha,0);
+			set(layer[skill_controls_zoomin].bgalpha,0);
+			set(layer[skill_controls_zoomout].bgalpha,0);
+			set(layer[skill_controls_full].bgborder,0);
+			set(layer[skill_controls_autorotate].bgborder,0);
+			set(layer[skill_controls_zoomin].bgborder,0);
+			set(layer[skill_controls_zoomout].bgborder,0);
+
+			set(layer[skill_controls_full].onout,set(bgalpha,0));
+			set(layer[skill_controls_autorotate].onout,set(bgalpha,0));
+			set(layer[skill_controls_zoomin].onout,set(bgalpha,0));
+			set(layer[skill_controls_zoomout].onout,set(bgalpha,0));
+			
+			,
+			set(layer[skill_controls].bgalpha,0);
+		);
+		if(skill_controls_settings.layout == sliced,
+			set(layer[skill_controls_full].bgalpha,get(skill_controls_settings.bgalpha));
+			set(layer[skill_controls_autorotate].bgalpha,get(skill_controls_settings.bgalpha));
+			set(layer[skill_controls_zoomin].bgalpha,get(skill_controls_settings.bgalpha));
+			set(layer[skill_controls_zoomout].bgalpha,get(skill_controls_settings.bgalpha));
+
+			set(layer[skill_controls_full].bgborder,get(skill_controls_settings.bgborder));
+			set(layer[skill_controls_autorotate].bgborder,get(skill_controls_settings.bgborder));
+			set(layer[skill_controls_zoomin].bgborder,get(skill_controls_settings.bgborder));
+			set(layer[skill_controls_zoomout].bgborder,get(skill_controls_settings.bgborder));
+		);
+
+		set(plugin[skill_controls_enterfull_icon].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_exitfull_icon].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_autoON_icon].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_autoOFF_icon].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_zoomin_icon].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_zoomout_icon].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_arrow_up].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_arrow_down].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_arrow_left].url,get(skill_controls_settings.icons_styles));
+		set(plugin[skill_controls_arrow_right].url,get(skill_controls_settings.icons_styles));
+
+		set(layer[skill_controls_full].width,get(skill_controls_settings.width));
+		set(layer[skill_controls_autorotate].width,get(skill_controls_settings.width));
+		set(layer[skill_controls_zoomin].width,get(skill_controls_settings.width));
+		set(layer[skill_controls_zoomout].width,get(skill_controls_settings.width));
+
+		set(layer[skill_controls_full].height,get(skill_controls_settings.height));
+		set(layer[skill_controls_autorotate].height,get(skill_controls_settings.height));
+		set(layer[skill_controls_zoomin].height,get(skill_controls_settings.height));
+		set(layer[skill_controls_zoomout].height,get(skill_controls_settings.height));
+
+		set(layer[skill_controls_full].bgcolor,get(skill_controls_settings.bgcolor));
+		set(layer[skill_controls_autorotate].bgcolor,get(skill_controls_settings.bgcolor));
+		set(layer[skill_controls_zoomin].bgcolor,get(skill_controls_settings.bgcolor));
+		set(layer[skill_controls_zoomout].bgcolor,get(skill_controls_settings.bgcolor));
+
+		set(layer[skill_controls_full].bgroundedge,get(skill_controls_settings.bgroundedge));
+		set(layer[skill_controls_autorotate].bgroundedge,get(skill_controls_settings.bgroundedge));
+		set(layer[skill_controls_zoomin].bgroundedge,get(skill_controls_settings.bgroundedge));
+		set(layer[skill_controls_zoomout].bgroundedge,get(skill_controls_settings.bgroundedge));
+
+		if(skill_controls_settings.direction_arrows,
+			set(layer[skill_controls_arrows].width,get(skill_controls_settings.arrows_container_size));
+			set(layer[skill_controls_arrows].height,get(skill_controls_settings.arrows_container_size));
+			set(layer[skill_controls_arrows].bgcolor,get(skill_controls_settings.bgcolor));
+			set(layer[skill_controls_arrows].bgborder,get(skill_controls_settings.bgborder));
+			set(layer[skill_controls_arrows].bgalpha,get(skill_controls_settings.bgalpha));
+			set(layer[skill_controls_arrows].bgroundedge,get(skill_controls_settings.arrows_container_roundedge));
+		);
+
+</action>
+
+<layer name="skill_controls_container"	type="container" keep="true" bgcapture="false" bgalpha="0" >
+	<layer name="skill_controls" type="container"  >
+		
+		<layer name="skill_controls_full" style="skill_controls" onclick="switch(fullscreen,true,false)" visible="false" >
+			<plugin name="skill_controls_enterfull_icon" style="skill_controls_icons|skill_controls_graphics" crop="0|0|36|36"  />
+			<plugin name="skill_controls_exitfull_icon" style="skill_controls_icons|skill_controls_graphics" crop="36|0|36|36"  visible="false" />
+		</layer>
+
+	 	<layer name="skill_controls_autorotate" style="skill_controls"   visible="false"
+			onclick="switch(autorotate.enabled,true,false);switch(plugin[skill_controls_autoON_icon].visible,true,false);switch(plugin[skill_controls_autoOFF_icon].visible,true,false);" >
+			<plugin name="skill_controls_autoON_icon"  style="skill_controls_icons|skill_controls_graphics" crop="72|0|36|36"  />
+			<plugin name="skill_controls_autoOFF_icon" style="skill_controls_icons|skill_controls_graphics" crop="108|0|36|36" visible="false" />
+		</layer>
+
+		<layer name="skill_controls_zoom" type="container" align="top" bgalpha="0"  visible="false" >
+			<layer name="skill_controls_zoomin" style="skill_controls" ondown="set(fov_moveforce,-1)" onup="set(fov_moveforce,0)"  >
+				<plugin name="skill_controls_zoomin_icon"  style="skill_controls_icons|skill_controls_graphics" crop="144|0|36|36"  />
+			</layer>
+			
+			<layer name="skill_controls_zoomout" style="skill_controls" ondown="set(fov_moveforce,+1)" onup="set(fov_moveforce,0)"  >
+				<plugin name="skill_controls_zoomout_icon" style="skill_controls_icons|skill_controls_graphics" crop="180|0|36|36"  />
+			</layer>
+		</layer>
+		
+
+	</layer>
+
+	<layer name="skill_controls_arrows" keep="true"  type="container" align="topright" edge="center" visible="get:skill_controls_settings.direction_arrows" visible.mobile="get:skill_controls_settings.direction_arrows_mobile"
+	  >
+	  	<plugin name="skill_controls_arrow_up" style="skill_controls_graphics" crop="216|0|36|36" align="top" y="5" ondown="set(vlookat_moveforce,-1);" onup="set(vlookat_moveforce,0);" />
+	  	<plugin name="skill_controls_arrow_down" style="skill_controls_graphics" crop="254|0|36|36" align="bottom" y="5" ondown="set(vlookat_moveforce,1);" onup="set(vlookat_moveforce,0);" />
+	  	<plugin name="skill_controls_arrow_left" style="skill_controls_graphics" crop="288|0|36|36" align="left" x="5" ondown="set(hlookat_moveforce,-1);" onup="set(hlookat_moveforce,0);" />
+	  	<plugin name="skill_controls_arrow_right" style="skill_controls_graphics" crop="324|0|36|36" align="right" x="5" ondown="set(hlookat_moveforce,1);" onup="set(hlookat_moveforce,0);" />
+	 </layer>
+
+</layer>
+
+<style name="skill_controls_icons"   align="center" edge="center" enabled="false"  />
+<style name="skill_controls_graphics" url="get:skill_controls_settings.icons_styles" scale="0.5"  />
+
+<style name="skill_controls" type="container" keep="true" align="top"
+ onover="set(bgalpha,0.8)" onout="set(bgalpha,get:skill_controls_settings.bgalpha)" bgcapture="true" />
+
+</krpano>

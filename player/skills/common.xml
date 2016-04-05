@@ -1,0 +1,54 @@
+<krpano>
+
+	<events name="test" 
+		onnewpano="js(alert(Hola))"
+		/>
+
+<!-- ensure stagescale 2x for mobile devices (regardless if mobilescale is 0.5 or 1.0) -->
+<krpano stagescale="calc:stagescale*(1.0 + 1.0*(stagescale LT 1.0))" devices="mobile" />
+
+
+	<!-- hotspot_tooltips - style for the thumb, hotspot and mapspot tooltips -->
+	<style name="hotspot_tooltips"
+	       onover.mouse="if(tooltip === null,
+							if(linkedscene !== null,
+								set(layer[hotspot_tooltips].html, get(scene[get(linkedscene)].title));
+							);
+							if(infotitle !== null,
+								set(layer[hotspot_tooltips].html, get(infotitle));
+							);
+							if(pic !== null,
+								set(layer[hotspot_tooltips].html, 'Open Photo');
+							);
+							if(linkurl !== null,
+								set(layer[hotspot_tooltips].html, 'Open Link');
+							);
+							if(videoID !== null,
+								set(layer[hotspot_tooltips].html, 'Open Video');
+							);
+							, 
+							copy(layer[hotspot_tooltips].html, tooltip);
+						);
+	                     set(layer[hotspot_tooltips].visible, true);
+	                     tween(layer[hotspot_tooltips].alpha, 1.0, 0.1);
+	                     asyncloop(hovering, copy(layer[hotspot_tooltips].x,mouse.stagex); copy(layer[hotspot_tooltips].y,mouse.stagey); );"
+	       onout.mouse="tween(layer[hotspot_tooltips].alpha, 0.0, 0.1, default, set(layer[hotspot_tooltips].visible,false), copy(layer[hotspot_tooltips].x,mouse.stagex); copy(layer[hotspot_tooltips].y,mouse.stagey); );"
+	/>
+
+
+	<!-- the tooltip textfield -->
+	<layer name="hotspot_tooltips" keep="true"
+	       url="%SWFPATH%/plugins/textfield.swf"
+	       parent="STAGE"
+	       visible="false" alpha="0" enabled="false"
+	       align="lefttop" edge="bottom" oy="-5" width="auto" autoheight="true" 
+	       background="true" backgroundcolor="0x000000" backgroundalpha="0.6"
+	       border="true" bordercolor="0x000000" borderalpha="1.0" borderwidth="1.0" roundedge="2" padding="5 10"
+	       shadow="0.0" shadowrange="4.0" shadowangle="45" shadowcolor="0x000000" shadowalpha="1.0"
+	       textshadow="1" textshadowrange="6.0" textshadowangle="90" textshadowcolor="0x000000" textshadowalpha="1.0"
+	       css="color:#FFFFFF;text-align:center; font-size:12px;"
+	       html=""
+	       />
+
+
+</krpano>

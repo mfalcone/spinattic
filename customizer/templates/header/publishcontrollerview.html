@@ -1,0 +1,19 @@
+<div id="publishController" class="right">
+    <div class="onoffswitch" <%if(datepub!=""){%>title=" Last update: <%=datepub%>"<%}%>>
+        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchpub" <%if(datepub!=""){%>checked<%}%> >
+        <label class="onoffswitch-label" for="onoffswitchpub">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch fa fa-eye fa-lg"></span>
+        </label>
+    </div>
+    <div id="publish" class="fa fa-arrow-circle-left<%if(deploy){%> active <%}%>"></div>
+    
+    <div id="draft" class="status <%if(deploy || datepub==""){%> active <%}%>">
+        <div class="loading-wrapper">
+            <div class="loading"></div>
+        </div>
+        <h4>Temp.draft</h4>
+        <span class="date"><%=dateupdate%></span>
+        <span class="help fa fa-question-circle" title="Tooltip Text"></span>
+    </div>
+</div>

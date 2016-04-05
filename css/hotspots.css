@@ -1,0 +1,135 @@
+
+.hotspot-window 								{ background:url(../images/bg/trama.png) repeat; margin:0; position:fixed; top:50%; left:50%; z-index:120; overflow:hidden; overflow-y:auto; width:360px; margin-left:-180px; 
+												/*border redondeado>>*/ -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; behavior:url(../js/PIE.htc); }
+.hotspot-window p.message 						{ color:#222; width:80%; margin:22px auto 0;}
+.hotspot-window p.message a						{ color:#5598e8; text-decoration:underline; }
+.hotspot-window p.message a:hover				{ text-decoration:none; }
+
+.hotspot-window h2 								{ background-color: white; border-bottom:solid #d4d4d4 1px; text-align:center; font-size:20px; font-weight:400; height:38px; line-height:40px; }
+.hotspot-window a.closed						{ background: url(../images/icons/close.png) no-repeat 0 0; display:block; width:10px; height:10px; position:absolute; right:10px; top:10px; }
+
+.hotspot-window a.facebook, 						
+.hotspot-window a.twitter 						{  width:188px; height:47px; display:block; margin:10px auto;  
+											   /*border redondeado>>*/ -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; behavior:url(../js/PIE.htc);
+											}
+.hotspot-window a.facebook 						{ background:url(../images/icons/facebook_login.png) #3b5998 center no-repeat; margin-top:15px; }
+.hotspot-window a.twitter 						{ background:url(../images/icons/twitter_login.png) #1baae1 center no-repeat; }
+
+.hotspot-window input 							{ display:block; width:85%;height:30px; /*text-indent: 10px; line-height:45px;*/ font-size:14px; color:#434343; padding:0 0 0 10px; margin:12px; background-position:15px center; background-repeat: no-repeat; border:1px solid #d4d4d4;
+												/*border redondeado>>*/ -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; behavior:url(../js/PIE.htc);
+											}
+.hotspot-window textarea 					{ padding: 10px; display:block; width:83%; height: 70px;color:#434343; margin:12px; background-position:15px center; background-repeat: no-repeat; border:1px solid #d4d4d4;}
+
+.hotspot-window input.name 						{ background-image:url(../images/icons/username.png);}
+.hotspot-window input.mail 						{ background-image:url(../images/icons/email_login.png);}
+.hotspot-window input.pass 						{ background-image:url(../images/icons/pass.png);}
+
+
+.hotspot-window a.register,
+.hotspot-window a.login 						{   background-color:#d62327; color:#fff; text-transform:uppercase; text-align:center; width:80%; margin:0 auto; display:block; 
+												/*border redondeado>>*/ -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; behavior:url(../js/PIE.htc);
+											}
+.hotspot-window form 							{ margin-top:15px; margin-bottom:16px; padding-top:2px; background:url(../images/bg/linea_de_puntos.png) repeat-x top; }
+.hotspot-window label.terminos 					{ width:280px; margin:10px auto 0; display:block; padding:0 0 10px 10px; line-height:14px; }
+.hotspot-window label.terminos input 			{ width:20px; height:20px; margin:0; float:left;  }
+.hotspot-window label.terminos p 				{ width:250px; margin:0; float:right; font-size:11px;  }
+.hotspot-window label.terminos a 				{ width:250px; margin:0; float:right; display:block; font-size:11px; color:#535353; }
+.hotspot-window label.terminos a font 			{ color:#535353; text-decoration:underline; }
+.hotspot-window label.terminos a:hover font		{ text-decoration:none; }
+
+
+.hotspot-window .pano-item  					{ background:none; border-bottom:1px dotted #d4d4d4;}
+.hotspot-window .pano-item .thumb-pano 		{ width:100px; height:60px;}
+.hotspot-window .pano-item .loader-item h3		{ font-size:14px; }
+.hotspot-window .check_action 					{ margin-top:-17px;}
+.hotspot-window .red-button 					{ margin:27px auto; display:block; width:90%; text-align:center; padding:0; }	
+
+
+.hotspot-window 				{ width:90%; margin-left:5%; min-height:350px; left:0; top:5%; height: 90%; overflow: hidden;}
+.hotspot-window .thumb-head-set 		{ position:absolute; top:10px; left:16px; }
+.hotspot-window .thumb-head-set h3 	{ font-size:16px; float:left; margin:0 0 0 12px; }
+.hotspot-window .thumb-head-set img	{ float:left; }
+.hotspot-window .save-close 			
+{ /*position:absolute; top:15px; right:0px; margin: 6px 0 0 0;*/
+  display: block;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 50px;
+  font-size: 11px;
+  border: 1px solid #333;
+  text-align: center;
+  line-height: 20px;
+  color: #333;
+  z-index: 20;
+}
+.hotspot-window .set-startup-view 	{ position:absolute; top:70px; left:50%; line-height:normal; margin-left:-235px; z-index: 99;}
+.hotspot-window .content-set			{ border:1px solid #d4d4d4; height:100%; width:100%; overflow:hidden; position: relative;z-index: 10; }
+.hotspot-window .foot-hotspot-window 		{ height:21px; overflow:hidden; text-align:right; padding-right:10px; color:#000; font-size:12px;}
+
+.hotspot-window .bar 					{ color: #000; position:absolute; top:65px; bottom:0px; right:1px; background-color:#909498; width:25%; font-weight: normal; min-width: 270px;}
+.hotspot-window .bar h5           { margin:10px 0;padding: 10px; background-color: #fff; color:#232323; margin-top: 85px;} 	
+
+.hotspot-window #krpano-container { width: 75%; height:100%; margin-top: 64px;}
+
+.hotspot-window  div.hotspots-list 		{  width:100%; height: 100%;overflow:hidden; position: absolute; top: 0; padding-bottom: 20px;}
+.hotspot-window  div.hotspots-list p.titulo	{ margin:12px;  }
+.hotspot-window  div.hotspots-list p 			{ width:60px; margin:0 0 0 0; font-size:12px; color:#000; }
+.hotspot-window  div.hotspots-list font 		{ float:right; margin:12px; font-size:12px; color:#000; }
+
+.hotspot-window div.hotspots-list .hs-collection {height:80%; width:100%; overflow-y: auto; outline: 0; margin-top: -1%;}
+
+.hotspot-window div.hotspots-list .hs { background-color: #C6C8CA; margin-left: 5%; width: 90%; margin-top: 5px}
+.hotspot-window div.hotspots-list .hs:hover {background-color:#a4a8ac; color:#232323;  cursor: pointer;}
+.hotspot-window div.hotspots-list .hs .icon-type 	{ width:62px; height:30px; float:left; margin:7px 5px 4px 11px;}
+.hotspot-window div.hotspots-list .hs .loader-item 	{ float:left; }
+.hotspot-window div.hotspots-list .hs .loader-item h3	{ font-size:13px; margin-top:8px; font-weight: normal; }
+.hotspot-window div.hotspots-list .hs .loader-item p	{ font-size:8px; }
+
+.hotspot-window  div.hotspots-list .hs .hs-remove 	{ float:right; margin:6px; width: 10px; height: 10px;background-image: url(../images/icons/close.png); display: block;z-index: 99999;}
+
+.hotspot-window div.hotspots-list .settings .media-container {    
+    padding: 12px;    
+}
+
+.hotspot-window div.hotspots-list .settings .media-container img {
+    float: left;    
+}
+
+.hotspot-window div.hotspots-list .settings .media-container p {
+    float: left;
+    margin-left: 10px;
+    padding-top: 13px;
+   /* width: 75%;*/
+   width:auto;
+}
+
+
+
+.hotspot-window  div.hotspots-list .settings  { background-color: #eee; padding-top: 5px; margin-left:5%; width:90%;}
+
+.hotspot-window .pano-linkto div.link-to 						{ position:absolute; top:42px; left:41px; background-color:white; display:none; width:322px; padding-bottom:14px; }
+.hotspot-window .pano-linkto:hover div.link-to 				{ display:block; }
+.hotspot-window .pano-linkto div.link-to p.titulo				{ margin:12px;  }
+.hotspot-window .pano-linkto div.link-to p 					{ float:left; width:60px; margin:0 0 0 0; font-size:12px; color:#000; }
+.hotspot-window .pano-linkto div.link-to font 				{ float:right; margin:12px; font-size:12px; color:#000; }			
+.hotspot-window .pano-linkto div.link-to label 				{ float:left; width:280px;}
+.hotspot-window .pano-linkto div.link-to label input 			{ width:250px; padding:10px 0; text-indent:5px;}
+.hotspot-window .pano-linkto div.link-to .delete-item			{ float:right; margin:23px 12px 0;}
+
+.hotspot-window .pano-infospot div.info-spot 					{ position:absolute; top:84px; left:41px; background-color:white; display:none; width:322px; padding-bottom:14px; }
+.hotspot-window .pano-infospot:hover div.info-spot 			{ display:block; }
+.hotspot-window .pano-infospot div.info-spot p.titulo				{ margin:12px;  }
+.hotspot-window .pano-infospot div.info-spot p 					{ float:left; width:60px; margin:0 0 0 0; font-size:12px; color:#000; }
+.hotspot-window .pano-infospot div.info-spot font 				{ float:right; margin:12px; font-size:12px; color:#000; }			
+.hotspot-window .pano-infospot div.info-spot label 				{ float:left; width:280px;}
+.hotspot-window .pano-infospot div.info-spot label textarea 		{ padding:10px; height:120px; text-indent:5px; margin:0 0 0 12px; width:255px;}
+.hotspot-window .pano-infospot div.info-spot .delete-item			{ float:right; margin:5px 8px 0;}
+
+
+.hotspot-window .controls { margin-bottom: 0px; height: 75px; position: relative;z-index: 1;}                
+.hotspot-window .controls a.add-hotspot {width:26px;height:26px;display:inline-block;background-size: 100% 100%; margin-left: 10px;}
+.hotspot-window .controls a.hslink  {background-image: url(../images/icons/hspot-link.png);}
+.hotspot-window .controls a.hsinfo  {background-image: url(../images/icons/hspot-info.png);}
+.hotspot-window .controls a.hsmedia  {background-image: url(../images/icons/hspot-media.png);}

@@ -1,0 +1,371 @@
+<div class="simple-menu-skill-editor">    
+        <div class="skill-tabs">
+            <nav class="menuTabs">
+                <ul>
+                    <li class="generalSettingsTab selected" data-content="designContent">Design</li>
+                    <li class="stylingTab" data-content="thumbsContent">Thumbs</li>
+                    <li class="directionTab" data-content="sceneTitleContent">Scene title</li>
+                </ul>                
+            </nav>
+
+            <div class="tabContent">
+                
+                    <section id="designContent" >
+                        <div class="scrollwrapper"> 
+                            <div class="modalSeparator">
+                                <div class="line-group">
+                                    <label for="alignPosSmSkill">Align</label>
+
+                                    <div id="alignPosSmSkill" class="alignPosSmSkill posSelectors">
+                                        <span class="bottomLeftPos" data-align="left">left</span>
+                                        <span class="bottomMiddlePos" data-align="center">middle</span>
+                                        <span class="bottomRightPos" data-align="right">right</span>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="widthSmSkill">Width</label>
+
+                                    <div>
+                                        <input id="widthSmSkill" type="number" value="<%=customprop.tour_width%>" <%if(customprop.tour_width_unit=="%"){%>min="10" max="100"<%}else{%>min="50" max="1000"<%}%>>
+
+                                        <div class="dropdown  dd-upload" id="widthSmSkillDD" data-value="<%=customprop.tour_width_unit%>">
+                                            <h2>
+                                                <span class="title"><%=customprop.tour_width_unit%></span><span class="fa fa-caret-down fa-lg right"></span>
+                                            </h2>
+                                            <ul>
+                                                <li data-value="%">%</li>
+                                                <li data-value="px">px</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        
+
+                            <div class="modalSeparator">
+                                <div class="line-group">
+                                    <label for="bkgColorSmSkill">Background Color</label>
+                                    <div>
+                                        <input type="text" id="bkgColorSmSkill" data-prop="design_bgcolor" value="<%=tourSkill.simple_menu_settings._design_bgcolor.replace('0x','')%>" data-finalFun="simple_menu_design">
+                                    </div>
+                                </div>
+                                <div class="line-group">
+                                    <label for="bkgAlphaSmSkill">Background Alpha</label>
+                                    <div>
+                                        <input type="number"  min="0" max="1"  step="0.1" id="bkgAlphaSmSkill" class="single-int" value="<%=tourSkill.simple_menu_settings._design_bgalpha%>" data-prop="design_bgalpha" data-finalFun="simple_menu_design"> 
+                                    </div>
+                                </div>
+                                <div class="line-group">
+                                    <label>Background Border</label>
+
+                                    <div>
+                                        <div class="sup">
+                                            <label for="bkgWidthSmSkill">width</label>
+                                            <input type="number" data-group="backborder" data-prop="design_bgborder" class="multiple-int" id="bkgWidthSmSkill" value="<%=customprop.backborder[0]%>" min="-10" max="10"> 
+                                        </div>
+
+                                        <div class="sup">
+                                            <label for="bkgBorderColorSmSkill">color</label>
+                                            <input type="text" data-group="backborder" data-prop="design_bgborder" id="bkgBorderColorSmSkill" value="<%=customprop.backborder[1].replace('0x','')%>"> 
+                                        </div>
+
+                                        <div class="sup">
+                                            <label for="bkgBorderAlphaSmSkill">alpha</label>
+                                            <input type="number" data-group="backborder"  min="0" max="1"  step="0.1" data-prop="design_bgborder" class="multiple-int" id="bkgBorderAlphaSmSkill" value="<%=customprop.backborder[2]%>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="roundEdgeSmSkill">Background Round Edge</label>
+                                    <div>
+                                        <input type="number" min="0" max="100" id="roundEdgeSmSkill" value="<%=tourSkill.simple_menu_settings._design_bgroundedge%>" class="single-int" data-prop="design_bgroundedge" data-finalFun="simple_menu_design">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modalSeparator">
+                                <div class="line-group">
+                                    <label>Thumb border</label>
+
+                                    <div>
+                                        <div class="sup" >
+                                            <label for="thumbWidthSmSkill">width</label>
+                                            <input class="multiple-int" data-group="thumborder" data-prop="design_thumbborder_bgborder" type="number" id="thumbWidthSmSkill" min="0" max="10" value="<%=customprop.thumbborder[0]%>"> 
+                                        </div>
+
+                                        <div class="sup">
+                                            <label for="thumbColorSmSkill">color</label>
+                                            <input type="text" data-group="thumborder" data-prop="design_thumbborder_bgborder" id="thumbColorSmSkill" value="<%=customprop.thumbborder[1].replace('0x','')%>"> 
+                                        </div>
+
+                                        <div class="sup">
+                                            <label for="thumbAlphaSmSkill">alpha</label>
+                                            <input type="number" data-group="thumborder"  min="0" max="1"  step="0.1" data-prop="design_thumbborder_bgborder" class="multiple-int" id="thumbAlphaSmSkill" value="<%=customprop.thumbborder[2]%>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="thumbBorderPaddingSmSkill">Thumb border padding</label>
+                                    
+                                    <div>
+                                        <input type="number" min="0" max="50" class="single-int" id ="thumbBorderPaddingSmSkill" value="<%=tourSkill.simple_menu_settings._design_thumbborder_padding%>" data-prop="design_thumbborder_padding" data-finalFun="simple_menu_startup">
+                                    </div>
+                                </div>
+                                <div class="line-group">
+                                    <label for="thumbBorderEdgeSmSkill">Thumb border round edge</label>
+                                    <div>
+                                        <input type="number" min="0" max="20" class="single-int" id ="thumbBorderEdgeSmSkill" value="<%=tourSkill.simple_menu_settings._design_thumbborder_bgroundedge%>" data-prop="design_thumbborder_bgroundedge" data-finalFun="simple_menu_startup">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="thumbsContent" class="none">
+                        <div class="scrollwrapper"> 
+                            <div class="modalSeparator">
+                                <div class="line-group">
+                                    <label>Open by default</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchSmSkill" <%if(tourSkill.simple_menu_settings._thumbs_opened=="true"){%>checked<%}%> data-prop="thumbs_opened" data-finalfun="simple_menu_startup">
+                                        <label class="onoffswitch-label" for="onoffswitchSmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modalSeparator">
+                                <div class="line-group">
+                                    <label>Thumbs size</label>
+
+                                    <div>
+                                        <div class="sup" >
+                                            <label for="thumbSizeWidthSmSkill">Width</label>
+                                            <input type="number" min="20" max="1000" class="single-int" id="thumbSizeWidthSmSkill" value="<%=tourSkill.simple_menu_settings._thumbs_width%>" data-prop="thumbs_width" data-finalFun="simple_menu_startup"> 
+                                        </div>
+
+                                        <div class="sup">
+                                            <label for="thumbSizeHeightSmSkill">Height</label>
+                                            <input type="number" class="single-int" min="50" max="500" id="thumbSizeHeightSmSkill" value="<%=tourSkill.simple_menu_settings._thumbs_height%>" data-prop="thumbs_height" data-finalFun="simple_menu_startup"> 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="thumbsPaddingSmSkill">Thumbs padding</label>
+                                    <div>
+                                        <input type="number" class="single-int" id ="thumbsPaddingSmSkill" value="<%=tourSkill.simple_menu_settings._thumbs_padding%>" data-prop="thumbs_padding" data-finalFun="simple_menu_startup" max="100" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="thumbsBottomOffsetSmSkill">Bottom offset</label>
+                                    <div>
+                                        <input type="number" min="0" max="50" class="single-int" id="thumbsBottomOffsetSmSkill" value="<%=tourSkill.simple_menu_settings._thumbs_y_offset%>" data-prop="thumbs_y_offset" data-finalFun="simple_menu_startup">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modalSeparator">
+                                <div class="line-group">
+                                    <label>Tooltip on mouse over</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchTTSmSkill" <%if(tourSkill.simple_menu_settings._tooltips_thumbs=="true"){%>checked<%}%> data-prop="tooltips_thumbs" data-finalfun="simple_menu_startup">
+                                        <label class="onoffswitch-label" for="onoffswitchTTSmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Text overlay</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchTxtOverlaySmSkill" data-prop="thumbs_text" <%if(tourSkill.simple_menu_settings._thumbs_text=="true"){%>checked<%}%> data-finalfun="simple_menu_startup">
+                                        <label class="onoffswitch-label" for="onoffswitchTxtOverlaySmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modalSeparator">
+                                <div class="line-group">
+                                    <label>Thumbs dragging</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchThmbsDragginSmSkill" <%if(tourSkill.simple_menu_settings._thumbs_dragging=="true"){%>checked<%}%> data-prop="thumbs_dragging" data-finalfun="simple_menu_startup">
+                                        <label class="onoffswitch-label" for="onoffswitchThmbsDragginSmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Mouse over scrolling</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchMOScrollingSmSkill" <%if(tourSkill.simple_menu_settings._thumbs_onhoverscrolling=="true"){%>checked<%}%> data-prop="thumbs_onhoverscrolling" data-finalfun="simple_menu_startup">
+                                        <label class="onoffswitch-label" for="onoffswitchMOScrollingSmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Scroll buttons</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchscrollBtnsSmSkill" <%if(tourSkill.simple_menu_settings._thumbs_scrollbuttons=="true"){%>checked<%}%> data-prop="thumbs_scrollbuttons" data-finalfun="simple_menu_startup">
+                                        <label class="onoffswitch-label" for="onoffswitchscrollBtnsSmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Scroll indicator</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchscrollIndicatorSmSkill" <%if(tourSkill.simple_menu_settings._thumbs_scrollindicator=="true"){%>checked<%}%> data-prop="thumbs_scrollindicator" data-finalfun="simple_menu_startup">
+                                        <label class="onoffswitch-label" for="onoffswitchscrollIndicatorSmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="sceneTitleContent" class="none">
+                        <div class="scrollwrapper"> 
+                            <div class="modalSeparator">
+                                <div class="line-group">
+                                    <label>Enable scene title</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchscenettleSmSkill" <%if(tourSkill.simple_menu_settings._title=="true"){%>checked<%}%> data-prop="title" data-finalfun="simple_menu_title_styles">
+                                        <label class="onoffswitch-label" for="onoffswitchscenettleSmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Enable on mobiles</label>
+
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox" id="onoffswitchmobileSmSkill" <%if(tourSkill.simple_menu_settings._title_mobiles=="true"){%>checked<%}%> data-prop="title_mobiles" data-finalfun="simple_menu_title_styles">
+                                        <label class="onoffswitch-label" for="onoffswitchmobileSmSkill">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="alignPosSmSkillText">Text align</label>
+
+                                    <div id="alignPosSmSkillText" class="alignPosSmSkill posSelectors">
+                                        <span class="leftPos" data-align="left">left</span>
+                                        <span class="middlePos" data-align="center">middle</span>
+                                        <span class="rightPos" data-align="right">right</span>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Font family</label>
+
+                                    <div>
+                                        <div class="dropdown  dd-upload" id="fontFamilyDD">
+                                            <h2>
+                                                <span class="title"><%=tourSkill.simple_menu_settings._title_font%></span><span class="fa fa-caret-down fa-lg right"></span>
+                                            </h2>
+                                            <ul>
+                                                <li data-value="Arial">Arial</li>
+                                                <li data-value="Courier New">Courier New</li>
+                                                <li data-value="Georgia">Georgia</li>
+                                                <li data-value="Impact">Impact</li>
+                                                <li data-value="Lucida Console">Lucida Console</li>
+                                                <li data-value="Lucida Sans Unicode">Lucida Sans Unicode</li>
+                                                <li data-value="Palatino Linotype">Palatino Linotype</li>
+                                                <li data-value="Serif">Serif</li>
+                                                <li data-value="Tahoma">Tahoma</li>
+                                                <li data-value="Times New Roman">Times New Roman</li>
+                                                <li data-value="Trebuchet MS">Trebuchet MS</li>
+                                                <li data-value="Verdana">Verdana</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Font weight</label>
+
+                                    <div>
+                                        <div class="dropdown  dd-upload" id="fontweightdd">
+                                            <h2>
+                                                <span class="title"><%=tourSkill.simple_menu_settings._title_weight%></span><span class="fa fa-caret-down fa-lg right"></span>
+                                            </h2>
+                                            <ul>
+                                                <li data-value="normal">Normal</li>
+                                                <li data-value="bold">Bold</li>
+                                                <li data-value="lighter">Lighter</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Text color</label>
+
+                                    <div>
+                                        <input type="text" value="<%=tourSkill.simple_menu_settings._title_color.replace('0x','')%>" class="colorpicker" id="textcolorsm" data-prop="title_color" data-finalfun="simple_menu_title_styles">
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label>Text padding</label>
+
+                                    <div id="textpaddingsm">
+                                        <div class="sup" >
+                                            <label for="txtPaddingTopSmSkill">Top</label><input type="number" id="txtPaddingTopSmSkill" value="<%=customprop.titlePadding[0]%>" min="0" max="200"> 
+                                        </div>
+
+                                        <div class="sup">
+                                            <label for="txtPaddingRightSmSkill">Right</label><input type="number" id="txtPaddingRightSmSkill" value="<%=customprop.titlePadding[1]%>" min="0" max="200"> 
+                                        </div>
+
+                                        <div class="sup">
+                                            <label for="txtPaddingBottomSmSkill">Bottom</label><input type="number" id="txtPaddingBottomSmSkill" value="<%=customprop.titlePadding[2]%>" min="0" max="200"> 
+                                        </div>
+
+                                        <div class="sup">
+                                            <label for="txtPaddingLeftSmSkill">Left</label><input type="number" id="txtPaddingLeftSmSkill" value="<%=customprop.titlePadding[3]%>" min="0" max="200"> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+            </div>
+        </div>
+
+    <footer>
+    </footer>
+</div>

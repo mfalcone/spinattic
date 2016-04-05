@@ -1,0 +1,313 @@
+<div class="top-avatar-and-titles-skill-editor">    
+		<div class="skill-tabs">
+			<nav class="menuTabs">
+				<ul>
+					<li class="generalAvatarTab selected" data-content="generalAvatarContent">General</li>
+					<li class="avatarTab" data-content="avatarContent">Avatar</li>
+					<li class="titlesAvatarTab" data-content="titlesAvatarContent">Titles</li>
+					<li class="backgroundAvatarTab" data-content="backgroundAvatarContent">Background</li>
+				</ul>                
+			</nav>
+
+			<div class="tabContent">
+				
+					<section id="generalAvatarContent" >
+						<div class="scrollwrapper"> 
+							<div class="modalSeparator">
+
+								<div class="line-group">
+									<label for="widthAvSkill">Width</label>
+
+									<div>
+										<div class="dropdown  dd-upload" id="avatarWidthDD" data-value="<%=tourSkill.skill_avatar_title._width_type%>">
+											<h2>
+												<span class="title"><%=tourSkill.skill_avatar_title._width_type.charAt(0).toUpperCase() + tourSkill.skill_avatar_title._width_type.slice(1).toLowerCase()%></span><span class="fa fa-caret-down fa-lg right"></span>
+											</h2>
+											<ul>
+												<li data-value="fluid">Fluid</li>
+												<li data-value="fixed">Fixed</li>
+											</ul>
+										</div>
+
+										<input type="number" id="widthAvSkill" class="single-int" data-prop="width" value="<%=tourSkill.skill_avatar_title._width%>" min="200" max="2000" data-finalfun="skill_avatar_build"> 
+									</div>
+								</div>
+
+								<div class="line-group" id="positionAvSkillController" <%if(tourSkill.skill_avatar_title._width_type=="fluid"){%>style="display:none"<%}%>>
+									<label for="positionAvSkill">Position</label>
+
+									<div>
+										<div id="positionAvSkill" class="positionAvSkill posSelectors">
+											<span class="topLeftPos" data-align="topleft" data-prop="position">top left</span>
+											<span class="topRightPos" data-align="topright" data-prop="position">top right</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="marginLeftAvSkill">Margin Left</label>
+									<div>
+										<input type="number" id="marginLeftAvSkill" class="single-int" data-prop="xl" value="<%=tourSkill.skill_avatar_title._xl%>" min="0" max="200" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+								<div class="line-group">
+									<label for="marginRightAvSkill">Margin Right</label>
+									<div>
+										<input type="number" id="marginRightAvSkill" class="single-int" data-prop="xr" value="<%=tourSkill.skill_avatar_title._xr%>" min="0" max="200" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+								<div class="line-group">
+									<label for="marginTopAvSkill">Margin Top</label>
+									<div>
+										<input type="number" id="marginTopAvSkill" value="<%=tourSkill.skill_avatar_title._y%>" min="0" max="200" class="single-int" data-prop="y" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</section>
+
+					<section id="avatarContent" class="none">
+						<div class="scrollwrapper"> 
+							<div class="modalSeparator">
+
+								<div class="line-group">
+									<label>Show Avatar</label>
+
+									<div class="onoffswitch">
+										<input type="checkbox" class="onoffswitch-checkbox" data-prop="avatar" data-finalfun="skill_avatar_build" id="onoffswitchShowAvSkill" <%if(tourSkill.skill_avatar_title._avatar=="true"){%>checked <%}%>>
+										<label class="onoffswitch-label" for="onoffswitchShowAvSkill">
+											<span class="onoffswitch-inner"></span>
+											<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+										</label>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label>Show Username</label>
+
+									<div class="onoffswitch">
+										<input type="checkbox" class="onoffswitch-checkbox" data-prop="username" data-finalfun="skill_avatar_build" id="onoffswitchShowUserNameAvSkill" <%if(tourSkill.skill_avatar_title._username=="true"){%>checked <%}%>>
+										<label class="onoffswitch-label" for="onoffswitchShowUserNameAvSkill">
+											<span class="onoffswitch-inner"></span>
+											<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+										</label>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="avAlignmentAvSkill">Avatar alignment</label>
+
+									<div>
+										<div id="avAlignmentAvSkill" class="positionAvatarSkill posSelectors">
+											<span class="leftPos" data-align="left" data-prop="avatar_align">left</span>
+											<span class="rightPos" data-align="right" data-prop="avatar_align">right</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="aMarginAvSkill">Margin</label>
+									<div>
+										<input type="number" id="aMarginAvSkill" value="<%=tourSkill.skill_avatar_title._avatar_x%>" min="0" max="100"  class="single-int" data-prop="avatar_x" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+							</div>   
+						</div>
+					</section>
+
+					<section id="titlesAvatarContent" class="none">
+						<div class="scrollwrapper"> 
+							<div class="modalSeparator">
+							   <div class="line-group">
+									<label>Show Tour Title</label>
+
+									<div class="onoffswitch">
+										<input type="checkbox" class="onoffswitch-checkbox" data-prop="tour_title" data-finalfun="skill_avatar_build" id="onoffswitchShowTourTitleAvSkill" <%if(tourSkill.skill_avatar_title._tour_title=="true"){%>checked <%}%>>
+										<label class="onoffswitch-label" for="onoffswitchShowTourTitleAvSkill">
+											<span class="onoffswitch-inner"></span>
+											<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+										</label>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label>Show Scene Title</label>
+
+									<div class="onoffswitch">
+										<input type="checkbox" class="onoffswitch-checkbox" data-prop="scene_name" data-finalfun="skill_avatar_build" id="onoffswitchShowSceneTitleAvSkill" <%if(tourSkill.skill_avatar_title._scene_name=="true"){%>checked <%}%>>
+										<label class="onoffswitch-label" for="onoffswitchShowSceneTitleAvSkill">
+											<span class="onoffswitch-inner"></span>
+											<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+										</label>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="textAlignAvSkill">Text Align</label>
+
+									<div>
+										<div id="textAlignAvSkill" class="positionAvatarSkill posSelectors">
+											<span class="leftPos" data-align="left" data-prop="text_align">left</span>
+											<span class="rightPos" data-align="right" data-prop="text_align">right</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="aMarginAvSkill">Text Color</label>
+									<div>
+										<input id="aMarginAvSkill" class="colorpicker" value="<%=tourSkill.skill_avatar_title._text_color%>" data-prop="text_color" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+							</div>
+
+							<div class="modalSeparator">
+								<div class="line-group">
+									<label>Text padding</label>
+
+									<div id="textpaddingAvSkill">
+										<div class="sup" >
+											<label for="txtPaddingTopAvSkill">Top</label><input type="number" id="txtPaddingTopAvSkill" value="<%=customprop.padding[0]%>" min="0" max="200" data-group="padding" data-prop="padding"> 
+										</div>
+
+										<div class="sup">
+											<label for="txtPaddingRightAvSkill">Right</label><input type="number" id="txtPaddingRightAvSkill" value="<%=customprop.padding[1]%>" min="0" max="200"  data-group="padding" data-prop="padding"> 
+										</div>
+
+										<div class="sup">
+											<label for="txtPaddingBottomAvSkill">Bottom</label><input type="number" id="txtPaddingBottomAvSkill" value="<%=customprop.padding[2]%>" min="0" max="200" data-group="padding" data-prop="padding"> 
+										</div>
+
+										<div class="sup">
+											<label for="txtPaddingLeftAvSkill">Left</label><input type="number" id="txtPaddingLeftAvSkill" value="<%=customprop.padding[3]%>" min="0" max="200" data-group="padding" data-prop="padding"> 
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="modalSeparator">
+
+								<div class="line-group">
+									<label for="textShadowAvSkill">Text Shadow</label>
+									<div>
+										<input type="number" id="textShadowAvSkill" value="<%=tourSkill.skill_avatar_title._textshadow%>" min="0" max="10" class="single-int" data-prop="textshadow" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="shadowsAlphaAvSkill">Shadow Alpha</label>
+									<div>
+										<input type="number" id="shadowsAlphaAvSkill" value="<%=tourSkill.skill_avatar_title._textshadowalpha%>" min="0" max="1" step="0.1" class="single-int" data-prop="textshadowalpha" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="shadowRangeAvSkill">Shadow Range</label>
+									<div>
+										<input type="number" id="shadowRangeAvSkill" value="<%=tourSkill.skill_avatar_title._textshadowrange%>" min="0" max="20" class="single-int" data-prop="textshadowrange" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="shadowAngleAvSkill">Shadow Angle</label>
+									<div>
+										<input id="shadowAngleAvSkill" type="number" value="<%=tourSkill.skill_avatar_title._textshadowangle%>" class="single-int" data-prop="textshadowangle" data-finalfun="skill_avatar_build" min="0" max="360">
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="shadowColorleAvSkill">Shadow Color</label>
+									<div>
+										<input id="shadowColorleAvSkill" type="text" class="colorpicker" value="<%=tourSkill.skill_avatar_title._textshadowcolor.replace("0x","")%>" data-prop="textshadowcolor" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</section>
+
+					<section id="backgroundAvatarContent" class="none">
+						<div class="scrollwrapper"> 
+							<div class="modalSeparator">
+
+								<div class="line-group">
+									<label>Background</label>
+
+									<div class="onoffswitch">
+										<input type="checkbox" class="onoffswitch-checkbox" data-prop="background" data-finalfun="skill_avatar_build" id="onoffswitchBkgAvSkill" <%if(tourSkill.skill_avatar_title._background == "true"){%>checked <%}%>>
+										<label class="onoffswitch-label" for="onoffswitchBkgAvSkill">
+											<span class="onoffswitch-inner"></span>
+											<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+										</label>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="shadowAngleAvSkill">Background Color</label>
+									<div>
+										<input id="shadowAngleAvSkill" class="colorpicker" value="<%=tourSkill.skill_avatar_title._backgroundcolor.replace("0x","")%>" data-prop="backgroundcolor" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="bkgAlphaAvSkill">Background Alpha</label>
+									<div>
+										<input type="number" id="bkgAlphaAvSkill" value="<%=tourSkill.skill_avatar_title._backgroundalpha%>" min="0" max="1" class="single-int" step="0.1" data-prop="backgroundalpha" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="bkgRoundEdgeAvSkill">Round Edge</label>
+									<div>
+										<input type="number" id="bkgRoundEdgeAvSkill" value="<%=tourSkill.skill_avatar_title._roundedge%>" min="0" max="100" class="single-int" data-prop="roundedge" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+							</div>
+
+							<div class="modalSeparator">
+
+								<div class="line-group">
+									<label>Border</label>
+
+									<div class="onoffswitch">
+										<input type="checkbox" class="onoffswitch-checkbox" data-prop="border" data-finalfun="skill_avatar_build" id="onoffswitchBkgBorderAvSkill" <%if(tourSkill.skill_avatar_title._border=="true"){%>checked <%}%>>
+										<label class="onoffswitch-label" for="onoffswitchBkgBorderAvSkill">
+											<span class="onoffswitch-inner"></span>
+											<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+										</label>
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="bkgBorderColorAvSkill">Border Color</label>
+									<div>
+										<input id="shadowAngleAvSkill" class="colorpicker" value="<%=tourSkill.skill_avatar_title._bordercolor.replace("0x","")%>" data-prop="bordercolor" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="bkgBorderAlphaAvSkill">Border Alpha</label>
+									<div>
+										<input type="number" id="bkgBorderAlphaAvSkill" value="<%=tourSkill.skill_avatar_title._borderalpha%>" min="0" max="1" step="0.1" class="single-int" data-prop="borderalpha" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+								<div class="line-group">
+									<label for="bkgBorderWidthAvSkill">Border Width</label>
+									<div>
+										<input type="number" id="bkgBorderWidthAvSkill" value="<%=tourSkill.skill_avatar_title._borderwidth%>" min="0" max="30" class="single-int" data-prop="borderwidth" min="0" max="10" data-finalfun="skill_avatar_build">
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</section>
+			</div>
+		</div>
+
+	<footer>
+	</footer>
+</div>

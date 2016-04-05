@@ -1,0 +1,216 @@
+<krpano onstart="startup();">
+<!-- hotspots actions -->
+<include url="skills/hotspots/hotspots.xml" />
+
+<action name="startup">
+</action>
+
+
+<autorotate enabled="true"
+            waittime="3.0"
+            accel="1.0"
+            speed="5.0"
+            horizon="on"
+            tofov="on"
+            />
+
+<control mousetype="moveto"
+         zoomtocursor="false"
+         zoomoutcursor="true"
+         mouseaccelerate="1.0"
+         mousespeed="10.0"
+         mousefriction="0.8"
+         mousefovchange="1.0"
+         fovspeed="3.0"
+         fovfriction="0.9"
+         />
+
+
+<settings name="toursettings"
+	 lat="" long=""
+	 title=""
+	 description=""
+
+/>
+
+
+<!-- DEMO SCENE -->
+<scene name="scene_01" urlname="friendlyURL" title="Scene title" onstart=""  thumburl="http://cdn.spinattic.com/customizer/panos/1/pano.tiles/thumb200x100.jpg"
+ lat="" lng="" heading=""
+ description=""
+>
+		<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" fovmin="60" fovmax="120" limitview="auto"  />
+
+		<preview url="panos/1/pano.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/1/pano.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/1/pano.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+<!-- hotspots -->
+	<hotspot style="hotspot_set1_arrow" name="link_1" ath="44" atv="4"
+	linkedscene="scene_02" />
+
+	<hotspot style="hotspot_set1_info" name="info_1" ath="60" atv="-5" 
+	infotitle="info hotspot" infotext="Text info text Text info text" />
+
+	<hotspot style="hotspot_set1_photo" name="media_1" ath="-26" atv="0" 
+	pic="tourpreview.jpg" tooltip="Tomates" />
+
+	<hotspot style="hotspot_set1_link" name="link_1" ath="33" atv="5" 
+	linkurl="http://www.spinattic.com" tooltip="link link" />
+<!-- end hotspots -->
+
+</scene>
+
+
+
+
+
+<!-- SKILLS -->
+
+<!-- context menu:
+- Es un skill que está para todos los niveles de usuarios: Free, Basic, Pro
+- Para los Free no lo puede editar. (Muestra en la ventana del skill el texto: Editable for Basic and Pro users only).
+- Para Basic y Pro permite editar el valor de fullscreen, pero no borrarlo. los ítems se los puede agregar, editar y eliminar, viene por defecto el item name="signature"
+- hay un botón al final de los items que dice: + add item, y crea un ítem más con los inputs para [caption] y [onclick]
+-->
+<contextmenu fullscreen="true">
+	<item	name="signature"  caption="Spinattic.com" onclick="openurl(http://www.spinattic.com,_blank); " />
+	<item  caption="..." onclick="..." />
+	<item  caption="..." onclick="..." />
+	<item  caption="..." onclick="..." />
+</contextmenu>
+
+<!-- signature:
+- Editable sólo por usuarios Basic y Pro. Los Free tienen el skill fijo con la leyenda: Editable for Basic and Pro users only
+- tiene un uploader de imagen. La imagen no puede superar los 500px de ancho o alto. La imagen subida va en url=""
+- parametros editables:
+* align=""
+* x=""
+* y=""
+* zorder=""
+* link: onclick="openurl([link aqui],_blank);" input para url. Debe tener http://, hay que validar este campo.
+- si el valor de onclick se deja vacío, entonces no se escribe el onclick="" en el xml
+-->
+<plugin name="skill_signature" url="graphics/buttons_black.png" align="bottomright" x="5" y="3" keep="true" zorder="102" alpha="0.6" onover="tween(alpha,1)" onout="tween(alpha,0.6)" onclick="openurl(http://www.spinattic.com/,_blank);" />
+
+<!-- Logo:
+- Disponible sólo para usuarios Basic y Pro
+- tiene un uploader de imágen. No puede suerar los 500px de ancho o alto. La imagen subida va en url=""
+- parametros editables:
+* link: onclick="openurl([link aqui],_blank);" input para url. Debe tener http://, hay que validar este campo. Si queda vacío no se imprime.
+* align="" <-- Align grid
+* x="" <-- input min 0, max 100
+* y="" <-- input min 0, max 100
+* zorder="" <-- input min 0, max 1000. si está vacío, no lo imprime.
+* parent="" <-- input alphanumérico (no se permite un número como primer caracter). si parent está vacío no lo imprime
+-->
+<plugin name="skill_logo" url="graphics/logo.png" align="topright" x="10" y="10" keep="true" zorder="100" onclick="openurl(http://www.spinattic.com,_blank);" parent="" />
+
+
+
+
+<!-- Spinattic loading Bar:
+- Valores editables:
+* Position: [combobox: top, center, bottom] -- modifica el align:   <layer name="loadingbar_bg" align="top" <-- top, center, bottom
+* Margin: [input 1px a 100px] -- modifica el y:  <layer name="loadingbar_bg" y="0"
+* Width: <layer name="loadingbar_bg" width="" -- input numérico (valor mínimo 10) y al lado un combobox con las opciones "%"" y "px". (con % sería: width="100%". y con PX sería: width="100").
+* Height: <layer name="loadingbar_bg" height="" -- input numérico (Valor mínimo: 1).
+Background: 
+* Color: <layer name="loadingbar_bg" bgcolor="0x000000" -- colorpicker
+* Alpha: <layer name="loadingbar_bg" bgalpha="0.5" -- valores de 0 a 1 (con decimales)
+Bar:
+* Color: <layer name="loadingbar_fill" bgcolor="0x000000" -- colorpicker
+* Alpha: <layer name="loadingbar_fill" bgalpha="0.5" -- valores de 0 a 1 (con decimales)
+--> 
+	<progress showload="none" showwait="none" showreloads="false" />
+	<events name="loadingbar" keep="true" onxmlcomplete="loadingbar_startloading();" onloadcomplete="delayedcall(0.25, loadingbar_stoploading() );" />
+	<layer name="loadingbar_bg" keep="true" type="container" bgcolor="0x000000" bgalpha="0.5" align="top" y="0" width="100%" height="4" enabled="false" visible="false">
+		<layer name="loadingbar_space" type="container" align="left" x="0" width="-1" height="100%">
+			<layer name="loadingbar_fill" type="container" bgcolor="0xd3322a" bgalpha="1.0" align="lefttop" width="0" height="100%" />
+		</layer>
+	</layer>
+	<action name="loadingbar_startloading">
+		set(loadingbar_isloading, true);
+		set(layer[loadingbar_bg].visible, true);		
+		asyncloop(loadingbar_isloading,
+			mul(pv, progress.progress, 100);
+			txtadd(pv, '%');
+			copy(layer[loadingbar_fill].width, pv);
+		  );
+	</action>
+	<action name="loadingbar_stoploading">
+		set(loadingbar_isloading, false); 
+		set(layer[loadingbar_bg].visible, false);
+	</action>
+<!-- end Spinattic loading bar -->
+
+
+
+<!-- Standard loader
+Dos opciones generales y cada una con distintos parámetros:
+Loader type: [combobox: Bar - Loopings]
+Si elije Bar, imprimer así: showload="bar()" showwait="none"
+Si elije Loopings,imprime así: showload="none" showwait="loopings()"
+
+* Syntax para bar()
+bar(origin,width,height,offsetx,offsety,style,backcolor,loadcolor,decodecolor,bordercolor,borderwidth,glowcolor,glowwidth)
+origin: lefttop, leftmid, leftbottom, midtop, center, midbottom, righttop, rightmid, rightbottom; default=center
+width: input + combobox [% - px ] en pixels o porcentaje. default=200
+[combobox height: input pixels - height%: input %]. default=10
+[combobox offsetx - offsetx%] input numérico. default:0
+[combobox offsety - offsety%] input numérico. default:50
+style: [combobox solid - shaded] default:solid
+backcolor: colorpicker. Default: 0x000000
+loadcolor: colorpicker. Default: 0xd3322a
+decodecolor: colorpicker. Default: 0xd3322a
+bordercolor: colorpicker. Default: 0x000000
+borderwidth: input numerico. min: 0 - max: 20 - Default: 1
+glowcolor: colorpicker. Default: 0xFFFFFF
+glowwidth: input numerico. min: 0 - max: 20 - Default: 5
+
+* Syntax para loopings()
+loopings(color,points,size,bigpoint,smallpoint,glowcolor,glowwidth,xpos,ypos,align)
+color: colorpicker. Default: 0xffffff
+points: input numérico. min: 2 - max: 30 - default: 15
+size: input numérico. min: 2 - max: 30 - default: 15
+bigpoint: input numérico. min: 0 - max: ~ - default: 0
+smallpoint: input numérico. min: 0 - max: ~ - default: 0
+glowcolor: colorpicker. Default: 0xFFFFFF
+glowwidth: input numerico. min: 0 - max: 20 - Default: 5
+xpos: input numérico. de 0 a 1, default: 0.5
+ypos: input numérico. de 0 a 1, default: 0.5
+align: [combobox: center,left,lefttop,top,righttop,right,rightbottom,bottom,leftbottom]
+-->
+<progress showload="auto"
+          showwait="loopings()"
+          showreloads="false"
+          />
+
+
+
+
+
+<!-- Free hotspots styles set 1 -->
+	<style name="hotspot_set1_arrow" url="skills/hotspots/hotspots_1.png" crop="00|00|32|32" onovercrop="00|32|32|32" ondowncrop="00|64|32|32" onhover=" if(hotspot[get(name)].tooltip === null, showtext(get(scene[get(linkedscene)].title),hotspotTxt), showtext(get(tooltip),hotspotTxt) ); " onloaded="mul(scale,get(device.pixelratio));"
+	onclick=" if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); );" />
+
+	<style name="hotspot_set1_info" zorder="10" url="skills/hotspots/hotspots_1.png" crop="32|00|32|32" onovercrop="32|32|32|32" ondowncrop="32|64|32|32" onhover="if(get(infotitle) == null,,showtext(get(infotitle),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));"
+	onclick="showinfo(get(infotitle),get(infotext));" />
+
+	<style name="hotspot_set1_photo" zorder="10" url="skills/hotspots/hotspots_1.png" crop="64|00|32|32" onovercrop="64|32|32|32" ondowncrop="64|64|32|32" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));"
+	onclick="showpic(); seewait();" />
+
+	<style name="hotspot_set1_video" zorder="10" url="skills/hotspots/hotspots_1.png" crop="96|00|32|32" onovercrop="96|32|32|32" ondowncrop="96|64|32|32" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));"
+	onclick="showpic(); seewait();"  />
+
+	<style name="hotspot_set1_link" zorder="10" url="skills/hotspots/hotspots_1.png" crop="128|00|32|32" onovercrop="128|32|32|32" ondowncrop="128|64|32|32" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));"
+	onclick="openurl(get(linkurl),_blank)" />
+
+
+
+</krpano>

@@ -1,0 +1,26 @@
+<div id="sceneSettings-menu" class="submenu land-submenu">
+    <div class="inner">
+        <div class="panel-wrapper">
+            <label for="scenetitle">Scene title:</label>
+            <input type="text" name="scenetitle" id="scenetitle" value="<%=data._title %>">
+            
+            <label for="filename">File name:</label>
+            <input type="text" name="filename" id="filename" value="<%=data._scene_filename %>" readonly = "readonly">
+            
+            <!--<div><label for="friendlyURL">Frienly URL: <sub>(A-Z a-z 0-9)</sub></label></div>
+            <span class="friendlyURL">http://spinattic.com/username/tourname?</span>
+            <input type="text" name="friendlyURL" id="friendlyURL" value="<%=data._urlname%>" class="friendlyURL">
+-->
+            <h3>Thumbnail:</h3>
+            <div id="scene-thumbnail-src" class="editor-img">
+                <img src="<%=data._thumburl%>">
+            </div>
+            
+            <span class="fa fa-search right pointer"> Bigger Map</span>
+            <div class="gmap-wrapper"></div>
+
+            <label for="scene-description">Scene Description</label>
+            <textarea name="scene-description" id="scene-description" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+</div>

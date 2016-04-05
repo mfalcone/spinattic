@@ -1,0 +1,21 @@
+<krpano >
+
+	<hotspot name="skill_nadirpatch" keep="true" zorder="1" scale="0.5" enabled="false" atv="90" zoom="true" />
+
+	<events name="skill_nadirpatch_events" keep="true"
+		onxmlcomplete="skill_nadirpatch_set();set(events[skill_nadirpatch_events].onxmlcomplete,);"
+		/>
+	<action name="skill_nadirpatch_set">
+	set(hotspot[skill_nadirpatch].url,get(skill_nadirpatch_settings.image));
+	set(hotspot[skill_nadirpatch].distorted,get(skill_nadirpatch_settings.distorted));
+	set(hotspot[skill_nadirpatch].rz,get(skill_nadirpatch_settings.rotate));
+	if(skill_nadirpatch_settings.link,
+		set(hotspot[skill_nadirpatch].onclick,openurl(get(skill_nadirpatch_settings.linkurl),_blank); );
+		set(hotspot[skill_nadirpatch].enabled,true);
+		,
+		set(hotspot[skill_nadirpatch].onclick,);
+		set(hotspot[skill_nadirpatch].enabled,false);
+	);
+	</action>
+
+</krpano>

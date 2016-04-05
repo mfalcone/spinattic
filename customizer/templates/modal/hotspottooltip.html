@@ -1,0 +1,17 @@
+<div class="clear tooltip-controller" data-tooltype="<%=allData._tooltiptype%>">
+	<label class="onoffswitch-label no-border" for="onoffswitchhpinfotooltip-<%=num%>">Show tooltip on mouse over:</label>
+	<div class="onoffswitch">
+		<input type="checkbox" name="onoffswitchpubtooltip" class="onoffswitch-checkbox" id="onoffswitchhpinfotooltip-<%=num%>" <%if(allData._tooltiptype!="false"){%>checked<%}%> >
+		<label class="onoffswitch-label" for="onoffswitchhpinfotooltip-<%=num%>">
+			<span class="onoffswitch-inner"></span>
+			<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+		</label>
+	</div>
+	<div class="tooltype <%if(allData._tooltiptype=="false"){%>none<%}%> ">   
+		<input type="radio" name="tooltiptype-<%=num%>" value="default" <%if(allData._tooltiptype=="default"){%>checked<%}%>>   
+		<label class="no-border" for="default">Default tooltip</label>
+		<input type="radio" name="tooltiptype-<%=num%>" value="custom" <%if(allData._tooltiptype=="custom"){%>checked<%}%>>   
+		<label class="no-border" for="custom">Custom Text</label>
+		<input type="text" class="custom-tooltype <%if(allData._tooltiptype!="custom"){%>none<%}%>" value="<%=allData._tooltip%>" placeholder="Custom tooltip text">
+	</div>
+</div>

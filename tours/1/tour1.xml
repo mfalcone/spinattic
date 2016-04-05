@@ -1,0 +1,188 @@
+
+		
+			<krpano onstart="startup();">
+				<contextmenu><item name="Spinattic" caption="Spinattic.com" onclick="openurl(http://www.spinattic.com,_blank); " /></contextmenu>
+			
+				<settings name="toursettings" tourtitle="Tour Ariel test" description="" location="Daireaux, Buenos Aires Province, Argentina"/>
+				
+				<include url="../../php-stubs/xml_usersettings.php?id=56" />
+				
+
+				<include url="../../interfaces/SSI_1.0/interface.xml" devices="desktop" />
+				<include url="../../interfaces/SSI_1.0/interface_m.xml" devices="iphone|ipad|android|mobile|tablet|touchdevice|gesturedevice" />
+				
+	
+				<action name="startup">
+					buildInterface(); loadscene(get(scene[0].name),null,MERGE,BLEND(1));
+				</action>
+				
+				<!-- disable the default progress bar -->
+				<progress showload="none" showwait="none" />
+	
+				<!-- SCENES -->
+				<scene name="scene_8" title="costa3" onstart=""  thumburl="%CURRENTXML%/../../panos/8/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/8/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/8/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/8/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_13" title="puerto1_med" onstart=""  thumburl="%CURRENTXML%/../../panos/12/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/12/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/12/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/12/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_14" title="costa5" onstart=""  thumburl="%CURRENTXML%/../../panos/11/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/11/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/11/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/11/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_15" title="puerto2" onstart=""  thumburl="%CURRENTXML%/../../panos/10/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/10/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/10/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/10/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_16" title="costa3" onstart=""  thumburl="%CURRENTXML%/../../panos/8/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/8/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/8/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/8/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_17" title="costa4" onstart=""  thumburl="%CURRENTXML%/../../panos/9/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/9/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/9/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/9/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_18" title="costa2" onstart=""  thumburl="%CURRENTXML%/../../panos/7/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/7/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/7/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/7/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_7" title="costa2" onstart=""  thumburl="%CURRENTXML%/../../panos/7/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/7/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/7/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/7/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_12" title="puerto1_med" onstart=""  thumburl="%CURRENTXML%/../../panos/12/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/12/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/12/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/12/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_9" title="costa4" onstart=""  thumburl="%CURRENTXML%/../../panos/9/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/9/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/9/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/9/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_11" title="costa5" onstart=""  thumburl="%CURRENTXML%/../../panos/11/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/11/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/11/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/11/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_10" title="puerto2" onstart=""  thumburl="%CURRENTXML%/../../panos/10/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/10/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/10/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/10/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene></krpano>

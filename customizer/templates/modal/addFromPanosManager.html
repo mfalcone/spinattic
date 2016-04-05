@@ -1,0 +1,47 @@
+<section class="pano-manager">
+    <div class="header">
+        <div class="sort-by left">
+            <h2>Sort by:</h2> 
+            <span class="sort sort-btn sort-name az fa fa-sort-alpha-asc selected "></span>
+            <span class="sort sort-btn sort-name za fa fa-sort-alpha-desc"></span>
+            <span class="sort-btn upload-date">Upload date</span>
+            <span class="sort sort-btn fl fa sort-amount fa-sort-amount-asc"></span>
+            <span class="sort sort-btn lf fa sort-amount fa-sort-amount-desc"></span>
+        </div>
+
+        <div class="search-pano left">
+            <form>
+                <label>Search:</label> 
+                <input type="text" placeholder="File Name" id="pano-search">                
+                <span class="clear-btn sort-btn">Clear</span>
+            </form>
+        </div>        
+    </div>
+    <div id="pano-search-results"></div>
+    <div class="pano-list">
+        <div class="scrollwrapper">   
+
+            <ul class="pano-list-ul">
+                <li class="loading">LOADING...</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <ul class="selected-panos">
+            <!--<li>
+                <img src="http://cdn.dev.spinattic.com/panos/226/pano.tiles/thumb200x100.jpg" alt="">
+                <span class="remove fa fa-close"></span>
+            </li>
+            <li>
+                <img src="http://cdn.dev.spinattic.com/panos/226/pano.tiles/thumb200x100.jpg" alt="">
+                <span class="remove fa fa-close"></span>
+            </li>-->
+        </ul>
+
+        <div class="btns">
+            <span class="cancel uploader-btn red right">Cancel</span>
+            <span class="save uploader-btn green right">Add Panos to tour</span>
+        </div>
+    </footer>
+</section>

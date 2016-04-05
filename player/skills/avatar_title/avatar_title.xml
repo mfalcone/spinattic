@@ -1,0 +1,117 @@
+<krpano>
+<!-- SIMPLE AVATAR AND TITLE SPINATTIC TOUR SKILL -->
+
+<layer name="skill_avatar_titles" url="%SWFPATH%/plugins/textfield.swf" capture="false" handcursor="false" keep="true" autoheight="true" shadow="0" html="" >
+	<layer name="skill_avatar_mask" type="container" bgroundedge="40" width="73" height="73"  maskchildren="true"  >
+		<layer name="skill_avatar_photo" align="center"  width="75" height="75"   />
+	</layer>
+	<layer name="skill_avatar_frame" url="avatarborder.png" enabled="true" />
+</layer>
+
+
+<events name="skill_avatar_Events" keep="true"
+	onnewpano="skill_avatar_Reset_Text();"
+	onresize="skill_avatar_Resize();"
+	onxmlcomplete="skill_avatar_build();set(events[skill_avatar_Events].onxmlcomplete,null); "
+/>
+
+<action name="skill_avatar_build">
+if(skill_avatar_title.avatar,
+	set(layer[skill_avatar_mask].visible,true);
+	set(layer[skill_avatar_photo].visible,true);
+	set(layer[skill_avatar_frame].visible,true);
+	set(layer[skill_avatar_frame].onclick,openurl(get(skill_avatar_title.userprofile),_blank));
+	,
+	set(layer[skill_avatar_mask].visible,false);
+	set(layer[skill_avatar_photo].visible,false);
+	set(layer[skill_avatar_frame].visible,false);
+);
+if(skill_avatar_title.username !== false,
+	txtadd(skat_username,'[p][a]by  &#160;',get(skill_avatar_title.username),'[/a][/p]');
+	,
+	txtadd(skat_username,);
+);
+
+if(skill_avatar_title.tour_title,
+	txtadd(skat_tour_title,'[p]',get(settings[toursettings].title),'[/p]');
+	,
+	txtadd(skat_tour_title,);
+);
+
+copy(layer[skill_avatar_titles].align,skill_avatar_title.position);
+if(skill_avatar_title.width_type == fixed,
+	copy(layer[skill_avatar_titles].width,skill_avatar_title.width);
+);
+copy(layer[skill_avatar_titles].y,skill_avatar_title.y);
+if(skill_avatar_title.position == topright,
+	copy(layer[skill_avatar_titles].x,skill_avatar_title.xr);
+);
+if(skill_avatar_title.position == topleft,
+	copy(layer[skill_avatar_titles].x,skill_avatar_title.xl);
+);
+
+set(layer[skill_avatar_photo].url,get(skill_avatar_title.avatar_image));
+copy(layer[skill_avatar_mask].align,skill_avatar_title.avatar_align);
+copy(layer[skill_avatar_frame].align,skill_avatar_title.avatar_align);
+copy(layer[skill_avatar_mask].x,skill_avatar_title.avatar_x);
+copy(layer[skill_avatar_frame].x,skill_avatar_title.avatar_x);
+
+set(layer[skill_avatar_titles].padding,get(skill_avatar_title.padding));
+
+if(device.normal,
+	txtadd(layer[skill_avatar_titles].css,
+		'p{font-size:18px;font-family:Arial;color:',get(skill_avatar_title.text_color),';text-align:', get(skill_avatar_title.text_align) ,';}', 
+		'b{font-size:14px;}',
+		'a{font-size:12px;font-family:Arial;color:',get(skill_avatar_title.text_color),';text-decoration:none;}'
+	);
+);
+if(device.mobile,
+	txtadd(layer[skill_avatar_titles].css,
+		'p{font-size:26px;font-family:Arial;color:',get(skill_avatar_title.text_color),';text-align:', get(skill_avatar_title.text_align) ,';}', 
+		'b{font-size:24px;}',
+		'a{font-size:20px;font-family:Arial;color:',get(skill_avatar_title.text_color),';text-decoration:none;}'
+	);
+);
+
+copy(layer[skill_avatar_titles].background,skill_avatar_title.background);
+copy(layer[skill_avatar_titles].backgroundcolor,skill_avatar_title.backgroundcolor);
+copy(layer[skill_avatar_titles].backgroundalpha,skill_avatar_title.backgroundalpha);
+copy(layer[skill_avatar_titles].roundedge,skill_avatar_title.roundedge);
+
+copy(layer[skill_avatar_titles].border,skill_avatar_title.border);
+copy(layer[skill_avatar_titles].bordercolor,skill_avatar_title.bordercolor);
+copy(layer[skill_avatar_titles].borderalpha,skill_avatar_title.borderalpha);
+copy(layer[skill_avatar_titles].borderwidth,skill_avatar_title.borderwidth);
+
+copy(layer[skill_avatar_titles].textshadow,skill_avatar_title.textshadow);
+copy(layer[skill_avatar_titles].textshadowrange,skill_avatar_title.textshadowrange);
+copy(layer[skill_avatar_titles].textshadowangle,skill_avatar_title.textshadowangle);
+copy(layer[skill_avatar_titles].textshadowcolor,skill_avatar_title.textshadowcolor);
+copy(layer[skill_avatar_titles].textshadowalpha,skill_avatar_title.textshadowalpha);
+
+</action>
+
+<action name="skill_avatar_Resize">
+if(skill_avatar_title.width_type == fluid,
+	calc(skat_width,
+		(stagewidth * skill_avatar_title.width / 100) - skill_avatar_title.xl - skill_avatar_title.xr
+	);
+	copy(layer[skill_avatar_titles].width,skat_width);
+);
+</action>
+
+<action name="skill_avatar_Reset_Text" >
+if(skill_avatar_title.scene_name,
+	txtadd(skat_scene_name,'[p][b]',get(scene[get(xml.scene)].title),'[/b][/p]');
+	,
+	txtadd(skat_scene_name,);
+);
+txtadd(layer[skill_avatar_titles].html, get(skat_tour_title),get(skat_scene_name),get(skat_username));	
+</action>
+
+
+
+
+
+
+</krpano>

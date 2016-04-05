@@ -1,0 +1,14 @@
+html, body{
+	height:100%;	
+}
+
+html{
+	font-size:58.5%;
+}
+
+body{
+	font-family:$font;
+	font-size:1.2rem;
+	background:$light-gray;
+	overflow:hidden;
+}

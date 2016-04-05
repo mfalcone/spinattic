@@ -1,0 +1,24 @@
+<% if(jsonObj.length > 0) {%>
+	<div class="scene-wrapper">
+		<ul id="sceneMenu">
+	
+		 <% _.each(jsonObj, function(element,ind){ %>
+		    <li id="<%=element._name%>" <%if(ind == 0){%> class="selected"<%}%>>
+		    	<div class="drag-icon"></div>
+		    	<div class="selector-scene"></div>
+		    	<img src="<%= element._thumburl %>" title="<%= element._title %>">
+		    </li>
+			<% }); %>
+		</ul>
+	</div>
+	
+	<% }else{%>
+	<div class="scene-wrapper no-scenes">
+		<ul id="sceneMenu">
+			<li class="empty">
+				<i class="fa fa-plus fa-2x"></i>
+			</li>
+		</ul>
+	</div>
+	<% }%>
+	

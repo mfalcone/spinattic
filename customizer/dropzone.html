@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="js/lib/dropzone.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var i = 0;
+			$("div#dzone").dropzone({ 
+				url: "php/upload-single-file.php",
+				clickable:"#click",
+				drop:function(file,i){
+					console.log(file)
+					console.log(i)
+				},
+				sending:function(file,xhr,formdata){
+					console.log(xhr)
+				},
+				uploadprogress:function(file,persent){
+					console.log(file)
+					console.log(persent)
+				},
+				processing:function(file,i){
+					console.log("process")
+					console.log(i)
+					$(file.previewElement).attr("id","pano-"+i)
+					i++
+					
+				},
+				sending:function(){
+					console.log("sending")
+				},
+				success:function(file){
+					console.log("success")
+					console.log(file)
+				}
+			});
+		})
+	</script>
+</head>
+<body>
+	<div id="dzone" style="border:1px solid; width:500px; height:400px;">
+		aca no <br>
+
+		<span id="click">aca si</span>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+section.main-section { 
+    position: relative;
+    padding-right: 50px;
+
+    .inner{
+        overflow: auto;
+    
+        &.withTour{
+            overflow: hidden;
+            position: relative;
+            margin-right: 50px;
+            width:100%;
+            z-index: 0;
+        }
+    }
+
+}
+
+
+
+.overlay-drag{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.dragger-wrapper{
+    position: absolute;
+    z-index: 5;
+    top: -550px;
+    left: 50%;
+    width: 600px;
+    margin: 0 auto;
+
+    .inner-dragger{
+        border: dashed-pano(4px,$light-gray); 
+        background: $dark-gray;     
+        color: #FFF;
+        text-align: center;
+        position: relative;
+        left: -50%;     
+        
+        .dragable{
+            padding: 100px;
+            z-index: 1000;
+        }
+
+        input, .dropdown{
+            background: $light-gray;
+            border: 1px solid #000;
+        }
+
+        .fa-cloud-upload{
+            font-size: 6rem;
+            text-align: center;
+            display: block;
+        }
+
+        h2{
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        h3{
+            font-size: 1.5rem;
+            font-style: italic;
+
+            &#click-to-select-file{
+                cursor: pointer;
+                &:hover {
+                    color: $light-gray3;
+                }
+            }
+        }
+
+        div.format{
+            display:none;
+        }
+
+        label{
+            font-weight: bold;
+            padding-top: 40px;
+            display: block;
+            font-size: 1.4rem;
+        }
+
+        #panos-format{
+            float: none;
+            margin-left: auto;
+            margin-right: auto;
+            width: 185px;
+            margin-top: 6px;
+
+            h2{
+                font-size: 1.2rem;
+            }
+
+            ul{
+                top: 23px; 
+            }
+        }
+
+        .tile-size{
+            margin-top: 10px;
+        }
+
+        input{
+            width: 40px;
+            color: #FFF;
+            padding: 5px;
+            font-size: 1.1rem;
+        }
+
+        p{
+            color: $light-gray3;
+            margin-top: 40px;
+            line-height: 1.5rem;
+        }
+
+        .scroll-wrapper {
+            max-height: 300px;            
+            overflow: auto;
+
+            .pano-item-wrapper{
+                padding: 10px;
+            }
+        }
+
+        .pano-item{
+            border: 1px solid #000;
+            background: $middle-gray;
+            padding: 15px;
+            height: 50px;
+            margin-bottom: 10px;
+            position: relative;
+            
+            .thumb{
+                width: 100px;
+                float: left;
+            }
+
+            .left-uploader{
+                float: left;
+                width: 65%;
+                position: relative;
+
+                h3{
+                    float: left;
+                    padding-left: 10px;
+                    font-size: 1.4rem;
+                    font-style: normal;
+                    font-weight: bold; 
+                    text-align: left;
+
+
+                    span {
+                        font-weight: normal;
+                        font-size: 1.2rem;
+                    }
+
+                    &.error{
+                        line-height: .95em;
+                        color: $red;
+
+                        span{
+                            color: white;
+                        }
+                    }
+                }
+
+                .progress-wrapper{
+                    background: $dark-gray;
+                    width: 200px;
+                    height: 12px;
+                    float: left;
+                    border-radius: 15px;
+                    @include absolute (38px, initial, initial, 10px);
+
+                    .progress{
+                        @include border-radius(4px);
+                        height: 12px;                       
+                        background: #397999;
+                    }
+
+                    .percentage{
+                        @include absolute();
+                        top:1px;
+                        width: 100%;
+                        font-size: .9em;
+                    }
+                }
+            }
+
+            .right-uploader{
+                float: right;
+            
+                .icon-msg{
+                    background: #444;
+                    width: 70px;
+                    height: 20px;
+                    border-radius: 5px;
+                    padding: 3px;
+                    position: absolute;
+                    top: 27px;
+                    right: 20px;
+
+                    span{
+                        margin-top: 4px;
+                    }
+
+                    .processing{
+                      background: #d5ae06;
+                      width: 76px;
+                      height: 23px;
+                      margin-left: -3px;
+                      margin-top: -3px;
+                      border-radius: 5px;
+                      padding-top: 3px;
+                    }   
+                }   
+            }
+
+            .fa-close{
+                @include absolute (0, 0, initial, initial);
+                cursor: pointer;
+                padding: 5px;
+            }
+
+            .cancelling{
+                background:rgba(5,5,5,0.8);
+                width: 100%;
+                height: 100%;
+                position:absolute;
+                top: 0;
+                left: 0;
+                
+                p{
+                    color:#FFF;
+                    margin-top:20px;
+                    font-size:1.4rem;
+                }
+
+                .loading{
+                    margin: 10px auto;
+                    float: none;
+                    border-bottom: 3px solid #999;
+                    border-left: 3px solid #ffd731;
+                    border-right: 3px solid #999;
+                    border-top: 3px solid #999;
+                    border-radius: 100%;
+                    height: 15px;
+                    width: 15px;
+                    @include loaderAnimation();
+                    }
+            }
+        }
+
+        .uploader-footer{
+            background: #111;
+            width: 100%;
+            height: 40px;
+            padding-top: 10px;
+            position: relative;
+
+            p{
+                text-transform: uppercase;
+                color: #FFF;
+                line-height: 1em;
+                float: right;
+                margin-right: 20px;
+                margin-top: 8px;
+                width: 50%;
+            }                       
+        }
+
+        &.scaling{
+            top: 40px !important;
+        }
+
+        #upload_button {
+            @include absolute(0, -15000px, initial, initial);
+        }
+
+        /* uploading */
+        .uploading-drop-zone {
+            padding: 20px 60px;
+            font-size: 1rem;
+
+            .fa-cloud-upload{
+                font-size: 3em;
+            }
+
+            h2 {
+                margin-bottom: 10px;
+            }
+
+            & > p {
+                margin-top: 10px;
+            }
+
+            .format {
+                display: none;
+            }
+        }
+    }
+
+    .cancel{
+          margin-left: -58px;
+          @include absolute(initial, initial, 40px, 50%);
+    }
+}
+
+#tour{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#000;
+}                       

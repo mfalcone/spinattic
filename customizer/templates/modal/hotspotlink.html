@@ -1,0 +1,43 @@
+<div class="hotspotlink">
+	<div class="hotspot-column2">
+		<div class="row">
+			<label for="style">Style:</label>
+			<div title="Style" class="dropdown style">
+				<h2><div class="default"></div> <span class="fa fa-caret-down fa-lg right"></span></h2>
+				<ul class="styles-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="urlLink">
+		<input type="text"  class="urllinkhotspot" name="urllinkhotspot" value="<%=allData._linkurl%>" placeholder="http://..">
+	</div>
+
+	<div title="target" class="dropdowntarget">
+		<h2><span class="title"><%=allData._target%></span> <span class="fa fa-caret-down fa-lg right"></span></h2>
+		<ul>
+			<li data-value="op1"><span>_blank</span></li>
+			<li data-value="op3"><span>_self</span></li>
+			<li data-value="op4"><span>_parent</span></li>
+			<li data-value="op5"><span>_top</span></li>
+		</ul>
+	</div>
+		<div class="tooltipview"></div>
+
+</div>
+<div class="test-mode">
+	<p><span>Test mode:</span> click on the hotspot
+	to test the functionality.</p>
+	<p>Switch to “<b>edit</b>” mode to edit the
+	hotspot properties.</p>
+</div>
+<div class="onoffswitch">
+	<input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox testmodeswitcher" id="onoffswitchhplink-<%=num%>" >
+	<label class="onoffswitch-label" for="onoffswitchhplink-<%=num%>">
+		<span class="onoffswitch-inner"></span>
+		<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+	</label>
+</div>
+<div class="hotspotsFooter">
+	<div class="removeHotspot"><span class="fa fa-trash"></span>Remove Hotspot</div>
+</div>

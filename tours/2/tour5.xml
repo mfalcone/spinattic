@@ -1,0 +1,64 @@
+
+		
+			<krpano onstart="startup();">
+				<contextmenu><item name="Spinattic" caption="Spinattic.com" onclick="openurl(http://www.spinattic.com,_blank); " /></contextmenu>
+			
+				<settings name="toursettings" tourtitle="test tour JKDHSHJD" description="test test tetdhdfhjdjkdhsghdfghgh description is here. luubhdhdfblah blah nurpnnnbbbhhhhh" location="Ennedi Ouest, Chad"/>
+				
+				<include url="../../php-stubs/xml_usersettings.php?id=40" />
+				
+
+				<include url="../../interfaces/SSI_1.0/interface.xml" devices="desktop" />
+				<include url="../../interfaces/SSI_1.0/interface_m.xml" devices="iphone|ipad|android|mobile|tablet|touchdevice|gesturedevice" />
+				
+	
+				<action name="startup">
+					buildInterface(); loadscene(get(scene[0].name),null,MERGE,BLEND(1));
+				</action>
+				
+				<!-- disable the default progress bar -->
+				<progress showload="none" showwait="none" />
+	
+				<!-- SCENES -->
+				<scene name="scene_3" title="Bigtreeroadmain" onstart=""  thumburl="%CURRENTXML%/../../panos/3/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/3/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/3/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/3/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_4" title="Patio lawn_3" onstart=""  thumburl="%CURRENTXML%/../../panos/4/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/4/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/4/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/4/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+				</scene>
+	
+				<!-- SCENES -->
+				<scene name="scene_1" title="roof_building" onstart=""  thumburl="%CURRENTXML%/../../panos/1/index.tiles/thumb200x100.jpg" lat="" lng="" heading=""  >
+						<view hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+	
+						<preview url="%CURRENTXML%/../../panos/1/index.tiles/preview.jpg" />
+	
+						<image>
+							<cube url="%CURRENTXML%/../../panos/1/index.tiles/pano_%s.jpg" />
+							<mobile>
+								<cube url="%CURRENTXML%/../../panos/1/index.tiles/mobile_%s.jpg" />
+							</mobile>
+						</image>
+						<hotspot style="arrow_hotspot" name="link_1" ath="-5" atv="0" linkedscene="" />
+						<hotspot style="info_hotspot" name="info_2" ath="-10" atv="-17" infotitle="title" infotext="Type your text here..." />
+				</scene></krpano>

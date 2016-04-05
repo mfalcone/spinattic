@@ -1,0 +1,259 @@
+<div class="simple-control-btns-skill-editor">
+
+        <div class="skill-tabs">
+            <nav class="menuTabs">
+                <ul>
+                    <li class="generalSettingsTab selected" data-content="generalSettingsContent">General Settings</li>
+                    <li class="stylingTab" data-content="stylingContent">Styling</li>
+                    <li class="directionTab" data-content="directionContent">Direction Arrows</li>
+                </ul>                
+            </nav>
+
+            <div class="tabContent">
+                <section id="generalSettingsContent" >
+                    <div class="scrollwrapper"> 
+                        <div class="column1 left">
+                            <div class="editor-group-2col">
+                                <div class="line-group">
+                                    <label for="scbLayout">Layout</label>
+                                    <div id="scbLayout" class="dropdown dd-upload right-el" data-selected="<%=tourSkill.skill_controls_settings._layout%>">
+                                        <h2><span class="title"><%=layoutLabel%></span> <span class="fa fa-caret-down fa-lg right"></span></h2>
+                                        <ul data-param="layout">
+                                            <li data-value="sliced">Sliced</li> 
+                                            <li data-value="unified">Unified</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="scbPosition">Position</label>
+                                    <div class="position posSelectors" id="scbPosition">
+                                        <span class="topLeftPos" data-pos="topleft"></span>
+                                        <span class="topRightPos" data-pos="topright"></span>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="scbOrientation">Orientation</label>
+                                    <div id="scbOrientation" class="dropdown dd-upload right-el" data-selected="<%=tourSkill.skill_controls_settings._orientation%>">
+                                        <h2><span class="title"><%=orientationLabel%></span> <span class="fa fa-caret-down fa-lg right"></span></h2>
+                                        <ul data-param="orientation">
+                                            <li data-value="vertical">Vertical</li> 
+                                            <li data-value="horizontal">Horizontal</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="scbXoffset">X offset</label>
+                                    <input type="number" min="0" id="scbXoffset" class="scb_change" data-param="x_offset" value="<%=tourSkill.skill_controls_settings._x_offset%>">
+                                </div>
+
+                                <div class="line-group">
+                                    <label for="scbYoffset">Y offset</label>
+                                    <input type="number" min="0" id="scbYoffset" class="scb_change" data-param="y_offset" value="<%=tourSkill.skill_controls_settings._y_offset%>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column2 left">
+                            <h4>Order of buttons</h4>
+                            <div class="scbOrder">
+                                <div class="btnContainer">
+                                    <div class="skills-add-btn" <%if(tourSkill.skill_controls_settings._order_1 != "false"){%>id="<%=tourSkill.skill_controls_settings._order_1%>"<%}%>>
+                                        <span class="fa fa-plus"></span>
+                                        <div class="icon-wrap" style="background-image:url(<%=backimage%>)"></div>
+                                        <div class="icon-wrap second" style="background-image:url(<%=backimage%>)"></div>
+                                        <span class="sortArrows">
+                                            <i class="fa fa-bars"></i>
+                                        </span>
+                                        <span class="fa fa-trash"></span>
+                                    </div>
+                                </div>
+
+                                <div class="btnContainer">
+                                    <div class="skills-add-btn" <%if(tourSkill.skill_controls_settings._order_2 != "false"){%>id="<%=tourSkill.skill_controls_settings._order_2%>"<%}%>>
+                                        <span class="fa fa-plus"></span>
+                                        <div class="icon-wrap" style="background-image:url(<%=backimage%>)"></div>
+                                        <div class="icon-wrap second" style="background-image:url(<%=backimage%>)"></div>
+                                        <span class="sortArrows">
+                                            <i class="fa fa-bars"></i>
+                                        </span>
+                                        <span class="fa fa-trash"></span>
+                                    </div>
+                                </div>
+
+                                <div class="btnContainer">
+                                    <div class="skills-add-btn" <%if(tourSkill.skill_controls_settings._order_3 != "false"){%>id="<%=tourSkill.skill_controls_settings._order_3%>"<%}%>>
+                                        <span class="fa fa-plus"></span>
+                                         <div class="icon-wrap" style="background-image:url(<%=backimage%>)"></div>
+                                         <div class="icon-wrap second" style="background-image:url(<%=backimage%>)"></div>
+                                        <span class="sortArrows">
+                                            <i class="fa fa-bars"></i>
+                                        </span>
+                                        <span class="fa fa-trash"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section id="stylingContent" class="none">
+                    <div class="scrollwrapper"> 
+                        <div class="contentBlock">
+                            <div class="editor-group-2col">
+                                <div class="line-group">
+                                    <label for="iconStyles">Icons styles</label>
+                                    <div id="iconStyles" class="dropdown bk-image right-el" data-selected="<%=tourSkill.skill_controls_settings._icons_styles%>">
+                                        <h2>
+                                            <img src="<%=backimage%>">
+                                            <span class="fa fa-caret-down fa-lg right"></span>
+                                        </h2>
+                                        <ul data-param="icons_styles">
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_1_w.png"><img src="../player/skills/simple_controls/icons_1_w.png" /></li> 
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_1_b.png"><img src="../player/skills/simple_controls/icons_1_b.png" /></li> 
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_2_w.png"><img src="../player/skills/simple_controls/icons_2_w.png" /></li> 
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_2_b.png"><img src="../player/skills/simple_controls/icons_2_b.png" /></li> 
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_3_w.png"><img src="../player/skills/simple_controls/icons_3_w.png" /></li> 
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_3_b.png"><img src="../player/skills/simple_controls/icons_3_b.png" /></li>
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_4_w.png"><img src="../player/skills/simple_controls/icons_4_w.png" /></li> 
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_4_b.png"><img src="../player/skills/simple_controls/icons_4_b.png" /></li>
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_5_w.png"><img src="../player/skills/simple_controls/icons_5_w.png" /></li> 
+                                            <li data-value="%SWFPATH%/skills/simple_controls/icons_5_b.png"><img src="../player/skills/simple_controls/icons_5_b.png" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contentBlock">
+                            <div class="column3 left">
+                                <div class="editor-group-2col">
+                                    <div class="line-group">
+                                        <label for="bwidth">Buttons width</label>
+                                        <input type="number" min="20" max="100" id="bwidth" class="scb_change" data-param="width" value="<%=tourSkill.skill_controls_settings._width%>">
+                                    </div>
+                                    <div class="line-group">
+                                        <label for="bheight">Buttons height</label>
+                                        <input type="number" min="20" max="100" id="bheight" class="scb_change" data-param="height" value="<%=tourSkill.skill_controls_settings._height%>">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column3 left">
+                                <div class="editor-group-2col">
+                                    <div class="line-group">
+                                        <label for="bmargin">Buttons margin</label>
+                                        <input type="number" min="0" max="50" id="bmargin" class="scb_change" data-param="buttons_margin" value="<%=tourSkill.skill_controls_settings._buttons_margin%>">
+                                    </div>
+                                    <div class="line-group">
+                                        <label for="rEdge">Rounded edges</label>
+                                        <input type="number" min="0" max="50" id="rEdge" class="scb_change" data-param="bgroundedge" value="<%=tourSkill.skill_controls_settings._bgroundedge%>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contentBlock">
+                            <div class="editor-group-2col">
+                                <div class="line-group">
+                                    <label for="">Background color</label>
+                                    <input type="text" class="colorpicker" id="scb-bgcolor" value="<%=tourSkill.skill_controls_settings._bgcolor.replace('0x','')%>" data-param="bgcolor">
+                        
+                                </div>
+                                <div class="line-group">
+                                    <label for="btransparency">Background transparency</label>
+                                    <input type="number" min="0" max="1" id="btransparency" class="scb_change" data-param="bgalpha" value="<%=tourSkill.skill_controls_settings._bgalpha%>" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contentBlock">
+                            <div class="editor-group-2col">
+                                <div class="line-group">
+                                    <label for="bwidth">Border width</label>
+                                    <input type="number" min="0" max="10" id="border-width" class="scb_border_change" value="<%=borderprop.width%>" step="1">
+                                </div>
+                                <div class="line-group">
+                                    <label for="">Border color</label>
+                                    <input type="text" class="colorpicker" id="scb-border-bgcolor" value="<%=borderprop.color.replace('0x','')%>">
+                                </div>
+                                <div class="line-group">
+                                    <label for="btransparency">Border transparency</label>
+                                    <input type="number" min="0" max="1" id="border-transparency" class="scb_border_change" value="<%=borderprop.transp%>" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="directionContent" class="none">
+                    <div class="scrollwrapper">
+
+                        <div class="editor-group-2col">
+                            <div class="line-group">
+                                <label for="">Enable direction arrows</label>
+                                <div class="onoffswitch absoluteRight">
+                                    <input type="checkbox" name="sbs-onoffswitch1" class="onoffswitch-checkbox" id="sbs-onoffswitch1" <% if(tourSkill.skill_controls_settings._direction_arrows != "false"){ %>checked <%}%> data-param="direction_arrows">
+                                    <label class="onoffswitch-label" for="sbs-onoffswitch1">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="line-group">
+                                <label for="">Enable on mobiles</label>
+                                <div class="onoffswitch absoluteRight">
+                                    <input type="checkbox" name="sbs-onoffswitch2" class="onoffswitch-checkbox" id="sbs-onoffswitch2" <% if(tourSkill.skill_controls_settings._direction_arrows_mobile != "false"){ %>checked <%}%> data-param="direction_arrows_mobile">
+                                    <label class="onoffswitch-label" for="sbs-onoffswitch2">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="line-group">
+                                <label for="sbs-position">Position</label>
+                                <div id="sbs-position-vertical" class="dropdown dd-upload right-el" data-selected="<%=tourSkill.skill_controls_settings._arrows_position%>">
+                                    <h2>
+                                        <span class="title"><%=arrowPos%></span>
+                                        <span class="fa fa-caret-down fa-lg right"></span>
+                                    </h2>
+                                    <ul data-param="arrows_position">
+                                        <li data-value="bottom">Bottom</li> 
+                                        <li data-value="top">Top</li> 
+                                        <li data-value="left">Left</li> 
+                                        <li data-value="right">Right</li> 
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="line-group">
+                                <label for="sbs-xmargin">X margin</label>
+                                <input type="number" min="0" id="sbs-xmargin" class="scb_change" data-param="arrows_x_margin" value="<%=tourSkill.skill_controls_settings._arrows_x_margin%>">
+                            </div>
+                            <div class="line-group">
+                                <label for="sbs-ymargin">Y margin</label>
+                                <input type="number" min="0" id="sbs-ymargin" class="scb_change" data-param="arrows_y_margin" value="<%=tourSkill.skill_controls_settings._arrows_y_margin%>">
+                            </div>
+                            <div class="line-group">
+                                <label for="sbs-containerSize">Container size</label>
+                                <input type="number" min="50" max="130" id="sbs-containerSize" class="scb_change" data-param="arrows_container_size" value="<%=tourSkill.skill_controls_settings._arrows_container_size%>">
+                            </div>
+                            <div class="line-group">
+                                <label for="sbs-containerRoundEdges">Container rounded edges</label>
+                                <input type="number" min="0" max="65" id="sbs-containerRoundEdges" class="scb_change" data-param="arrows_container_roundedge" value="<%=tourSkill.skill_controls_settings._arrows_container_roundedge%>">
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    <footer>
+    </footer>
+</div>

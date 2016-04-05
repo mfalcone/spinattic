@@ -1,0 +1,83 @@
+<div class="new-tour round-btn" title="Create new tour">
+    <span class="fa fa-plus"></span>
+    <i class="fa fa-picture-o"></i>
+</div>
+<div class="user">
+    <div class="user-wrapper">
+        <% user = jsonObj[0] %>
+        <div class="avatar"><img src="../images/users/<%= user.avatar %>"></div>
+        <div class="notification">
+            <% if(user.unread_notifications != 0){ %>
+                <span class="counter"><%= user.unread_notifications %></span>
+                <span class="fa fa-bell fa-lg"></span>
+            <%}else{%>
+                <span class="fa fa-bell fa-lg"></span>
+            <%}%>
+            
+        </div>
+    </div>
+    <div class="menu-list users">
+        <ul class="header-user-menu">
+            <li><a href="../editprofile" title="Account settings"><span class="fa fa-user"></span>Account settings</a></li>
+
+            <li class="textRight"> <a href="../lo" title="Log out"><span class="fa fa-sign-out"></span>Log out</a></li>
+        </ul>
+
+        <ul class="main-user-menu">
+            <li><a href="../home.php" title="Home">
+                <span class="fa fa-home"></span>
+                Home
+            </a></li>
+
+            <li><a href="../<%=user.friendly_usr%>" title="My profile">
+                <span class="fa fa-user"></span>
+                My profile
+            </a></li>
+
+            <li><a href="../<%=user.friendly_usr%>?followers" title="Followers">
+                <span class="fa fa-users"></span>
+                Followers
+                <span class="user-count right"><%= user.followers_length %></span>
+            </a></li>
+
+            <li><a href="../<%=user.friendly_usr%>?following" title="Following">
+                <span class="fa fa-users"></span>
+                Following
+                <span class="user-count right"><%= user.following_length %></span>
+            </a></li>
+
+        </ul>
+
+        <h2><span class="fa fa-wrench"></span>Production</h2>
+
+        <ul class="production-user-menu">
+            <li><a href="../customizer/" title="Create new tour">
+                <span class="fa fa-plus-circle red"></span>
+                Create new tour
+            </a></li>
+
+            <li><a href="../manager_tour.php" title="Manage tours">
+                <span class="fa fa-picture-o"></span>
+                Manage tours
+                <span class="user-count right"><%= user.tours_length %></span>
+            </a></li>
+
+            <li><a href="../manager_panoramas.php" title="Manage pano files">
+                <span class="fa fa-file-picture-o"></span>
+                Manage pano files
+                <span class="user-count right"><%= user.panos_length %></span>
+            </a></li>
+        </ul>
+        <div class="arrow"></div>
+    </div>
+
+    <div class="menu-list notifications">
+        <div class="inner-notifications">
+            <ul>
+                
+            </ul>
+        </div>
+        <div class="loader"></div>
+        <div class="arrow"></div>
+    </div>
+</div>

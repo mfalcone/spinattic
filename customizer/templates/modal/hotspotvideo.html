@@ -1,0 +1,33 @@
+<div class="hotspotvideo">
+<div class="hotspot-column2">
+	<div class="row">
+		<label for="style">Style:</label>
+		<div title="Style" class="dropdown style">
+			<h2><div class="default"></div> <span class="fa fa-caret-down fa-lg right"></span></h2>
+			<ul class="styles-list">
+			</ul>
+		</div>
+	</div>
+</div>
+
+	<label for="urlvideohotspot" style="clear:both">Youtube:</label>
+	<input type="text" placeholder="Paste your youtube link here" id="urlvideohotspot" name="urlvideohotspot" value="<%=allData._video%>">
+	<div class="tooltipview"></div>
+
+</div>
+<div class="test-mode">
+    <p><span>Test mode:</span> click on the hotspot
+    to test the functionality.</p>
+    <p>Switch to “<b>edit</b>” mode to edit the
+    hotspot properties.</p>
+</div>
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox testmodeswitcher" id="onoffswitchhpvideo-<%=num%>" >
+    <label class="onoffswitch-label" for="onoffswitchhpvideo-<%=num%>">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+    </label>
+</div>
+<div class="hotspotsFooter">
+	<div class="removeHotspot"><span class="fa fa-trash"></span>Remove Hotspot</div>
+</div>

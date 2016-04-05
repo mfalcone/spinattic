@@ -1,0 +1,15 @@
+<krpano>
+<cursors url="flechasNav.png"
+         type="8way"
+         move="0|0|54|54"
+         drag="54|0|28|54"
+         arrow_l="82|0|28|54"
+         arrow_r="110|0|28|54"
+         arrow_u="138|0|28|54"
+         arrow_d="166|0|28|54"
+         arrow_lu="194|0|28|54"
+         arrow_ru="222|0|28|54"
+         arrow_ld="250|0|28|54"
+         arrow_rd="278|0|28|54"
+         />
+</krpano>

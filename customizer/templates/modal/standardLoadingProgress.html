@@ -1,0 +1,164 @@
+<div class="loading-bar-skill-editor standard-loading" id="standard-loading-skill-editor">
+    <div class="scrollwrapper">  
+        <div class="inner-modal-wrapper">
+            <div class="editor-group-2col">
+                <div class="line-group">
+                    <label for="chooseBarDD">Choose loader type:</label>
+                    <div title="chooseBarDD" id="chooseBarDD" class="dropdown dd-upload right-el" data-selected="<%=tourSkill.selected%>">
+                        <h2><span class="title"><%=tourSkill.selected%></span> <span class="fa fa-caret-down fa-lg right"></span></h2>
+                        <ul>
+                            <li data-value="Bar">Bar</li>
+                            <li data-value="Looping">Looping</li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layer-top bar <%=tourSkill.hiddenBarClass%>">
+                <div class="editor-group-2col">
+                    <div class="line-group">
+                        <label class="standardLoading-skill-position" for="standardLoading-skill-align">Origin:</label>
+                        <div class="position" id="standardLoading-bar-skill-align">
+                            <span class="fa fa-circle" data-pos="topleft"></span>
+                            <span class="fa fa-circle" data-pos="top"></span>
+                            <span class="fa fa-circle" data-pos="topright"></span>
+                            <span class="fa fa-circle" data-pos="left"></span>
+                            <span class="fa fa-circle" data-pos="center"></span>
+                            <span class="fa fa-circle" data-pos="right"></span>
+                            <span class="fa fa-circle" data-pos="bottomleft"></span>
+                            <span class="fa fa-circle" data-pos="bottom"></span>
+                            <span class="fa fa-circle" data-pos="bottomright"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="editor-group-2col">
+                    <div class="line-group">
+                        <label for="widthSLP">Width:</label>
+                        <input type="number" min="10" id="widthSLP" value="<%=tourSkill.barprop[1]%>" >
+                        <div title="unitsW" id="unitsW" class="dropdown right-el unitsDD dropdownSelector" data-selected="<%=tourSkill.barwidthUnit%>">
+                            <h2><span class="title"><%=tourSkill.barwidthUnit%></span> <span class="fa fa-caret-down fa-lg right"></span></h2>
+                            <ul>
+                                <li data-value="px">px</li>
+                                <li data-value="%">%</li> 
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="line-group">
+                        <label for="heightSLP">Height:</label>
+                        <input type="number" min="10" id="heightSLP" value="<%=tourSkill.barprop[2]%>" >
+                        <div title="unitsH" id="unitsH" class="dropdown right-el unitsDD dropdownSelector" data-selected="<%=tourSkill.barheighthUnit%>">
+                            <h2><span class="title"><%=tourSkill.barheighthUnit%></span> <span class="fa fa-caret-down fa-lg right"></span></h2>
+                            <ul>
+                                <li data-value="px">px</li>
+                                <li data-value="%">%</li> 
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="line-group">
+                        <label for="styleSLP">Style:</label>
+                        <div title="styleSLP" id="styleSLP" class="dropdown right-el dropdownSelector" data-selected="<%=tourSkill.barprop[5]%>">
+                            <h2><span class="title"><%=tourSkill.barprop[5]%></span> <span class="fa fa-caret-down fa-lg right"></span></h2>
+                            <ul>
+                                <li data-value="solid">solid</li>
+                                <li data-value="shaded">shaded</li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<h2 class="title-banner">Background</h2>-->
+                
+                <div class="editor-group-2col">
+                    <div class="line-group">
+                        <label for="backcolor">Backcolor:</label>
+                        <input type="text" id="backcolor" value="<%=tourSkill.barprop[6].replace('0x','')%>" >
+                    </div>
+
+                    <div class="line-group">
+                        <label for="loadcolor">Loadcolor:</label>
+                        <input type="text" id="loadcolor" value="<%=tourSkill.barprop[7].replace('0x','')%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="decodecolor">Decodecolor:</label>
+                        <input type="text" id="decodecolor" value="<%=tourSkill.barprop[8].replace('0x','')%>" >
+                    </div>
+
+                    <div class="line-group">
+                        <label for="bordercolor">Bordercolor:</label>
+                        <input type="text" id="bordercolor" value="<%=tourSkill.barprop[9].replace('0x','')%>" >
+                    </div>
+
+                    <div class="line-group">
+                        <label for="borderwidth">Borderwidth:</label>
+                        <input type="number" id="borderwidth" value="<%=tourSkill.barprop[10]%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="glowcolor">Glowcolor:</label>
+                        <input type="text" id="glowcolor" value="<%=tourSkill.barprop[11].replace('0x','')%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="glowwidth">Glowwidth:</label>
+                        <input type="number" id="glowwidth" value="<%=tourSkill.barprop[12]%>" >
+                    </div>
+                </div>
+            </div>
+
+            <div class="layer-top looping <%=tourSkill.hiddenloopingClass%>">
+                <div class="editor-group-2col">
+                    <div class="line-group">
+                        <label for="looping-color">Color:</label>
+                        <input type="text"  id="looping-color" value="<%=tourSkill.loopingprop[0].replace('0x','')%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="looping-points">Points:</label>
+                        <input type="number" min="2" max="30" id="looping-points" value="<%=tourSkill.loopingprop[1]%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="looping-size">Size:</label>
+                        <input type="number" min="2" max="30" id="looping-size" value="<%=tourSkill.loopingprop[2]%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="looping-bigpoint">Bigpoint:</label>
+                        <input type="number" min="0" id="looping-bigpoint" value="<%=tourSkill.loopingprop[3]%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="looping-smallpoint">Smallpoint:</label>
+                        <input type="number" min="0" id="looping-smallpoint" value="<%=tourSkill.loopingprop[4]%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="looping-glowcolor">Glowcolor:</label>
+                        <input type="text" id="looping-glowcolor" value="<%=tourSkill.loopingprop[5].replace('0x','')%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="looping-glowwidth">Glowwidth:</label>
+                        <input type="number" min="0" max="20" id="looping-glowwidth" value="<%=tourSkill.loopingprop[6]%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="looping-xpos">Xpos:</label>
+                        <input type="number" id="looping-xpos" value="<%=tourSkill.loopingprop[7]%>" >
+                    </div>
+                    <div class="line-group">
+                        <label for="looping-ypos">Ypos:</label>
+                        <input type="number" id="looping-ypos" value="<%=tourSkill.loopingprop[8]%>" >
+                    </div>
+                    <div class="line-group">
+                        <label class="standardLoading-skill-position" for="standardLoading-skill-align">Align:</label>
+                        <div class="position" id="standardLoading-looping-skill-align">
+                            <span class="fa fa-circle" data-pos="topleft"></span>
+                            <span class="fa fa-circle" data-pos="top"></span>
+                            <span class="fa fa-circle" data-pos="topright"></span>
+                            <span class="fa fa-circle" data-pos="left"></span>
+                            <span class="fa fa-circle" data-pos="center"></span>
+                            <span class="fa fa-circle" data-pos="right"></span>
+                            <span class="fa fa-circle" data-pos="bottomleft"></span>
+                            <span class="fa fa-circle" data-pos="bottom"></span>
+                            <span class="fa fa-circle" data-pos="bottomright"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

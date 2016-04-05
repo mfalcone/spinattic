@@ -1,0 +1,45 @@
+<div class="nadir-patch-skill-editor">
+	<div class="scrollwrapper"> 
+		<div class="modalSeparator">
+			<fieldset>
+				<h3>Image</h3>
+				<div id="nadirPatch-skill-editor-img" class="editor-img"></div>
+				<div class="line-group">
+								<label>Distorted</label>
+
+								<div class="onoffswitch">
+												<input type="checkbox" class="onoffswitch-checkbox" data-prop="distorted" id="onoffswitchdistortedSkill" <%if(tourSkill.skill_nadirpatch_settings._distorted=="true"){%>checked <%}%>>
+												<label class="onoffswitch-label" for="onoffswitchdistortedSkill">
+																<span class="onoffswitch-inner"></span>
+																<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+												</label>
+								</div>
+				</div>
+
+				<div class="line-group">
+								<label for="nadirPatch-rotate">Rotate:</label>
+								<div><input type="number" id="nadirPatch-rotate" value="<%=tourSkill.skill_nadirpatch_settings._rotate %>" data-prop="rotate" ></div>
+				</div>
+				
+				<div class="line-group">
+								<label>Link</label>
+
+								<div class="onoffswitch">
+												<input type="checkbox" class="onoffswitch-checkbox" data-prop="link" id="onoffswitchNadirPatchLinkSkill" <%if(tourSkill.skill_nadirpatch_settings._link=="true"){%>checked <%}%>>
+												<label class="onoffswitch-label" for="onoffswitchNadirPatchLinkSkill">
+																<span class="onoffswitch-inner"></span>
+																<span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+												</label>
+								</div>
+				</div>
+				
+				<div class="url-text line-group">
+								<label for="nadirPatch-skill-linkTo" <%if(tourSkill.skill_nadirpatch_settings._link=="true"){%>style="display:block" <%}else{%>style="display:none"<%}%>>Link to:</label>
+								<div><input type="text" id="nadirPatch-skill-linkTo" value="<%=tourSkill.skill_nadirpatch_settings._linkurl%>" data-prop="linkurl"<%if(tourSkill.skill_nadirpatch_settings._link=="true"){%>style="display:inline-block" <%}else{%>style="display:none"<%}%>></div>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+	<footer></footer>
+</div>
+

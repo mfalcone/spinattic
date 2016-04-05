@@ -1,0 +1,73 @@
+<table cellspacing="10" cellpadding="20" border="0" width="100%">
+  <tr>
+	<td width="100%"style="background:#F2F2F2;width:100%; font-family:'Open Sans', sans-serif; font-size:14px;">
+		<img src="http://<?php echo $_SERVER['HTTP_HOST']?>/images/logo_mails.jpg" align="center" style="margin-left:auto;margin-right:auto;display:block; margin-bottom:20px;">
+		<table cellspacing="10" cellpadding="20" border="0" width="100%" style="background:#FFFFFF;border:1px solid #D4D4D4;color:#666666" border="1">
+			<tr>
+				<td>
+					
+					<table align="left"  style="float:left; font-size:14px;width:100%" cellpadding="5" width="100">
+						<tr >
+							<td width="39" style="width:39px; vertical-align:top" valign="top">
+								<img src="http://www.spinattic.com/images/users/t18xul0m2y8derl.jpg" width="39" height="39" alt="user" title="user" align="left" style="float:left" />
+							</td>
+							<td valign="top" style="vertical-align:top;padding: 0 10px 20px 10px;">
+							<a href="#" style="color:#51ace5; text-decoration:none;">Ariel Micheletti</a> is now following you
+						</td>
+						</tr>
+						<tr>
+							<td width="39" style="width:39px; vertical-align:top" valign="top">
+								<img src="http://www.spinattic.com/images/users/t18xul0m2y8derl.jpg" width="39" height="39" alt="user" title="user" align="left" style="float:left" />
+							</td>
+							<td valign="top" style="vertical-align:top;padding: 0 10px 20px 10px;">
+							<a href="#" style="color:#51ace5; text-decoration:none;">Nombre de usuario largo largo largo</a> is now following you
+						</td>
+						</tr>
+						<tr>
+							<td width="39" style="width:39px; vertical-align:top" valign="top">
+								<img src="http://www.spinattic.com/images/users/t18xul0m2y8derl.jpg" width="39" height="39" alt="user" title="user" align="left" style="float:left" />
+							</td>
+							<td valign="top" style="vertical-align:top;padding: 0 10px 20px 10px;">
+							<a href="#" style="color:#51ace5; text-decoration:none;">Ariel Micheletti</a> commented on your tour: <a href="#" style="color:#51ace5; text-decoration:none;">Monumento Nacional a bandera argentina con un t&iacute;tulo largo</a>
+						</td>
+						</tr>
+						<tr>
+							<td width="39" style="width:39px; vertical-align:top" valign="top">
+								<img src="http://www.spinattic.com/images/users/t18xul0m2y8derl.jpg" width="39" height="39" alt="user" title="user" align="left" style="float:left" />
+							</td>
+							<td valign="top" style="vertical-align:top;padding: 0 10px 20px 10px;">
+							<a href="#" style="color:#51ace5; text-decoration:none;">Ariel Micheletti</a> replied to your comment in the tour:  <a href="#" style="color:#51ace5; text-decoration:none;">Monumento Nacional a bandera argentina con un t&iacute;tulo largo</a>
+						</td>
+						</tr>
+					</table>
+					<table align="left" width="100%" style="float:left; font-size:14px; margin-top:20px;width:100%; margin-bottom:10px;clear:left;" cellpadding="5">
+						<tr>
+							<td><h2 style="font-size:18px; font-weight:bold; margin:0;padding:0">T&iacute;tulo sin link</h2></td>
+						</tr>
+						<tr>
+							<td><h2 style="font-size:18px; font-weight:bold; margin:0;padding:0"><a href="#" style="color:#51ace5; text-decoration:none;">T&iacute;tulo con link</a></h2></td>
+						</tr>
+						<tr>
+							<td>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</td>
+						</tr>
+						<tr>
+							<td>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do <a href="#" style="color:#51ace5; text-decoration:none;">eiusmod tempor incididunt</a> ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table cellspacing="10" cellpadding="5" border="0" width="100%" style="color:#666666;margin-top:10px;">
+			<tr>
+				<td style="font-size:12px;color:#acacac">
+					This message was sent to ariel@lalala.com. You received this email because your email notifications are set to receive these types of updates from Spinattic.If you'd like to control which types of email notifications you receive from Spinattic, go to <a href="http://www.spinattic.com/user_profile.php" style="color:#51ace5; text-decoration:none;">http://www.spinattic.com/user_profile.php</a> login and change the settings under e-mail notifications. 
+				</td>
+			</tr>
+		</table>		
+	</td>
+  </tr>
+</table>

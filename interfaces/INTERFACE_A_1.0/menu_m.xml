@@ -1,0 +1,82 @@
+<krpano>
+
+<action name="showMenu">
+	set(layer[maskmenu].visible,true);
+</action>
+<action name="closeMenu">
+	set(layer[maskmenu].visible,false);
+</action>
+<layer name="maskmenu" keep="true" type="container" width="100%" height="100%" align="topcenter" zorder="109" bgcolor="0x000000" bgalpha="0.8" visible="false" onclick="closeMenu();" bgcapture="true"/>
+<layer name="scrollmenu" url="scrollarea.swf" y="0" align="top" alturl="scrollarea.js" direction="v" keep="true"  parent="maskmenu" />
+<plugin name="menuup" url="graphics/menuarrows.jpg" align="top" crop="0|0|212|34" onovercrop="0|34|212|34" ondowncrop="0|68|212|34" zorder="110" keep="true" visible="true" onclick="movemenuup()"  parent="maskmenu" onloaded="if(device.mobile,set(scale,2););" />
+<plugin name="menudown" url="graphics/menuarrows.jpg" align="bottom" crop="212|0|212|34" onovercrop="212|34|212|34" ondowncrop="212|68|212|34" zorder="110" keep="true"  visible="true" onclick="movemenudown()"  parent="maskmenu" onloaded=" if(device.mobile,set(scale,2));" />
+
+<style name="thumbs" width="212" height="100" align="top" keep="true" onclick="loadscene(get(load),null,MERGE);closeMenu();" parent="scrollmenu" />
+
+<action name="buildMenu">
+if(i === null, set(i,0)); 
+if(i LT scene.count,
+	
+	txtadd(thumbname, 'thumb',get(i));
+	addplugin(get(thumbname));
+
+	plugin[get(thumbname)].loadstyle(thumbs);
+	if(device.mobile,
+		mul(plugin[scrollmenu].height, get(scene.count), 220);
+		add(plugin[scrollmenu].height,130);
+		set(plugin[scrollmenu].oy,67);
+		mul(thumbY,220,i);
+		set(plugin[get(thumbname)].scale,2)
+		
+	);
+	if(device.tablet,
+		mul(plugin[scrollmenu].height, get(scene.count), 110);
+		add(plugin[scrollmenu].height,65);
+		set(plugin[scrollmenu].oy,33);
+		mul(thumbY,110,i);
+		
+	);
+
+	copy(thumb, scene[get(i)].thumburl);
+	set(plugin[get(thumbname)].url, get(thumb));
+	set(plugin[get(thumbname)].load, get(scene[get(i)].name) );
+	
+	set(plugin[get(thumbname)].y,get(thumbY));
+	
+	add(i,1); 
+	buildMenu();
+);
+</action>
+
+<action name="movemenuup" >
+	div(yres, get(layer[maskmenu].height), 2);
+	if(device.mobile,sub(addres, get(yres), 220) );
+	if(device.tablet,sub(addres, get(yres), 110) );
+	
+	sub(ysub, addres, get(layer[scrollmenu].y));
+	layer[scrollmenu].scrolltocenter(0,get(ysub));
+</action>
+<action name="movemenudown" >
+	div(yres, get(layer[maskmenu].height), 2);
+	if(device.mobile,add(addres, get(yres), 220) );	
+	if(device.tablet,add(addres, get(yres), 110) );
+
+	sub(ysub, addres, get(layer[scrollmenu].y));
+	layer[scrollmenu].scrolltocenter(0,get(ysub));
+</action>
+
+<action name="resizeMenu">
+	sub(menumaxheight,stageheight,20);
+	if(plugin[scrollmenu].height GT menumaxheight,
+		set(layer[maskmenu].height,get(stageheight));
+		set(plugin[menudown].visible,true);
+		set(plugin[menuup].visible,true);
+
+		,
+		set(layer[maskmenu].height,get(stageheight));
+		set(plugin[menudown].visible,false);
+		set(plugin[menuup].visible,false);
+	);
+</action>
+
+</krpano>

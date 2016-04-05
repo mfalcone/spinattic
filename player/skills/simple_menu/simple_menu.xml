@@ -1,0 +1,309 @@
+<krpano>
+
+	<!-- skin_thumbtext_style - style/textfield for the (optional, simple_menu_settings.thumbs_text) thumbnails texts -->
+	<style name="skin_thumbtext_style" url="%SWFPATH%/plugins/textfield.swf" align="bottom" width="100%" autoheight="true" y="0" enabled="false" backgroundcolor="0x000000" backgroundalpha="0.6" padding="5" background="true" border="false" css="color:#ffffff;text-align:center; font-size:11px;" textshadow="0" />
+
+
+<style name="simple_menu_URL"
+	url="%SWFPATH%/skills/simple_menu/spinattic_skill_simple_menu.png" scale="0.5"
+/>
+
+
+
+	<!-- skin layout -->
+
+		<layer name="simple_menu_scroll_window" type="container" height="100%" x="0" y="0" maskchildren="true"  zorder="1" keep="true"  >
+			
+
+			<layer name="simple_menu_scroll_layer" type="container" 
+				 align="bottom" 
+				 width="100%" 
+				 height="100%"
+				 x="0" y="200"
+				 y_offset="0"
+				 accuracy="1"
+			>
+
+				<layer name="simple_menu_btn_thumbs" x="10" y="-27"
+					ondown="skin_showthumbs();"
+					type="container" bgcapture="true"
+					width="50" height="26"
+					onover="tween(bgalpha,1,0.1)" onout="tween(bgalpha,get(simple_menu_settings.design_bgalpha),0.1)"					
+				>
+				<layer name="simple_menu_btn_arrow" style="simple_menu_URL" crop="56|114|23|16"
+					enabled="false" align="center" edge="center"  rotate="0"
+				/>
+				</layer>
+
+				<layer name="simple_menu_title" url="%SWFPATH%/plugins/textfield.swf" align="topleft" edge="bottomleft" width="100%" height="32" autoheight="true" x="0" y="-5" zorder="4" enabled="false" background="false" border="false" 
+				css="" html="" textshadow="1" visible="false" />
+
+				<layer name="simple_menu_scroll_container" type="container" align="top" width="98%" height="100%" x="" y="0" maskchildren="true"  >
+					<layer name="simple_menu_thumbs_container" type="container" align="lefttop" width="100%" height="100%" visible="false" >
+						<layer name="simple_menu_thumbs_scrollleft" style="simple_menu_URL" crop="0|0|44|64"  align="lefttop"  edge="left"  x="-50" y="50" zorder="2" alpha="0.8" ondown="asyncloop(pressed, layer[simple_menu_thumbs].scrollby(+2,0));tween(alpha,1.0,0.1);" onover="tween(alpha,1.0,0.1);" onout="tween(alpha,0.6,0.3);" onup="tween(alpha,0.6,0.3);" />
+						<layer name="simple_menu_thumbs_scrollright" style="simple_menu_URL" crop="44|0|44|64" align="righttop" edge="right" x="-50" y="50" zorder="2" alpha="0.8" ondown="asyncloop(pressed, layer[simple_menu_thumbs].scrollby(-2,0));tween(alpha,1.0,0.1);" onover="tween(alpha,1.0,0.1);" onout="tween(alpha,0.6,0.3);" onup="tween(alpha,0.6,0.3);" />
+						<layer name="simple_menu_thumbs_scrollindicator" type="container" bgcolor="0xFFFFFF" bgalpha="0.3" align="lefttop" width="0" y="100" height="5" visible="false" enabled="false" />
+						<layer name="simple_menu_thumbs" state="closed" url="%SWFPATH%/plugins/scrollarea.swf" alturl="%SWFPATH%/plugins/scrollarea.js" direction="h" align="top" width="100%" height="100" zorder="1" onloaded="simple_menu_updatescroll();" onscroll="simple_menu_updatethumbscroll();" />
+					</layer>
+					
+
+				</layer>
+			</layer>
+		<layer name="simple_menu_thumbborder" 
+			type="container" 
+			visible="false" 
+			enabled="false" 
+			align="lefttop" 
+		/>
+	</layer>
+
+
+
+
+
+	<!-- simple menu events -->
+
+	<events name="simple_menu_events" keep="true"
+	        onxmlcomplete="simple_menu_startup();set(events[simple_menu_events].onxmlcomplete,null); "
+	        onnewpano="simple_menu_update_scene_infos();"
+	        onresize="simple_menu_onresize();"
+	        />
+
+
+	<!-- simple menu actions -->
+	<action name="simple_menu_startup">
+if(scene.count GT 1,
+
+			if(simple_menu_settings.thumbs_opened,
+				set(layer[simple_menu_thumbs].state,'opened');
+				set(layer[simple_menu_thumbs_container].visible,true);
+				set(layer[simple_menu_btn_arrow].rotate,180);
+			);
+			copy(layer[simple_menu_thumbs].draggable, simple_menu_settings.thumbs_dragging);
+			if(simple_menu_settings.thumbs_onhoverscrolling AND device.mouse,
+				set(layer[simple_menu_thumbs].draggable, false);
+				set(layer[simple_menu_thumbs].onhover_autoscrolling, true);
+			);
+			
+
+
+			set(layer[simple_menu_scroll_layer].y_offset,get(simple_menu_settings.thumbs_y_offset));
+
+			if((plugin[skill_signature]) AND ((plugin[skill_signature].align == bottom) OR (plugin[skill_signature].align == bottomleft) OR (plugin[skill_signature].align == bottomright)),
+					set(plugin[skill_signature].onloaded, 
+						calc(skill_signature_Y,pixelheight + y * 2); 
+						if(simple_menu_settings.thumbs_y_offset LT skill_signature_Y,
+							calc(layer[simple_menu_scroll_layer].y_offset,get(skill_signature_Y) );
+						);
+						simple_menu_onresize();
+					);
+					,
+					set(skill_signature_Y,0); 
+			);
+
+			
+
+		simple_menu_title_styles();
+		simple_menu_design();
+		simple_menu_addthumbs();
+		simple_menu_onresize();
+		simple_menu_updatescroll();
+
+		set(layer[simple_menu_layer].visible, true);
+	
+);
+	</action>
+
+<action name="simple_menu_design">
+			set(layer[simple_menu_scroll_window].width,get(simple_menu_settings.layout_width));
+			set(layer[simple_menu_scroll_window].align,get(simple_menu_settings.layout_align));
+			
+			set(layer[simple_menu_scroll_layer].bgalpha,get(simple_menu_settings.design_bgalpha));
+			set(layer[simple_menu_scroll_layer].bgcolor,get(simple_menu_settings.design_bgcolor));
+			set(layer[simple_menu_scroll_layer].bgborder,get(simple_menu_settings.design_bgborder));
+			set(layer[simple_menu_scroll_layer].bgroundedge,get(simple_menu_settings.design_bgroundedge));
+
+			set(layer[simple_menu_btn_thumbs].bgalpha,get(simple_menu_settings.design_bgalpha));
+			set(layer[simple_menu_btn_thumbs].bgcolor,get(simple_menu_settings.design_bgcolor));
+			set(layer[simple_menu_btn_thumbs].bgborder,get(simple_menu_settings.design_bgborder));
+			set(layer[simple_menu_btn_thumbs].bgroundedge,get(simple_menu_settings.design_bgroundedge));
+</action>
+
+<action name="simple_menu_title_styles">
+			set(layer[simple_menu_title].visible,get(simple_menu_settings.title));
+			calc(layer[simple_menu_title].css,'color:' + simple_menu_settings.title_color + ';font-family:' + simple_menu_settings.title_font + ';font-weight:' + simple_menu_settings.title_weight + ';text-align:' + simple_menu_settings.title_align + ';font-size:' + (device.mobile ? 10 : 14) + 'px;');
+			set(layer[simple_menu_title].padding,get(simple_menu_settings.title_padding));
+</action>
+
+	<action name="simple_menu_addthumbs">
+		
+			set(layer[simple_menu_thumbborder].x,get(simple_menu_settings.design_thumbborder_padding));
+			set(layer[simple_menu_thumbborder].y,get(simple_menu_settings.design_thumbborder_padding));
+			calc(layer[simple_menu_thumbborder].width,simple_menu_settings.thumbs_width - 2*simple_menu_settings.design_thumbborder_padding);
+			calc(layer[simple_menu_thumbborder].height,simple_menu_settings.thumbs_height - 2*simple_menu_settings.design_thumbborder_padding);
+			set(layer[simple_menu_thumbborder].bgborder,get(simple_menu_settings.design_thumbborder_bgborder));
+			set(layer[simple_menu_thumbborder].bgroundedge,get(simple_menu_settings.design_thumbborder_bgroundedge));
+
+
+			copy(thumbwidth, simple_menu_settings.thumbs_width);
+			copy(thumbheight, simple_menu_settings.thumbs_height);
+			copy(thumbpadding, simple_menu_settings.thumbs_padding);
+
+			add(thumbxoffset, thumbwidth, thumbpadding);
+			mul(thumbxcenter, thumbxoffset, 0.5);
+			mul(thumbbarwidth, thumbxoffset, scene.count);
+			add(thumbbarwidth, thumbpadding);
+			add(thumbbarheight, thumbpadding, thumbheight);
+			add(thumbbarheight, thumbpadding);
+
+			if(simple_menu_settings.thumbs_scrollindicator,
+				copy(layer[simple_menu_thumbs_scrollindicator].y, thumbbarheight);
+				add(thumbbarheight, layer[simple_menu_thumbs_scrollindicator].height);
+			);
+
+			copy(layer[simple_menu_thumbs].height, thumbbarheight);
+			copy(layer[simple_menu_thumbs].width, thumbbarwidth);
+
+			mul(halfheight, thumbbarheight, 0.5);
+			copy(layer[simple_menu_thumbs_scrollleft].y, halfheight);
+			copy(layer[simple_menu_thumbs_scrollright].y, halfheight);
+
+			for(set(i,0), i LT scene.count, inc(i),
+				txtadd(thumbname,'simple_menu_thumb_',get(i));
+				addlayer(get(thumbname));
+				if((simple_menu_settings.thumbs_width LT 300) OR (simple_menu_settings.thumbs_height LT 150),
+					copy(layer[get(thumbname)].url, scene[get(i)].thumburl);
+					,
+					copy(layer[get(thumbname)].url, scene[get(i)].thumbBigUrl);
+				);
+				set(layer[get(thumbname)].keep, true);
+				set(layer[get(thumbname)].parent, 'simple_menu_thumbs');
+				set(layer[get(thumbname)].align, lefttop);
+				copy(layer[get(thumbname)].width, thumbwidth);
+				copy(layer[get(thumbname)].height, thumbheight);
+				mul(thumbx, i, thumbxoffset);
+				add(thumbx, thumbpadding);
+				copy(layer[get(thumbname)].x, thumbx);
+				copy(layer[get(thumbname)].y, thumbpadding);
+				add(scene[get(i)].thumbx, thumbx, thumbxcenter);
+				copy(scene[get(i)].thumby, thumbpadding);
+				set(layer[get(thumbname)].linkedscene, get(scene[get(i)].name) );
+				set(layer[get(thumbname)].onclick, copy(layer[simple_menu_thumbborder].parent, name); loadscene(get(linkedscene),null,MERGE,BLEND(0.5)); );
+				if(simple_menu_settings.tooltips_thumbs,
+					set(layer[get(thumbname)].tooltip, get(scene[get(i)].title) );
+					layer[get(thumbname)].loadstyle(hotspot_tooltips);
+					set(layer[get(thumbname)].disabletooltips,false);
+					,
+					set(layer[get(thumbname)].disabletooltips,true);
+				  );
+				if(simple_menu_settings.thumbs_text,
+					txtadd(thumbtext, 'skin_thumbtext_', get(i));
+					addlayer(get(thumbtext));
+					layer[get(thumbtext)].loadstyle(skin_thumbtext_style);
+					set(layer[get(thumbtext)].keep, true);
+					set(layer[get(thumbtext)].parent, get(thumbname));
+					set(layer[get(thumbtext)].html, get(scene[get(i)].title));
+					,
+					txtadd(thumbtext, 'skin_thumbtext_', get(i));
+					removelayer(get(thumbtext));
+				  );
+			   );
+	</action>
+
+
+	<action name="simple_menu_onresize">
+		calc(mh, area.pixelheight * -1);
+		if(layer[simple_menu_thumbs].state == 'opened', 
+			add(mh,layer[simple_menu_thumbs].height);
+		);
+		add(mh, layer[simple_menu_scroll_layer].y_offset);
+		set(layer[simple_menu_scroll_layer].y, get(mh));
+	</action>
+
+
+
+	<action name="simple_menu_updatescroll">
+		if(layer[simple_menu_thumbs].loaded,
+			set(cursceneindex, 0);
+			if(xml.scene, copy(cursceneindex, scene[get(xml.scene)].index));
+			layer[simple_menu_thumbs].setcenter(get(scene[get(cursceneindex)].thumbx), get(scene[get(cursceneindex)].thumby));
+		  );
+	</action>
+
+
+	<action name="simple_menu_updatethumbscroll">
+		copy(padding,simple_menu_settings.thumbs_padding);
+
+		if(simple_menu_settings.thumbs_scrollbuttons,
+			if(loverflow GT 0, tween(layer[simple_menu_thumbs_scrollleft].x,10,0.2),  tween(layer[simple_menu_thumbs_scrollleft].x,-50,0.2) );
+			if(roverflow GT 0, tween(layer[simple_menu_thumbs_scrollright].x,10,0.2), tween(layer[simple_menu_thumbs_scrollright].x,-50,0.2) );
+		);
+
+		if(simple_menu_settings.thumbs_scrollindicator,
+			if(woverflow GT 0,
+				set(layer[simple_menu_thumbs_scrollindicator].visible,true);
+				sub(iw,pixelwidth,woverflow);
+				div(pw,iw,pixelwidth);
+				div(px,loverflow,woverflow);
+				mul(pw,iw);
+				copy(layer[simple_menu_thumbs_scrollindicator].width,pw);
+				sub(iw,pw);
+				sub(iw,padding);
+				sub(iw,padding);
+				mul(px,iw);
+				add(px,padding);
+				copy(layer[simple_menu_thumbs_scrollindicator].x,px);
+			  ,
+				set(layer[simple_menu_thumbs_scrollindicator].visible,false);
+			  );
+		  );
+	</action>
+
+
+	<action name="simple_menu_update_scene_infos">
+		if(xml.scene !== null AND scene[get(xml.scene)].index GE 0,
+
+				if(title, txtadd(layer[simple_menu_title].html, get(title), ' - ', get(scene[get(xml.scene)].title) ); , copy(layer[simple_menu_title].html, scene[get(xml.scene)].title ); );
+				delayedcall(0.1, set(layer[simple_menu_title].visible,get(simple_menu_settings.title)) );
+
+			txtadd(parentname, 'simple_menu_thumb_', get(scene[get(xml.scene)].index));
+			if(layer[get(parentname)],
+				set(layer[simple_menu_thumbborder].parent, get(parentname));
+				set(layer[simple_menu_thumbborder].visible, true);
+			  ,
+				set(layer[simple_menu_thumbborder].visible, false);
+			  );
+
+
+		);
+	</action>
+
+
+
+
+
+
+	<action name="skin_showthumbs">
+		if(%1 == null, if(layer[simple_menu_thumbs].state == 'closed', set(show,true), set(show,false)); , set(show,%1); );
+		calc(mh, (layer[simple_menu_scroll_layer].pixelheight * -1) + layer[simple_menu_scroll_layer].y_offset);
+		if(show,
+			tween(layer[simple_menu_btn_arrow].rotate,180);
+			set(layer[simple_menu_thumbs].state, 'opened');
+			tween(layer[simple_menu_thumbs].alpha, 1.0, 0.25);
+			add(mh, layer[simple_menu_thumbs].height);
+			
+			tween(layer[simple_menu_scroll_layer].y, get(mh), 0.5, easeOutQuint);
+			set(layer[simple_menu_thumbs_container].visible, true);
+			tween(layer[simple_menu_thumbs_container].alpha, 1.0, 0.25);
+		  ,
+		  	tween(layer[simple_menu_btn_arrow].rotate,0);
+			set(layer[simple_menu_thumbs].state, 'closed');
+			tween(layer[simple_menu_thumbs].alpha, 0.0, 0.25, easeOutQuint);
+			tween(layer[simple_menu_scroll_layer].y, get(mh), 0.5, easeOutQuint, set(layer[simple_menu_thumbs_container].visible, false););
+		  );
+	</action>
+
+
+
+
+</krpano>

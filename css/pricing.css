@@ -1,0 +1,241 @@
+.pricing{
+	margin-bottom: 250px;
+}
+
+.pricing .column-wrap{
+	max-width: 1030px;
+	margin:0 auto;
+	display: flex;
+}
+
+.pricing  h3{
+	font-size: 18px;
+	text-align: center;
+	margin: 15px 0;
+}
+
+.pricing .column{
+	float:left;
+	width:23%;
+	margin-right: 10px;
+	background: #f2f2f2;
+	/*min-height: 800px;*/
+	margin-bottom: 50px;
+	position: relative;
+	    padding-bottom: 120px;
+}
+
+.pricing .column h3{
+	background: #333;
+	color: #4daee6;
+	width: 100%;
+	text-align: center;
+	padding: 10px 0;
+	margin:0;
+}
+
+.pricing .column .expand{
+	color: #4daee6;
+	background: #f2f2f2;
+	border:1px solid #DDD;
+	    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    position: relative;
+    display: none;
+    cursor:pointer;
+}
+
+.pricing .column .expand .fa{
+	position: absolute;
+	right: 5%;
+	top: 10px;
+}
+
+
+.pricing .column ul{
+
+}
+
+.pricing .column li{
+	text-align: center;
+	border-left:1px solid #ddd;
+	border-right:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+	padding:10px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.pricing .column li span{
+	font-weight:normal;
+}
+
+.pricing dl{
+	display:none;
+	position: absolute;
+    background: #FFF;
+    bottom: 30px;
+    width: 90%;
+    padding: 5%;
+    left: 0;
+    border: #bdbdbd solid 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+  .pricing dl:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    right: 8px;
+    border-style: solid;
+    border-width: 10px 10px 0;
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+  .pricing dl:before {
+    content: "";
+    position: absolute;
+    bottom: -11px;
+    right: 8px;
+    border-style: solid;
+    border-width: 10px 10px 0;
+    border-color: #bdbdbd transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+}
+
+
+
+.pricing dl dt{
+    text-align: left;
+    line-height: 30px;
+    margin-left: 10px;
+}
+
+.pricing dl dd{
+	text-align: left;
+	font-weight: normal;
+	margin-left: 10px;
+    line-height: 25px;
+    font-size: 12px;
+}
+
+.pricing dl dd .fa{
+	margin-right: 5px;
+}
+
+.pricing .column li.tooltipped{
+	position: relative;
+}
+
+.pricing .column li.tooltipped i{
+	float:right;
+	margin-top: 3px;
+}
+
+.pricing .column li.tooltipped:hover dl{
+	display: block;
+}
+
+
+
+.pricing .upper, .pricing h3{
+	text-transform: uppercase;
+}
+
+.pricing footer{
+	position: absolute;
+	bottom: 0;
+	left:0;
+	width: 100%;
+	font-weight: bold;
+}
+
+.pricing footer span{
+	font-weight: normal;
+	display: block;
+    margin-top: -24px;
+}
+
+.pricing footer p{
+	background: #DCDCDC;
+	text-align: center;
+	color: #333;
+	height: 50px;
+	line-height: 40px;
+}
+
+.pricing footer p.single-line{
+	line-height: 50px;
+}
+
+.pricing footer .position{
+	margin-top: 10px;
+	text-transform: uppercase;
+}
+
+.pricing footer .position a{
+	display: block;
+	background: #6abb44;
+	color: #FFF;	
+	border: 1px solid #6abb44;
+	height: 48px;
+}
+
+.pricing footer .position a:hover{
+	color: #6abb44;
+	background: #FFF;	
+}
+
+.pricing footer .coming-soon{
+	background: #4daee6;
+	color: #FFF;
+}
+
+.pricing .green{
+	color:#6abb44;
+}
+
+.pricing .red{
+	color:#d53226;
+}
+
+.pricing .small{
+	font-size:12px;
+}
+
+@media(max-width:1030px){
+	.pricing .column-wrap{
+		display: block;
+	}
+	.pricing .column li{
+		font-size:12px;
+	}
+
+	.pricing .column{
+		min-height: 1000px;
+	}
+
+}
+@media(max-width:767px){
+
+.pricing .column{
+	width: 44%;
+}
+
+.pricing .column li{
+		font-size:14px;
+	}
+
+.pricing .column{
+		min-height: 850px;
+	}
+
+}

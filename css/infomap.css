@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+.content-info-map 				{ -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;
+								  border:solid 1px #d4d4d4; overflow:visible; width:232px;/*height:129px;*/ position:absolute; background-color:#ffffff; text-align:center; padding:2px 4px; }
+.content-info-map .thumb_map 		{ width:232px; height:113px; display:block; margin-top:1px; overflow:hidden;}
+.content-info-map img 			{ border:none;}
+.content-info-map .text			{ padding:0 8px;   }
+.content-info-map .text p			{ font-size:14px; }
+.content-info-map .text p a     		{ color:#444;}
+.content-info-map .text p a:hover    	 { color:#444;}
+.content-info-map .user			{ position:absolute; top:85px; left:10px; width:43px; height:43px; border:solid 1px white; display:block;}
+.content-info-map .by			{ margin-left:59px; margin-top:0px; text-align:left; }
+.content-info-map .by a			{ color:#457ec1; font-size:11px;  }
+.content-info-map .by a:hover		{ color:#255185;}
+.content-info-map .count 			{ margin-right:10px; }
+.content-info-map .count a 		{ display:block; overflow:hidden; background-position:0 0; background-repeat:no-repeat; padding:0 0 0 18px; font-size:10px; color:#777; float:right; min-width:16px; height:14px; overflow:hidden; margin:0 2px;}
+.content-info-map .count .likes		{ background-image:url(../images/icons/likes.png);background-position: 0 0;}
+.content-info-map .count .likes:hover, .content-info-map .count .likes.liked		{background-position: 0 -14px;}
+.content-info-map .count .comments	{ background-image:url(../images/icons/comments.png); background-position:0 1px;}
+.content-info-map .count .views		{ background-image:url(../images/icons/views.png); display:block; overflow:hidden; background-position:0 0; background-repeat:no-repeat; padding:0 0 0 18px; font-size:10px; color:#777; float:right; min-width:16px; height:14px; overflow:hidden; margin:0 2px;}
+.content-info-map .arrow_map 		{ background:url(../images/bg/arrow_map.png); width:11px; height:11px; position:absolute; bottom:-11px; left:50%;}

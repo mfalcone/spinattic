@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+		<link href='favicon.png' rel='shortcut icon' type='image/x-icon'/>
+		<link href='favicon.png' rel='icon' type='image/x-icon'/>
+		<title>Spinattic</title>
+
+	    <!--google font-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+
+		<!-- css main -->        
+	    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+	    <!-- jquery -->    
+	    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	    <!-- jquery ui -->        
+	    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+		<!-- google map -->
+    <!--
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="js/infobox.js"></script>
+		<script type="text/javascript" src="js/map.js"></script>
+  -->
+		<!-- custom -->		                
+	    <script src="js/custom.js"></script>
+      <!--
+		<script src="js/ajaxlike.js"></script>
+  -->
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		$('form#mainForm').bind('submit', function(e){
+			e.preventDefault();
+			checkForm();
+		});
+		
+		$('input#hostName').focus();
+	
+		
+		function lastPostFunc() 
+		{ 
+			
+			$.post("tour.php?o=id&action=getLastPosts&lastID="+$(".post:last").attr("id"),
+	
+			function(data){
+				if (data != "") {
+				$(".post:last").after(data);
+				setupBlocks();						   				
+				}
+			document.getElementById("loading").style.display="none";
+			});
+ 		};  
+		
+		$(window).scroll(function(){
+			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+				document.getElementById("loading").style.display="block";
+			   lastPostFunc();
+			}
+		}); 
+		
+	});
+	
+
+
+	</script>
+<!--
+	    <script>
+        	$(document).ready(function(){
+				initialize(17,'43.07873710124251','-73.75632762908936');
+
+
+				addMarker('46', '43.42119585198685', '-73.71620178222656', 'Spinattic', '../images/users/1.jpg', '../panos/104/index.tiles/thumb200x100.jpg', 'Americade 2011', 9, 0, '', false, 'on');
+
+
+				addMarker('38', '-41.15345460108329', '-71.3397216796875', 'Spinattic', '../images/users/1.jpg', '../panos/96/index.tiles/thumb200x100.jpg', 'Tour test Ariel 06/04', 2, 0, '', false, 'on');
+
+
+				addMarker('37', '-41.950936945218', '-71.52923583984375', 'Spinattic', '../images/users/1.jpg', '../panos/93/index.tiles/thumb200x100.jpg', 'Cerro López', 10, 0, '', false, 'on');
+
+
+				addMarker('36', '43.07873710124251', '-73.75632762908936', 'Spinattic', '../images/users/1.jpg', '../panos/92/index.tiles/thumb200x100.jpg', 'Yaddo Garden', 7, 1, '', true, 'on');
+
+
+				addMarker('35', '-45.98169518512228', '-69.609375', 'Spinattic', '../images/users/1.jpg', '../panos/80/index.tiles/thumb200x100.jpg', 'Tour Ariel test 222', 1, 0, '', false, 'on');
+
+
+				addMarker('34', '43.90729248239986', '-75.9814453125', 'Spinattic', '../images/users/1.jpg', '../panos/88/index.tiles/thumb200x100.jpg', 'This is the test tour. 3/27/14', 3, 0, '', false, 'on');
+
+
+				addMarker('19', '42.93508455712815', '-73.82589340209961', 'Spinattic', '../images/users/1.jpg', '../panos/30/index.tiles/thumb200x100.jpg', 'Yaddo gardens', 7, 1, '', false, 'on');
+
+
+				addMarker('18', '43.08300589207029', '-73.75336647033691', 'Spinattic', '../images/users/1.jpg', '../panos/27/index.tiles/thumb200x100.jpg', 'Yaddo Test', 4, 0, '', false, 'on');
+
+
+				addMarker('17', '-37.0551771066608', '-65.390625', 'Spinattic', '../images/users/1.jpg', '../panos/33/index.tiles/thumb200x100.jpg', 'Tour Ariel test', 4, 1, '', false, 'on');
+
+
+				addMarker('15', '54.61280241527344', '-110.390625', 'Spinattic', '../images/users/1.jpg', '../panos/19/index.tiles/thumb200x100.jpg', 'test 15', 4, 0, '', false, 'on');
+
+
+				addMarker('9', '-32.66527320406991', '-63.984375', 'Spinattic', '../images/users/1.jpg', '../panos/9/index.tiles/thumb200x100.jpg', 'Montaña Ariel', 8, 1, '', false, 'on');
+
+			});
+        </script>
+	    -->
+	    <script type="text/javascript">
+		function analiza(evt)
+		      {
+		         var charCode = (evt.which) ? evt.which : event.keyCode
+		         if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 46)
+		            return false;
+		         
+				return true;
+		      }
+
+		function embed(evt){
+	        document.getElementById('inp_embed').value = '<iframe width="' +  document.getElementById('w_embed').value + '" height="' + document.getElementById('h_embed').value + '" src="http://dev.spinattic.com/tours/36" frameborder="0" allowfullscreen></iframe>';
+		}
+
+
+		function copyToClipboard (text) {
+
+			document.getElementById('inp_embed').select();
+			window.clipboardData.setData(text,str);
+//			window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
+		}
+		
+
+	    </script>
+	    
+
+	    
+	</head>
+	<body onload="setupBlocks();">
+	
+		<div id="fb-root"></div>
+<!--
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/es_ES/all.js#xfbml=1";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>	
+    -->            
+<!--<script src="player/tour.js"></script>-->
+	
+		<div id="loading" class="loading" style="display: none;">
+	        <div class="loading_img"></div>
+        </div>
+
+    	<header class="header">
+	        <a href="index.php" class="spinattic"><img src="images/spinattic.png"></a>
+			<div class="language">
+	            <a href="#" class="language_btn">
+	            	<div class="icon"></div>
+	                <font>ENG</font>
+	            </a>
+                <ul class="select_language">
+                	<li><a href="#">English</a></li>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">Portugués</a></li>
+                </ul>
+            </div>
+            <div class="search">
+            	<div class="bg_search">
+            	<form action="search.php" name="formsearch" method="POST">
+                	<input type="text" value="Search" id="search-input" onclick="if(this.value == 'Search'){this.value=''};" onfocus="this.select()" onblur="this.value=!this.value?'Search':this.value;" name="search">
+                	<!--a href="#" class="clear_input"></a--><!-- CRUZ PARA LIMPIAR BUSQUEDA-->
+                	<a href="#" class="glass_input" onclick="if (document.formsearch.search.value != '' && document.formsearch.search.value != 'Search'){document.formsearch.submit();};"></a><!-- LUPA DE BUSQUEDA-->
+			<input type="hidden" value="" name="order">
+			<input type="hidden" value="" name="c">
+                </form>
+                	<br clear="all">
+                <!--
+                	<div class="predictive">
+                		<ul>
+                	    	<li><a href="#"><strong>text</strong> 1</a></li>
+                	    	<li><a href="#"><strong>text</strong> 2</a></li>
+                	    	<li><a href="#"><strong>text</strong> 3</a></li>
+                	    	<li><a href="#"><strong>text</strong> 4</a></li>
+                	    	<li><a href="#"><strong>text</strong> 5</a></li>
+                	    	<li><a href="#"><strong>text</strong> 6</a></li>
+                	    </ul>
+                	</div>
+                -->
+				</div>                
+
+            </div>
+            <br clear="all">        </header>
+        <div class="nav">
+				﻿        <!--popup login-->
+        <!--div class="overlay forgotpassword">
+            <div class="pop">
+                <a href="#" class="closed closed_register_mobile"></a>
+                <h2>Forgot Password</h2>
+                <p class="message">Don't worry, we'll send an email with instructions to access your account. Unless you <a href="#">remember</a>?</p>
+                <form>
+                    <input type="text" value="Username or E-mail" class="name">
+                    <a href="#" class="login">Send</a>
+                </form>
+
+            </div>
+        </div--> 
+
+        <!--popup login-->
+        <div class="overlay overlay_login login">
+            <div class="pop">
+                <a href="#" class="closed"></a>
+                <h2>Log in</h2>
+                <a href="#" class="facebook"></a>
+                <a href="#" class="googleplus"></a>
+				<span id="login_pop"></span>                
+                    <input type="text" placeholder="E-Mail" class="mail" id="l_email">
+                    <input type="password" placeholder="Password" class="pass" id="l_pass">
+                    <a href="#" class="login loginaction">Log in</a>
+                    <label for="remember" class="terminos">
+                        <input type="checkbox" id="remember">
+                            <a href="#">Remember me - <font>Forgot password?</font></a>
+                        <br clear="all">
+                    </label>
+            </div>
+        </div>    
+
+
+
+
+        <!--popup register-->
+		<div class="overlay overlay_register register">
+        	<div class="pop">
+                <a href="#" class="closed"></a>
+                <h2>Register</h2>
+				<span id="data_pop">
+                <a href="#" class="facebook"></a>
+                <a href="#" class="googleplus"></a>
+					<span id="register_pop"></span>
+                    <input type="text" placeholder="Full Name" class="name" id="name">
+                    <input type="text" placeholder="E-mail" class="mail" id="email">
+                    <input type="text" placeholder="Repeat E-mail" class="mail" id="email1">
+                    <input type="password" placeholder="Password" class="pass" id="pass">
+                    
+                    <a href="#" class="register registeraction">Register</a>
+                    
+                    <label for="terminos" class="terminos">
+	                    <input type="checkbox" id="terminos">
+		                <p>I have read and agree to the</p>
+			            <a href="#">Terms of Service Spinattic</a>
+				        <br clear="all">
+                    </label>
+                </span>
+			</div>
+		</div>
+
+
+
+	    <div class="login-register" style="display:none">
+	        <div class="or"></div>
+    	    <a href="#" class="login">Log in</a>
+	        <a href="#" class="register">Register</a>
+            <br clear="all">
+        </div>
+            
+            
+	        <div class="user_login" style="display:block">
+	        <a href="#" class="user_image"><img width="47" height="47" src="images/users/avatar.jpg"></a>
+            	<div class="user_name">
+                	<a href="#"><p>Santiago Marull</p></a>
+					<div class="action_user">
+                		<a href="user_profile.php">Edit profile </a>/
+                    	<a href="lo.php"><strong> Logout</strong></a>
+	                	<br clear="all">
+					</div>
+                </div>
+                <br clear="all">
+            </div>
+            
+	        <div class="content_nav">
+            
+	        <ul class="menu">
+		        <li>
+					     <a href="map.php" class="btn-social">Social</a>
+                  <ul class="submenu">
+                    <li>
+                          <a href="javascript:;">News <span class="contador">+99</span></a>
+                          
+                          <a href="javascript:;">Notifications <i class="campana"><span class="burbuja">85</span></i></a>
+                          
+                          <a href="javascript:;">followers <span class="contador">- 10M</span></a>
+                          <a href="javascript:;">following <span class="contador">- 10M</span></a>
+                    </li>
+                  </ul>
+		        </li>
+		        <li>
+					     <a href="#" class="btn-production">production</a>
+                  <ul class="submenu">
+                    <li>
+                          <a href="edit_virtual_tour.php">create new tour</a>
+                          
+                          <a href="manager_tour.php">Manage tours</a>
+                          
+                          <a href="manager_panoramas.php">Manage panos</a>
+                    </li>
+                  </ul>
+		        </li>
+		        <li>
+                    <a href="#" class="world-map">Browse</a>
+                    <ul class="submenu">
+                    	<li>
+                            <a href="map.php">World Map</a>
+                            
+                            <a href="javascript:;">leader board</a>
+                        </li>
+                        <li  class="acor">
+                            <a href="javascript:;">Categories</a>
+                            <ul class="menucategories">
+                                <li>
+                                    <a href="search.php?c=1&amp;search=Destinations">Destinations</a>
+                                    <a href="search.php?c=1&amp;search=Events">Events</a>
+                                    <a href="search.php?c=1&amp;search=Hotels">Hotels</a>
+                                    <a href="search.php?c=1&amp;search=Miscellaneous">Miscellaneous</a>
+                                    <a href="search.php?c=1&amp;search=Museums">Museums</a>
+                                    <a href="search.php?c=1&amp;search=Nature">Nature</a>
+                                    <a href="search.php?c=1&amp;search=Parks">Parks</a>
+                                    <a href="search.php?c=1&amp;search=Real Estate">Real Estate</a>
+                                    <a href="search.php?c=1&amp;search=Resorts">Resorts</a>
+                                    <a href="search.php?c=1&amp;search=Restaurants">Restaurants</a>
+                                    <a href="search.php?c=1&amp;search=Universities">Universities</a>
+                                    <a href="search.php?c=1&amp;search=Vehicles">Vehicles</a>
+                                </li>
+                            </ul>
+                    	</li>
+                    </ul>
+		        </li>
+	        </ul>
+            <div class="privacy">
+            	<div class="social_media">
+                <a href="#" class="facebook"></a>
+                <a href="#" class="twitter"></a>
+                <a href="#" class="googleplus"></a>
+                <br clear="all">
+                </div>
+            	<p>
+                	<a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+                    <br>
+					© All panoramas are property 
+                    <br>
+					of their authors
+                </p>
+			</div>
+            </div>
+        </div><!-- fin nav -->
+        <div>
+		    <h1 class="followers-title">Followers</h1>
+		</div>
+		
+		<div class="wrapper wrapper-user">
+            <hr class="space180px">
+            <div class="total-followers">
+                <p>All Followers: 140</p>
+            </div>  	
+            <div class="follower">
+                
+                <div class="user">
+                    <img src="images/users/avatar.jpg" width="100" height="100">
+                </div>
+                <div class="content-info">
+                    <h3>Santiago Marull</h3><div class="pro">Pro</div>
+                    <h4>5 published tours</h4>
+                    <a href="http://www.santiagomarull.com" target="_blank" class="url">www.santiagomarull.com</a>
+                    <a href="http://www.facebook.com/santiagomarull" target="_blank" class="facebook">santiagomarull</a>
+                    <a href="http://www.twitter.com/santiagomarull" target="_blank" class="twitter">santiagomarull</a>
+                    <font class="marker">Rosario, Santa Fe - Argentina</font>
+                    <button class="followyou"><span class="icon-followyou"></span> FOLLOWS YOU</button>
+                    <button class="follow"><span class="icon-follow"></span> Follow</button>	                    
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="follower">
+                <div class="user">
+                    <img src="images/users/avatar.jpg" width="100" height="100">
+                </div>
+                <div class="content-info">
+                    <h3>Santiago Marull</h3><div class="pro">Pro</div>
+                    <h4>5 published tours</h4>
+                    <a href="http://www.santiagomarull.com" target="_blank" class="url">www.santiagomarull.com</a>
+                    <a href="http://www.facebook.com/santiagomarull" target="_blank" class="facebook">santiagomarull</a>
+                    <a href="http://www.twitter.com/santiagomarull" target="_blank" class="twitter">santiagomarull</a>
+                    <font class="marker">Rosario, Santa Fe - Argentina</font>
+                    <button class="following"><span class="following-text">Following</span><span class="unfollow-text">Unfollow</span></button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="follower">
+                <div class="user">
+                    <img src="images/users/avatar.jpg" width="100" height="100">
+                </div>
+                <div class="content-info">
+                    <h3>Santiago Marull</h3><div class="pro">Pro</div>
+                    <h4>5 published tours</h4>
+                    <a href="http://www.santiagomarull.com" target="_blank" class="url">www.santiagomarull.com</a>
+                    <a href="http://www.facebook.com/santiagomarull" target="_blank" class="facebook">santiagomarull</a>
+                    <a href="http://www.twitter.com/santiagomarull" target="_blank" class="twitter">santiagomarull</a>
+                    <font class="marker">Rosario, Santa Fe - Argentina</font>
+                    <button class="followyou"><span class="icon-followyou"></span> FOLLOWS YOU</button>
+                    <button class="following"><span class="following-text">Following</span><span class="unfollow-text">Unfollow</span></button>        
+                </div>
+                <div class="clear"></div>
+            </div>
+                	<!-- contenido -->
+
+        </div>
+			
+	</body>
+</html>
+

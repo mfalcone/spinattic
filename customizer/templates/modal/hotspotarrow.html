@@ -1,0 +1,78 @@
+<div class="hotspotarrow">
+    <div class="hotspot-column">
+        <div class="row">
+            <label for="style">Style:</label>
+            <div title="Style" class="dropdown style">
+                <h2><div class="default"></div> <span class="fa fa-caret-down fa-lg right"></span></h2>
+                <ul class="styles-list">
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <label for="rotate">Rotate:</label>
+            <input type="number" class="rotate" name="rotate" max="180" min="-180" value="<%=allData._rotate%>">
+        </div>
+    </div>
+
+    <div class="hotspot-column2">            
+
+            <%if(tourData.krpano.scene.length == 1){%>
+                <p>There are no other panoramas in this tour to link to</p>
+            <%}else{%>                
+                
+            <div class="scenelist">
+                <h3 class="scenedd dropdown1" data-name="<%= selectedScene.name %>">
+                     <%if(selectedScene.thumb){%>
+                    <img class="left" src="<%=selectedScene.thumb%>" >
+                     <%}else{%>
+                    <img class="left" src="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=">
+                    <%   } %>
+                    <span class="selectedScene left"><%=selectedScene.title%></span>
+                    <span class="selectedFile left"><%=selectedScene.filename%></span>
+                    <i class="fa fa-caret-down"></i>
+                </h3>
+                
+                <div class="list-scene none">
+                    <input type="text" placeholder="Search Scene" class="search-scenes">
+                    <span class="search-btn fa fa-search"></span>
+
+                    <div id="scenes-search-results-<%=num%>" class="scene-search-result"></div>
+
+                    <div class="scrollwrapper-scenes">
+                        <ul class="scenes-list">
+                            <%_.each(scenes,function(item,ind){%>
+                                <li id="<%= item._name %>">
+                                    <img src="<%=item._thumburl%>" />
+                                    <dl>
+                                        <dt><%= item._title %></dt>
+                                        <dd><%= item._scene_filename %></dd>
+                                    </dl>
+                                </li>
+                            <%})%>
+                        </ul>    
+                    </div> 
+                </div>
+            </div>
+            <%}%>
+
+    </div>
+
+    <div class="tooltipview"></div>
+</div>
+<div class="test-mode">
+    <p><span>Test mode:</span> click on the hotspot
+    to test the functionality.</p>
+    <p>Switch to “<b>edit</b>” mode to edit the
+    hotspot properties.</p>
+</div>
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitchpub" class="onoffswitch-checkbox testmodeswitcher" id="onoffswitchhparrow-<%=num%>" >
+    <label class="onoffswitch-label" for="onoffswitchhparrow-<%=num%>">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+    </label>
+</div>
+<div class="hotspotsFooter">
+    <div class="removeHotspot"><span class="fa fa-trash"></span>Remove Hotspot</div>
+</div>

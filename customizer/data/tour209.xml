@@ -1,0 +1,163 @@
+	<!-- HEAD -->
+			
+				<krpano tag_ident="1" prev_tag_ident="0" segment="HEAD" kind="" onstart="startup();">
+			<!-- GENERAL -->
+			
+				<include tag_ident="1" prev_tag_ident="0" segment="GENERAL" kind="" url="skills/hotspots/hotspots.xml"></include>
+				
+				<action tag_ident="2" prev_tag_ident="0" segment="GENERAL" kind="" name="startup"></action>
+				
+				<autorotate tag_ident="3" prev_tag_ident="0" segment="GENERAL" kind="" accel="1.0" enabled="true" horizon="0.0" speed="5.0" tofov="off" waittime="3.0"></autorotate>
+				
+				<control tag_ident="4" prev_tag_ident="0" segment="GENERAL" kind="" fovfriction="0.9" fovspeed="3.0" mouseaccelerate="1.0" mousefovchange="1.0" mousefriction="0.8" mousespeed="10.0" mousetype="moveto" touchfriction="0.87" zoomoutcursor="true" zoomtocursor="false"></control>
+				
+				<settings tag_ident="5" prev_tag_ident="0" segment="GENERAL" kind="" description="" lat="-38" long="-65" name="toursettings" title="Titulo"></settings>
+		
+			<!-- SCENES -->
+			
+		<scene segment="SCENES" scene_id="361" scene_filename="index2.jpg" name="scene_361" urlname="" title="titulo largo largo largo largo largo largo largo largo" onstart=""  thumburl="http://cdn.dev.spinattic.com/panos/225/pano.tiles/thumb200x100.jpg" lat="37" lng="-95" description="" heading="">
+			<view segment="SCENES" hlookat="1" vlookat="000" fovtype="MFOV" fov="95.000" fovmin="60" fovmax="120" limitview="auto"  />
+
+			<preview segment="SCENES" url="http://cdn.dev.spinattic.com/panos/225/pano.tiles/preview.jpg" />
+
+			<image segment="SCENES">
+
+				<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/225/pano.tiles/pano_%s.jpg" />
+
+				<mobile segment="SCENES">
+					<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/225/pano.tiles/mobile_%s.jpg" />
+				</mobile>
+
+			</image>
+			<hotspot tag_ident="1" prev_tag_ident="0" segment="SCENES" kind="info" style="hotspot_set1_info" name="spot1" ath="0" atv="0" infotitle="title" infotext="text" onclick="showinfo(get(infotitle),get(infotext));" tooltip="" tooltiptype="default"></hotspot>
+			<hotspot template_id="1" style="hotspot_set1_arrow|hotspot_tooltips" kind="arrow" name="spot2" ath="107.3400401865" atv="-3.715146220872" linkedscene="scene_362" rotate="0" tooltip="none" tooltiptype=""/>
+		
+			
+		
+		</scene>
+		<scene segment="SCENES" scene_id="362" scene_filename="index2.jpg" name="scene_362" urlname="" title="titulo largo largo largo largo largo largo largo largo  largo largo largo largo" onstart=""  thumburl="http://cdn.dev.spinattic.com/panos/226/pano.tiles/thumb200x100.jpg" lat="" lng="" description="" heading="">
+			<view segment="SCENES" hlookat="2" vlookat="000" fovtype="MFOV" fov="95.000" fovmin="60" fovmax="120" limitview="auto"  />
+
+			<preview segment="SCENES" url="http://cdn.dev.spinattic.com/panos/226/pano.tiles/preview.jpg" />
+
+			<image segment="SCENES">
+
+				<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/226/pano.tiles/pano_%s.jpg" />
+
+				<mobile segment="SCENES">
+					<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/226/pano.tiles/mobile_%s.jpg" />
+				</mobile>
+
+			</image>
+		</scene>
+		<scene segment="SCENES" scene_id="363" name="scene_363" urlname="" title="index2" onstart=""  thumburl="http://cdn.dev.spinattic.com/panos/227/pano.tiles/thumb200x100.jpg" lat="" lng="" description="" heading="">
+			<view segment="SCENES" hlookat="3" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+
+			<preview segment="SCENES" url="http://cdn.dev.spinattic.com/panos/227/pano.tiles/preview.jpg" />
+
+			<image segment="SCENES">
+
+				<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/227/pano.tiles/pano_%s.jpg" />
+
+				<mobile segment="SCENES">
+					<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/227/pano.tiles/mobile_%s.jpg" />
+				</mobile>
+
+			</image>
+		</scene>
+		<scene segment="SCENES" scene_id="364" scene_filename="index2.jpg" name="scene_364" urlname="" title="sarasa" onstart=""  thumburl="http://cdn.dev.spinattic.com/panos/228/pano.tiles/thumb200x100.jpg" lat="" lng="" description="" heading="">
+			<view segment="SCENES" hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+
+			<preview segment="SCENES" url="http://cdn.dev.spinattic.com/panos/228/pano.tiles/preview.jpg" />
+
+			<image segment="SCENES">
+
+				<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/228/pano.tiles/pano_%s.jpg" />
+
+				<mobile segment="SCENES">
+					<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/228/pano.tiles/mobile_%s.jpg" />
+				</mobile>
+
+			</image>
+		</scene>
+		<scene segment="SCENES" scene_id="365" scene_filename="index2.jpg" name="scene_365" urlname="" title="index2" onstart=""  thumburl="http://cdn.dev.spinattic.com/panos/229/pano.tiles/thumb200x100.jpg" lat="" lng="" description="" heading="">
+			<view segment="SCENES" hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+
+			<preview segment="SCENES" url="http://cdn.dev.spinattic.com/panos/229/pano.tiles/preview.jpg" />
+
+			<image segment="SCENES">
+
+				<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/229/pano.tiles/pano_%s.jpg" />
+
+				<mobile segment="SCENES">
+					<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/229/pano.tiles/mobile_%s.jpg" />
+				</mobile>
+
+			</image>
+		</scene>
+		<scene segment="SCENES" scene_id="366" scene_filename="index4.jpg" name="scene_366" urlname="" title="sarasa" onstart=""  thumburl="http://cdn.dev.spinattic.com/panos/230/pano.tiles/thumb200x100.jpg" lat="" lng="" description="" heading="">
+			<view segment="SCENES" hlookat="000" vlookat="000" fovtype="MFOV" fov="95.000" maxpixelzoom="1.5" fovmin="60" fovmax="120" limitview="auto"  />
+
+			<preview segment="SCENES" url="http://cdn.dev.spinattic.com/panos/230/pano.tiles/preview.jpg" />
+
+			<image segment="SCENES">
+
+				<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/230/pano.tiles/pano_%s.jpg" />
+
+				<mobile segment="SCENES">
+					<cube segment="SCENES" url="http://cdn.dev.spinattic.com/panos/230/pano.tiles/mobile_%s.jpg" />
+				</mobile>
+
+			</image>
+		</scene>
+			<!-- SKILLS -->
+			
+				
+			<skill template_id="8" tag_ident="1" prev_tag_ident="0" segment="SKILLS" kind="Top avatar and titles">
+				<include template_id="8" tag_ident="2" prev_tag_ident="1" segment="SKILLS" kind="Top avatar and titles" url="%SWFPATH%/skills/avatar_title/avatar_title.xml"></include>
+				
+				<include template_id="8" tag_ident="3" prev_tag_ident="1" segment="SKILLS" kind="Top avatar and titles" url="%SWFPATH%/skills/user.xml"></include>
+				
+				<skill_avatar_title template_id="8" tag_ident="4" prev_tag_ident="1" segment="SKILLS" kind="Top avatar and titles" position="topleft" padding="20 20 20 100" width="100" width_type="fluid" xl="5" xr="100" y="5" background="false" backgroundcolor="0x000000" backgroundalpha="0.6" roundedge="0" border="false" bordercolor="0x000000" borderalpha="1.0" borderwidth="1.0" avatar="true" avatar_align="left" avatar_x="10" username="true" tour_title="true" scene_name="true" text_align="left" text_color="#ffffff" textshadow="1" textshadowrange="5" textshadowangle="45" textshadowcolor="0x000000" textshadowalpha="10"></skill_avatar_title>
+			</skill>
+			
+			<skill template_id="10" tag_ident="1" prev_tag_ident="0" segment="SKILLS" kind="NardichPach">
+				<include template_id="10" tag_ident="3" prev_tag_ident="1" segment="SKILLS" kind="NardichPach" url="%SWFPATH%/skills/nadirpatch/nadirpatch.xml" />
+				<skill_nadirpatch_settings
+					template_id="10" tag_ident="4" prev_tag_ident="0" segment="SKILLS" kind="NardichPach"
+					image="http://localhost/dev.spinattic.com/player/skills/nadirpatch/nadirpatch.png"
+					distorted="false"
+					rotate="0"
+					link="true"	
+					linkurl="http://www.spinattic.com"
+				/>
+			</skill>
+
+		<skill template_id="6" tag_ident="1" prev_tag_ident="0" segment="SKILLS" kind="Thumbs Menu">
+				<include template_id="6" tag_ident="2" prev_tag_ident="1" segment="SKILLS" kind="Thumbs Menu" url="%SWFPATH%/skills/simple_menu/simple_menu.xml"></include>
+				
+				<simple_menu_settings template_id="6" tag_ident="3" prev_tag_ident="1" segment="SKILLS" kind="Thumbs Menu" title="false" thumbs_width="200" thumbs_height="100" thumbs_padding="10" thumbs_opened="true" thumbs_text="true" thumbs_dragging="true" thumbs_onhoverscrolling="false" thumbs_scrollbuttons="true" thumbs_scrollindicator="true" thumbs_y_offset="12" tooltips_thumbs="true" design_bgcolor="0x000000" design_bgalpha="0.6" design_bgborder="1 0x000000 1.0" design_bgroundedge="2" design_thumbborder_bgborder="5 0xFFFFFF 1.0" design_thumbborder_padding="2" design_thumbborder_bgroundedge="0" title_mobiles="false" layout_width="100%" layout_align="right" title_align="left" title_color="#FFFFFF" title_font="sans-serif" title_weight="normal" title_padding="0 0 0 85" button_position="left" button_x="10"></simple_menu_settings>
+		</skill>
+
+			<!-- DEFAULT SKILLS -->
+			
+			<!-- FREE HOTSPOTS STYLES -->
+			
+				<style segment="FREE HOTSPOTS STYLES" kind="arrow" name="hotspot_set1_arrow" url="skills/hotspots/hotspots_1.png" crop="00|00|64|64" onovercrop="00|64|64|64" ondowncrop="00|128|64|64" onhover="if(hotspot[get(name)].tooltip === null, showtext(get(scene[get(linkedscene)].title),hotspotTxt), showtext(get(tooltip),hotspotTxt) );" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="info" name="hotspot_set1_info" zorder="10" url="skills/hotspots/hotspots_1.png" crop="64|00|64|64" onovercrop="64|64|64|64" ondowncrop="64|128|64|64" onhover="if(get(infotitle) == null,,showtext(get(infotitle),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="link" name="hotspot_set1_link" zorder="10" url="skills/hotspots/hotspots_1.png" crop="256|00|64|64" onovercrop="256|64|64|64" ondowncrop="256|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="photo" name="hotspot_set1_photo" zorder="10" url="skills/hotspots/hotspots_1.png" crop="128|00|64|64" onovercrop="128|64|64|64" ondowncrop="128|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="video" name="hotspot_set1_video" zorder="10" url="skills/hotspots/hotspots_1.png" crop="192|00|64|64" onovercrop="192|64|64|64" ondowncrop="192|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="arrow" name="hotspot_set2_arrow" url="skills/hotspots/hotspots_2.png" crop="00|00|64|64" onovercrop="00|64|64|64" ondowncrop="00|128|64|64" onhover="if(hotspot[get(name)].tooltip === null, showtext(get(scene[get(linkedscene)].title),hotspotTxt), showtext(get(tooltip),hotspotTxt) );" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="info" name="hotspot_set2_info" zorder="10" url="skills/hotspots/hotspots_2.png" crop="64|00|64|64" onovercrop="64|64|64|64" ondowncrop="64|128|64|64" onhover="if(get(infotitle) == null,,showtext(get(infotitle),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="link" name="hotspot_set2_link" zorder="10" url="skills/hotspots/hotspots_2.png" crop="256|00|64|64" onovercrop="256|64|64|64" ondowncrop="256|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="photo" name="hotspot_set2_photo" zorder="10" url="skills/hotspots/hotspots_2.png" crop="128|00|64|64" onovercrop="128|64|64|64" ondowncrop="128|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="video" name="hotspot_set2_video" zorder="10" url="skills/hotspots/hotspots_2.png" crop="192|00|64|64" onovercrop="192|64|64|64" ondowncrop="192|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="arrow" name="hotspot_set3_arrow" url="skills/hotspots/hotspots_3.png" crop="00|00|64|64" onovercrop="00|64|64|64" ondowncrop="00|128|64|64" onhover="if(hotspot[get(name)].tooltip === null, showtext(get(scene[get(linkedscene)].title),hotspotTxt), showtext(get(tooltip),hotspotTxt) );" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="info" name="hotspot_set3_info" zorder="10" url="skills/hotspots/hotspots_3.png" crop="64|00|64|64" onovercrop="64|64|64|64" ondowncrop="64|128|64|64" onhover="if(get(infotitle) == null,,showtext(get(infotitle),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="link" name="hotspot_set3_link" zorder="10" url="skills/hotspots/hotspots_3.png" crop="256|00|64|64" onovercrop="256|64|64|64" ondowncrop="256|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="photo" name="hotspot_set3_photo" zorder="10" url="skills/hotspots/hotspots_3.png" crop="128|00|64|64" onovercrop="128|64|64|64" ondowncrop="128|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+				<style segment="FREE HOTSPOTS STYLES" kind="video" name="hotspot_set3_video" zorder="10" url="skills/hotspots/hotspots_3.png" crop="192|00|64|64" onovercrop="192|64|64|64" ondowncrop="192|128|64|64" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" onloaded="mul(scale,get(device.pixelratio));" scale="0.5"/>
+		
+			<!-- HOTSPOTS STYLES -->
+			</krpano>

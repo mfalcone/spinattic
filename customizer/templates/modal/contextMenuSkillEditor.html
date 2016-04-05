@@ -1,0 +1,32 @@
+<div class="skill-editor-wrapper" id="Context-menu-Skill-editor">    
+    <div class="scrollwrapper">
+        <div class="fieldwrapper">
+            <%console.log(tourSkill)%>
+            <%_.each(tourSkill.contextmenu.item,function(elem,ind){%>
+
+                <fieldset id="contextMenu-<%=ind%>">
+                    <h2><%=elem._name%></h2>
+                    <span class="close fa fa-close"></span>
+
+                    <div class="single-input-group">
+                        <label class="singleLabel" for="caption">Caption</label>
+                        <input type="text" class="caption" value="<%=elem._caption%>">
+                    </div>
+                    
+                    <div class="single-input-group">
+                        <label class="singleLabel" for="action">Action</label>
+                        <% var url = elem._onclick.replace("openurl(","") %>
+                        <% url = url.replace(",_blank);","") %>
+                        <input type="text" class="action" value="<%=url%>">
+                    </div>
+        
+                </fieldset>
+            <%})%>
+        </div>
+        <span id="Context-menu-add-item" class=""><i class="fa fa-plus"></i> add Item</span>
+    </div>
+    
+    <footer>
+        <!-- <span id="Context-menu-add-item" class=""><i class="fa fa-plus"></i> add Item</span> -->
+    </footer>
+</div>

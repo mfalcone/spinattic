@@ -1,0 +1,41 @@
+<div id="hotSpots-menu" class="submenu">
+	<div id="hotspots-menu-header">
+		<!-- <h2>ADD HOTSPOTS BY CLICKING ON THE ICONS</h2> -->
+		<ul>
+		</ul>
+	</div>
+	<div id="hotspot-styles">
+		<h2>Hotspot Styles</h2>
+
+		<div class="rows">	
+			<% _.each(styles, function(element,ind){
+
+				if(element._segment != 'FREE HOTSPOTS STYLES'){
+						var custom = true;
+				}
+				
+				var crop = element._crop.split("|");
+				var set = element._name.split("_");
+					
+				if(ind%5 == 0){%>
+					<div class="selector" <%if(custom){%>data-family="<%= set[1]%>"<%}%> ><span class="fa fa-circle<%if(ind == 0){%>-o<%}%> fa-lg"></span></div>
+					<%if(custom){%><div class="del-row" data-family="<%= set[1]%>"><span class="fa fa-trash-o"></span></div><%}%>
+				<%}%>
+				<div class="row">
+					<%	
+							var xpos = crop[0];
+							var ypos = crop[1];
+							var width = crop[2];
+							var height = crop[3];
+							
+					%>
+					<div class="rowinrow <%if(custom){%>custom<%}%> <%if(element._scale == "0.5"){%>scaled<%}%>" <%if(custom){%>data-url="<%=element._url%>" data-name="<%=element._kind%>" <%}%> data-family="<%= set[1]%>" style="background-image:url(<%=element._url%>);background-position:-<%= xpos%>px -<%=ypos%>px;width:<%=width%>px;height:<%=height%>px"></div>
+				</div>
+
+
+			<% }); %>			
+		</div>		
+
+		<a class="add-link"><i class="fa fa-plus"></i> Add new hotspots style</a>			
+	</div>
+</div>

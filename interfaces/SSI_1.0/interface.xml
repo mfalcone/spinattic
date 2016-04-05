@@ -1,0 +1,494 @@
+<krpano>
+	<events name="loadingbar" keep="true"
+	        onxmlcomplete="loadingbar_startloading();"
+	        onloadcomplete="delayedcall(0.25, loadingbar_stoploading() );"
+	        />
+	<!-- loading bar graphics -->
+	<layer name="loadingbar_bg" keep="true" type="container" bgcolor="0x000000" bgalpha="0.5" align="top" y="0" width="100%" height="4" enabled="false" visible="false">
+		<layer name="loadingbar_space" type="container" align="left" x="0" width="-1" height="4">
+			<layer name="loadingbar_fill" type="container" bgcolor="0xd3322a" bgalpha="1.0" align="lefttop" width="0" height="100%" />
+		</layer>
+	</layer>
+	<!-- loading bar actions -->	
+	<action name="loadingbar_startloading">
+		set(loadingbar_isloading, true);
+		set(layer[loadingbar_bg].visible, true);
+		
+		asyncloop(loadingbar_isloading,
+			mul(pv, progress.progress, 100);
+			txtadd(pv, '%');
+			copy(layer[loadingbar_fill].width, pv);
+		  );
+	</action>
+	<action name="loadingbar_stoploading">
+		set(loadingbar_isloading, false); 
+		set(layer[loadingbar_bg].visible, false);
+	</action>
+<!-- end loading bar -->
+	
+
+<cursors url="graphics/cursors.png" type="8way"
+         move="0|0|24|24"
+         drag="24|0|10|24"
+         arrow_l="34|0|10|24"
+         arrow_r="44|0|10|24"
+         arrow_u="54|0|10|24"
+         arrow_d="64|0|10|24"
+         arrow_lu="74|0|10|24"
+         arrow_ru="84|0|10|24"
+         arrow_ld="94|0|10|24"
+         arrow_rd="104|0|10|24"
+         />
+
+
+<autorotate enabled="true"
+            waittime="3.0"
+            accel="1.0"
+            speed="5.0"
+            horizon="on"
+            tofov="on"
+            />
+
+
+
+
+<events 
+		onenterfullscreen="set(plugin[enterfull_btn].visible,false); set(plugin[exitfull_btn].visible,true); "
+		onexitfullscreen ="set(plugin[enterfull_btn].visible,true); set(plugin[exitfull_btn].visible,false); "
+		onpreviewcomplete="setTopText();"
+		onresize="resize();"
+		onxmlcomplete="
+		if(opened === true,flyout(get(data[photo].content)) );
+		"
+
+/>
+
+<action name="runsettings" >
+setTopText();
+set(plugin[useravatar].url,get(settings[usersettings].useravatar));
+set(plugin[avatarborder].onclick,openurl(get(settings[usersettings].userprofile),_blank));
+</action>
+<action name="setTopText">
+txtadd(plugin[tourtitle].html,[h1],get(settings[toursettings].tourtitle),[/h1][h2],get(scene[get(xml.scene)].title),[/h2]);
+txtadd(plugin[byname].html,[p],by&nbsp;,get(settings[usersettings].username),[/p]);
+set(plugin[byname].onclick,openurl(get(settings[usersettings].userprofile),_blank));
+trace(get(settings[usersettings].username));
+</action>
+
+<layer name="avatarmask" url="graphics/avatarmask.png" keep="true" zorder="99" align="topleft" x="10" y="10"  />
+<layer name="useravatar" keep="true" mask="avatarmask" align="topleft" x="10" y="10" zorder="100" width="75" height="75" >
+	<plugin name="avatarborder" url="graphics/avatarborder.png" keep="true"  zorder="101" />
+</layer>
+
+
+<plugin name="tourtitle" url="%SWFPATH%/plugins/textfield.swf" align="topleft" width="100%" x="100" y="10" border="false" background="false" selectable="false" keep="true" autosize="true" autoheight="auto" css="h1{font-size:18px;font-family:Arial;color:#ffffff;} h2{font-size:14px;font-family:Arial;color:#ffffff;}" html="[h1]Spinattic Tour[/h1]" textshadow="1" textshadowrange="1.0" textshadowangle="135" textshadowcolor="0x000000" textshadowalpha="0.6" zorder="99" enabled="true" handcursor="false"  padding="0 180 0 0" />
+<plugin name="byname" url="%SWFPATH%/plugins/textfield.swf" parent="tourtitle" align="bottomleft"  autowidth="true" autoheight="true" x="0" y="-30" border="false" background="false" selectable="false" keep="true" autozise="true" css="p{font-size:12px;font-family:Arial;color:#ffffff;} p:hover{font-size:12px;font-family:Arial;color:#ffffff;text-decoration:underline;}" html="[p]Spinattic User[/p]" textshadow="1" textshadowrange="1.0" textshadowangle="135" textshadowcolor="0x000000" textshadowalpha="0.6" zorder="99" enabled="true"  />
+		
+
+
+
+<action name="buildInterface">
+delayedcall(1,runsettings(););
+if(scene.count GT 1,
+	addlayer(panel);
+		set(layer[panel].type,container);
+		set(layer[panel].bgcolor,0x000000);
+		set(layer[panel].bgalpha,0.6);
+		set(layer[panel].bgcapture,false);
+		set(layer[panel].align,bottomleft);
+		set(layer[panel].width,100%);
+		set(layer[panel].height,175);
+		set(layer[panel].keep,true);
+		set(layer[panel].zorder,100);
+		set(layer[panel].y,-150);
+	addlayer(border);
+		set(layer[border].type,container);
+		set(layer[border].bgcolor,0x000000);
+		set(layer[border].bgalpha,1);
+		set(layer[border].bgcapture,false);
+		set(layer[border].align,top);
+		set(layer[border].width,100%);
+		set(layer[border].height,1);
+		set(layer[border].keep,true);
+		set(layer[border].parent,panel);
+	addplugin(openpanel);
+		plugin[openpanel].loadstyle(OC);
+		set(plugin[openpanel].crop,0|0|50|25);
+		set(plugin[openpanel].onovercrop,0|100|50|25);
+		set(plugin[openpanel].ondowncrop,0|50|50|25);
+		set(plugin[openpanel].onclick,openpanel());
+		set(plugin[closepanel].visible,false);
+	addplugin(closepanel);
+		plugin[closepanel].loadstyle(OC);
+		set(plugin[closepanel].crop,0|75|50|25);
+		set(plugin[closepanel].onovercrop,0|100|50|25);
+		set(plugin[closepanel].ondowncrop,0|125|50|25);
+		set(plugin[closepanel].onclick,closepanel());
+	addlayer(maskmenu);
+		set(layer[maskmenu].keep,true);
+		set(layer[maskmenu].type,container);
+		set(layer[maskmenu].height,100);
+		set(layer[maskmenu].x,20);
+		set(layer[maskmenu].y,25);
+		set(layer[maskmenu].align,topleft);
+		set(layer[maskmenu].onloaded,sub(width,get(stagewidth),40));
+		set(layer[maskmenu].parent,panel);
+	addlayer(scrollmenu);
+		set(layer[scrollmenu].url,%SWFPATH%/plugins/scrollarea.swf);
+		set(layer[scrollmenu].alturl,%SWFPATH%/plugins/scrollarea.js);
+		set(layer[scrollmenu].x,0);
+		set(layer[scrollmenu].direction,h);
+		set(layer[scrollmenu].keep,true);
+		set(layer[scrollmenu].parent,maskmenu);
+	addplugin(menuleft);
+		plugin[menuleft].loadstyle(LR);
+		set(plugin[menuleft].align,left);
+		set(plugin[menuleft].crop,0|200|20|34);
+		set(plugin[menuleft].onovercrop,20|200|20|34);
+		set(plugin[menuleft].ondowncrop,40|200|20|34);
+		set(plugin[menuleft].onclick,moveleft());
+	addplugin(menuright);
+		plugin[menuright].loadstyle(LR);
+		set(plugin[menuright].align,right);
+		set(plugin[menuright].crop,60|200|20|34);
+		set(plugin[menuright].onovercrop,80|200|20|34);
+		set(plugin[menuright].ondowncrop,100|200|20|34);
+		set(plugin[menuright].onclick,moveright());
+buildMenu();
+openpanel();
+);
+</action>
+
+
+<!-- controls-->
+<plugin name="enterfull_btn" style="btns" crop="50|30|30|30"  onovercrop="80|30|30|30"  ondowncrop="110|30|30|30"  y="10" onclick="set(fullscreen,true)" />
+<plugin name="exitfull_btn"  style="btns" crop="50|0|30|30"   onovercrop="80|0|30|30"   ondowncrop="110|0|30|30"   y="10" onclick="set(fullscreen,false)" visible="false" />
+<plugin name="autoon_btn"    style="btns" crop="50|90|30|30"  onovercrop="80|90|30|30"  ondowncrop="110|90|30|30"  y="45" onclick="switchAuto()" />
+<plugin name="autooff_btn"   style="btns" crop="50|60|30|30"  onovercrop="80|60|30|30"  ondowncrop="110|60|30|30"  y="45" onclick="switchAuto()" visible="false" />
+<plugin name="zoomin_btn"    style="btns" crop="50|120|30|30" onovercrop="80|120|30|30" ondowncrop="110|120|30|30" y="80" ondown="set(fov_moveforce,-1)" onou="set(fov_moveforce,0)" />
+<plugin name="zoomout_btn"   style="btns" crop="50|150|30|30" onovercrop="80|150|30|30" ondowncrop="110|150|30|30" y="109" ondown="set(fov_moveforce,+1)" onou="set(fov_moveforce,0)" />
+<style name="btns" url="graphics/buttons.png" align="topright" x="10" keep="true" zorder="100"   />
+
+<!-- panel-->
+<style name="OC" url="graphics/buttons.png" align="topleft" edge="bottomleft" x="10"  parent="panel" keep="true"  />
+<style name="LR" url="graphics/buttons.png" keep="true" x="20" y="-12" visible="true" parent="panel" />
+<style name="thumbs" width="200" height="100" align="topleft" x="10" keep="true" onclick="loadscene(get(load),null,MERGE)" onhover="showtext(get(scene[get(load)].title),thumbsTxt);" parent="scrollmenu"/>
+
+<plugin name="spinattic" url="graphics/buttons.png" crop="0|180|140|20" align="bottomright" x="5" y="3" keep="true" zorder="102" alpha="0.6" onover="tween(alpha,1)" onout="tween(alpha,0.6)" onclick="openurl(http://www.spinattic.com/,_blank);" />
+
+<!--
+<layer name="panel" type="container"  bgcolor="0x000000"  bgalpha="0.6" bgcapture="false" align="bottomleft" width="100%" height="175" keep="true" zorder="100" >
+	<layer name="border" type="container" bgcolor="0x000000" bgalpha="1" bgcapture="false" align="top"  width="100%" height="1" />
+
+	<plugin name="sceneTitle" url="%SWFPATH%/plugins/textfield.swf" align="topleft" edge="bottomleft" width="100%" x="80" y="-5" border="false" background="false" selectable="false" keep="true" autosize="true" autoheight="auto" css="p{font-size:14px;font-family:Arial;color:#ffffff;}" html="[p]Spinattic Tour[/p]" 
+	 textshadow="1" textshadowrange="1.0" textshadowangle="135" textshadowcolor="0x000000" textshadowalpha="0.6" />
+
+	<plugin name="openpanel"   crop="0|75|50|25" onovercrop="0|100|50|25" ondowncrop="0|125|50|25"  onclick="openpanel()" />
+	<plugin name="closepanel" url="graphics/buttons.png" crop="0|0|50|25" onovercrop="0|25|50|25" ondowncrop="0|50|50|25" align="topleft" edge="bottomleft" x="10" visible="false" onclick="closepanel()" />
+
+	<plugin name="zoomout_btn"   style="btns" crop="50|150|30|30" onovercrop="80|150|30|30" ondowncrop="110|150|30|30" y="-25" ondown="set(fov_moveforce,+1);" onup="set(fov_moveforce,0);" />
+	<plugin name="zoomin_btn"    style="btns" crop="50|120|30|30" onovercrop="80|120|30|30" ondowncrop="110|120|30|30" y="-54" ondown="set(fov_moveforce,-1);" onup="set(fov_moveforce,0);"/>
+	<plugin name="autoon_btn"    style="btns" crop="50|90|30|30"  onovercrop="80|90|30|30"  ondowncrop="110|90|30|30"  y="-89" onclick="switchAuto()" />
+	<plugin name="autooff_btn"   style="btns" crop="50|60|30|30"  onovercrop="80|60|30|30"  ondowncrop="110|60|30|30"  y="-89" onclick="switchAuto()" visible="false" />
+	<plugin name="enterfull_btn" style="btns" crop="50|30|30|30"  onovercrop="80|30|30|30"  ondowncrop="110|30|30|30"  y="-124" onclick="set(fullscreen,true);" />
+	<plugin name="exitfull_btn"  style="btns" crop="50|0|30|30"   onovercrop="80|0|30|30"   ondowncrop="110|0|30|30"   y="-124" onclick="set(fullscreen,false);" visible="false" />
+
+	<layer name="maskmenu" keep="true" type="container" height="100" x="20" y="25" align="topleft" onloaded="sub(width,get(stagewidth),40);"  >
+		<layer name="scrollmenu" url="%SWFPATH%/plugins/scrollarea.swf" x="0" alturl="%SWFPATH%/plugins/scrollarea.js" direction="h" keep="true" />
+	</layer>
+	<plugin name="menuleft" style="LR"  align="left"  crop="0|200|20|34"  onovercrop="20|200|20|34" ondowncrop="40|200|20|34"  onclick="moveleft()" />
+	<plugin name="menuright" style="LR" align="right" crop="60|200|20|34" onovercrop="80|200|20|34" ondowncrop="100|200|20|34" onclick="moveright()"  />
+</layer>
+
+-->
+
+
+<action name="openpanel">
+tween(layer[panel].y,0);
+set(plugin[openpanel].visible,false);
+set(plugin[closepanel].visible,true);
+</action>
+
+<action name="closepanel" >
+tween(layer[panel].y,-175);
+set(plugin[openpanel].visible,true);
+set(plugin[closepanel].visible,false);
+</action>
+
+<action name="switchAuto">
+	switch(autorotate.enabled,true,false);	
+	switch(plugin[autoon_btn].visible,true,false);
+	switch(plugin[autooff_btn].visible,true,false);
+</action>
+
+
+<!--plugin name="logo"
+	url="graphics/logo.png"
+	align="top"
+	y="10"
+	zorder="102"
+	keep="true"
+	handcursor="false"
+	parent="contMenu"
+/-->
+
+	
+
+
+
+
+		
+
+<style name="arrow_hotspot" url="graphics/buttons.png" crop="00|234|32|32" onovercrop="32|234|32|32" ondowncrop="64|234|32|32" onhover=" if(hotspot[get(name)].tooltip === null, showtext(get(scene[get(linkedscene)].title),hotspotTxt), showtext(get(tooltip),hotspotTxt) ); " onclick=" if(linkedscene, tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); );" />
+
+<style name="photo_hotspot" zorder="10" url="graphics/buttons.png" crop="00|266|32|32" onovercrop="32|266|32|32" ondowncrop="64|266|32|32" onclick="showpic(); seewait();" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)"/>
+
+<style name="info_hotspot" zorder="10" url="graphics/buttons.png" crop="00|298|32|32" onovercrop="32|298|32|32" ondowncrop="64|298|32|32" onclick="showinfo(get(infotitle),get(infotext));" onhover="if(get(infotitle) == null,,showtext(get(infotitle),hotspotTxt);)"/>
+
+	
+<action name="showinfo">
+if(layer[info_bkg] === null, 
+	addlayer(info_bkg); 
+	layer[info_bkg].loadstyle(infoBkg);
+
+	addplugin(info_text); 
+	plugin[info_text].loadstyle(infoText);
+	txtadd(infoContent,'[h1]','%1','[/h1][p]','%2','[/p]'); 
+	set(plugin[info_text].html,get(infoContent) ); 
+	set(plugin[info_text].onloaded,add(layer[info_bkg].height,get(height),50);); 
+
+	addplugin(close_info); 
+	plugin[close_info].loadstyle(closeInfo);
+	, 
+	set(layer[info_bkg].visible,true); 
+	txtadd(infoContent,'[h1]','%1','[/h1][p]','%2','[/p]'); 
+	set(plugin[info_text].html,get(infoContent) ); 
+	add(layer[info_bkg].height,get(plugin[info_text].height),50); );
+</action>
+
+<action name="closeinfo">set(layer[info_bkg].visible,false);</action>
+<data name="cssInfo">
+h1{font-size:18px;font-family:arial;color:#ffffff;font-weight:bold;} p{font-size:14px;font-family:arial;color:#ffffff;}
+</data>
+
+<style name="infoText" url="%SWFPATH%/plugins/textfield.swf" parent="info_bkg"  width="450" y="25" border="false" background="false" selectable="false" align="topcenter"  keep="true" autosize="true" autoheight="true" css="data:cssInfo" />
+<style name="closeInfo" url="graphics/buttons.png" crop="0|150|11|11" onovercrop="11|150|11|11" ondowncrop="22|150|11|11" parent="info_bkg" align="topright" x="10" y="10" keep="true" onclick="closeinfo()" />
+<style name="infoBkg" width="500" keep="true" type="container" zorder="110" bgcolor="0x000000" bgalpha="0.8" bgcapture="false" align="center" />
+
+<textstyle name="hotspotTxt" font="arial" fontsize="14" bold="false" italic="false" 
+	           textcolor="0xFFFFFF" background="true" backgroundcolor="0x000000" border="false" bordercolor="0" 
+	           alpha="0.8" blendmode="normal" effect="glow(0x000000,1,10,100);"
+	           origin="cursor" edge="center" textalign="center" xoffset="4" yoffset="-25" noclip="true" showtime="0.1" fadetime="0" fadeintime="0" 
+	/>
+
+<textstyle name="thumbsTxt" font="arial" fontsize="12" bold="false" italic="false" 
+	           textcolor="0xFFFFFF" background="true" backgroundcolor="0x000000" border="false" bordercolor="0" 
+	           alpha="1" blendmode="normal" effect="glow(0x000000,1,10,100);"
+	           origin="cursor" edge="bottom" textalign="center" xoffset="0" yoffset="-10" noclip="true" showtime="0.1" fadetime="0" fadeintime="0" 
+/>
+
+
+
+
+
+<!-- ### MENU ACTIONS ### -->
+
+
+
+<action name="buildMenu">
+if(i === null, set(i,0)); 
+if(i LT scene.count,
+	mul(plugin[scrollmenu].width, get(scene.count), 220);
+	
+	txtadd(thumbname, 'thumb',get(i));
+	addplugin(get(thumbname));
+
+	plugin[get(thumbname)].loadstyle(thumbs);
+	copy(thumb, scene[get(i)].thumburl);
+	set(plugin[get(thumbname)].url, get(thumb));
+	set(plugin[get(thumbname)].load, get(scene[get(i)].name) );
+	mul(thumbX,220,i);
+	set(plugin[get(thumbname)].x,get(thumbX));
+	
+	add(i,1); 
+	buildMenu();
+);
+</action>
+
+<action name="moveleft" >
+	div(xres, get(layer[maskmenu].width), 2);
+	sub(addres, get(xres), 220);
+	sub(xsub, addres, get(layer[scrollmenu].x));
+	layer[scrollmenu].scrolltocenter(get(xsub),0);
+</action>
+<action name="moveright" >
+	div(xres, get(layer[maskmenu].width), 2);
+	add(addres, get(xres), 220);
+	sub(xsub, addres, get(layer[scrollmenu].x));
+	layer[scrollmenu].scrolltocenter(get(xsub),0);
+</action>
+
+
+
+
+<action name="resize">
+	
+	sub(plugin[sceneTitle].width,stagewidth,150);
+
+	sub(menumaxwidth,stagewidth,40);
+	if(plugin[scrollmenu].width GT menumaxwidth,
+		sub(plugin[maskmenu].width,stagewidth,100);
+		set(plugin[maskmenu].x,50);
+		set(plugin[menuright].visible,true);
+		set(plugin[menuleft].visible,true);
+		,
+		set(plugin[maskmenu].width,get(plugin[scrollmenu].width));
+		set(plugin[maskmenu].x,20);
+		set(plugin[menuright].visible,false);
+		set(plugin[menuleft].visible,false);
+	);
+
+
+if(stagewidth GE stageheight,
+	if(stageheight LT 550,
+		set(plugin[tourtitle].css,h1{font-size:16px;font-family:Arial;color:#ffffff;} h2{font-size:14px;font-family:Arial;color:#ffffff;} a{font-size:12px;font-family:Arial;color:#ffffff;} a:hover{font-size:12px;font-family:Arial;color:#ffffff;text-decoration:underline;} );
+		set(plugin[tourtitle].x,85);
+		set(plugin[avatarmask].scale,0.85);
+		set(plugin[useravatar].scale,0.85);
+		set(plugin[avatarborder].scale,0.85);
+		if(stageheight LT 450,
+			set(plugin[tourtitle].css,h1{font-size:14px;font-family:Arial;color:#ffffff;} h2{font-size:12px;font-family:Arial;color:#ffffff;} a{font-size:10px;font-family:Arial;color:#ffffff;} a:hover{font-size:10px;font-family:Arial;color:#ffffff;text-decoration:underline;} );
+			set(plugin[tourtitle].x,75);
+			set(plugin[avatarmask].scale,0.75);
+			set(plugin[useravatar].scale,0.75);
+			set(plugin[avatarborder].scale,0.75);
+		);
+		,
+		set(plugin[tourtitle].css,h1{font-size:18px;font-family:Arial;color:#ffffff;} h2{font-size:14px;font-family:Arial;color:#ffffff;} a{font-size:12px;font-family:Arial;color:#ffffff;} a:hover{font-size:12px;font-family:Arial;color:#ffffff;text-decoration:underline;} );
+		set(plugin[tourtitle].x,100);
+		set(plugin[avatarmask].scale,1);
+		set(plugin[useravatar].scale,1);
+		set(plugin[avatarborder].scale,1);
+	);
+,
+	if(stagewidth LT 750,
+		set(plugin[tourtitle].css,h1{font-size:16px;font-family:Arial;color:#ffffff;} h2{font-size:14px;font-family:Arial;color:#ffffff;} a{font-size:12px;font-family:Arial;color:#ffffff;} a:hover{font-size:12px;font-family:Arial;color:#ffffff;text-decoration:underline;} );
+		set(plugin[tourtitle].x,85);
+		set(plugin[avatarmask].scale,0.85);
+		set(plugin[useravatar].scale,0.85);
+		set(plugin[avatarborder].scale,0.85);
+		if(stagewidth LT 550,
+			set(plugin[tourtitle].css,h1{font-size:14px;font-family:Arial;color:#ffffff;} h2{font-size:12px;font-family:Arial;color:#ffffff;} a{font-size:10px;font-family:Arial;color:#ffffff;} a:hover{font-size:10px;font-family:Arial;color:#ffffff;text-decoration:underline;} );
+			set(plugin[tourtitle].x,75);
+			set(plugin[avatarmask].scale,0.75);
+			set(plugin[useravatar].scale,0.75);
+			set(plugin[avatarborder].scale,0.75);
+		);
+		,
+		set(plugin[tourtitle].css,h1{font-size:18px;font-family:Arial;color:#ffffff;} h2{font-size:14px;font-family:Arial;color:#ffffff;} a{font-size:12px;font-family:Arial;color:#ffffff;} a:hover{font-size:12px;font-family:Arial;color:#ffffff;text-decoration:underline;} );
+		set(plugin[tourtitle].x,100);
+		set(plugin[avatarmask].scale,1);
+		set(plugin[useravatar].scale,1);
+		set(plugin[avatarborder].scale,1);
+	);
+);
+
+	
+
+	
+</action>
+<!-- photos hotposts -->
+	<data name="photo" content="" />
+
+	<plugin name="wait"  keep="true" align="center" visible="false" handcursor="false" zorder="-201" url="graphics/wait.png" crop="0|0|75|75" frames="7" framewidth="75" frameheight="75" frame="0" onloaded="animate();" />
+
+	<action name="animate">
+	inc(frame,1,get(frames),0);mul(ypos,frame,frameheight);txtadd(crop,'0|',get(ypos),'|',get(framewidth),'|',get(frameheight));delayedcall(0.03, animate() );
+	</action>
+
+	<action name="seewait">
+	set(plugin[wait].visible,true);
+	</action>
+	<action name="hidewait">
+	set(plugin[wait].visible,false);
+	</action>
+
+
+	<!-- calc the max. flyout size of a hotspot for the current screen size -->
+	<action name="calc_flyout_size">
+		div(screen_sideaspect, stagewidth, stageheight);
+		div(hotspot_sideaspect, hotspot[%1].width, hotspot[%1].height);
+		
+		if(screen_sideaspect LT hotspot_sideaspect,
+			<!-- align at screen width -->
+			div(hotspot[%1].width,stagewidth,stageheight);
+			mul(hotspot[%1].width,80);
+			txtadd(hotspot[%1].width,'%');
+			set(hotspot[%1].height,prop);
+		  ,
+		  <!-- align at screen height -->
+			set(hotspot[%1].width,prop);
+			set(hotspot[%1].height,50%);
+		  );
+	</action>
+
+	<!-- fly in a hotspot = show hotspot fixed at screen -->
+	<action name="flyin">
+		if(hotspot[%1].flying == 0.0, hotspot[%1].resetsize(); calc_flyout_size(%1); );
+		if(hotspot[%1].oldscale === null, copy(hotspot[%1].oldscale, hotspot[%1].scale) );
+		if(hotspot[%1].oldrx === null, copy(hotspot[%1].oldrx, hotspot[%1].rx) );
+		if(hotspot[%1].oldry === null, copy(hotspot[%1].oldry, hotspot[%1].ry) );
+		if(hotspot[%1].oldrz === null, copy(hotspot[%1].oldrz, hotspot[%1].rz) );
+		set(hotspot[%1].enabled,true);
+		set(hotspot[%1].visible,true);
+		set(hotspot[%1].zorder, 200);
+		tween(hotspot[%1].alpha,  1.0, 0.5, default, hidewait());
+		tween(hotspot[%1].flying, 1.0, 0.5);
+		tween(hotspot[%1].scale,  1.0, 0.5);
+		tween(hotspot[%1].rx, 0.0, 0.5);
+		tween(hotspot[%1].ry, 0.0, 0.5);
+		tween(hotspot[%1].rz, 0.0, 0.5);
+	</action>
+
+	<!-- fly the hotspot out/back -->
+	<action name="flyout">
+		set(hotspot[%1].enabled,false);
+		tween(hotspot[%1].alpha,  0.0, 0.5, default, set(hotspot[%1].visible,false); );
+		tween(hotspot[%1].flying, 0.0);
+		tween(hotspot[%1].scale,  get(hotspot[%1].oldscale));
+		tween(hotspot[%1].rx,  get(hotspot[%1].oldrx));
+		tween(hotspot[%1].ry,  get(hotspot[%1].oldry));
+		tween(hotspot[%1].rz,  get(hotspot[%1].oldrz));
+		set(opened,false);
+	</action>	       
+	       
+	<action name="showpic">
+		<!-- creates a new hotspot and fly it out -->
+		flyout(get(data[photo].content));
+		txtadd(picname,pic-,get(name));
+		if( hotspot[get(picname)] === null,
+			txtadd(picfilename,%CURRENTXML%/photos/,get(pic));
+			addhotspot(get(picname));
+			getcenter(hsath,hsatv);
+			copy(hotspot[get(picname)].ath, hsath);
+			copy(hotspot[get(picname)].atv, hsatv);
+			set(hotspot[get(picname)].visible,false);
+			set(hotspot[get(picname)].distorted,true);
+			set(hotspot[get(picname)].zorder,200);
+			set(hotspot[get(picname)].scale,0.1);
+			set(hotspot[get(picname)].alpha,0.0);
+			set(hotspot[get(picname)].keep,true);
+			set(hotspot[get(picname)].onhover,showtext(Close,hotspotTxt));
+			set(hotspot[get(picname)].handcursor,true);
+			set(hotspot[get(picname)].onloaded, flyin(get(name)) );
+			set(hotspot[get(picname)].onclick, flyout(get(name)) );
+			copy(hotspot[get(picname)].url,picfilename);
+		,
+			flyin(get(picname));
+		);
+		set(opened,true);
+			set(data[photo].content,get(picname));
+	</action>
+
+
+</krpano>

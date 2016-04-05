@@ -1,0 +1,34 @@
+<div class="dragger-wrapper">
+    <div class="inner-dragger">
+        <div class="dragable" id="drop-zone">
+            <div class="fa fa-cloud-upload"></div>
+            <h2>Drag and drop your panos in this box</h2>
+            <h3 id="click-to-select-file">or click to select from your computer</h3>
+
+            <div class="format">
+                <label for="pano-format">Pano format:</label>
+                <div title="panos-format" id="panos-format" class="dropdown dd-upload">
+                    <h2><span class="title">Normal cube size</span> <span class="fa fa-caret-down fa-lg right"></span></h2>
+                    <ul>
+                        <li data-value="op1"><span>Normal cube size</span></li>
+                        <li data-value="op2"><span>Rare cube size</span></li>
+                    </ul>
+                </div>
+                <div class="tile-size">
+                    <span>Max. tile size</span>
+                    <input type="number" value="2500">
+                    <span>X</span>
+                    <input type="number" value="2500">
+                </div>
+            </div>
+
+            <p>You can upload JPG, TIFF, or PNG images <br>a maximun size of 30000px width</p>
+            <%if(require('bowser').firefox){%>
+                <div class="ffmsg">KNOWN ISSUE: <br>Firefox has memory problem when uploading large files. If your browser freezes please consider to upload a smaller size image. Meanwhile we're working on a new uploader system that will solve this issue.</div>
+            <%}%>
+            <input id="upload_button" class="browseFile" type="file" multiple="multiple" value="">
+
+            <span class="cancel uploader-btn red none right">Cancel</span>
+        </div>
+    </div>
+</div>

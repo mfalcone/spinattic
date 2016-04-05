@@ -1,0 +1,127 @@
+#tooltip{
+    color:$dark-gray;
+    background:#FFF;
+    position:absolute;
+    /*min-width:100px;*/
+    text-align:center;
+    padding:15px 30px;
+    font-weight:bold;
+    z-index:10000;
+    display: none;
+
+    .arrow{
+        position: absolute;
+        display: block;
+        content: "";
+        border-style: solid;
+        height: 0;
+        width: 0;
+    }
+
+    &.up .arrow{            
+        border-color:  transparent transparent white transparent;
+        border-width: 8px;
+        top: -16px;
+        left: 50%;
+        margin-left: -8px;
+    }
+    
+    &.footer{
+        margin-top:-55px;
+        /*margin-left:-4px;*/ 
+
+        .arrow{            
+            border-color: #FFF transparent transparent transparent;            
+            border-width: 8px;
+            margin-left: -8px; 
+            left: 50%;
+            bottom: -16px;
+        }
+
+        /*&.rightist{
+            &:after{
+                left: initial;
+                right: 40px;
+            }
+        }*/
+        &.leftist{
+            .arrow{
+                right: initial;
+                left: 50px;
+            }
+        }
+
+    }
+
+    &.aside{
+        margin-top:4px;
+
+        .arrow{            
+            border-color:  transparent transparent transparent #FFF ;
+            border-width: 7px;
+            top: 7px;
+            right: -14px;
+        }
+
+        &.help{
+            margin-left: -240px; 
+        }
+    }
+   &.hotSpots{
+        margin-left:-94px;
+    }
+    &.viewSettings{
+        margin-left:-106px;
+    }
+    &.sceneSettings{
+        margin-left:-110px;
+    }
+    &.virtualTourSettings{
+        margin-left:-130px;
+    }
+    &.skinCustomizer{
+        margin-left:-116px;
+    } 
+
+    &.help{
+        width:350px;
+        margin-left:-425px;
+        margin-top:-5px;
+        line-height:14px;
+        text-align:left;
+    }
+ 
+    &.new-tour-tt{
+        margin-top:50px;
+    }
+
+    &.open-live-tour-tt{
+        margin-top:40px;        
+    }
+
+    &.publish{
+        margin-top:50px;
+    }
+
+    &.panoManager{
+        margin-top:-100px;
+        text-align: left; 
+        /*margin-left:-4px;*/ 
+
+        .arrow{            
+            border-color: #FFF transparent transparent transparent;            
+            border-width: 8px;
+            margin-left: -8px; 
+            left: 50%;
+            bottom: -16px; 
+        }
+    }
+}
+
+.bluring{
+     @include filter(blur, 2px);
+}
+
+.scaling{
+    @include scale(1.1);
+}

@@ -1,0 +1,90 @@
+@function dashed-pano($border-size,$color){
+    @return $border-size dashed $color;
+}
+
+
+@mixin linear-gradient($fromColor, $toColor) {
+    background-color: $toColor; /* Fallback Color */
+    background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+    background-image:    -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
+    background-image:     -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
+    background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+    background-image:         linear-gradient(top, $fromColor, $toColor);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+
+@mixin filter($filter-type,$filter-amount) { 
+    -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+    -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+    -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+    -o-filter: $filter-type+unquote('(#{$filter-amount})');
+    filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin scale($scale) {
+    @include transform(scale($scale));
+} 
+
+@mixin shadow-btn($distance, $blur, $opacity, $inset:"") {
+    -webkit-box-shadow: $distance $distance $blur 0px rgba(10, 10, 10, $opacity) unquote($inset);
+    -moz-box-shadow:    $distance $distance $blur 0px rgba(10, 10, 10, $opacity) unquote($inset);
+    box-shadow:         $distance $distance $blur 0px rgba(10, 10, 10, $opacity) unquote($inset);
+} 
+
+@mixin shadow-white($distance, $blur, $opacity, $inset:"") {
+    -webkit-box-shadow: $distance $distance $blur 0px rgba(255, 255, 255, $opacity) unquote($inset);
+    -moz-box-shadow:    $distance $distance $blur 0px rgba(255, 255, 255, $opacity) unquote($inset);
+    box-shadow:         $distance $distance $blur 0px rgba(255, 255, 255, $opacity) unquote($inset);
+} 
+
+@mixin transition($duration) {
+    -moz-transition: all $duration ease-in 0s; 
+    -webkit-transition: all $duration ease-in 0s;
+    -o-transition: all $duration ease-in 0s; 
+    transition: all $duration ease-in 0s; 
+}
+
+@mixin absolute($top:0, $right:initial, $bottom:initial, $left:0) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin border-box {
+    -webkit-box-sizing: border-box; /* Safari 3.0 - 5.0, Chrome 1 - 9, Android 2.1 - 3.x */
+    -moz-box-sizing: border-box;    /* Firefox 1 - 28 */
+    box-sizing: border-box;         /* Safari 5.1+, Chrome 10+, Firefox 29+, Opera 7+, IE 8+, Android 4.0+, iOS any */
+}
+
+@mixin arrow ($top:0, $right:0, $bottom:0, $left:0, $color:#fff) {
+    border-width: $top $right $bottom $left;
+    border-color: $color transparent;
+    border-style: solid;
+}
+
+@mixin loaderAnimation ($duration: 0.5s) {
+    -webkit-animation: spin $duration infinite linear;
+    -moz-animation: spin $duration infinite linear;
+    -ms-animation: spin $duration infinite linear;
+    -o-animation: spin $duration infinite linear;
+    animation: spin $duration infinite linear; 
+}

@@ -1,0 +1,22 @@
+{
+    "pano": [
+        {
+            "img": "http://cdn.dev.spinattic.com/panos/226/pano.tiles/thumb200x100.jpg",
+            "fileName": "panorama_02.tiff",
+            "resolution": "Multiresolution",
+            "uploadDate": "2011-05-03 12:00:00"
+        },
+        {
+            "img": "http://cdn.dev.spinattic.com/panos/226/pano.tiles/thumb200x100.jpg",
+            "fileName": "panorama_01.tiff",
+            "resolution": "2500 x 2500",
+            "uploadDate": "2011-06-26 12:00:00"
+        },
+        {
+            "img": "http://cdn.dev.spinattic.com/panos/226/pano.tiles/thumb200x100.jpg",
+            "fileName": "panorama_03_with_a_larger_nameeeeeee.tiff",
+            "resolution": "2500 x 2500",
+            "uploadDate": "2011-05-26 12:00:00"
+        }
+    ]
+}

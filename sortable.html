@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Sortable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 208px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+  <script>
+  $(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+  </script>
+</head>
+<body>
+ <header class="header">
+        ﻿
+
+          <a href="index.php" class="spinattic"><img src="images/spinattic.png"></a>
+      <!-- div class="language">
+              <a href="#" class="language_btn">
+                <div class="icon"></div>
+                  <font>ENG</font>
+              </a>
+                <ul class="select_language">
+                  <li><a href="#">English</a></li>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">Portugués</a></li>
+                </ul>
+            </div-->
+            <div class="search">
+              <div class="bg_search">
+              <form action="search.php" name="formsearch" method="GET">
+                  <input type="text" value="Search" id="search-input" onclick="if(this.value == 'Search'){this.value=''};" onfocus="this.select()" onblur="this.value=!this.value?'Search':this.value;" name="search">
+                  <!--a href="#" class="clear_input"></a--><!-- CRUZ PARA LIMPIAR BUSQUEDA-->
+                  <a href="#" class="glass_input" onclick="if (document.formsearch.search.value != '' &amp;&amp; document.formsearch.search.value != 'Search'){document.formsearch.submit();};"></a><!-- LUPA DE BUSQUEDA-->
+      <input type="hidden" value="" name="order">
+      <input type="hidden" value="" name="c">
+                </form>
+                  <br clear="all">
+                <!--
+                  <div class="predictive">
+                    <ul>
+                        <li><a href="#"><strong>text</strong> 1</a></li>
+                        <li><a href="#"><strong>text</strong> 2</a></li>
+                        <li><a href="#"><strong>text</strong> 3</a></li>
+                        <li><a href="#"><strong>text</strong> 4</a></li>
+                        <li><a href="#"><strong>text</strong> 5</a></li>
+                        <li><a href="#"><strong>text</strong> 6</a></li>
+                      </ul>
+                  </div>
+                -->
+        </div>                
+
+            </div>
+            <br clear="all">        </header>
+<div class="nav">
+        ﻿   <script src="js/fb.js"></script>
+    <script src="js/gp.js"></script>
+            
+        <!--popup login-->
+        <div class="overlay forgotpassword">
+            <div class="pop">
+                <a href="#" class="closed closed_register_mobile"></a>
+                <h2>Forgot Password</h2>
+                <div class="content_pop">
+                    <p class="message">Don't worry, we'll send an email with instructions to access your account.</p>
+                    <form>
+            <span id="reset_pop"></span>  
+                    <input type="text" placeholder="E-mail" class="mail" id="reset_email">
+                    <a href="#" class="login reset_pwd">Send</a>
+                    </form>
+                </div>
+            </div>
+        </div> 
+
+
+        <div class="overlay overlay_login">
+            <div class="pop">
+                <a href="#" class="closed closed_register_mobile"></a>
+                <h2>Log in</h2>
+                <div class="content_pop">
+                    <p class="message">I don't have an account yet and <a href="#" class="loginToRegister">I want to register</a></p>
+                    <a href="#" class="facebook"></a>
+                    <a href="#" class="googleplus"></a>
+            <span id="login_pop"></span>  
+                        <input type="text" placeholder="E-Mail" class="mail" id="email">
+                        <input type="password" placeholder="Password" class="pass" id="pass">
+                        <a href="#" class="login loginaction">Log in</a>
+                        <label for="remember" class="terminos">
+                            <input type="checkbox" id="remember">
+                                <p>Remember me - <a href="#" class="forgot_pwd">Forgot password?</a></p>
+                            <br clear="all">
+                        </label>
+                </div>
+            </div>
+        </div>         
+        
+
+        <!--popup register-->
+    <div class="overlay overlay_register">
+          <div class="pop">
+                <a href="#" class="closed closed_register_mobile"></a>
+                <h2>Register</h2>
+        <div class="content_pop">
+                
+      <span id="data_pop">    
+      <p class="message">Register using your preferred social network:</p>
+                    
+                    <a href="#" class="facebook"></a>
+                    <a href="#" class="googleplus"></a>
+                        <p class="message">Or register with your email address:</p>
+              <span id="register_pop"></span>
+                        <input type="text" placeholder="Full Name" class="name" id="r_name">
+                        <input type="text" placeholder="E-mail" class="mail" id="r_email">
+                        <input type="text" placeholder="Repeat E-mail" class="mail" id="r_email1">
+                        <input type="password" placeholder="Password" class="pass" id="r_pass">
+                        <input type="password" placeholder="Repeat Password" class="pass" id="r_pass1">
+                        
+                        <a href="#" class="register registeraction">Register</a>
+                        
+                        <label for="terminos" class="terminos">
+                          <input type="checkbox" id="terminos">
+                        <p>
+                                I have read and agree to Spinattic's <a href="terms.php">Terms of Service</a>.
+                            </p>
+                    <br clear="all">
+                        </label>
+                    </span>
+                </div>
+      </div>
+    </div>
+
+
+
+      <div class="login-register" style="display:none">
+          <div class="or"></div>
+          <a href="#" class="login">Log in</a>
+          <a href="#" class="register">Register</a>
+            <br clear="all">
+        </div>
+            
+
+
+          <div class="user_login" style="display:block">
+          <a href="profile.php?uid=56" class="user_image"><img id="nav_avatar" width="47" height="47" src="images/users/avatar.jpg"></a>
+              <div class="user_name">
+                  <a href="profile.php?uid=56"><p>Ariel Micheletti</p></a>
+          <div class="action_user">
+                    <a href="user_profile.php">Edit profile </a>/
+                      <a href="lo.php"><strong> Logout</strong></a>
+                    <br clear="all">
+          </div>
+                </div>
+                <br clear="all">
+            </div>
+            
+          <div class="content_nav">
+
+            <ul class="menu">
+
+                <li>
+                         <span class="btn-social">Social</span>
+                  <ul class="submenu">
+                    <li>
+                          <a href="home.php">Home 
+                          <!-- <span class="contador">+99</span>-->
+                          </a>
+                          
+                          <a href="notifications.php">Notifications 
+                                        
+                          </a>
+                          
+                          <a href="followers.php">followers 
+
+                                        
+                          <span class="contador" id="nav_followers">0</span>
+
+                          </a>
+                          <a href="following.php">following 
+                                        
+                              <span class="contador" id="nav_following">0</span>
+                          
+                          </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                         <span class="btn-production">production</span>
+                  <ul class="submenu">
+                    <li>
+                          <a href="edit_virtual_tour.php">create new tour</a>
+                          
+                          <a href="manager_tour.php">Manage tours</a>
+                          
+                          <a href="manager_panoramas.php">Manage panos files</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                    <a href="index.php" class="home-btn">Explore</a>
+                    <a href="map.php" class="world-map">World Map</a>
+                    <!--a href="#" class="leader-board">Leader board</a-->
+                        </li><li class="acor ui-accordion ui-widget ui-helper-reset" role="tablist">
+                            <a href="#" class="browse ui-accordion-header ui-state-default ui-corner-all ui-accordion-icons" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="false" aria-expanded="false" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Browse <span class="acor ui-accordion ui-widget ui-helper-reset" role="tablist"></span></a>
+                            <ul class="submenu menucategories ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="true" style="display: none;">
+                                <li>
+                                                                        <a href="search.php?c=1&amp;search=Destinations">Destinations</a>
+                                                                        <a href="search.php?c=1&amp;search=Events">Events</a>
+                                                                        <a href="search.php?c=1&amp;search=Hotels">Hotels</a>
+                                                                        <a href="search.php?c=1&amp;search=Miscellaneous">Miscellaneous</a>
+                                                                        <a href="search.php?c=1&amp;search=Museums">Museums</a>
+                                                                        <a href="search.php?c=1&amp;search=Nature">Nature</a>
+                                                                        <a href="search.php?c=1&amp;search=Parks">Parks</a>
+                                                                        <a href="search.php?c=1&amp;search=Real Estate">Real Estate</a>
+                                                                        <a href="search.php?c=1&amp;search=Resorts">Resorts</a>
+                                                                        <a href="search.php?c=1&amp;search=Restaurants">Restaurants</a>
+                                                                        <a href="search.php?c=1&amp;search=Universities">Universities</a>
+                                                                        <a href="search.php?c=1&amp;search=Vehicles">Vehicles</a>
+                                                                    </li>
+                            </ul>
+                        </li>
+
+                
+            </ul>
+
+
+            
+
+            <div class="privacy">
+                <div class="social_media">
+                <a href="#" class="facebook"></a>
+                <a href="#" class="twitter"></a>
+                <a href="#" class="googleplus"></a>
+                <br clear="all">
+                </div>
+                <p>
+                    <a href="terms.php">Terms of service</a> <br> <a href="privacy.php">Privacy Policy</a>
+                    <br>
+                    © All panoramas are property 
+                    <br>
+                    of their authors
+                </p>
+            </div>
+
+            </div>        </div>
+
+        <div style="z-index:20;">
+
+<ul id="sortable">
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+   <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+   <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+   <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+  
+</ul>
+ </div>
+ 
+</body>
+</html>

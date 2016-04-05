@@ -1,0 +1,1116 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+		<link href='favicon.png' rel='shortcut icon' type='image/x-icon'/>
+		<link href='favicon.png' rel='icon' type='image/x-icon'/>
+                    
+                    <title>Spinattic - Editing tour: Título del tour</title>
+                 
+		
+                
+
+	    <!--google font-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+
+		<!-- css main -->        
+	    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+	    
+        <!-- jquery -->    
+	    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	    <!-- jquery ui -->        
+		<link rel="stylesheet" type="text/css" media="screen" href="css/tabs.css" />
+	  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+	   <!-- tags input-->
+        <link rel="stylesheet" type="text/css" href="css/jquery.tagsinput.css" />	
+        
+	<script type="text/javascript" src="js/jquery.tagsinput.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/tipsy.css" />	
+        <script type="text/javascript" src="js/jquery.tipsy.js"></script>                
+	    <script src="js/custom.js"></script>
+            <script src="js/core-actions.js"></script>	
+            <script src="js/core.tour-edit.inc.js"></script>	    
+<script src="js/core-utils.js"></script>	  
+
+<!-- filedrop -->
+<!--link rel="stylesheet" type="text/css" href="css/jquery.filedrop.css" /-->
+
+
+    <style type="text/css">
+        #map_canvas {height:400px;width:460px}
+    </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=en"></script>
+
+    <script src="js/maploc.js"></script>        
+        
+    <script type="text/javascript">
+        var gNew_tour;
+        var gTour_id;
+        var overlay;
+        
+        jQuery(document).ready(function()
+        { 
+                        
+                jQuery('.uploading_pano').css('display', 'block');                
+                jQuery('#drop-zone').css('margin-top', '0');
+                
+                jQuery('#tabs').css('display', 'block');
+                gNew_tour = false;
+                gTour_id = 69;
+                
+                initMap();
+                
+                addMarker('-36.49197347059368', '-62.578125');
+                
+                jQuery('.scene-remove').click(function()
+                {
+                    var data         = 'scene-id='+jQuery(this).attr('data-id');
+
+                    var container   = jQuery(this).parent();
+
+                    var params = {
+                                container  : container
+                            };
+
+                    launch_popup('.confirm-action', data, 'sceneRemove', removeCallback, params);                        
+
+                    return false;
+
+
+                    //CoreActions.sceneRemove(data, removeCallback);
+                });
+
+                jQuery( "#drop-zone" ).sortable({
+                    placeholder: "pano-item-placeholder",
+                    items: "> div.pano-item" ,
+                    cursor: "move"
+                });
+                
+                    });
+        
+        function submit_form(data)
+        {
+            doAjaxRq(
+                "POST", 
+                "ultour.php", 
+                data,                 
+                function(){
+                    overlay = $('<div class="overlay" style="display:block;"></div>');
+                    overlay.appendTo('body');
+
+                    $('#loading').css('display', 'block');
+                }, 
+                function(response){          
+                    
+                    xml_version = $.parseJSON(response).params.xml_version;
+                    
+                    $('#loading').css('display', 'none');
+                    overlay.remove();
+                }
+            );
+        }
+        
+        function verificar()
+        {                    
+            var title        = jQuery('#title').val();
+            var description  = jQuery('#description').val();
+            var location     = jQuery('#location').val();
+            var tags_loaded  = jQuery('#tags_loaded').val();
+            var category     = jQuery('#category').val();
+            var privacy      = jQuery('#privacy').val();
+            var lat          = jQuery('#latFld').val();
+            var lng          = jQuery('#lngFld').val();
+            var saving_type  = jQuery('#saving-type').val();
+            
+            var allow_comments   = jQuery('#allow_comments').is(':checked')? 'on' : '';
+            var allow_social      = jQuery('#allow_social').is(':checked')? 'on' : '';
+            var allow_embed      = jQuery('#allow_embed').is(':checked')? 'on' : '';
+            var allow_votes      = jQuery('#allow_votes').is(':checked')? 'on' : '';
+            
+            var data = $('#main-form').serialize();
+                
+            data += '&title='+title;
+            data += '&description='+description;
+            data += '&location='+location;
+            data += '&tags_loaded='+tags_loaded;
+            data += '&category='+category;
+            data += '&privacy='+privacy;
+            data += '&lat='+lat;
+            data += '&lon='+lng;
+            data += '&saving-type='+saving_type;
+            data += '&allow_comments='+allow_comments;
+            data += '&allow_social='+allow_social;
+            data += '&allow_embed='+allow_embed;
+            data += '&allow_votes='+allow_votes;
+
+//console.log( document.form1.title + description + location + tags_loaded + category);
+  
+            if (jQuery('#saving-type').val() == 'draft' ||
+                
+                (   title && 
+                    description && 
+                    location && 
+                    tags_loaded && 
+                    category
+                )
+            )
+            {               
+     
+                var hotspot_changes = exportHotspotsToString();
+     
+                submit_form(data + hotspot_changes);
+                
+                
+                //document.form1.submit();
+            }    
+            else
+            {
+                showMessage('Saving data', 'Please complete all required fields.')
+            }    
+
+            return false;
+        }
+    </script>
+    
+	</head>
+	<body>
+            
+            <!-- loader -->            
+<div id="loading" class="loading" style="display: none;">
+    <div class="loading_img"></div>
+</div>
+<!--popup confirm action-->
+<div class="overlay confirm-action" style="display:none;">
+    <div class="pop">
+        <a href="#" class="closed"></a>
+        <h2>Virtual Tours Manager</h2>
+        <div class="content_pop">
+            <form class="pop-up">
+                <label>
+                    <p>Are you sure you want to delete this scene?</p>                
+                </label>                        
+                <div class="content-btn-pop">
+                    <a href="#" class="grey-button border-radius-4" onclick="hide_popup();">NO</a>
+                    <a href="#" class="red-button border-radius-4 save-button">YES</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>    
+           
+
+
+
+<!-- HOTSPOT TOOL WINDOW -->
+<div style="display:none;" class="overlay hotspot-tool">
+    <div class="hotspot-window" style="top:25%;">	           
+        <div class="thumb-head-set">
+            <img id="editor-thumb-scene" src="" width="45">
+            <h3></h3>
+            <br clear="all">
+        </div>
+        <a class="blue-buttom set-startup-view" href="#">Set as startup view</a>
+        <a class="save-close" href="#"></a>   
+        <div class="content-set">
+            <div class="bar">
+                <div class="controls">
+                    <h5 style="margin-top: 0;">Add hotspots by clicking on the icons</h5>
+
+                    <a href="#" class="add-hotspot hslink" onclick="newHotspot('link');" title="Add Link"></a>
+                    <a href="#" class="add-hotspot hsinfo" onclick="newHotspot('info');" title="Add Info"></a>
+                    <a href="#" class="add-hotspot hsmedia" onclick="newHotspot('media');" title="Add Photo"></a>
+                </div>  
+
+                <div class="hotspots-list">   
+                    <h5>Hotspots in this scene</h5>
+
+                    <img id="hs-loader" src="js/hotspot-tool/loader.gif" style="display:none;width:16px;margin:0 auto;">
+                    <div class="hs-collection"><br><br><br><br><br><br><br><br><br></div>
+                </div>
+            </div>                    
+            <div id="krpano-container"></div>                    
+        </div>
+        <div class="foot-set-tour">
+                *By closing the hotspots editor the changes are not saved. You mus click on UPDATE at the bottom of this page.
+        </div>
+    </div>
+</div>
+         
+<link rel="stylesheet" type="text/css" media="screen" href="css/hotspots.css" />
+<script type="text/javascript" src="js/hashtable.js"></script>
+<script src="js/SimpleAjaxUploader.js"></script>
+<script src="js/hotspot-tool/embedpano.js"></script>
+<script src="js/hotspot-tool/hotspot-tool.js"></script>
+<!--script src="js/hotspot-tool/swfkrpano.js"></script-->
+
+<link rel="stylesheet" href="css/jquery.jscrollpane.css" type="text/css" media="screen" />
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>    
+<script type="text/javascript" src="js/jquery.ddslick.js"></script>    
+
+    
+<script>
+// <![CDATA[
+    var base_path = 'js/hotspot-tool/';
+    var xml_tool_path = 'js/hotspot-tool/toolset.xml';            
+    
+    var xml_version = '5';
+    
+    var swf_path = "player/tour.swf";
+    var html5_param = 'auto';
+    
+// ]]>
+</script>         
+
+
+
+            
+        
+        <!--pop Panorama Collection-->
+        <div class="overlay panocollection" style="display:block;">
+            <div class="pop">
+                <a href="#" class="closed"></a>
+                <h2>Include from panos manager</h2>
+                    <div class="message_box">
+                        <p>Select from uploaded panoramas and include them in the tour.</p>
+                    </div>
+                
+                <div class="content_pop">
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+    					<div class="thumb-pano"></div>
+    					<div class="loader-item">
+                        	<h3>Panorama 1</h3>
+    	          			<p>May 6, 2013 1:45 PM.</p>
+    	                </div>
+                        <br clear="all">
+                    </div>
+                    
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+    					<div class="thumb-pano"></div>
+    					<div class="loader-item">
+                        	<h3>Panorama 1</h3>
+    	          			<p>May 6, 2013 1:45 PM.</p>
+    	                </div>
+                        <br clear="all">
+                    </div>
+
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1 penultima</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                    <!-- pano -->
+                    <div class="pano-item pano-item-manager">
+                        <label class="check_action">
+                            <input class="form-user border-radius-4" type="checkbox">
+                        </label>
+                        <div class="thumb-pano"></div>
+                        <div class="loader-item">
+                            <h3>Panorama 1 ultima</h3>
+                            <p>May 6, 2013 1:45 PM.</p>
+                        </div>
+                        <br clear="all">
+                    </div>
+                
+                </div><!-- end content_pop -->
+                
+	           	<div class="addbtn">
+                    <a href="#" class="green-button border-radius-4">ADD SELECTION TO TOUR</a>
+                </div>
+
+            </div>
+        </div> 
+        
+        
+    
+    	<header class="header">
+				﻿
+
+	        <a href="index.php" class="spinattic"><img src="images/spinattic.png"></a>
+			<div class="language">
+	            <a href="#" class="language_btn">
+	            	<div class="icon"></div>
+	                <font>ENG</font>
+	            </a>
+                <ul class="select_language">
+                	<li><a href="#">English</a></li>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">Portugués</a></li>
+                </ul>
+            </div>
+            <div class="search">
+            	<div class="bg_search">
+            	<form action="search.php" name="formsearch" method="GET">
+                	<input type="text" value="Search" id="search-input" onclick="if(this.value == 'Search'){this.value=''};" onfocus="this.select()" onblur="this.value=!this.value?'Search':this.value;" name="search">
+                	<!--a href="#" class="clear_input"></a--><!-- CRUZ PARA LIMPIAR BUSQUEDA-->
+                	<a href="#" class="glass_input" onclick="if (document.formsearch.search.value != '' && document.formsearch.search.value != 'Search'){document.formsearch.submit();};"></a><!-- LUPA DE BUSQUEDA-->
+			<input type="hidden" value="" name="order">
+			<input type="hidden" value="" name="c">
+                </form>
+                	<br clear="all">
+                <!--
+                	<div class="predictive">
+                		<ul>
+                	    	<li><a href="#"><strong>text</strong> 1</a></li>
+                	    	<li><a href="#"><strong>text</strong> 2</a></li>
+                	    	<li><a href="#"><strong>text</strong> 3</a></li>
+                	    	<li><a href="#"><strong>text</strong> 4</a></li>
+                	    	<li><a href="#"><strong>text</strong> 5</a></li>
+                	    	<li><a href="#"><strong>text</strong> 6</a></li>
+                	    </ul>
+                	</div>
+                -->
+				</div>                
+
+            </div>
+            <br clear="all">        </header>
+        <div class="nav">
+				﻿		<script src="js/fb.js"></script>
+		<script src="js/gp.js"></script>
+		        
+        <!--popup login-->
+        <div class="overlay forgotpassword">
+            <div class="pop">
+                <a href="#" class="closed closed_register_mobile"></a>
+                <h2>Forgot Password</h2>
+                <div class="content_pop">
+                    <p class="message">Don't worry, we'll send an email with instructions to access your account.</p>
+                    <form>
+    				<span id="reset_pop"></span>  
+                    <input type="text" placeholder="E-mail" class="mail" id="reset_email">
+                    <a href="#" class="login reset_pwd">Send</a>
+                    </form>
+                </div>
+            </div>
+        </div> 
+
+
+        <div class="overlay overlay_login">
+            <div class="pop">
+                <a href="#" class="closed closed_register_mobile"></a>
+                <h2>Log in</h2>
+                <div class="content_pop">
+                    <p class="message">I don't have an account yet and <a href="#" class="loginToRegister" >I want to register</a></p>
+                    <a href="#" class="facebook"></a>
+                   	<a href="#" class="googleplus"></a>
+    				<span id="login_pop"></span>  
+                        <input type="text" placeholder="E-Mail" class="mail" id="email">
+                        <input type="password" placeholder="Password" class="pass" id="pass">
+                        <a href="#" class="login loginaction">Log in</a>
+                        <label for="remember" class="terminos">
+                            <input type="checkbox" id="remember">
+                                <p>Remember me - <a href="#" class="forgot_pwd">Forgot password?</a></p>
+                            <br clear="all">
+                        </label>
+                </div>
+            </div>
+        </div>         
+        
+
+        <!--popup register-->
+		<div class="overlay overlay_register">
+        	<div class="pop" style="margin-top:-50px;">
+                <a href="#" class="closed closed_register_mobile"></a>
+                <h2>Register</h2>
+				<div class="content_pop">
+                    <p class="message">Register using your prefered social network:</p>
+                    <span id="data_pop">
+                    <a href="#" class="facebook"></a>
+                    <a href="#" class="googleplus"></a>
+                        <p class="message">Or register with your email address:</p>
+    					<span id="register_pop"></span>
+                        <input type="text" placeholder="Full Name" class="name" id="r_name">
+                        <input type="text" placeholder="E-mail" class="mail" id="r_email">
+                        <input type="text" placeholder="Repeat E-mail" class="mail" id="r_email1">
+                        <input type="password" placeholder="Password" class="pass" id="r_pass">
+                        
+                        <a href="#" class="register registeraction">Register</a>
+                        
+                        <label for="terminos" class="terminos">
+    	                    <input type="checkbox" id="terminos">
+    		                <p>I have read and agree to the <a href="#">Terms of Service Spinattic</a></p>
+    				        <br clear="all">
+                        </label>
+                    </span>
+                </div>
+			</div>
+		</div>
+
+
+
+	    <div class="login-register" style="display:none">
+	        <div class="or"></div>
+    	    <a href="#" class="login">Log in</a>
+	        <a href="#" class="register">Register</a>
+            <br clear="all">
+        </div>
+            
+
+
+	        <div class="user_login" style="display:block">
+	        <a href="profile.php?uid=29" class="user_image"><img id="nav_avatar" width="47" height="47" src="images/users/41bwgsmvoim1m9e.jpg"></a>
+            	<div class="user_name">
+                	<a href="profile.php?uid=29"><p>Ariel Mikel</p></a>
+					<div class="action_user">
+                		<a href="user_profile.php">Edit profile </a>/
+                    	<a href="lo.php"><strong> Logout</strong></a>
+	                	<br clear="all">
+					</div>
+                </div>
+                <br clear="all">
+            </div>
+            
+	        <div class="content_nav">
+
+            <ul class="menu">
+
+                <li>
+                         <a href="map.php" class="btn-social">Social</a>
+                  <ul class="submenu">
+                    <li>
+                          <a href="home.php">News 
+                          <!-- <span class="contador">+99</span>-->
+                          </a>
+                          
+                          <a href="notifications.php">Notifications 
+							                          
+                          </a>
+                          
+                          <a href="followers.php">followers 
+
+							                          
+                          <span class="contador" id="nav_followers">0</span>
+
+                          </a>
+                          <a href="following.php">following 
+							                          
+                          		<span class="contador" id="nav_following">3</span>
+                          
+                          </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                         <a href="#" class="btn-production">production</a>
+                  <ul class="submenu">
+                    <li>
+                          <a href="edit_virtual_tour.php">create new tour</a>
+                          
+                          <a href="manager_tour.php">Manage tours</a>
+                          
+                          <a href="manager_panoramas.php">Manage panos</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                    <a href="map.php" class="world-map">World Map</a>
+                    <a href="#" class="leader-board">Leader board</a>
+                        <li  class="acor">
+                            <a href="#" class="browse" >Explore <span class="acor"></span></a>
+                            <ul class="submenu menucategories">
+                                <li>
+                                                                        <a href="search.php?c=1&search=Destinations">Destinations</a>
+                                                                        <a href="search.php?c=1&search=Events">Events</a>
+                                                                        <a href="search.php?c=1&search=Hotels">Hotels</a>
+                                                                        <a href="search.php?c=1&search=Miscellaneous">Miscellaneous</a>
+                                                                        <a href="search.php?c=1&search=Museums">Museums</a>
+                                                                        <a href="search.php?c=1&search=Nature">Nature</a>
+                                                                        <a href="search.php?c=1&search=Parks">Parks</a>
+                                                                        <a href="search.php?c=1&search=Real Estate">Real Estate</a>
+                                                                        <a href="search.php?c=1&search=Resorts">Resorts</a>
+                                                                        <a href="search.php?c=1&search=Restaurants">Restaurants</a>
+                                                                        <a href="search.php?c=1&search=Universities">Universities</a>
+                                                                        <a href="search.php?c=1&search=Vehicles">Vehicles</a>
+                                                                    </li>
+                            </ul>
+                        </li>
+
+                </li>
+            </ul>
+
+
+            
+
+            <div class="privacy">
+                <div class="social_media">
+                <a href="#" class="facebook"></a>
+                <a href="#" class="twitter"></a>
+                <a href="#" class="googleplus"></a>
+                <br clear="all">
+                </div>
+                <p>
+                    <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+                    <br>
+                    © All panoramas are property 
+                    <br>
+                    of their authors
+                </p>
+            </div>
+
+            </div>        </div>
+
+        <div>
+        	<h1 class="new_virtual_tour">
+                        
+                        Editing tour: Título del tour                     
+                    
+												</h1>
+		</div>
+        <div class="wrapper wrapper-user">
+        <hr class="space180px" />
+
+<form name="form1" id="main-form" method="post" enctype="multipart/form-data" action="ultour.php">	
+	<input type="hidden" value="69" name="tour_id">
+	<!--div class="drag-upload">
+                <div class="upload-cloud">
+                    <div class="text drop-message">
+                        <h2>Click to upload your panoramas<br></h2>
+                        <h3>Or drag and drop your files here</h3>
+                        <a href="#" class="select-from">Select from your Panoramas Collection</a>
+                    </div>
+                </div>
+                <div class="features-here">
+                    <div class="text">
+                        <p>
+                            We can put information
+                            <br>
+                            or
+                            <br>
+                            features here
+                        </p>
+                    </div>
+                </div>           
+                <br clear="all">
+            </div-->
+
+            
+            
+<!-- MENSAJE DE PAGINA GUARDADA 
+
+
+<div class="message_box good_m" style="display:block;"><p>Good! Your Tour is saved!</p></div>
+<div class="message_box good_m"><p>Your Tour is saved and set as draft.</p></div>
+<div class="message_box good_m"><p>YEAH! Your Tour is Published.<br>If you set the privacy configuration to "Private" the tour is published only for you!</p></div>
+-->
+<div class="uploading_pano" style="display:none;">
+    <h3>Scenes in this tour</h3>
+    <a href="#" class="add-element border-radius-2 upload-more">
+        <div class="icon-upload-more"></div>
+        Upload more
+    </a>
+    <a href="#" class="add-element border-radius-2 add-more">
+        <div class="icon-add-more"></div>
+        Add more panos from collection
+    </a>
+
+</div>
+        
+<div id="drop-zone" >
+    <div class="text drop-message">
+                
+        <!--h2><a href="#" id="browse-file">Click</a> to upload your panoramas<br></h2>
+        <h3>Or drag and drop your files here</h3-->
+        <input id="browseFile" class="browseFile" type="file" multiple="multiple" style="position:fixed;top:-1000px;" value=""/>
+        <!--a href="#" class="select-from">Select from your Panoramas Collection</a-->
+    </div>
+            <form action="" method="post"></form>
+                    <div class="pano-item">
+                <div class="thumb-pano">
+                        <img src="panos/193/index.tiles/thumb200x100.jpg"/>
+                </div>
+                <div class="loader-item">
+                    Scene name: <h3 class="otf-editable">12_baja</h3> 
+
+                    <div class="on-edit">
+                        <form action="php-stubs/scenes.php" method="post">
+                            <input type="hidden" class="scene-id" name="scene-id" value="119">
+                            <input class="stringkey" type="text" size="32" value="12_baja" name="scene-name" /> 
+                            <br clear="all">
+                        </form>
+                    </div>
+
+                    <input type="hidden" class="scene-field" name="scene-id[]" value="119">
+
+                    <br />File name: <h4 class="pano-title">12_baja.jpg</h4>
+
+                    <input type="hidden" class="pano-field" name="pano-id[]" value="193">
+
+
+                 </div>
+                <br clear="all">
+
+                <a href="#" class="delete-item scene-remove" title="Remove Scene" data-id="119"></a>
+                <a href="#" class="add-element border-radius-2 edit-hotspots" data-id="119" data-thumb="panos/193/index.tiles/thumb.jpg">
+                    Edit hotspots
+                </a>
+                <a href="#" class="drag-item"  ></a>
+            </div>
+
+                    <div class="pano-item">
+                <div class="thumb-pano">
+                        <img src="panos/194/index.tiles/thumb200x100.jpg"/>
+                </div>
+                <div class="loader-item">
+                    Scene name: <h3 class="otf-editable">puerto1_low</h3> 
+
+                    <div class="on-edit">
+                        <form action="php-stubs/scenes.php" method="post">
+                            <input type="hidden" class="scene-id" name="scene-id" value="120">
+                            <input class="stringkey" type="text" size="32" value="puerto1_low" name="scene-name" /> 
+                            <br clear="all">
+                        </form>
+                    </div>
+
+                    <input type="hidden" class="scene-field" name="scene-id[]" value="120">
+
+                    <br />File name: <h4 class="pano-title">puerto1_low.jpg</h4>
+
+                    <input type="hidden" class="pano-field" name="pano-id[]" value="194">
+
+
+                 </div>
+                <br clear="all">
+
+                <a href="#" class="delete-item scene-remove" title="Remove Scene" data-id="120"></a>
+                <a href="#" class="add-element border-radius-2 edit-hotspots" data-id="120" data-thumb="panos/194/index.tiles/thumb.jpg">
+                    Edit hotspots
+                </a>
+                <a href="#" class="drag-item"  ></a>
+            </div>
+
+            
+    <!-- pano loading -->                
+    <!--div class="pano-item">
+                            <div class="thumb-pano"></div>
+                            <div class="loader-item">
+            Scene name: <h3 class="otf-editable">Scene 1</h3>
+            <div class="on-edit">
+                <form action="php-stubs/scenes.php" method="post">                                         
+                    <input type="hidden" id="scene-id" name="scene-id" value="456">
+                    <input class="stringkey" id="title-456" type="text" size="32" value="t�tulo cargado" name="scene-name" /> 
+                    <br clear="all">
+                </form>      
+            </div>
+            <br />
+            File name: <h4>Panorama 1</h4>
+
+
+            </div>
+        <br clear="all">
+        <a href="#" class="delete-item" title="Delete item"></a>
+                            <a href="#" class="add-element border-radius-2 edit-hotspots">
+                Edit hotspots
+            </a>
+                            <a href="#" class="drag-item"></a>
+    </div>
+
+
+    <div class="pano-item pano-item-cargado">
+                            <div class="thumb-pano">
+            <img src="images/ejemplo/thumb-upload.jpg">
+                            </div>
+                            <div class="loader-item">
+            Scene name: <h3 class="otf-editable">Scene 1</h3>
+            <div class="on-edit">
+                <form action="php-stubs/scenes.php" method="post">                                         
+                    <input type="hidden" id="scene-id" name="scene-id" value="456">
+                    <input class="stringkey" id="title-456" type="text" size="32" value="t�tulo cargado" name="scene-name" /> 
+                    <br clear="all">
+                </form>      
+            </div>
+            <br />
+            File name: <h4>Panorama 2</h4>							          			
+
+            </div>
+        <br clear="all">
+        <a href="#" class="delete-item" title="Delete item"></a>
+                            <a href="#" class="add-element border-radius-2 edit-hotspots">
+                Edit hotspots
+            </a>
+                            <a href="#" class="drag-item"></a>
+    </div-->
+</div>
+                
+                
+<script src="js/jquery.filedrop.js"></script>	  
+<script src="js/jquery.filedrop.start.js"></script>	  
+	    
+
+			<!--tabs-->	
+            <div id="tabs" style="display:none;">
+                <a href="tour.php?id=69" class="blue-link float-right" target="_blank">VIEW TOUR &raquo;</a>
+                  <ul>
+                    <li><a href="#tabs-1" class="tab-button">Tour Info</a></li>
+                    <li><a href="#tabs-2" class="tab-button">Tour skin</a></li>
+                  </ul>
+                  <div id="tabs-1" class="tabs-content">
+  					<div class="column">
+                    <label class="title">
+                        <p>Title * </p>
+                        <input class="info-tour border-radius-4 form-user" name="title" id="title" value="Título del tour">
+                    </label>
+                    <label class="description">
+                        <p>Description * </p>
+                        <textarea class="info-tour border-radius-4 form-user" name="description" id="description">lalala </textarea>
+                    </label>
+
+<!--
+                    <label class="frendly">
+                        <p>URL * </p>
+                        <input class="info-tour border-radius-4 form-user" value="" name="friendly_url">
+                        <br clear="all">
+                    </label>
+
+
+                    <label class="frendly">
+                        <p>Thumb * </p>
+                        <input class="info-tour border-radius-4 form-user" type="file" value="" name="thumb">
+                        <br clear="all">
+                    </label>
+
+
+                    <label class="frendly">
+                        <p>Frendly URL</p>
+                        <font>https://www.spinattic.com/ </font>
+                        <input class="info-tour border-radius-4 form-user" value="Panoramas" name="friendly_url">
+                        <br clear="all">
+                    </label>
+
+-->
+
+                    <label class="tags" style="width:93%;">
+                        <p>Tags * <a href="#" class="help" title="Add multiple tags to your tour. Separate words by comma"></a></p>
+                        <input class="info-tour border-radius-4 form-user" value="tour,montaña" name="tags_loaded" id="tags_loaded">
+                    </label>    
+
+                    <!--label>
+                        <p>User Interactions</p>
+                    </label-->
+                    
+                    <label>
+                        <input class="info-tour border-radius-4 form-user" type="checkbox" name="allow_comments" id="allow_comments" checked>
+                        Allow Comments
+                    </label>
+                    <label>
+                        <input class="info-tour border-radius-4 form-user" type="checkbox" name="allow_social" id="allow_social" checked>
+                        Allow Social Sharing
+                    </label>
+                    <label>
+                        <input class="info-tour border-radius-4 form-user" type="checkbox" name="allow_embed" id="allow_embed" checked>
+                        Allow Embed Code
+                    </label>
+                    <label>
+                        <input class="info-tour border-radius-4 form-user" type="checkbox" name="allow_votes" id="allow_votes" checked>
+                        Allow Users votes
+                    </label>
+
+
+					</div>                    
+  					<div class="column">
+	                 <label class="privacy-config">               
+                        <p>Privacy Configuration <a href="#" class="help" title="Set the privacy level of the tour. Click to learn more"></a></p>
+                        <select class="info-tour border-radius-4 form-user" name="privacy" id="privacy">
+                            <option value="public" selected>Public</option>
+                            <option value="private" >Private</option>
+                            <option value="notlisted" >Not listed</option>
+                        </select>
+                        <!--p><font>Anyone can search for and view</font></p-->
+                    </label>
+                    
+	                 <label class="category">               
+                        <p>Category * <a href="#" class="help" title="Choose the category to publish the tour. Click to learn more"></a></p>
+                        <select class="info-tour border-radius-4 form-user" name="category" id="category">
+                            <option value="">Choose category</option>
+                            
+                            <option value="Destinations" >Destinations</option>
+                            
+                            
+                            <option value="Events" >Events</option>
+                            
+                            
+                            <option value="Hotels" selected>Hotels</option>
+                            
+                            
+                            <option value="Miscellaneous" >Miscellaneous</option>
+                            
+                            
+                            <option value="Museums" >Museums</option>
+                            
+                            
+                            <option value="Nature" >Nature</option>
+                            
+                            
+                            <option value="Parks" >Parks</option>
+                            
+                            
+                            <option value="Real Estate" >Real Estate</option>
+                            
+                            
+                            <option value="Resorts" >Resorts</option>
+                            
+                            
+                            <option value="Restaurants" >Restaurants</option>
+                            
+                            
+                            <option value="Universities" >Universities</option>
+                            
+                            
+                            <option value="Vehicles" >Vehicles</option>
+                            
+                        </select>
+                    </label>
+                    <br clear="all">
+
+                    
+					<div class="map-location">
+						<p>Location on Map * <a href="#" class="help" title="Click on the map to set the location of your tour"></a></p>
+						<div id="map_canvas"></div>
+                    </div>
+                    
+                   
+		            <label class="latitude">
+                        <p>Latitude</p>
+                        <input name="lat" id = "latFld" class="info-tour border-radius-4 form-user" value="-36.49197347059368" readonly>
+                    </label>
+		            <label class="longitude">
+                        <p>Longitude</p>
+                        <input name="lon" id = "lngFld" class="info-tour border-radius-4 form-user" value="-62.578125" readonly>
+                    </label>
+
+	                 <label class="location-info">               
+                        <p>Location</p>
+                        <input class="info-tour border-radius-4 form-user" id="location" name="location" id="location" style="width:450px" value="Ruta Nacional 33, Trenque Lauquen Partido, Buenos Aires Province, Argentina" readonly>
+                        <br clear="all">
+                    </label>
+                    
+
+
+                    <br clear="all">
+
+					
+
+                    </div>
+                    <br clear="all">
+                    
+                    <hr class="separator" />
+
+                    <input type="hidden" name="saving-type" id="saving-type" value="draft"/>
+                    
+                    <a href="#" class="red-button border-radius-4 remove-tour" style="float:left;font-size: 14px;">DELETE</a>     
+                    <a href="#" onclick="jQuery('#saving-type').val('draft'); return verificar();" class="green-button border-radius-4 float-left">SAVE AS DRAFT</a>
+                        
+                        <a href="#" onclick="jQuery('#saving-type').val('publish'); return verificar();" class="green-button border-radius-4 float-left">UPDATE</a>
+                        
+                    <a href="tour.php?id=69" class="blue-buttom border-radius-4 float-right" target="_blank">VIEW TOUR</a>
+                    
+                    <br><br clear="all">
+
+                  </div><!-- end tabs-1 -->
+                  
+
+                  <!-- change tour skin -->
+                  <div id="tabs-2" class="tabs-content tab-skin">
+                    <div class="skins-wrapper active-skin">
+                        <h3>Active interface design:</h3>
+                        <div class="skin-box">
+                            <div class="skin-thumb" style="background-image: url(interfaces/SSI_1.0/SSI_1.0_preview.jpg);">
+                                <a href="#">Live preview</a>
+                            </div>
+                            <h4>Spinattic Dark Standard<br><a href="#">by Spinattic</a></h4>
+                            <span>Active</span>
+                        </div>
+                    </div>
+<br clear="all">
+                    <div class="skins-wrapper">
+                        <h3>Free standard interfaces designs:</h3>
+                        <div class="skin-box">
+                            <div class="skin-thumb" style="background-image: url(interfaces/SSI_1.0/SSI_1.0_preview.jpg);">
+                                <a href="#">Live preview</a>
+                            </div>
+                            <h4>Spinattic Dark Standard<br><a href="#">by Spinattic</a></h4>
+                            <span><a href="#">Activate</a></span>
+                        </div>
+                        <div class="skin-box">
+                            <div class="skin-thumb" style="background-image: url(interfaces/SSI_1.0/SSI_1.0_preview.jpg);">
+                                <a href="#">Live preview</a>
+                            </div>
+                            <h4>Spinattic Dark Standard<br><a href="#">by Spinattic</a></h4>
+                            <span><a href="#">Activate</a></span>
+                        </div>
+                        <div class="skin-box">
+                            <div class="skin-thumb" style="background-image: url(interfaces/SSI_1.0/SSI_1.0_preview.jpg);">
+                                <a href="#">Live preview</a>
+                            </div>
+                            <h4>Spinattic Dark Standard<br><a href="#">by Spinattic</a></h4>
+                            <span><a href="#">Activate</a></span>
+                        </div>
+                        <div class="skin-box">
+                            <div class="skin-thumb" style="background-image: url(interfaces/SSI_1.0/SSI_1.0_preview.jpg);">
+                                <a href="#">Live preview</a>
+                            </div>
+                            <h4>Spinattic Dark Standard<br><a href="#">by Spinattic</a></h4>
+                            <span><a href="#">Activate</a></span>
+                        </div>
+                        <div class="skin-box">
+                            <div class="skin-thumb" style="background-image: url(interfaces/SSI_1.0/SSI_1.0_preview.jpg);">
+                                <a href="#">Live preview</a>
+                            </div>
+                            <h4>Spinattic Dark Standard<br><a href="#">by Spinattic</a></h4>
+                            <span><a href="#">Activate</a></span>
+                        </div>
+                    </div>
+
+<br clear="all">
+                    <div class="skins-wrapper">
+                        <h3>Purchased interfaces designs:</h3>
+                        <div class="skin-box">
+                            <div class="skin-thumb" style="background-image: url(interfaces/SSI_1.0/SSI_1.0_preview.jpg);">
+                                <a href="#">Live preview</a>
+                            </div>
+                            <h4>Spinattic Dark Standard<br><a href="#">by Spinattic</a></h4>
+                            <span><a href="#">Activate</a></span>
+                        </div>
+                        <div class="skin-box">
+                            <div class="skin-thumb" style="background-image: url(interfaces/SSI_1.0/SSI_1.0_preview.jpg);">
+                                <a href="#">Live preview</a>
+                            </div>
+                            <h4>Spinattic Dark Standard<br><a href="#">by Spinattic</a></h4>
+                            <span><a href="#">Activate</a></span>
+                        </div>
+                        <div class="skin-box buynow-box">
+                            <div class="skin-thumb">
+                                <a href="#">Buy more awesome custom interface designs at The Attic</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br clear="all">
+                  </div>
+                  <!-- end tabs-2  change tour skin -->
+
+
+                </div> <!-- end tabs -->
+            </div>
+        
+</form>
+            
+	</body>
+</html>    

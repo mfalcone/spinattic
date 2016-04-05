@@ -1,0 +1,20 @@
+<div class="pano-item" id="pano-<%= data.ind %>" data-proc="<%= data.proc %>">
+	<img data-url="php/panos/<%= data.filesrc %>" class="thumb" src="images/thumb.jpg"/>
+	<div class="left-uploader">
+		<h3>File Name: <span><%= data.filesrc %></span></h3>
+		<div class="progress-wrapper">
+			<div class="progress"></div>
+			<div class="percentage"></div>
+		</div>
+	</div>
+	<div class="right-uploader">
+		<div class="icon-msg">
+			<img src="images/wait.gif" class="wait" />
+			<div class="processing none">
+				<img src="images/process.gif" />
+			</div>
+		</div>
+		<div class="fa fa-close"></div>
+	</div>
+</div>
+</div>

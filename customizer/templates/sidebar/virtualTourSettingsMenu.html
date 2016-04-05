@@ -1,0 +1,243 @@
+<div id="virtualTourSettings-menu" class="submenu land-submenu">
+    <div class="inner">
+        <div class="panel-wrapper">
+            <header>
+                <h2>Virtual Tour Settings</h2>
+            </header>
+            <%console.log(data)%>
+            
+            <ul>
+                <li class="general-settings">
+                    <h3><span class="fa fa-gear fa-lg leftish"></span>General Settings<span class="fa fa-caret-down fa-lg right caret"></span></h3>
+                    
+                    <div class="sub-items">
+                        <!-- <label for="tourTitle">Tour Title:</label>
+                        <input type="text" value="<%= data.settings._title %>" id="tourTitle" name="tourTitle" class="tour-data" data-obj="settings" data-bind="_title"> -->
+
+                        <label for="friendlyURLTour">Frienly URL: <sub>(A-Z a-z 0-9)</sub></label>
+                        <span class="friendlyURL">http://spinattic.com/<%=usernick%>/</span>
+                        <input type="text" name="friendlyURLTour" id="friendlyURLTour" value="<%= data.datatour.friendlyURL %>" class="friendlyURL" >
+
+                        <label for="tour-description">Tour Description</label>
+                        <textarea name="tour-description" id="tour-description" cols="30" rows="10" data-obj="settings" data-bind="_description"><%= data.settings._description %></textarea>
+
+                        <label for="tagsTour"><span class="fa fa-tags fa-lg"></span>Tags</label>
+                        <input type="text" value="<%= data.datatour.tags %>" id="tagsTour" name="tagsTour">
+                        <div id="toAppendTags"></div>
+                        <label for="Category"><span class="fa fa-list-ul fa-lg"></span> Category</label>
+                        <div name="Category" id="Category" class="dropdown dd-settingmenu">
+                            <%
+                            var cat;
+                            if(data.datatour.category == ""){
+                                cat = "Choose Category"
+                            }else{
+                                cat = data.datatour.category
+                            }
+                            %>
+                            <h2><span class="title"><%=cat%></span><span class="fa fa-caret-down fa-lg right arrow"></span></h2>
+                            <ul class="category">
+                            </ul>
+                        </div>
+
+                        <label for="privacyConf"><span class="fa fa-lock fa-lg"></span> Privacy Configuration</label>
+                        <div title="privacyConf" id="privacyConf" class="dropdown  dd-settingmenu">
+                            <h2><span class="title"></span><span class="fa fa-caret-down fa-lg right arrow"></span></h2>
+                            <ul class="privacy">
+                            </ul>
+                        </div>
+
+                        <ul class="check-group">
+                            <li><span class="fa fa-<%if( data.datatour.allow_comments == "on"){%>check-<%}%>square fa-lg" id="allow_comments"></span> Allow Comments</li>
+                            <li><span class="fa fa-<%if( data.datatour.allow_social == "on"){%>check-<%}%>square fa-lg" id="allow_social"></span> Allow Social Sharing</li>
+                            <li><span class="fa fa-<%if( data.datatour.allow_embed == "on"){%>check-<%}%>square fa-lg" id="allow_embed"></span> Allow Embed Code</li>
+                            <li><span class="fa fa-<%if( data.datatour.allow_votes == "on"){%>check-<%}%>square fa-lg" id="allow_votes"></span> Allow User Votes</li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="location-submenu">
+                    <h3><span class="fa fa-map-marker fa-lg leftish"></span>Location<span class="fa fa-caret-down fa-lg right caret"></span></h3>
+
+                    <div class="sub-items">
+                        <h2><span class="help fa fa-question-circle" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></span> Choose how you want to locate your tour on Spinattic's world map</h2>
+                        <ul class="checkboxes">
+                            <li data-evt="singleLoc" data-val="tour"><span class="fa fa-circle<%if( data.datatour.show_lat_lng == "tour"){%>-o<%}%> fa-lg"></span>Use a single location for the tour on world map.</li>
+                            <li data-evt="eachScene" data-val="scene"><span class="fa fa-circle<%if( data.datatour.show_lat_lng == "scene"){%>-o<%}%> fa-lg"></span>Use each scene's location on world map.</li>
+                            <li data-evt="noMap" data-val="none"><span class="fa fa-circle<%if( data.datatour.show_lat_lng == "none"){%>-o<%}%> fa-lg"></span>Do not display the tour's location on the world map.</li>
+                        </ul>
+                        
+                        <span class="fa fa-search right pointer bigger-map"<%if( data.datatour.show_lat_lng != "tour"){%>style="display:none"<%}%>> Bigger Map</span>
+
+                        <div class="gmap-wrapper" <%if( data.datatour.show_lat_lng != "tour"){%>style="display:none"<%}%>></div>
+                    
+                    </div>
+                </li>
+
+                <li class="mouse-control-settings">
+                    <h3><span class="fa fa-arrows-v fa-lg leftish"></span>Mouse control settings<span class="fa fa-caret-down fa-lg right caret"></span></h3>
+
+                    <div class="sub-items short">
+                        <div class="input-row positionRelative">
+                            <label for="mouseType"><span class="help fa fa-question-circle"></span> Mouse Type</label>
+                            <div class="absoluteRight ">
+                                <div title="Mouse" id="Mouse" class="dropdown dd-settingmenu">
+                                        <%
+                                            var textToShow;
+                                            _.each(data.mousetypes,function(elem,ind){ 
+                                                if(elem.value == data.control._mousetype){
+                                                    textToShow = elem.label;
+                                                }
+                                         })%>
+                                    <h2><span class="title"><%= textToShow %></span> <span class="fa fa-caret-down fa-lg right arrow"></span></h2>
+                                    <ul>
+                                        <%_.each(data.mousetypes,function(elem,ind){ %>
+                                                <li data-value="<%=elem.value%>" data-obj="control" data-bind="_mousetype"><%=elem.label%></li>
+                                        <% })%>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="zoomToCursor"><span class="help fa fa-question-circle"></span> Zoom to Cursor</label>
+                            <input type="hidden" name="zoomToCursor" id="zoomToCursor">
+                            <div class="onoffswitch absoluteRight">
+                                <input type="checkbox" name="onoffswitch1" class="onoffswitch-checkbox mouse-autorotate" data-obj="control" data-bind="_zoomtocursor" id="zoomtocursor" <% if(data.control._zoomtocursor == "true"){ %>checked <%}%>>
+                                <label class="onoffswitch-label" for="zoomtocursor">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="zoomoutCursor"><span class="help fa fa-question-circle"></span> Zoom out cursor</label>
+                            <input type="hidden" name="zoomoutCursor" id="zoomoutCursor">
+                            <div class="onoffswitch absoluteRight">
+                                <input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox mouse-autorotate" data-obj="control" data-bind="_zoomoutcursor"  id="zoomoutcursor" <% if(data.control._zoomoutcursor == "true"){ %>checked <%}%>>
+                                
+                                <label class="onoffswitch-label" for="zoomoutcursor">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="mouseaccelerate"><span class="help fa fa-question-circle"></span> Mouse accelerate</label>
+                            <input class="absoluteRight tour-data" type="number" name="mouseaccelerate" id="mouseaccelerate" step="0.1" value="<%= data.control._mouseaccelerate %>" min="-100" max="100" maxlength = "3"  data-obj="control" data-bind="_mouseaccelerate">
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="mousespeed"><span class="help fa fa-question-circle"></span> Mouse speed</label>
+                            <input class="absoluteRight tour-data" type="number" name="mousespeed" id="mousespeed" step="0.1" value="<%= data.control._mousespeed %>" data-obj="control" data-bind="_mousespeed">
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="mousefriction"><span class="help fa fa-question-circle"></span> Mouse friction</label>
+                            <input class="absoluteRight tour-data" type="number" name="mousefriction" id="mousefriction" step="0.1" value="<%= data.control._mousefriction %>" min="0.1" max="1" data-obj="control" data-bind="_mousefriction">
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="mousefovchange"><span class="help fa fa-question-circle"></span> Mouse fov change</label>
+                            <input class="absoluteRight tour-data" type="number" name="mousefovchange" id="mousefovchange" step="0.1" value="<%= data.control._mousefovchange %>" data-obj="control" data-bind="_mousefovchange">
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="FOVspeed"><span class="help fa fa-question-circle"></span> FOV speed</label>
+                            <input class="absoluteRight tour-data" type="number" name="FOVspeed" id="FOVspeed" step="0.1" value="<%= data.control._fovspeed %>" data-obj="control" data-bind="_fovspeed">
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="FOVfriction"><span class="help fa fa-question-circle"></span> FOV friction</label>
+                            <input class="absoluteRight tour-data" type="number" name="FOVfriction" id="FOVfriction" step="0.1" value="<%= data.control._fovfriction %>"  min="0.1" max="1" data-obj="control" data-bind="_fovfriction">
+                        </div>
+                    </div>
+                </li>
+                <li class="autorotate-settings">
+                    <h3><span class="fa fa-rotate-left fa-lg leftish "></span>Autorotate settings<span class="fa fa-caret-down fa-lg right caret"></span></h3>
+                    
+                    <div class="sub-items short">
+                        <h2>Auto-rotation, moving and zooming when there's no interaction with the panorama</h2>
+
+                        <div class="input-row positionRelative">
+                            <label for="enabledautorotate"><span class="help fa fa-question-circle"></span> Enabled</label>
+                            <div class="onoffswitch absoluteRight">
+                                <input type="checkbox" name="onoffswitch3" class="onoffswitch-checkbox mouse-autorotate" id="myonoffswitch3" <% if(data.autorotate._enabled == "on"){ %>checked <%}%> data-obj="autorotate" data-bind="_enabled">
+
+                                <label class="onoffswitch-label" for="myonoffswitch3">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="waittime"><span class="help fa fa-question-circle"></span> Wait time</label>
+                            <input class="absoluteRight tour-data" type="number" id="waittime" name="waittime" step="0.1" value="<%= data.autorotate._waittime %>" maxlength='2' data-obj="autorotate" data-bind="_waittime">
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="acceleration"><span class="help fa fa-question-circle"></span> Acceleration</label>
+                            <input class="absoluteRight tour-data" type="number" id="acceleration" name="acceleration" value="<%= data.autorotate._accel %>" data-obj="autorotate" data-bind="_accel">
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="speed"><span class="help fa fa-question-circle"></span> Speed</label>
+                            <input class="absoluteRight tour-data" type="number" id="speed" name="speed" value="<%= data.autorotate._speed %>" data-obj="autorotate" data-bind="_speed">
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="move-to-horizon"><span class="help fa fa-question-circle"></span> Move to Horizon</label>
+
+                            <div class="onoffswitch middlePosition switchInput">
+                                <input type="checkbox" name="onoffswitch4" class="onoffswitch-checkbox" id="myonoffswitch4" <% if(data.autorotate._horizon != "false"){ %>checked <%}%> class="tour-data" data-obj="autorotate" data-bind="_horizon">
+
+                                <label class="onoffswitch-label" for="myonoffswitch4">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                </label>
+                            </div>                  
+                            <%if(data.autorotate._horizon != "false"){
+                                    tohorizonvalor = data.autorotate._horizon;
+                                    disabledtohorizon = "";
+                                }else{
+                                    tohorizonvalor = "0.0";
+                                    disabledtohorizon = "disabled"
+                                }
+                                %>
+                            <input class="absoluteRight tour-data <%=disabledtohorizon%>" type="number" id="move-to-horizon" data-obj="autorotate" data-bind="_horizon" name="move-to-horizon" value="<%=tohorizonvalor%>" <%=disabledtohorizon%>>
+                        </div>
+
+                        <div class="input-row positionRelative">
+                            <label for="move-to-fov"><span class="help fa fa-question-circle"></span> Move to Fov</label>
+
+                            <div class="onoffswitch middlePosition switchInput">
+                                <input type="checkbox" name="onoffswitch5" class="onoffswitch-checkbox" id="myonoffswitch5" <% if(data.autorotate._tofov != "false"){ %>checked <%}%> class="tour-data" data-obj="autorotate" data-bind="_tofov">
+
+                                <label class="onoffswitch-label" for="myonoffswitch5">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch fa fa-bars fa-lg"></span>
+                                </label>
+                            </div>
+                            <%if(data.autorotate._tofov != "false"){
+                                    tofovvalor = data.autorotate._tofov;
+                                    disabledtofov = "";
+                                }else{
+                                    tofovvalor = "90";
+                                    disabledtofov = "disabled";
+                                }
+                                %>
+                            <input class="absoluteRight tour-data <%=disabledtofov%>" type="number" id="move-to-fov" name="move-to-fov" value="<%=tofovvalor%>" data-obj="autorotate" data-bind="_tofov" <%=disabledtofov%>>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

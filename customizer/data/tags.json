@@ -1,0 +1,13 @@
+ [
+    { 
+        "id": "ejem1", 
+        "label": "Ejemplo 1", 
+        "value": "Ejemplo 1" 
+    }, 
+
+    { 
+        "id": "ejem2", 
+        "label": "Ejemplo 2", 
+        "value": "Ejemplo 2" 
+    }
+]

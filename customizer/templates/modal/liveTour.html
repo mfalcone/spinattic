@@ -1,0 +1,126 @@
+<div class="liveTourModal">
+<div class="scrollwrapper">
+	<form>
+		<div class="col-2 left-col">
+			<div class="row">
+				<label for="title">Tour title: <i class="help fa fa-question-circle"></i></label>
+				<input id="title" type="text" placeholder="Tour title" value="<%= tourInfo.settings._title%>" data-obj="settings" data-bind="_title">
+			</div>
+
+			<div class="row">
+				<label for="firendlyUrl">Friendly URL: <i class="help fa fa-question-circle"></i></label>
+				<div class="url">
+					<span>spinattic.com/<%=tourInfo.usernick%>/</span>
+					<input id="firendlyUrl" type="text" placeholder="tourname" value="<%= tourInfo.datatour.friendlyURL%>">
+				</div>
+			</div>
+
+			<div class="row">
+				<label for="description">Tour description: <i class="help fa fa-question-circle"></i></label>
+				<textarea id="description" type="text" placeholder="Tour description" data-obj="settings" data-bind="_description"><%= tourInfo.settings._description%></textarea> 
+			</div>
+
+			<div class="row">
+				<label for="tags">Tags: <i class="help fa fa-question-circle"></i></label>
+				<input type="text" value="<%= tourInfo.datatour.tags %>" id="tagsLiveModal2" name="tagsLiveModal" class="tagLiveModal2">
+				<div id="toAppendTagsModal"></div>
+			</div>
+
+			<div class="row">
+				 <%
+					var cat;
+					if(tourInfo.datatour.category == ""){
+						cat = "Choose Category"
+					}else{
+						cat = tourInfo.datatour.category;
+					}
+				%>
+				<label for="category-lt">Category: <i class="help fa fa-question-circle"></i></label>
+				<div id="category-lt" class="dropdown dd-liveTour">
+					<h3><span class="title"><%=cat%></span> <i class="fa fa-caret-down right arrow"></i></h3>
+					<ul class="category">
+					</ul>
+				</div>
+			</div>
+
+			<div class="row">
+				<label for="privacy-lt">Privacy configuration: <i class="help fa fa-question-circle"></i></label>
+				<div id="privacy-lt" class="dropdown dd-liveTour">
+					<h3><span class="title"></span> <i class="fa fa-caret-down right arrow"></i></h3>
+					<ul class="privacy">
+					</ul>
+				</div>
+			</div>
+
+			<div class="row">
+				<ul class="check-group">
+					<li>
+						<span class="fa fa-<%if( tourInfo.datatour.allow_comments == "on"){%>check-<%}%>square-o fa-lg" id="modal_allow_comments"></span>
+						Allow Comments
+					</li>
+					<li>
+						<span class="fa fa-<%if( tourInfo.datatour.allow_social == "on"){%>check-<%}%>square-o fa-lg" id="modal_allow_social"></span> 
+						Allow Social Sharing
+					</li>
+					<li>
+						<span class="fa fa-<%if( tourInfo.datatour.allow_embed == "on"){%>check-<%}%>square-o fa-lg" id="modal_allow_embed"></span>
+						Allow Embed Code
+					</li>
+					<li>
+						<span class="fa fa-<%if( tourInfo.datatour.allow_votes == "on"){%>check-<%}%>square-o fa-lg" id="modal_allow_votes"></span> 
+						Allow User Votes
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="col-2 right-col">
+			<div class="row">
+				<label for="live-tour-img-uploader">Tour cover image: <i class="help fa fa-question-circle"></i></label>
+				<div id="live-tour-img-uploader" class="editor-img"></div>
+
+				<span id="reset-live-thumb" class="fa fa-refresh" <%if(tourInfo.datatour.tour_thumb_custom == "0"){%>style="display:none"<%}%>> Reset cover to the first scene's thumbnail</span>
+			</div>
+
+			<div class="row">
+				<label for="location-lt">Tour location: <i class="help fa fa-question-circle"></i></label>
+
+				<div id="location-lt" class="dropdown dd-liveTour">
+					<h3><span class="title"></span> <i class="fa fa-caret-down right arrow"></i></h3>
+					<ul class="category">
+						<li data-loc="tour">Use a single location</li>
+						<li data-loc="scene">Indicate each scene's location</li>
+						<li data-loc="none">Do not display the tour's location on the world map</li>
+					</ul>
+				</div>
+
+				<div id="loc-tour" class="loc-description none">
+					<p class="location-txt"><span>Use a single location:</span> A single marker will represent the entire tour on the world map.</p>
+					<div class="gmap-wrapper"></div>
+				</div>
+				<div id="loc-scene" class="loc-description none">
+					<p class="location-txt">Indicate each scene's location:* Each scene in this tour will be represented with a marker on the world map</p>
+				</div>
+				<div id="loc-none" class="loc-description none">
+					<p class="location-txt">This tour won't be represented on the world map</p>
+				</div>
+			</div>
+			<!--
+			<div class="row">
+				<label for="headings-lt">Location headings: <i class="help fa fa-question-circle"></i></label>
+				<input id="headings-lt" type="text" placeholder="Providencia, Archipielago, Colombia">
+			</div>
+			-->			
+		</div>
+	</form>
+</div>
+
+<footer>
+	<span class="cancel uploader-btn red left">Cancel</span>
+	<div class="right">
+		<span>OK I'M DONE</span>
+		<span class="save uploader-btn green inlineBlock" id="make-live-bt">Make My tour Live!</span>
+	</div>
+</footer>
+</div>

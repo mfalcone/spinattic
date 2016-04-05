@@ -1,0 +1,508 @@
+<krpano>
+
+<data name="config"
+	id="INTERFACE_A_1.0"
+
+/>
+<action name="setConfig">
+txtadd(interfacePath,'%SWFPATH%../interfaces/',get(data[config].id),'/');
+</action>
+
+<include url="cursors/cursors.xml" />
+<include url="photos.xml" />
+
+<contextmenu>
+<item	name="Spinattic"  caption="spinattic.com" onclick="openurl(http://www.spinattic.com,_blank); " />
+</contextmenu>
+
+<autorotate enabled="true"
+            waittime="3.0"
+            accel="1.0"
+            speed="5.0"
+            horizon="on"
+            tofov="on"
+            />
+
+<plugin name="loader" url="%SWFPATH%/plugins/progress.swf" keep="true" align="center" preload="true" devices="flash" zorder="999" handcursor="false" />
+
+
+
+<events 
+		onenterfullscreen="set(plugin[full].visible,false); set(plugin[salirFull].visible,true); abreNav(); "
+		onexitfullscreen ="set(plugin[full].visible,true); set(plugin[salirFull].visible,false); "
+		onpreviewcomplete=""
+		onresize="resizeMenu();"
+		onxmlcomplete="buildMenu();
+		setConfig();"
+
+/>
+
+
+<!-- panel-->
+<plugin name="contMenu"
+	type="container" 
+	bgcolor="0x000000" 
+	bgalpha="0.8" 
+	bgcapture="false"
+	x="-235"
+	align="left"
+	height="100%"
+	width="235"
+	keep="true"
+	zorder="99"
+	handcursor="false"
+/>
+
+
+<!--plugin name="logo"
+	url="graphics/logo.png"
+	align="top"
+	y="10"
+	zorder="102"
+	keep="true"
+	handcursor="false"
+	parent="contMenu"
+/-->
+
+<plugin name="borde"
+	url="graphics/borde.png"
+	align="right"
+	edge="left"
+	height="100%"
+	handcursor="false"
+	parent="contMenu"
+	keep="true"
+	zorder="99"
+/>
+
+<plugin name="abreMenu"
+	style="menu"
+	
+	edge="left"
+	align="right"
+	x="-5"
+	crop="00|00|31|87"
+	onovercrop="31|00|31|87"
+	ondowncrop="93|00|31|87"
+	zorder="5"
+	keep="true"
+	onclick="abreNav();"
+	parent="contMenu"
+/>
+
+<plugin name="cierraMenu"
+	style="menu"
+	edge="left"
+	align="right"
+	x="-5"
+	crop="00|00|31|87"
+	onovercrop="62|00|31|87"
+	ondowncrop="124|00|31|87"
+	zorder="5"
+	keep="true"
+	onclick="cierraNav();"
+	parent="contMenu"
+	visible="false"
+/>
+
+
+<!-- control buttons--> 	 
+<plugin name="zoomIn"
+	style="controles"
+	align="topright"
+	x="10"	y="82"
+	crop="00|52|27|26"
+	onovercrop="27|52|27|26"
+	ondowncrop="54|52|27|26"
+	ondown="set(fov_moveforce,-1);"
+	onup="set(fov_moveforce,0);"
+	onhover="tween(plugin[zoomCartel].x,36,0.1);"
+	onout="tween(plugin[zoomCartel].x,-80,0.1);"
+	keep="true"
+/>
+	
+<plugin name="zomOut"
+	align="topright"
+	style="controles"
+	x="10"	y="108"
+	crop="00|78|27|26"
+	onovercrop="27|78|27|26"
+	ondowncrop="54|78|27|26"
+	ondown="set(fov_moveforce,+1);"
+	onup="set(fov_moveforce,0);"
+	onhover="tween(plugin[zoomCartel].x,36,0.1);"
+	onout="tween(plugin[zoomCartel].x,-80,0.1);"
+	keep="true"
+/>
+
+<plugin name="zoomCartel"
+	keep="true"
+	edge="topright"
+	align="topright"
+	style="controles"
+	crop="81|52|82|26"
+	x="-80"	y="95"
+	mask="zoomMask"
+/>
+
+<plugin name="zoomMask"
+	keep="true"
+	align="topright"
+	url="graphics/mask.png"
+	x="37"	y="95"
+	handcursor="false"
+/>
+
+<plugin name="autoOn"
+	align="topright"
+	style="controles"
+	x="10"	y="46"
+	crop="00|26|27|26"
+	onovercrop="27|26|27|26"
+	ondowncrop="54|26|27|26"
+	onclick="switch(autorotate.enabled,true,false); set(plugin[autoOn].visible,false); set(plugin[autoOff].visible,true);"
+	onhover="tween(plugin[autoCartel].x,36,0.1);"
+	onout="tween(plugin[autoCartel].x,-80,0.1);"
+	keep="true"
+/>
+
+<plugin name="autoOff"
+	visible="false"
+	align="topright"
+	style="controles"
+	x="10"	y="46"
+	crop="00|156|27|26"
+	onovercrop="27|156|27|26"
+	ondowncrop="54|156|27|26"
+	onclick="switch(autorotate.enabled,true,false); set(plugin[autoOn].visible,true); set(plugin[autoOff].visible,false);"
+	onhover="tween(plugin[autoCartel].x,36,0.1);"
+	onout="tween(plugin[autoCartel].x,-80,0.1);"
+	keep="true"
+/>
+
+<plugin name="autoCartel"
+	keep="true"
+	edge="topright"
+	align="topright"
+	style="controles"
+	crop="81|26|82|26"
+	x="-80"	y="46"
+	mask="autoMask"
+/>
+
+<plugin name="autoMask"
+	keep="true"
+	align="topright"
+	url="graphics/mask.png"
+	x="36"	y="46"
+	handcursor="false"
+/>
+
+<plugin name="ayuda"
+	align="topright"
+	style="controles"
+	x="10"	y="144"
+	crop="00|104|27|26"
+	onovercrop="27|104|27|26"
+	ondowncrop="54|104|27|26"
+	onhover="tween(plugin[ayudaCartel].x,36,0.1);"
+	onout="tween(plugin[ayudaCartel].x,-80,0.1);"
+	onclick="switchHelp();"
+	keep="true"
+/>
+
+<plugin name="ayudaCartel"
+	keep="true"
+	edge="topright"
+	align="topright"
+	style="controles"
+	crop="81|104|82|26"
+	x="-80"	y="144"
+	mask="ayudaMask"
+/>
+
+<plugin name="ayudaMask"
+	keep="true"
+	align="topright"
+	url="graphics/mask.png"
+	x="36"	y="144"
+	handcursor="false"
+/>
+
+<plugin name="full"
+	align="topright"
+	style="controles"
+	x="10"	y="10"
+	crop="00|00|27|26"
+	onovercrop="27|00|27|26"
+	ondowncrop="54|00|27|26"
+	onhover="tween(plugin[fullCartel].x,36,0.1);"
+	onout="tween(plugin[fullCartel].x,-80,0.1);"
+	onclick="set(fullscreen,true);"
+	keep="true"
+/>
+
+<plugin name="salirFull"
+	visible="false"
+	align="topright"
+	style="controles"
+	x="10"	y="10"
+	crop="00|130|27|26"
+	onovercrop="27|130|27|26"
+	ondowncrop="54|130|27|26"
+	onhover="tween(plugin[fullCartel].x,36,0.1);"
+	onout="tween(plugin[fullCartel].x,-80,0.1);"
+	onclick="set(fullscreen,false);"
+	keep="true"
+/>
+
+<plugin name="fullCartel"
+	keep="true"
+	edge="topright"
+	align="topright"
+	style="controles"
+	crop="81|00|82|26"
+	x="-80"	y="10"
+	mask="fullMask"
+/>
+
+<plugin name="fullMask"
+	keep="true"
+	align="topright"
+	url="graphics/mask.png"
+	x="36"	y="10"
+	handcursor="false"
+/>
+
+<plugin name="fb"
+	align="topright"
+	style="social"
+	x="10"	y="180"
+	crop="00|00|26|26"
+	onclick="shareonfacebook(%URL);"
+	sharetxt="Check out this awesome Virtual Tour"
+	tooltip="Share on Facebook"
+	/>
+
+<plugin name="tw"
+	align="topright"
+	style="social"
+	x="10"	y="214"
+	crop="00|26|26|26"
+	onclick="shareontwitter(%URL);"
+	sharetxt="Check out this awesome Virtual Tour"
+	tooltip="Tweet this tour"
+	/>
+
+<plugin name="helpBox"
+	url="graphics/helpbox.png"
+	handcursor="false"
+	visible="false"
+	align="center"
+	zorder="102"
+	keep="true"
+/>
+
+<plugin name="helpbox-off"
+	parent="helpbox"
+	visible="false"
+	keep="true"
+	align="topright"
+	url="graphics/close.png"
+	scale="0.7"
+	edge="center"
+	onhover="tween(plugin[helpbox-off].scale,1,0.2);"
+	onout="tween(plugin[helpbox-off].scale,0.7,0.2);"
+	onclick="switchHelp(); set(plugin[help-on].visible,true); set(plugin[helpbox-off].visible,false);"
+/>
+
+		<action name="switchHelp">
+			switch(plugin[helpbox].visible,true,false);
+			switch(plugin[helpbox-off].visible,true,false);
+			set(plugin[help-off].visible,false);
+		</action>
+		
+		<action name="abreNav">
+			tween(plugin[contMenu].x, 0, 0.3);
+			set(plugin[abremenu].visible,false);
+			set(plugin[cierramenu].visible,true);
+		</action>
+		
+		<action name="cierraNav">
+			tween(plugin[contMenu].x, -232, 0.5);
+			set(plugin[abremenu].visible,true);
+			set(plugin[cierramenu].visible,false);
+		</action>
+
+
+	<style name="controles" keep="true" zorder="101" url="graphics/botones.jpg" />
+	<style name="menu" keep="true" url="graphics/menu.png" />
+	<style name="social" keep="true" zorder="101" url="graphics/social.png" onhover="showtext(get(tooltip),txtSocial);" />
+
+
+
+<textstyle name="txtSocial" font="arial" fontsize="12" bold="false" italic="false" 
+	           textcolor="0xFFFFFF" background="true" backgroundcolor="0x000000" border="false" bordercolor="0" 
+	           alpha="0.8" blendmode="normal" effect="glow(0x000000,1,10,100);"
+	           origin="cursor" edge="right" textalign="center" xoffset="-25" yoffset="0" noclip="true" showtime="0.1" fadetime="0" fadeintime="0" 
+	           />
+
+<textstyle name="hotspotTxt" font="arial" fontsize="14" bold="false" italic="false" 
+	           textcolor="0xFFFFFF" background="true" backgroundcolor="0x000000" border="false" bordercolor="0" 
+	           alpha="0.8" blendmode="normal" effect="glow(0x000000,1,10,100);"
+	           origin="cursor" edge="center" textalign="center" xoffset="4" yoffset="-25" noclip="true" showtime="0.1" fadetime="0" fadeintime="0" 
+	           />
+
+<textstyle name="thumbsTxt" font="arial" fontsize="14" bold="false" italic="false" 
+	           textcolor="0xFFFFFF" background="true" backgroundcolor="0x000000" border="false" bordercolor="0" 
+	           alpha="0.8" blendmode="normal" effect="glow(0x000000,1,10,100);"
+	           origin="cursor" edge="left" textalign="center" xoffset="30" yoffset="0" noclip="true" showtime="0.1" fadetime="0" fadeintime="0" 
+	           />
+
+
+
+
+
+<!-- ### ### ### ### -->
+
+
+<layer name="maskmenu" keep="true" type="container" width="212" y="5" x="10" align="bottomleft" zorder="109" onloaded="sub(height,get(stageheight),35);" parent="contMenu"/>
+<layer name="scrollmenu" url="%SWFPATH%/plugins/scrollarea.swf" y="" alturl="%SWFPATH%/plugins/scrollarea.js" direction="v" keep="true"  parent="maskmenu" />
+<plugin name="menuup" url="graphics/menuarrows.jpg" align="bottomleft" x="10" crop="0|0|212|34" onovercrop="0|34|212|34" ondowncrop="0|68|212|34" zorder="110" keep="true" visible="true" onclick="movemenuup"  parent="contMenu" onloaded="add(plugin[menuup].y,get(plugin[maskmenu].height),59);" />
+<plugin name="menudown" url="graphics/menuarrows.jpg" align="bottomleft" y="5" x="10" crop="212|0|212|34" onovercrop="212|34|212|34" ondowncrop="212|68|212|34" zorder="110" keep="true"  visible="true" onclick="movemenudown"  parent="contMenu"/>
+
+<style name="thumbs" width="190" height="100" align="topleft" x="10" keep="true" onclick="loadscene(get(load),null,MERGE)" onhover="showtext(get(scene[get(load)].title),thumbsTxt);" parent="scrollmenu"/>
+
+<action name="buildMenu">
+if(i === null, set(i,0)); 
+if(i LT scene.count,
+	mul(plugin[scrollmenu].height, get(scene.count), 110);
+	
+	txtadd(thumbname, 'thumb',get(i));
+	addplugin(get(thumbname));
+
+	plugin[get(thumbname)].loadstyle(thumbs);
+	copy(thumb, scene[get(i)].thumburl);
+	set(plugin[get(thumbname)].url, get(thumb));
+	set(plugin[get(thumbname)].load, get(scene[get(i)].name) );
+	mul(thumbY,110,i);
+	set(plugin[get(thumbname)].y,get(thumbY));
+	
+	add(i,1); 
+	buildMenu();
+);
+</action>
+
+<action name="movemenuup" >
+	div(yres, get(layer[maskmenu].height), 2);
+	sub(addres, get(yres), 110);
+	sub(ysub, addres, get(layer[scrollmenu].y));
+	layer[scrollmenu].scrolltocenter(0,get(ysub));
+</action>
+<action name="movemenudown" >
+	div(yres, get(layer[maskmenu].height), 2);
+	add(addres, get(yres) , 110);
+	sub(ysub, addres, get(layer[scrollmenu].y));
+	layer[scrollmenu].scrolltocenter(0,get(ysub));
+</action>
+
+<action name="resizeMenu">
+	sub(menumaxheight,stageheight,35);
+	if(plugin[scrollmenu].height GT menumaxheight,
+		sub(plugin[maskmenu].height,stageheight,100);
+		set(plugin[maskmenu].y,49);
+		set(plugin[menudown].visible,true);
+		set(plugin[menuup].visible,true);
+		add(plugin[menuup].y,get(plugin[maskmenu].height),59);
+		,
+		set(plugin[maskmenu].height,get(plugin[scrollmenu].height));
+		set(plugin[maskmenu].y,5);
+		set(plugin[menudown].visible,false);
+		set(plugin[menuup].visible,false);
+	);
+</action>
+
+
+
+<plugin name="ce" url="graphics/firma.png" align="bottomright" x="10" y="10" zorder="101" keep="true" alpha="0.5" onover="tween(alpha,1)" onout="tween(alpha,0.5)" onclick="openurl(http://www.spinattic.com/,_blank);" />
+
+
+
+<!-- hotspots styles -->
+<style name="arrow_hotspot"
+	url="graphics/flecha.png"
+	crop="00|00|26|26"
+	onovercrop="26|00|26|26"
+	ondowncrop="52|00|26|26"
+	onhover="
+	if(hotspot[get(name)].tooltip === null,
+		showtext(get(scene[get(linkedscene)].title),hotspotTxt),  showtext(get(tooltip),hotspotTxt)
+	);
+	"
+	onclick="
+	if(linkedscene, 
+		tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); 
+	);"
+	 
+/>
+
+
+<style name="photo_hotspot" zorder="10" url="graphics/hotcam.png" crop="0|0|26|26" onovercrop="26|0|26|26" ondowncrop="52|0|26|26" onclick="showpic();seeLogo();" onhover="if(get(tooltip) == null,,showtext(get(tooltip),hotspotTxt);)" />
+
+<style name="info_hotspot" zorder="10" url="graphics/info.png" crop="0|0|26|26" onovercrop="26|0|26|26" ondowncrop="52|0|26|26" onclick="showinfo(get(infotitle),get(infotext));" onhover="if(get(infotitle) == null,,showtext(get(infotitle),hotspotTxt);)" />
+
+<action name="showinfo">
+if(layer[infobkg] === null, trace(hola);
+	addlayer(infobkg);
+	set(layer[infobkg].width,500);
+	set(layer[infobkg].keep,true);
+	set(layer[infobkg].type,container);
+	set(layer[infobkg].zorder,100);
+	set(layer[infobkg].bgcolor,0xffffff);
+	set(layer[infobkg].bgalpha,1);
+	set(layer[infobkg].bgcapture,false);
+	set(layer[infobkg].align,center);
+
+	addplugin(info_text);
+	txtadd(infoContent,'[h1]',%1,'[/h1][p]',%2,'[/p]');
+	set(plugin[info_text].html,get(infoContent) );
+	set(plugin[info_text].parent,infobkg);
+	set(plugin[info_text].width,450);
+	set(plugin[info_text].y,25);
+	set(plugin[info_text].border,false);
+	set(plugin[info_text].background,false);
+	set(plugin[info_text].selectable,false);
+	set(plugin[info_text].align,topcenter);
+	set(plugin[info_text].url,%SWFPATH%/plugins/textfield.swf);
+	set(plugin[info_text].keep,true);
+	set(plugin[info_text].autosize,true);
+	set(plugin[info_text].autoheight,true);
+	set(plugin[info_text].css,data:cssInfo);
+	set(plugin[info_text].onloaded,add(layer[infobkg].height,get(height),50););
+
+	addplugin(closeinfo);
+	set(plugin[closeinfo].url,%SWFPATH%/../interfaces/INTERFACE_A_1.0/graphics/x.png);
+	set(plugin[closeinfo].parent,infobkg);
+	set(plugin[closeinfo].align,topright);
+	set(plugin[closeinfo].x,5);
+	set(plugin[closeinfo].y,5);
+	set(plugin[closeinfo].keep,true);
+	set(plugin[closeinfo].onclick,closeinfo());
+	,
+	set(layer[infobkg].visible,true);
+	txtadd(infoContent,'[h1]',%1,'[/h1][p]',%2,'[/p]');
+	set(plugin[info_text].html,get(infoContent) );
+
+	add(layer[infobkg].height,get(plugin[info_text].height),50);
+);
+</action>
+<action name="closeinfo">
+set(layer[infobkg].visible,false);
+</action>
+<data name="cssInfo" >
+	h1{font-size:16px;font-family:arial;color:#333333;font-weight:bold;}
+	p{font-size:12px;font-family:arial;color:#666666;}
+</data>
+
+<!-- END hotspots styles -->
+</krpano>

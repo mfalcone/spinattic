@@ -1,0 +1,178 @@
+<krpano onstart="startup(); "  >
+
+<include url="menu_m.xml" />
+
+<contextmenu>
+<item	name="Spinattic"  caption="spinattic.com" onclick="openurl(http://www.spinattic.com,_blank); " />
+</contextmenu>
+
+<autorotate enabled="true"
+            waittime="3.0"
+            accel="1.0"
+            speed="5.0"
+            horizon="on"
+            tofov="on"
+            />
+
+<events 
+	 onpreviewcomplete="setTitle();"
+	 onresize="resizeMenu();"
+	 onxmlcomplete="buildMenu();"
+
+/>
+<action name="setTitle">
+txtadd(sceneTitle,"[p]",get(scene[get(xml.scene)].title),"[/p]");
+set(plugin[sceneName].html,get(sceneTitle));
+</action>
+
+<!--plugin name="logo"
+ url="graphics/logo.png"
+ align="topleft"
+ x="10" y="10"
+ zorder="52"
+ keep="true"
+ handcursor="false"
+ onloaded="if(istablet,set(scale,0.75));"
+/-->
+
+
+<plugin
+	 name="sceneName" url="%SWFPATH%/plugins/textfield.swf" keep="true" align="bottomleft"
+	 width="100%" height="40" x="10" y="70"
+	 css="p{font-size:26px;font-family:arial;color:#ffffff;text-transform:capitalize;font-weight:bold; text-align:left;}"
+	 html=""
+	 background="false"
+     selectable="false"
+     zorder="99"
+     enabled="false"
+     onloaded="if(istablet,set(css,p{font-family:arial;color:#ffffff;text-transform:capitalize;font-weight:bold;font-size:20px;text-align:left;});set(y,30));"
+/> 
+<!-- control buttons--> 	 
+<layer
+	 name="botbar"
+	 type="container"
+	 bgcolor="0x000000"
+	 bgalpha="0.8"
+	 width="100%"
+	 height="40"
+	 keep="true"
+	 align="bottom"
+	 onloaded="if(isphone,set(height,70));"
+	 zorder="100"
+	 />
+
+<plugin name="ayuda"
+	style="controles"
+	x="10"
+	crop="00|104|27|26"
+	onovercrop="27|104|27|26"
+	ondowncrop="54|104|27|26"
+	onclick="switchHelp();"
+	keep="true"
+	onloaded="if(isphone,set(scale,2);)"
+/>
+
+<plugin name="autoOn"
+	style="controles"
+	x="46"
+	crop="00|26|27|26"
+	onovercrop="27|26|27|26"
+	ondowncrop="54|26|27|26"
+	onclick="switch(autorotate.enabled,true,false); set(plugin[autoOn].visible,false); set(plugin[autoOff].visible,true);"
+	keep="true"
+	onloaded="if(isphone,set(scale,2);add(x,30);)"
+/>
+
+<plugin name="autoOff"
+	visible="false"
+	style="controles"
+	x="46"
+	crop="00|156|27|26"
+	onovercrop="27|156|27|26"
+	ondowncrop="54|156|27|26"
+	onclick="switch(autorotate.enabled,true,false); set(plugin[autoOn].visible,true); set(plugin[autoOff].visible,false);"
+	keep="true"
+	onloaded="if(isphone,set(scale,2);add(x,30);)"
+/>
+
+
+<plugin name="fb"
+	style="social"
+	x="82"
+	crop="00|00|26|26"
+	onclick="shareonfacebook(%URL);"
+	sharetxt="Check out this awesome Virtual Tour"
+	onloaded="if(isphone,set(scale,2);add(x,60);)"
+	/>
+
+<plugin name="tw"
+	style="social"
+	x="118"
+	crop="00|26|26|26"
+	onclick="shareontwitter(%URL);"
+	sharetxt="Check out this awesome Virtual Tour"
+	onloaded="if(isphone,set(scale,2);add(x,90);)"
+	/>
+
+<plugin name="helpBox"
+	url="graphics/helpbox_m.png"
+	handcursor="false"
+	visible="false"
+	align="center"
+	zorder="102"
+	keep="true"
+	onclick="switchHelp();"
+	onloaded="if(isphone,set(scale,2))"
+/>
+<plugin url="graphics/helpbox_m.png" name="celink" keep="true" parent="helpBox" align="bottomcenter" crop="0|343|307|65" onclick="openurl(http://www.spinattic.com,_blank)" onloaded="if(device.mobile,set(scale,2))" />
+
+<plugin name="menu" 
+		url="graphics/menu_m.png"
+		align="left"
+		crop="0|0|161|58"
+		ondowncrop="0|58|161|58"
+		keep="true"
+		zorder="102"
+		x="10"
+		onclick="showMenu(); "
+		scale="2"
+		onloaded="if(device.tablet,set(scale,0.5))"
+		parent="botbar"
+		/>
+		
+
+
+<action name="switchHelp">
+	switch(plugin[helpbox].visible,true,false);
+	switch(plugin[helpbox-off].visible,true,false);
+	set(plugin[help-off].visible,false);
+</action>
+
+
+
+
+	<style name="controles" keep="true" zorder="51" url="graphics/botones.jpg" parent="botbar" align="right" />
+	<style name="social" keep="true" zorder="51" url="graphics/social_m.png" onhover="showtext(get(tooltip),txtSocial);" parent="botbar" align="right"/>
+
+
+
+<style 
+	 name="skin_hotspotstyle"
+	 url="graphics/flecha.png"
+	 crop="00|00|26|26"
+	 onovercrop="26|00|26|26"
+	 ondowncrop="52|00|26|26"
+	 scale="2"
+	 onloaded="if(device.tablet,set(scale,1))"
+	 onclick="
+	 if(linkedscene, 
+		tween(scale,0.25,0.5); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); 
+	 );"
+
+/>
+
+<style name="hotcam" zorder="10" url="graphics/hotcam.png" crop="0|0|26|26" onovercrop="26|0|26|26" ondowncrop="52|0|26|26" onclick="showpic();seeLogo();" onloaded="if(isphone,set(scale,2))" />
+
+
+
+</krpano>

@@ -1,0 +1,294 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+		<link href='favicon.png' rel='shortcut icon' type='image/x-icon'/>
+		<link href='favicon.png' rel='icon' type='image/x-icon'/>
+		<title>Spinattic</title>
+
+	    <!--google font-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+
+		<!-- css main -->        
+	    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+	    <!-- jquery -->    
+	    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	    <!-- jquery ui -->        
+	    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+            
+            <link rel="stylesheet" type="text/css" href="css/tipsy.css" />	
+            <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+            
+            <script src="js/core-utils.js"></script>
+            <script src="js/core-actions.js"></script>
+            <script src="js/core.manager-tours.inc.js"></script>   
+            
+            
+	    <script src="js/custom.js"></script>
+
+	</head>
+	<body>
+<!-- loader -->            
+<div id="loading" class="loading" style="display: none;">
+    <div class="loading_img"></div>
+</div>
+<!--popup confirm action-->
+<div class="overlay confirm-action" style="display:none;">
+    <div class="pop">
+        <a href="#" class="closed"></a>
+        <h2>Virtual Tours Manager</h2>
+        <form class="pop-up">
+            <label>
+                <p>are you sure?</p>                
+            </label>                        
+            <div class="content-btn-pop">
+                <a href="#" class="grey-button border-radius-4" onclick="hide_popup();">NO</a>
+                <a href="#" class="red-button border-radius-4 save-button">YES</a>
+            </div>
+        </form>
+
+    </div>
+</div>    
+<!--popup select privacy-->
+<div class="overlay select-privacy" style="display:none;">
+    <div class="pop">
+        <a href="#" class="closed"></a>
+        <h2>Virtual Tours Manager</h2>
+        <form class="pop-up">
+            <label>               
+                <p>Choose privacy level </p>
+                <select class="info-tour border-radius-4 form-user" name="privacy-level" id="privacy-level">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                    <option value="notlisted">Not Listed</option>                    
+                </select>                
+            </label>            
+            <div class="content-btn-pop">
+                <a href="#" class="grey-button border-radius-4"  onclick="hide_popup();">CANCEL</a>
+                <a href="#" class="red-button border-radius-4 save-button">SAVE</a>
+            </div>
+        </form>
+
+    </div>
+</div>   
+    	<header class="header">
+	        <a href="#" class="spinattic"><img src="images/spinattic.png"></a>
+			<div class="language">
+	            <a href="#" class="language_btn">
+	            	<div class="icon"></div>
+	                <font>ENG</font>
+	            </a>
+                <ul class="select_language">
+                	<li><a href="#">English</a></li>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">Portugués</a></li>
+                </ul>
+            </div>
+            <div class="search">
+            	<div class="bg_search">
+                	<input type="text" value="Search" id="search-input">
+                	<!--a href="#" class="clear_input"></a--><!-- CRUZ PARA LIMPIAR BUSQUEDA-->
+                	<a href="#" class="glass_input"></a><!-- LUPA DE BUSQUEDA-->
+                	<br clear="all">
+                
+                	<div class="predictive">
+                		<ul>
+                	    	<li><a href="#"><strong>text</strong> 1</a></li>
+                	    	<li><a href="#"><strong>text</strong> 2</a></li>
+                	    	<li><a href="#"><strong>text</strong> 3</a></li>
+                	    	<li><a href="#"><strong>text</strong> 4</a></li>
+                	    	<li><a href="#"><strong>text</strong> 5</a></li>
+                	    	<li><a href="#"><strong>text</strong> 6</a></li>
+                	    </ul>
+                	</div>
+				</div>                
+            </div>
+            <br clear="all">
+        </header>
+        
+        <div class="nav">
+	        <div class="login-register">
+	            <div class="or"></div>
+    	        <a href="#" class="login">Log in</a>
+	            <a href="#" class="register">Register</a>
+                <br clear="all">
+            </div>
+            
+	        <div class="user_login">
+	            <a href="#" class="user_image"><img src="images/ejemplo/user.jpg"></a>
+            	<div class="user_name">
+                	<a href="#"><p>Derrick Clark</p></a>
+					<div class="action_user">
+                		<a href="#">View profile </a>/
+                    	<a href="#"><strong> Logout</strong></a>
+	                	<br clear="all">
+					</div>
+                </div>
+                <br clear="all">
+            </div>
+            
+	        <div class="content_nav">  
+            <ul class="user_menu">
+            	<li>
+                	<a href="#">
+                    	<div class="icon"></div>
+                        create new tour
+                    </a>
+				</li>
+                <li>
+                	<a href="#">
+		               	<div class="icon"></div>
+        				Manage tours
+                    </a>
+                </li>
+
+                <li>
+                	<a href="#">
+	                  	<div class="icon"></div>
+                    	Manage panoramas
+                    </a>
+                </li>
+            </ul>
+	        <ul class="menu">
+		        <li>
+					<a href="#" class="world-map">World map</a>
+		        </li>
+		        <li>
+					<a href="#" class="leader-board">Leader board</a>
+		        </li>
+		        <li>
+                    <a href="#" class="browse">Browse</a>
+                    <ul class="submenu">
+                    	<li>
+                        	<a href="#">Browser 1</a>
+                        	<a href="#">Browser 2</a>
+                        	<a href="#">Browser 3</a>
+                        	<a href="#">Browser 4</a>
+                        	<a href="#">Browser 5</a>
+                        	<a href="#">Browser 6</a>
+                        	<a href="#">Browser 7</a>
+                        	<a href="#">Browser 8</a>
+                        	<a href="#">Browser 9</a>
+                        	<a href="#">Browser 10</a>
+                    	</li>
+                    </ul>
+		        </li>
+	        </ul>
+            <div class="privacy">
+            	<div class="social_media">
+                <a href="#" class="facebook"></a>
+                <a href="#" class="twitter"></a>
+                <a href="#" class="googleplus"></a>
+                <br clear="all">
+                </div>
+            	<p>
+                	<a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+                    <br>
+					© All panoramas are property 
+                    <br>
+					of their authors
+                </p>
+			</div>
+            </div>
+        </div>
+
+        <div>
+        	<h1 class="manage_tour">Virtual Tours Manager</h1>
+		</div>
+        
+       
+        <div class="wrapper wrapper-user">
+            
+            <div class="drag-upload">                
+                <br clear="all">
+            </div>
+        
+			<div class="manager_tour manager_tour_drag_top">
+                <label class="check_action">
+                    <input class="border-radius-4" type="checkbox" id="tours-check-all" onclick="checkAll();">
+                </label>
+				
+                <select class="form-user actions border-radius-4" name="tours-batch-actions" id="tours-batch-actions">
+                        <option value="none">Choose an action</option>
+                        <option value="remove">Delete Tours</option>
+                        <optgroup label="Privacy">
+                                <option value="public">Public</option>
+                                <option value="notlisted">Not Listed</option>
+                                <option value="private">Private</option>
+                        </optgroup>                        
+                </select>
+                
+
+                <a href="#" class="green-button border-radius-4">Create New Tour</a>
+
+                </div>
+
+                <!-- pano -->
+                <div class="pano-item pano-item-manager">
+                    <label class="check_action">
+                        <input class="form-user border-radius-4 tour-batch-checkbox" type="checkbox" value="1" name="ids[]" >                        
+                    </label>
+                    <a href="#"><div class="thumb-pano"></div></a>
+                    <div class="loader-item">
+                        <a href="#"><h3>Panorama 1 </h3></a>
+                        <p>May 6, 2013 1:45 PM.</p>
+                        <div class="info-activity">
+                            <div class="tours"><b>In this tour:</b> Pano 1 - Pano 2 - Pano 3</div>
+                            <br clear="all">
+                        </div>
+                    </div>
+                    <br clear="all">
+                    <a href="#" title="Delete item" class="delete-item tour-remove" rel="id=1;"></a>
+                    <a href="#" class="edit-buttom" title="Edit tour"></a>
+                    <a href="#" class="visibility _private tour-privacy" title="Private" rel="id=1;"></a>
+                </div>
+                <!-- pano -->
+                <div class="pano-item pano-item-manager">
+                    <label class="check_action">
+                        <input class="form-user border-radius-4 tour-batch-checkbox" type="checkbox" value="2" name="ids[]" >
+                    </label>
+                    <a href="#"><div class="thumb-pano"></div></a>
+                    <div class="loader-item">
+                        <a href="#"><h3>Panorama  2 </h3></a>
+                        <p>May 6, 2013 1:45 PM.</p>
+                        <div class="info-activity">
+                            <div class="tours"><b>In this tour:</b> Pano 1 - Pano 2 - Pano 3</div>
+                            <br clear="all">
+                        </div>
+                    </div>
+                    <br clear="all">
+                    <a href="#" title="Delete item" class="delete-item tour-remove" rel="id=2;"></a>
+                    <a href="#" class="edit-buttom" title="Edit tour"></a>
+                    <a href="#" class="visibility _public tour-privacy" title="Public" rel="id=2;"></a>
+                </div>
+                <!-- pano -->
+                <div class="pano-item pano-item-manager">
+                    <label class="check_action">
+                        <input class="form-user border-radius-4 tour-batch-checkbox" type="checkbox" value="3" name="ids[]" >
+                    </label>
+                    <a href="#"><div class="thumb-pano"></div></a>
+                    <div class="loader-item">
+                        <a href="#"><h3>Panorama  3 </h3></a>
+                        <p>May 6, 2013 1:45 PM.</p>
+                        <div class="info-activity">
+                            <div class="tours"><b>In this tour:</b> Pano 1 - Pano 2 - Pano 3</div>
+                            <br clear="all">
+                        </div>
+                    </div>
+                    <br clear="all">
+                    <a href="#" title="Delete item" class="delete-item tour-remove" rel="id=3;"></a>
+                    <a href="#" class="edit-buttom" title="Edit tour"></a>
+                    <a href="#" class="visibility _notlisted tour-privacy" title="Not Listed" rel="id=3;"></a>
+                </div>
+              
+            </div>
+                    
+        
+	</body>
+</html>
+
+
+

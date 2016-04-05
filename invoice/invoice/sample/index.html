@@ -1,0 +1,116 @@
+<page style="font-size: 14px">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"><
+    <title>Invoice</title>
+    <link rel="stylesheet" href="style.css" media="all" />
+  </head>
+  <body>
+    <header class="clearfix">
+      <div id="logo">
+        <img src="logo.jpg">
+      </div>
+      <div id="company">
+        <h2 class="name">Spinattic LLC</h2>
+        <div>PO Box 2285 | Glens Falls, NY 12801</div>
+        <div>Te. 800 204 6950</div>
+        <div>hello@spinattic.com</div>
+      </div>
+      </div>
+    </header>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">INVOICE TO:</div>
+          <h2 class="name">John Doe</h2>
+          <div class="address">796 Silver Harbour, TX 79273, US</div>
+          <div class="email">john@example.com</div>
+          <div class="account">Account #: 10029</div>
+        </div>
+        <div id="invoice">
+          <h1>INVOICE</h1>
+          <div class="date">Invoice Number: # 0000001</div>
+          <div class="date">Invoice date: 01/06/2014</div>
+          <div class="date">Due Date: 30/06/2014</div>
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th class="no">#</th>
+            <th class="desc">SERVICE DESCRIPTION</th>
+            <th class="unit">RATE</th>
+            <th class="qty">QUANTITY</th>
+            <th class="total">SUBTOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no">01</td>
+            <td class="desc"><h3>Advanced account yearly service</h3>Start: 12/31/2015 - End: 13/31/2016</td>
+            <td class="unit">$120.00</td>
+            <td class="qty">1</td>
+            <td class="total">$120.00</td>
+          </tr>
+          <tr>
+            <td class="no">02</td>
+            <td class="desc"><h3>Pro account yearly service</h3>Start: 12/31/2015 - End: 13/31/2016</td>
+            <td class="unit">$300.00</td>
+            <td class="qty">1</td>
+            <td class="total">$300.00</td>
+          </tr>
+          <tr>
+            <td class="no">03</td>
+            <td class="desc"><h3>Discount</h3>Unused cicle of Advanced account from 01/15/2016 to 13/31/2016 </td>
+            <td class="unit">-$60.00</td>
+            <td class="qty">1</td>
+            <td class="total">-$60.00</td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">TOTAL</td>
+            <td>$360.00</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">TAX 1%</td>
+            <td>$3.60</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">GRAND TOTAL</td>
+            <td>$363.60</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2">Payment #: 999992828282822929</td>
+            <td colspan="2">AMOUNT PAID</td>
+            <td>$363.60</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">DUE BALANCE</td>
+            <td>$0</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div id="thanks">Thank you!</div>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
+  </body>
+</html>
+</page>

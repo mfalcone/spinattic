@@ -1,0 +1,102 @@
+{
+	"tour":{
+		"name":"Tour Title",
+		"descrition":"Tour descrition",
+		"author":"autor name",
+		"tourxml":"datasources/tour.xml",
+		"scenes":[{
+			"id":"1",
+			"thumb":"datasources/thumb1.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 1"
+			},
+			{
+			"id":"2",
+			"thumb":"datasources/thumb2.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 2"
+			},
+			{
+			"id":"3",
+			"thumb":"datasources/thumb2.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 3"
+			},
+			{
+			"id":"4",
+			"thumb":"datasources/thumb2.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 4"
+			},
+			{
+			"id":"5",
+			"thumb":"datasources/thumb2.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 5"
+			},
+			{
+			"id":"6",
+			"thumb":"datasources/thumb2.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 6"
+			},
+			{
+			"id":"7",
+			"thumb":"datasources/thumb2.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 7"
+			},
+			{
+			"id":"8",
+			"thumb":"datasources/thumb2.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 8"
+			},
+			{
+			"id":"9",
+			"thumb":"datasources/thumb2.jpg",
+			"url":"sarasa",
+			"filename":"file1.jpg",
+			"title":"title 9"
+			}]
+	},
+	"user":{
+		"id":"4",
+		"name":"user Name",
+		"avatar":"datasources/avatar.jpg",
+		"tours_length":"55",
+		"panos_length":"93",
+		"followers":[{
+			"user_id":"3"
+			},
+			{
+			"user_id":"5"
+			},
+			{
+			"user_id":"6"
+			}],
+		"following":[{
+			"user_id":"3"
+			},
+			{
+			"user_id":"8"
+			},
+			{
+			"user_id":"6"
+			}],
+		"unread_notifications":[{
+			"notification_id":"120"
+			},
+			{
+			"notificacion_id":"23"	
+			}]
+	}
+}

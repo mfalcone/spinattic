@@ -1,0 +1,649 @@
+<html>​​​​​<head><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style><link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css"><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style div,.gm-style span,.gm-style label,.gm-style a{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400}.gm-style div,.gm-style span,.gm-style label{text-decoration:none}.gm-style img{border:0;padding:0;margin:0}</style>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+		<link href="favicon.png" rel="shortcut icon" type="image/x-icon">
+		<link href="favicon.png" rel="icon" type="image/x-icon">
+		<title>Spinattic</title>
+
+	    <!--google font-->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+
+		<!-- css main -->        
+	    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+	    
+        <!-- jquery -->    
+	    <script style="" type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	    <!-- jquery ui -->        
+		<link rel="stylesheet" type="text/css" media="screen" href="css/tabs.css">
+	  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+	   <!-- tags input-->
+        <link rel="stylesheet" type="text/css" href="css/jquery.tagsinput.css">	
+        
+	<script type="text/javascript" src="js/jquery.tagsinput.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/tipsy.css">	
+        <script type="text/javascript" src="js/jquery.tipsy.js"></script>                
+	    <script src="js/custom.js"></script>
+            <script src="js/core-actions.js"></script>	
+            <script src="js/core.tour-edit.inc.js"></script>	    
+<script src="js/core-utils.js"></script>	  
+
+<!-- filedrop -->
+<!--link rel="stylesheet" type="text/css" href="css/jquery.filedrop.css" /-->
+
+
+    <style type="text/css">
+        #map_canvas {height:400px;width:460px}
+    </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script><script src="http://maps.gstatic.com/intl/en_ALL/mapfiles/api-3/15/4/main.js" type="text/javascript"></script>
+
+    <script src="js/maploc.js"></script>        
+        
+    <script type="text/javascript">
+		function verificar()
+                {
+                    var title        = jQuery(document.form1.title).val();
+                    var description  = jQuery(document.form1.description).val();
+                    var friendly_url = jQuery(document.form1.friendly_url).val();
+                    var thumb        = jQuery(document.form1.thumb).val();
+                    var location     = jQuery(document.form1.location).val();
+                    var tags_loaded  = jQuery(document.form1.tags_loaded).val();
+                    var category     = jQuery(document.form1.category).val();
+                    
+                    
+//                    if (title && description && friendly_url && thumb && location && tags_loaded && category)
+//                    {
+                        document.form1.submit();
+//                    }    
+//                    else
+//                    {
+//                        showMessage('Saving data', 'Please complete all required fields.')
+//                    }    
+			
+                    return false;
+		}
+    </script>
+    
+	<script src="http://maps.gstatic.com/cat_js/intl/en_ALL/mapfiles/api-3/15/4/%7Bcommon,util,geocoder%7D.js" charset="UTF-8" type="text/javascript"></script><script src="http://maps.gstatic.com/cat_js/intl/en_ALL/mapfiles/api-3/15/4/%7Binfowindow%7D.js" charset="UTF-8" type="text/javascript"></script><script src="http://maps.gstatic.com/cat_js/intl/en_ALL/mapfiles/api-3/15/4/%7Bmap%7D.js" charset="UTF-8" type="text/javascript"></script><script src="http://maps.gstatic.com/cat_js/intl/en_ALL/mapfiles/api-3/15/4/%7Bonion%7D.js" charset="UTF-8" type="text/javascript"></script><script src="http://maps.gstatic.com/cat_js/intl/en_ALL/mapfiles/api-3/15/4/%7Bcontrols%7D.js" charset="UTF-8" type="text/javascript"></script><script src="http://maps.gstatic.com/cat_js/intl/en_ALL/mapfiles/api-3/15/4/%7Bstats%7D.js" charset="UTF-8" type="text/javascript"></script><script src="http://maps.gstatic.com/cat_js/intl/en_ALL/mapfiles/api-3/15/4/%7Bmarker%7D.js" charset="UTF-8" type="text/javascript"></script></head>
+	<body onload="initMap()">
+            
+    <div id="loading" class="loading" style="display: none;">
+	        <div class="loading_img"></div>
+        </div>
+        <!--pop Panorama Collection-->
+        <div class="overlay overlay_login edit-panorama">
+            <div class="pop">
+                <a href="#" class="closed"></a>
+                <h2>Panorama Collection</h2>
+                
+                <!-- pano -->
+                <div class="pano-item pano-item-manager">
+                    <label class="check_action">
+                        <input class="form-user border-radius-4" type="checkbox">
+                    </label>
+					<div class="thumb-pano"></div>
+					<div class="loader-item">
+                    	<h3>Panorama 1</h3>
+	          			<p>May 6, 2013 1:45 PM.</p>
+	                </div>
+                    <br clear="all">
+                </div>
+                
+                <!-- pano -->
+                <div class="pano-item pano-item-manager">
+                    <label class="check_action">
+                        <input class="form-user border-radius-4" type="checkbox">
+                    </label>
+					<div class="thumb-pano"></div>
+					<div class="loader-item">
+                    	<h3>Panorama 1</h3>
+	          			<p>May 6, 2013 1:45 PM.</p>
+	                </div>
+                    <br clear="all">
+                </div>
+
+                <!-- pano -->
+                <div class="pano-item pano-item-manager">
+                    <label class="check_action">
+                        <input class="form-user border-radius-4" type="checkbox">
+                    </label>
+					<div class="thumb-pano"></div>
+					<div class="loader-item">
+                    	<h3>Panorama 1</h3>
+	          			<p>May 6, 2013 1:45 PM.</p>
+	                </div>
+                    <br clear="all">
+                </div>
+                
+                
+	           	<a href="#" class="red-button border-radius-4">ADD TO TOUR</a>
+
+            </div>
+        </div> 
+        
+        
+        <!--pop setTour-->
+        <div class="overlay" style="display:none;">
+            <div class="pop set-tour">
+	            <!--borrar--><a href="#" class="closed"></a>
+                <div class="thumb-head-set">
+                	<img src="images/ejemplo/thumb-set-tour.jpg">
+                	<h3>Panorama 3</h3>
+                    <br clear="all">
+				</div>
+				<a href="#" class="blue-buttom border-radius-4 set-startup-view">Set startup view</a>
+                <a href="#" class="add-element border-radius-2 save-close">Save &amp; Close</a>
+                
+                <div class="content-set">
+                	<div class="bar">
+                        <div class="pano-orientation">
+                            <div class="orientation">
+                                <p class="titulo">Pano</p>
+                                <font>Select a pano from the list below,<br>then orient the initial view.</font>
+	                            <br clear="all">
+                                <!--item-->
+                                <div class="item-orientation">
+                                    <div class="thumb-pano"><img src="images/ejemplo/thumb-orientation.jpg"></div>
+                                    <div class="loader-item">
+                                        <h3>Panorama 1</h3>
+                                        <p>May 6, 2013</p>
+                                    </div>
+									<a href="#" class="drag-item"></a>
+                                    <br clear="all">
+                                </div>
+                                <!--item-->
+                                <div class="item-orientation">
+                                    <div class="thumb-pano"><img src="images/ejemplo/thumb-orientation.jpg"></div>
+                                    <div class="loader-item">
+                                        <h3>Panorama 1</h3>
+                                        <p>May 6, 2013</p>
+                                    </div>
+									<a href="#" class="drag-item"></a>
+                                    <br clear="all">
+                                </div>
+                                <!--item-->
+                                <div class="item-orientation">
+                                    <div class="thumb-pano"><img src="images/ejemplo/thumb-orientation.jpg"></div>
+                                    <div class="loader-item">
+                                        <h3>Panorama 1</h3>
+                                        <p>May 6, 2013</p>
+                                    </div>
+									<a href="#" class="drag-item"></a>
+                                    <br clear="all">
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <!---->
+                        <div class="pano-linkto">
+                            <div class="link-to">
+								<p class="titulo">Link To</p>
+                                <font>Enter the URL of any web page.</font>
+	                            <br clear="all">
+                                <label>
+                                    <input class="info-tour border-radius-4 form-user" value="http://www.my-pano.com">
+                                </label>
+					            <a original-title="Delete item" href="#" class="delete-item"></a>
+                                <br clear="all">
+                            </div>                        
+                        </div>
+                        
+                        <!---->
+                        <div class="pano-infospot">
+                            <div class="info-spot">
+								<p class="titulo">Info Spot</p>
+                                <font>Type your text here.</font>
+	                            <br clear="all">
+                                <label>
+                                    <textarea class="info-tour border-radius-4 form-user"></textarea>
+                                </label>
+					            <a original-title="Delete item" href="#" class="delete-item"></a>
+                                <br clear="all">
+                            </div>   
+                        </div>
+                    </div>
+                    <img src="images/ejemplo/set-tour.jpg">
+                </div>
+                <div class="foot-set-tour">
+	                *Drag the hotspots and place them on the scene.
+                </div>
+            </div>
+        </div>   
+    
+    	<header class="header">
+				﻿
+	        <a href="index.php" class="spinattic"><img src="images/spinattic.png"></a>
+			<div class="language">
+	            <a href="#" class="language_btn">
+	            	<div class="icon"></div>
+	                <font>ENG</font>
+	            </a>
+                <ul class="select_language">
+                	<li><a href="#">English</a></li>
+                    <li><a href="#">Español</a></li>
+                    <li><a href="#">Portugués</a></li>
+                </ul>
+            </div>
+            <div class="search">
+            	<div class="bg_search">
+            	<form action="search.php" name="formsearch" method="POST">
+                	<input value="Search" id="search-input" onclick="if(this.value == 'Search'){this.value=''};" onfocus="this.select()" onblur="this.value=!this.value?'Search':this.value;" name="search" type="text">
+                	<!--a href="#" class="clear_input"></a--><!-- CRUZ PARA LIMPIAR BUSQUEDA-->
+                	<a href="#" class="glass_input" onclick="if (document.formsearch.search.value != '' &amp;&amp; document.formsearch.search.value != 'Search'){document.formsearch.submit();};"></a><!-- LUPA DE BUSQUEDA-->
+			<input value="" name="order" type="hidden">
+			<input value="" name="c" type="hidden">
+                </form>
+                	<br clear="all">
+                <!--
+                	<div class="predictive">
+                		<ul>
+                	    	<li><a href="#"><strong>text</strong> 1</a></li>
+                	    	<li><a href="#"><strong>text</strong> 2</a></li>
+                	    	<li><a href="#"><strong>text</strong> 3</a></li>
+                	    	<li><a href="#"><strong>text</strong> 4</a></li>
+                	    	<li><a href="#"><strong>text</strong> 5</a></li>
+                	    	<li><a href="#"><strong>text</strong> 6</a></li>
+                	    </ul>
+                	</div>
+                -->
+				</div>                
+
+            </div>
+            <br clear="all">        </header>
+        <div class="nav">
+				﻿	        <div class="login-register">
+	            <div class="or"></div>
+    	        <a href="#" class="login">Log in</a>
+	            <a href="#" class="register">Register</a>
+                <br clear="all">
+            </div>
+            
+            
+	        <div class="user_login">
+	            <a href="#" class="user_image"><img src="images/ejemplo/user.jpg"></a>
+            	<div class="user_name">
+                	<a href="#"><p>Derrick Clark</p></a>
+					<div class="action_user">
+                		<a href="#">View profile </a>/
+                    	<a href="#"><strong> Logout</strong></a>
+	                	<br clear="all">
+					</div>
+                </div>
+                <br clear="all">
+            </div>
+            
+	        <div class="content_nav">
+
+
+
+            <ul class="user_menu">
+            	<li>
+                	<a href="new_virtual_tour.php">
+                    	<div class="icon"></div>
+                        create new tour
+                    </a>
+				</li>
+                <li>
+                	<a href="manager_tour.php">
+		               	<div class="icon"></div>
+        				Manage tours
+                    </a>
+                </li>
+
+                <li>
+                	<a href="#">
+	                  	<div class="icon"></div>
+                    	Manage panoramas
+                    </a>
+                </li>
+            </ul>
+
+
+            
+	        <ul role="tablist" class="menu ui-accordion ui-widget ui-helper-reset">
+		        <li>
+					<a href="map.php" class="world-map">World map</a>
+		        </li>
+		        <li>
+					<a href="#" class="leader-board">Leader board</a>
+		        </li>
+		        <li>
+                    <a tabindex="0" aria-selected="false" aria-controls="ui-accordion-1-panel-0" id="ui-accordion-1-header-0" role="tab" href="#" class="browse ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Browse</a>
+                    <ul aria-hidden="true" aria-expanded="false" role="tabpanel" aria-labelledby="ui-accordion-1-header-0" id="ui-accordion-1-panel-0" style="display: none;" class="submenu ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                    	<li>
+                            <a href="search.php?c=1&amp;search=Destinations">Destinations</a>
+                            
+                            <a href="search.php?c=1&amp;search=Events">Events</a>
+                            
+                            <a href="search.php?c=1&amp;search=Hotels">Hotels</a>
+                            
+                            <a href="search.php?c=1&amp;search=Miscellaneous">Miscellaneous</a>
+                            
+                            <a href="search.php?c=1&amp;search=Museums">Museums</a>
+                            
+                            <a href="search.php?c=1&amp;search=Nature">Nature</a>
+                            
+                            <a href="search.php?c=1&amp;search=Parks">Parks</a>
+                            
+                            <a href="search.php?c=1&amp;search=Real Estate">Real Estate</a>
+                            
+                            <a href="search.php?c=1&amp;search=Resorts">Resorts</a>
+                            
+                            <a href="search.php?c=1&amp;search=Restaurants">Restaurants</a>
+                            
+                            <a href="search.php?c=1&amp;search=Universities">Universities</a>
+                            
+                            <a href="search.php?c=1&amp;search=Vehicles">Vehicles</a>
+                            
+
+                    	</li>
+                    </ul>
+		        </li>
+	        </ul>
+            <div class="privacy">
+            	<div class="social_media">
+                <a href="#" class="facebook"></a>
+                <a href="#" class="twitter"></a>
+                <a href="#" class="googleplus"></a>
+                <br clear="all">
+                </div>
+            	<p>
+                	<a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+                    <br>
+					© All panoramas are property 
+                    <br>
+					of their authors
+                </p>
+			</div>
+            </div>        </div>
+
+        <div>
+        	<h1 class="new_virtual_tour">Create a new virtual tour
+												</h1>
+		</div>
+        <div class="wrapper wrapper-user">
+
+<form name="form1" method="post" enctype="multipart/form-data" action="ultour.php">	
+	
+	<!--div class="drag-upload">
+                <div class="upload-cloud">
+                    <div class="text drop-message">
+                        <h2>Click to upload your panoramas<br></h2>
+                        <h3>Or drag and drop your files here</h3>
+                        <a href="#" class="select-from">Select from your Panoramas Collection</a>
+                    </div>
+                </div>
+                <div class="features-here">
+                    <div class="text">
+                        <p>
+                            We can put information
+                            <br>
+                            or
+                            <br>
+                            features here
+                        </p>
+                    </div>
+                </div>           
+                <br clear="all">
+            </div-->
+
+            
+            
+
+<div class="uploading_pano">
+    <h3>Scenes in this tour</h3>
+    <a href="#" class="add-element border-radius-2 upload-more">
+        <div class="icon-upload-more"></div>
+        Upload more
+    </a>
+    <a href="#" class="add-element border-radius-2 add-more">
+        <div class="icon-add-more"></div>
+        Add more panos from collection
+    </a>
+
+</div>
+        
+<div id="drop-zone">
+    <div style="display: none;" class="text drop-message">
+        
+        <div class="upload-cloud">
+            <div style="display: none;" class="text drop-message">
+                <h2>Click to upload your panoramas<br></h2>
+                <h3>Or drag and drop your files here</h3>
+                <a href="#" class="select-from">Select from your Panoramas Collection</a>
+            </div>
+        </div>
+        
+        <!--h2><a href="#" id="browse-file">Click</a> to upload your panoramas<br></h2>
+        <h3>Or drag and drop your files here</h3-->
+        <input id="browseFile" class="browseFile" multiple="multiple" style="position:fixed;top:-1000px;" value="" type="file">
+        <!--a href="#" class="select-from">Select from your Panoramas Collection</a-->
+    </div>
+
+
+    <!-- pano loading -->                
+    <!--div class="pano-item">
+                            <div class="thumb-pano"></div>
+                            <div class="loader-item">
+            Scene name: <h3 class="otf-editable">Scene 1</h3>
+            <div class="on-edit">
+                <form action="php-stubs/scenes.php" method="post">                                         
+                    <input type="hidden" id="scene-id" name="scene-id" value="456">
+                    <input class="stringkey" id="title-456" type="text" size="32" value="título cargado" name="scene-name" /> 
+                    <br clear="all">
+                </form>      
+            </div>
+            <br />
+            File name: <h4>Panorama 1</h4>
+
+
+            </div>
+        <br clear="all">
+        <a href="#" class="delete-item" title="Delete item"></a>
+                            <a href="#" class="add-element border-radius-2 edit-hotspots">
+                Edit hotspots
+            </a>
+                            <a href="#" class="drag-item"></a>
+    </div>
+
+
+    <div class="pano-item pano-item-cargado">
+                            <div class="thumb-pano">
+            <img src="images/ejemplo/thumb-upload.jpg">
+                            </div>
+                            <div class="loader-item">
+            Scene name: <h3 class="otf-editable">Scene 1</h3>
+            <div class="on-edit">
+                <form action="php-stubs/scenes.php" method="post">                                         
+                    <input type="hidden" id="scene-id" name="scene-id" value="456">
+                    <input class="stringkey" id="title-456" type="text" size="32" value="título cargado" name="scene-name" /> 
+                    <br clear="all">
+                </form>      
+            </div>
+            <br />
+            File name: <h4>Panorama 2</h4>							          			
+
+            </div>
+        <br clear="all">
+        <a href="#" class="delete-item" title="Delete item"></a>
+                            <a href="#" class="add-element border-radius-2 edit-hotspots">
+                Edit hotspots
+            </a>
+                            <a href="#" class="drag-item"></a>
+    </div-->
+<div class="pano-item"><div class="thumb-pano"><img src="data:image/jpeg;base64,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e4/C6US/DTQWBzi1C119ec/BC8F38MrEZ5gkeI/ga9GoAUUtNFOoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApAKWkHSgAxSU49KbQAUUUUAFFFFABRRRQACigUUAFFFFABRRRQAV4T+0Jpm/S7S+Ax5M+3I9GH/1q92rgPi5pP8Aangi/VV3OsRdPqvNAHF/s5aysmmaro7t80TieMf7J4P64r3PORXyL8G9d/sL4iWfmNthuwbeQn36fqK+uaAFpR0pKF/TFADqKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKbTj0poOee3agBQOKXFA6UUAIaSlNJQAUUUUAAooFFABRRRQAUUUUAFZut2q3emTROMggqfoRWl2pkqCWJ0PRhQB8OanbTaD4kuYVystncnaemNrcV9j+Ddfj8S+E9N1WNgzSwjzPZxww/Ovmj4z6QdO8atchcJeJvz/tDg12n7PXikLNeeGbiTAfNxbA+v8AEP60AfQXXtQKKKAHUUinKjr+NLQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFISBS0UAIT270nc0uKMUAKOlFAooAQ0lKaSgAooooABRQKKACiiigAooooAKKKKAPDvj/onn6LDqKJlraXLN/st/wDXxXhnhvW7jw74gsdWtyRJbShyP7w7j8q+ufH+jrrXhe9tGXPmQsB/vAZH8q+P7HTZLue4thxcRIzBD3K9R9aAPt/StRg1fSrXUbZg0FxGJEI9DVyvE/gB4tN5pFz4aun/AH1p+9t9x5MZPI/A/wA69s70AAp1NpRQAtFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACGkp1FADaKdRQA0UU6igBtFFFABRRRQAUUUUAV72LzrORSMnGa+RvEUH/CJ/FSRtuIFuVl6feRjk/zNfYOARj86+avj5o/2bV7HUlXhwYW9MjkZ/A0Ac/cNN8Nfihb6hb5+xO6zxns8L9R/n0r6stLmG9tIbq3cPDMiyIw7gjivn/xHof/AAmPwf0fWIF33tnb5yOpA4Zf5Gut+A3iz+2PCz6LPJuutOPy5PJiJ4/LpQB65RRRQA4UU0U6gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA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"></div><div class="loader-item">Scene name: <h3 class="otf-editable">scene-name</h3> <div class="on-edit"><form action="php-stubs/scenes.php" method="post"><input id="scene-id" name="scene-id" value="456" type="hidden"><input class="stringkey" id="title-456" size="32" value="título cargado" name="scene-name" type="text"> <br clear="all"></form></div><br>File name: <h4>Panorama 2</h4><div class="ok" style="display: inline-block;"></div><p>Upload complete!<br>Now you can add hotspots to this scene</p>					 </div><br clear="all">                    <a href="#" class="delete-item" title="Delete item"></a>					<a href="#" class="add-element border-radius-2 edit-hotspots">	                    Edit hotspots	                </a>					<a href="#" class="drag-item"></a>               </div><div class="pano-item"><div class="thumb-pano"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAJpAScDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD32iiigAooooAKKKKACiiigAooooAKKKPoKACik69Oc96WgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAAUUCigAooooAKKKKACiiigAooooAKKKKACq1/ci0sbic9I42b8hmrNYHjSc2/hDUpAeRbyf+gmgDR0eRptItZWOTJGH/AD5q9WV4ZkEvhbSZF6NZxf8AoArVzxQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAAKKBRQAUUUUAFFFFABRRRQAUUUUAFFFFABXMeP1L+C9UUdTbSf+gmunrG8UQG58P3cPdomH5g0AZ/w4uxffDvQ5lOc2qr+XH9K6mvMPgXqH2jwK+nscvp91JCQfTOR/OvT/WgAooooAKKKKACis1dQ3eIWsR0WDzP1rSoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAFFAooAKKKKACiiigAooooAKKKKACiiigAqtfIJLOVcZ4yas0hAIKnoRg0AeEfDe8/4Rv4ta/4dkO2K9JkhB6bh8365xXvFfO3xctbnwx4y0nxVaAhopArkDqVOefqOK960XVrfW9GtNStXDw3MQkUj3oAv0UdutFABR60UmfSgDi47vy/isLZm4m01iAe5VhXa15R42vDoHxH8May52wGd7SY/wCy/T9a9WB/+tQAtFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQACigUUAFFFFABRRRQAUUUUAFFFFABRRRQAUmf/ANVLTXJCscE/SgDiviP4YTxL4burXaPMdN0bY6SDkV5x8C/GLWV5ceD9TYowkZrbeejA/Mn9fwr0uXxIdO1lNG1wgW18xFjfDhS3/PN/Rh6968b+LfhC60LW18T6YrR7XBn8scxuOjfQ0AfS+RRXAfDL4iW/jTRxFO6x6tbLtuIs/e/2x7V32RQAtUNUEzWbrbzNBKfuTAZCntkelX6ayhlKkZBGCKAPF/GV03jTw5qek3EItfEel4leAHh9vIkjPdSOa7H4YeLY/F3hC2ldx9utQILpO4YdDj3AH61y/wAU9KudKktfFOmgi90xhvI5823J5U+tcQ1/d+BddtfG/h+MzaBqoDXMC8hCfvKfTnODQB9MZorF8N+ItN8U6NDqemTiWGQfMP4kbuCOxraoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAAUUCigAooooAKKKKACiiigAooooAKKKKACj+dFFAHK+NPDlvr+g3FlKuElGQw4MUg+649CK5HwLqzeLtDvvDmuqsusaZm3nWQf6+PoGr1WRBLG8bchhg14RrU58GfGzSdUUlLfUV8i4A6E9P54oA4rxT4d1f4ZeJYtZ0eSRLTfmGUfwnvGw9K93+HnxGsPHOmKAyQ6pEo+0WxPP+8vqK3Ne0G11qxmt7iFJUlXbIjdHH9D6V81+K/B+s/DnW01jRpp1tI3zHMuQ0X+y+O1AH1hRXmvw3+K9j4xtksr5ktdYQfNGThZfdf8K9KoAxfEunR6lo08EiB1dGQj1BGP515R8JLWLVvC+ueGb2NZvsN00flydGjOf617ZcrvtnB9M15F8L4Da/FPxpAoITEb49yc0AcTcQ638G/FA1LTfMuNBuH2ywt0A/ut6MOxr33w14l03xVo8Wp6ZMJIXHzLn5o27hh2NLr+gWutWM1vcQJLHIu2SNhw4/xr54mXXfgv4sF7YF59FuXw0bH5XX+63ow7GgD6h+lFYvhrxJp3irRYtU02bzIZPvIfvRt3Vh6itr8aACiiigAooooAKKKKACiiigAooooAKKKKAAUUCigAooooAKKKKACiiigAooooAKKKKACiiigA6da8J+P0HkJpd+vDw3WQf1/pXuteL/tCJv8AD9mO5uV/kaAPW9Guftuh2FyTnzreNyfcqDUep6PbanbyRzRIyupVkYZVh6EVU8E5/wCEJ0bd1+yRj9K36APmDx58KL3w9dvqfhsTNEj7/Jj5eI/7J6kV0Xw4+NJlMej+JZNs2Qkd03G4+jeh969yurGK5Rg6A5ryL4h/CWz1eGW+sUW3vsZEgGA59H9vfr9elAHr6yxzWxkjYOjKcEdxiuH8D6WYfGfivUiOJZYolPqAoP8AWvJvAnxQ1LwXqDeH/E6Sm1jbZuc5eHt9CPevobRn0+azF1pzpJFcfvC6nO73zQBpcVzvijw3Z6/pk9tcQrJHKmJExk+zD3FdDn2rD0bURf6zrKBsi3kSMe3y5NAHzja3et/BfxmCpefSrg5K/wAM0f8ARhX0roWu2HiPSINT06YS28wyD3U9wR2IrC8ceD7LxLo81tOnDcq69Yn7MPavCfBnibVPhV4xl0jVgx02R9s6dVA7SLQB9UDNLVe0uoL60iuraUSwyqHR1OQwNWM0AFFFFABRRRQAUUUUAFFFFABRRRQACigUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFeJ/tCTeVpWmDPH2lW/IGvbK+fv2jbkmTSrYdyzf0oA9l8FkHwZpGOn2ZP5Vxnxc+I9z4PtrbTNH2HWLsb9zAMIYwfvYPUk8DPoa7XwfGYfB2jRnqLOP8A9BFeFeJdX0uX9oSZ9eKnTrSSKE7hlQoQEZHcbm59qAJdD+NvizR54z4msReWcmG3rEIpFX1XHB/GvcdB8Q6R4t0hb7S7lLiB/vDoyH0YdjXjPxO+Kvh7WtKvtEt7GO72sBbXfTZjGSBjI5H4ivJPCXjHVPButJqGmykKWAlhJ+SVfQj+tAH0h45+F9j4ntZHiVYrtVPlTAfMvoPcdcj3NeOeF/GmufC7xC+kaoryWKSbZIs52j+8h9Pavo/wj4q07xloUOp2D8MMSxE/NE/dTXOfET4dWPi2xZwgivFB8ucDJB9D/s0Addpur2WtaPHqdjOk1vKu5WQ5H/664f4V6kb/AFjxjuOSupAD6AY/pXi/hfxXrfwt8QT6VqUTmxc7bi2bkYP8aV2nwQ12Kfx94hto3LQ3m6eEnvhv8KAPfioYMCMg8GvKfiv8Pk8Q6YZrZAL6AFrd8feHUof6V6v+lRTwpcQmNwcHoR2PrQB8/wDwU8fPp19/wiGryFUZyLRnPKP3T6E9K+hBxXzT8YPBk2j6iviXTlMZ3j7R5fG188OPY1698MPGi+MvCkU0rD7fbYiuV98cN9DQB3JPrUNvcxXcQlhbdGc4PrXJfETxBJpek22m2TEajq062kAHVQxwzfgK6iwtEsbC3tI+FijVOPUCgC3RR2ooAKKKKACiiigAooooABRQKKACiiigAooooAKKKKACiiigAooooAKKKKACvmT473q33jiwskbJiQcf7xFfTdfI/wAR5zN8W5Oc7Z4lHvz/APXoA+qtHjEei2CL0S3Rf/HRXyL8Wdy/FTXznB88f+gLX2BYKF0+3UdBGB+lfLHx30w6f8SricKQl5CkwJ7nG0/yoA53wB4Pm8ceKItKSfyYghmnlxkqgxnA9SSBX0tD8H/BUWiHTP7Gicsm03T8z5/vb+oP04rzP9mqBG1LxDcEfPHFAgPsxcn/ANBFfRNAHzDps2ofBL4mfYryVpdHvMb3xw8RPD/7ynrX0zHJHPCkiEPG6hlYdCD0ryf9oDQ47/wRFqojJuLCdcMB/A3Bz7ZxR8BPFsut+FZtIvJN9zpbKqMx5MLZ2/kQR9MUAaXxK+H1r4osPOWJhcwglJFPzL+H8Q+tfPXh7ULz4e+PLW5uE2vbSbZB1DxngkexGa+znUMpBr55+OHhB/l1eztyfKP73aOdp6n88frQB73YX0GpWUF5bMHhmQOpHoeRVv1+leG/APxn9qspfDV5JmWD57Yk9V7j8P617kOlAGH4j0eDV9KuLeeMPHJGUkXGcr/iK+dPB2oXPwv+KjaddufsFw/kyE8BkY/K/wCH+NfU5GRjsa8J+OfhPzdOTWrZD51mfmI6mI9/wOKALbaiPFH7QVpArb7PSIWKEcjdt617XXzR8AJHuvHl/PM7SSm1J3t1POOa+l6ACiiigAoJwCaKRzhCfagCjZX32m+vYM8wOFq/XI+F7kXHinxKoORHNGv6GuuoAKKKKAAUUCigAooooAKKKKACiiigAooooAKKKKACiiigBshxE59q+OvEkp1D4tTlBkHUVVcegYV9d6pIYdKupB1WJq+UPAVqmtfFyPzjx9qeX8m/wNAH1rZArZQK33ggrxP9o7Qmm0zStcjXPkSG2lPoG5X9Qa9yACqAOg4rC8YeHovFXha/0aXaDcRERu38Mg5U/mB+GaAPD/2bL5I9f1zTz9+e1jmH0RiD/wCjBX0aw5/lXyN8INUk8N/FawguCYluHewnUjnLcKP+/gSvrojNAHIfFGIzfDHxAgGT9lJ/Ig/0r5r+EXiFvDvxF02RnYW92/2ScDuH4X8m2n6A19NfEmRYfhv4hdhx9ikH4kYFfFisyOHUkMpyCOxoA+/awtf06LULSW3mAMcqNGc9sj/69TeGtUOt+F9K1Rtu+7tIpnC9AzKCR+BzWhdQ+bER37UAfHEkl58P/iAtxGGVrafcV6bkzyPxFfXmj6pDq+kWt/bsGinjDqR7jNeDfG7wm+U1y3jJX7suOzf/AF/51tfADxULvSLjw/cy/vbU74c90Pb8DQB7f0rH8R6dFqekzQSqGR0KMPY8fzrX696R0EiMp6MMUAfN3wctjoHxb1DSJjtfy5I1z/EAcj9K+k+9fPHi1D4Y+Nuh6snyJcyIkhH12H9K+h8jgjoelABRRRQAUyUgQsSeNtPqhrV0LLRru6Y4EUbN+lAHFfDOb7Zqviy7ByrakYwfZRXonSvNPgjE58Ez38gO+9vppufTNelg8UAZmp6gLW5sLZT+8uZgo/3R1/pWnXDW97/bPxVmgjOYNGtcPjp5j9vwxXc+1AAKKBRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBleJH8vw5ft6Qt/Kvl/4NkSfFGFj1KyMPrkV9L+MnKeEtSb0gb+VfNHwS5+JkB/6ZOf1FAH1vRQOlFAHzT8dfCD6B4ltvFWmRGK3vZAZmTjy7kHdu9twGfqrHvXu3g7xFD4s8K2Gsw4BniHmoP4JBwy/nn8MVb8QaHZ+JdCvNHv0321ymxsdVPUMPcHBH0rwz4eazefC7xzd+DPED7bG5kBgmPCBj91xnsw4PoR7UAeh/G++Sz+FWqIZNj3Lwwx/7R8xWI/75Vq+Ra9//aP15WGj6BG54JvJR+BVP/Z68BX7w+tAH2X8KQw+F+gCRSrfZzwRjjc2P0rs6yPCwK+EtGBGD9hgyMYx+7WtegDnfE2kwalpV1a3Cbopoyp/2T2P+fSvlDSNVn8D/EHz13qtrcGOVehZM8/419mTxiWIqa+U/jR4bOkeKft0a4huh82B0b/64/lQB9R6dexahp8N3E4dJYw6kd/erleRfAvxWur+GBpE75urI7Rk8lO36fyr12gDwv4+2hhg0zU0+9b3QyfY8/zr2rTJRcaXZzA/6yFH/NRXmPx5thJ4GlfHKOjf+Pc16B4UcyeEtJY9Tax/yoA2KKKCM0AFebfGjxD/AGT4KexhJN5qTCCJAeSD1rvtR1G10rT5769mWG2gUvI7HoK8W8L2938UviIfFV9E6aDpr7bONgcOw6cevc0Aep+CdH/sDwZpOmkfPDbrvPqx5JNXNf1i30DQ7vVLpgsVvEW5PU9h+NafAAHp0rxb4hatL498ZWXgPSJC1rHKJNSlQ5AA6r+H86AOp+EdlO3hu51++X/TNauXujnqEzhR+Qr0Kq1naw2NnBaW6hYYUEaKOwA4qzQACigUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAc545OPBup/9e7/AMq+b/ggQPiRF2zA+B6/MtfSvjJA/hXUFPQwMP0r5i+DUcrfE2x8sDAWTcc9gpP9KAPr2ikHTmloAK4n4jeArHxvopRx5Wo2ylrW4UZKn+6fUH0rtqwvF2u2/h3wxf6lcTrF5UTeWzd5MHaB75xQB862Dx+NNOl8K+JkNv4lsAY7G5myrtt3HymzwTnGM+vXseF0fQb6bxlY6JLEYLt7tISsoxhtw616bE1j8X9BE8TJZ+ONOiLkqNv21V5yMfxf56dNjwFJpvjnxfpV7qUX2bxDoyFLiFhgz7QQsmeu4NjOaAPeI/uAbduAPl9OKkoooAK8d+Ovh2TUfC/2yBSz2ziTao64yP5En8K9irO1vTo9U0mezlAKyIVoA+TvhFrw0Px9Y+bJst7phDIT0BP3T+f86+vwfeviDxLo0/hnxNcWZBQxSb4m/wBnPBr6x+HHidPFfgyxviQblF8qcejrxmgDE+Nyg/D2+OOgX/0Ku08MReT4V0pCOlrHn/vkVynxchNz4Oe3AyZpYkA9csBXcWMX2fT7aAgjy4kQ/gAKALB469Kz9W1ex0PT5dQ1G5S3tohuaRz+g9ax/GXjjR/BWmm61KUNM3+ptkPzyH2HYe9ecaP4Y8QfFLUotc8XtJa6EjbrXTVJXeO2fb3PJoAjc638adXWNFmsPB9vLkseGuMfzP8AKvZtM0yz0fToNPsIFhtoFCJGo4A/xp9tbWmmWCQQRx29rAmFUDaqAV55rfjbVfEVzLoXgKA3EuSlxqrDEMHrtP8AE1AEfxI+Ir6Ww8N+HAbvxBd/JiL5vIB9cfxfyrR+Gnw/XwbpLXF6RLrF589zKeSvfaD/AD9am8E/DfT/AAiHvZnN/rM3M97Lycnrtz0Hv1ru+9ABxRR2ooABRQKKACiiigAooooAKKKKACiiigAooooAKKKKAMfxRCJ/Dt4mf+WZ/lXzB8IZhp/xUs4nOF3yR8+uCB+pr6t1CITafOh5yhxXx+k7eFvimZscW19vIPoTux+tAH2ZRUFvMlxbxTxnKSKGU+oPNT0AFeM/tF30sPhHTrNQnlz3e5yTyCq8Y/76NeynNfMH7QmrJe+NrewjZ/8AQbZVcE/LuY7uPwI/KgDzDRNavvD2r2+p6dMYrmFsqexHcEdwRwRXsc+tQ3j2vxY0C2kiurOVYdasV+VTkYLKe4I/mK8Mr61+FfhGK2+EsGnajACNUR57iM9Ssn3fx2haAOw8MeJdO8WaHBq2nPuikGGQ/ejYdVYeorar5s0681H4H/EJ9Pu2kl8N37g7yM5ToJBj+Je47j8K+jLa5hu7aK5t5ElhlQOkiHKspGQQe4oAnNIRkYrntY8b+GtBn8jUtZtYZ84MIbe4+qrkj8RWSPiz4R8wKb2ZV6b2tnC/yoA4X43+DDf2TaxaoPNtxvYbeSvQj6nr+ArifgZ4pfSPFo0mSTFtf8AE8Bx6fUfyr6CGoaJ400m6t9M1K3uY3Ty5DGQxQHvg9K+R9VtLvwd4ymgAdJrG53xEqVyoOVOD2IwaAPrjxRp76rJp1uqlkW5SRx2wpBqh8QvHVp4I0T7QwE19PlLW3zne3qfYVteG9btvEfh2z1m3I2XMQY452nuPwOa+afHT6t41+K17Bp/mXL28ohtUiBOAvp6c55oA7nwr4atL3U/+Es+IurWYv5SJILG7uEURr2JBP5CvZLLV9LvVAsdRs7hQOBBOrAe3Bry/4b+B/BmoaAI77TY7jXICVv0uiTJHID/dzwvoa2tY+DvhueJp9Mim0y8UZWazcoR+HQ/SgDpdT8NjX5NuqXUrWCnIs4m2q/8AvkferasrG1061W2soI7eBR8sca4FePeGfGGteEfFKeFvFdyZoJzts709DngZ9Pp0z+voPjTxtp/gqxt7u/VmSaYRAIMn6/lmgDqPwpar2V3HfWUN1CcxyoHU+xqxQAUUUUAAooFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACMAykHoa+TvjPoj6V4wF0qkJcpnOP4h/wDrr6yxXk/xt8NjVfC8tzFFuntz56YHOBww/I5oA3vhHr/9v/D6waR91xbDyJf+A9P0xXeV8zfAPxMNP1y50i5mCw3OHjDHgP0P9K+maAGsRwPU18T+P55Lnx/rss0flu17JlN27HzHvX2dqV3HYabdXku4x28Lytt64VSTj34r4UvZvtN7PPknzJGbnryaANjwVoR8TeM9J0ggmO5uAJcHB8sfM/8A46DX24qqiBFACqMADsK+a/2dNINz4t1HVnQGOztfLUkfdeRhgj/gKsPxr6XPIoA5H4geE9I8WeG5IdXlFvFaH7QLrgGELy3J6AqCD+favnTXPipqB01NA8LtLpGhwDZGI5P3zjuS45AJJOB616L+0H4xlsbS28LWbshu08+7KnGY8kIv0LAk/wC6PWvANN0271a/hsbC3e4uZm2pGgySaAN7wJrelaJ4mgvtbsBf2qE74m7nHBweDg9jwa9tj+NfgzVF+zanoYMEY/dLsSXHbowAHHoa5bwr8CIb2+2av4gtWMaBprOxcNKh9GzwvcdDXdN+z94KznOpj6XC/wDxNAHhfjDW9Ni8XTX/AIQkuLG2yGj2OVIOOce2e1bHjZB4v8H6b41h/eX0QFlquMZ3j7kh56EcfhXQ+MPgFf2KSXfhq4a9iQEtbT4Eo6n5SOG/Q1534V8SXHhHVLm3u7XzrK5U299ZyjG9c+nYjsaAPS/gH4x8mS68K3Unyzgy2m49G/iX8etM8VeC/E+ieLZ/EXhtZt00pYeWCrK3fHrn069a4XxHoreFdVsfEPhy4ebSZmWazuhz5bjkxt6MDxzX0j8P/H2neMdIjaKRI71F/f22fmQ9zjuvvQB5P8LfD3jOT4iJrl7b3NtB8/2uW4BHmgjoc9ecfTFfR9JketV729gsLWS4nlSNEXJLHAoA8T+PNnEumRXUeBNbyq6EdeT/APXr0G10fTfHfgjQ5dZt1uA0EM2G/v7Rk/z/ADrxH4meLovGep2ujaRmbNyuHXOZGPGAPTmvWvEVzrfgb4X2cej2pur+2SOLaqFto7nA5NAHoNvDHbwRwxKFRFCqB2FS1m6Dd3N/odld3kPk3EsKvJH/AHWI5FaVABRRRQACigUUAFFFFABRRRQAUUUUAFFFFABRRRQAUmeKWsHxN4p03wtYi4vpP3j8RQJ9+U+iigDWubuCztnuLmZIYYxueRztCj8awUvYvFGnztDbSf2eQQksi487sdo/u471z2kaBqnjW5j1jxV+705WD2ekoTsx2aT+8a9EWJUQIgCqBgADgD0oA+NPGmg3PgnxjIlv8kW7zrZ16bT2/DkV9K/C7xnH4u8MQtJIDfQKFmU9T71R+J3gKPxVobCBQt3DmSBgOjd147GvnXwv4m1XwB4kZgroY32XEBPXHWgD688TqW8J6wqgkmxnAA7/ACGvhg9TX25oOtWPjHwz9ptJQYrmIo2OSuRg596+Kr23a0vri3b70UjIfwOKAPo79nGwMPhTVb4/8vF0EH/AF/8Asq9pryL9nmeN/ANzEp+eO9fcPTIGK9doA+N/i1qTan8T9clYkrFMLdQT0CKF4/EE/jXqf7PHhWOLTbvxNOqmaVzb2/faoxuP4nj8DXlHxWsP7O+J2uxAMFe484E994DH9Sa+kfg9bR23ws0QIu0yI8je5Mjc0AcP8U/D+o+DPEdv8QvDK+WquBqESHCkk/eI7q2cH0OD349T8J+J7PxZ4dttWsW+SVfnjJ5ifup+n8q2bq2gvbWW1uYklgmQpJG4yGUjBBHpXgonu/gh42aJo5JfCmpSZRvveX7f7y8/UUAe/lQy7SOK8b+MPwys9U0258R6eqw6jCA0wA4nHTkf3q9dtbqG9tYrm2lWWGVA6OvIZT05ou4EurGaCVAySRlWU9CCOlAHxn4R8Xz+HJpLG7gS90e5O26s5V3KR03Lnow9RXR+JfA+qeHbi28ReFDcy6VcoJ7aaBj5kaHkbgOa4jxJpo0jxHf2KklYZ2RWPcA9a+tPhts1L4Y6C1wN7fZgCcehI/pQB8/W3xn8c6cn2eS+EpXj9/CNwqhqHiXxx8QbhLV5Lq7Vm4hhjwn4gCvqiTwlo07+ZNYwyN/eZBmtCy0yx05NtnaQwr/sIBQB5N8KvhG3hy5XW9cZZNR25hiAyIc98/3q9iaNXXawyPQ0uMHr+lLQAgAUADoKWiigAooooABRQKKACiiigAooooAKKKKACiiigAoo61heJ/Elh4U0G41bUJAqRL8i93Y9FHrzQBQ8deOdP8E6O11csJLmQYt7YHmRv8K888CeF9U8cakPGHiaUyRykmGM/d25+6o7DjrXC+HtM1X4x+P3v9TZxYxMHnIztjjzxGvua+obS1hs7dLe3RY4YwFRFGAoAxgUAWAAoAAAA4AFOoooAbIiyIUYZBrwn4wfDdtQMmt6ZCPtsa5mjQYEq+o/2q94qvdWqXMRR+D2YdRQB8kfDX4g3fgnVhFJlrGVsSxk9P8A69V/idpBg8V3er2sSnSdRf7RbTRj5TuUMRjscnpXefFH4UyGebV9Fg/fY3zW0Y4Yf3l9/auH8I+NU0zZofia0GoaCzBZYJM7oufvKRyOp6UAd9+zdrKJc6xoruA0gW5jX1x8rf8AstfQtfMkfh6bwJ4ktfG3hO4GqeGhJ85hbc6RNwysOvA746gV9I2V7b6jYwXtpKstvOgkjkQ5DKRkGgDwv9obwlLJ9j8U2sbOqKLe7wM7RnKN9OSPxFWP2efFj3VpeeGru4ZngHn2it2TowH0JB/Gvbbyzt9Qs5rS7iWa3mQpJG4yGU9RXzb4w+FviDwFraeIfChuLmzgfzI2iG6W39mA+8uOM+nWgD6brC8V+GLDxdoFxpV+v7uQZSQfejcdGHuK8+8F/HXQ9YgjttfI0rUB8rOQTA59Qeq/Q8D1r1O01Cy1GHzbG8t7mP8AvQyhx+YNAHifwz8T3vgjxLN8P/EzlFEmLGd/u89AD/dbt78V7hdMFtZWLYAUmuB+KvgEeMtEW5sj5esWIL2zjguOpTPvjg+tcv4X+JF7rXw61ewuYnk8SadA0ZhAxJMuMbwO5A4P/wBegDwfxXci78ValKDlTOwH0Br68+HVg+nfD7QrWRdsiWiFx7kZ/rXyn4F8NT+MPG9ppzq2x5PMumx91By359Pxr7RjjWGJY0GFUAAegFADz0pKdTTQAUUUUAFFFFABRRRQACigUUAFFFFABRRRQAUUUUAFFFHrQAjEKpJICgZJ9K+YPiN4hvviR44TRtL3yWFrJ5UKL0d84Ln/AD0r1/4veJ28OeC547d8Xd5+4jx1AI5Ncl8EvCIty+rXMQLKvyEj+I/4c0AejeBvCVr4O8OQadAAZiN88g6u/wDgOn4VW8bfEnQ/BMJW7lM96RlLWIgsfr6CpPiL4xi8FeE7jUTta7f91axn+KQjjPsME/hXyz4d1qzuPHtlq3ip5Lq2a48y4Zvmz6ZHoDjj0oA970nU/iR47txe2r2vhzS5OYmeLzJnX1Gf58Vek+G3iWdMy/EPWPNx1T5V/IGuy03xPoGpKiadq1jNkDakcy5+mK2qAPHLzwp8VdBJn0fxWuqIvPk3KjJ/Mf1rPsPjfquhaiNN8b6A9tKOssClTj12ng/UGvc65Px34JsPG2gTWdzGFuVUtb3CgbkcdOfQ9CKANHStZ0fxbpYu9Mu47mE91PKH0I7V5Z8RfhBBq7PqGkCO31HqV6JN9R/Ca8X8P+JNa+H/AImeS1do5YJTFcW78q4BwVI/rX1v4V8TWHjHw9Bqln/q5Rh4mPMb91NAHyZo/iTxR8O9Vlt4Xktzn9/ZzrmOQejKeK978CfFLwnqNpBao0WkXLktLayNsiDHJJRjwB7cdse+94x+H2leKrUrdW4aQD5JUGJE+h7ivnjxV8Kde8PTu9tC19aA8PEMsv1XtQB9dxSxzRiSKRXjIyrq24EVJmvinQ/G3ifwlKIbO+uIUQ828pO0fgeld3a/tDa/GgFzp9vMf7yvs/oaAPoO/wDC3h/VLk3GoaDpl3OeDLcWkcjH8SM1fsbG0021W2sbWG1gX7sUEYRR9AOK+df+Gi9U7aOn/gT/APYVDc/tD67JEVttNgikPR3k34/DaKAPo3UdSstKs3vL65jt7eNctI5wAK+c/F0ll4g1C68ceBLl4bzT23XsKjY5GeJQO4PevOPEHi/XvFdz5mq30s/PyxDhB9FFemfBz4e68muQa9d77KxUHMUgwbhSMFSv92gD0T4THQddhufFGnW6W+oXAWG9gXA2SDlmA7BuDXqFfNWvW+q/Bf4ijWdNiZ9Bv3JMQPyuvUxn0ZeoP/1xX0FomtWHiDSLbVNMnWe1uF3Iw7eoPoQeCOxoA06DRRQA2ilIpKACiiigAooooABRQKKACiiigAooooAKKKKACg0UyZxHDI56KCaAPnj4w6o2s/EKy0mMl47RF+Ud2Y//AFq9y8K6aNJ8O2ltjDbAzfU185aG/wDwk3xnkkY7hJfn8FXP+FfUwGBgUAfPP7SVzKdQ0S1yfKEUkmOxJIH9K8IUAsAema+pPjp4NuPEPhuHU7CJ5brTizNGgyWjP3sD2xn86+XGBUkEYPoaAPc/BPws8PeKPCUd3Z63jWSrOYhgCMg4wR97HT5h69DXV/C3xTqdtr994L1+d5bm1JNvJKcsNpwyE9/UGvnXRvEmq6DcLNp95LA6nKsjkEduDXpHwXt9S8RfEz+2rhnlW2R5JpW/vEYA/WgD6hooooA+PPjDZx2XxQ1hIhhZHWXGO7KCf1rZ+Bvi5tC8YLpcz4s9SxGQTwsn8J/p+NYnxgvEvfifrLpjakixZHqqgGuOsrqWxvre7hbbLDIsiH0IORQB95yOscZdjhVGTWBb+I9B1a9lsI7iGW4Q4YDGVP8ASrcbnW/C8EsbEG7tkcMDjGVBrx/wf8H9X0bxr/alze/uI3ZgEBHmZz9729vUA0Ad/wCIvhpoHiNmkvrRZJcYEn3XHpgjrXnGp/s8xNKWsL+WNeoVgGA/PFe/KMKBSGgD5pm+AF7awSXFzq0ccEQLMfL5AAz61ueEvgdpGraFaald38p84Fiip0AOOOeOh9a7z4sa3/ZvhQWUTYuNQkECKDzg9a63Q7Eaf4dsbIr5Zit1Vh6Njn9c0Ac/ofww8K+HlRrTTI3nX/ltL8zGuvjiWNQqKFUdhS+9OUYFAGP4m8O2HirQbnSNQjDQzLhWxzG3Zl9wa8A8D+INQ+Efju58La+2NKuJQHfPyoTwsy/7JGA3+K4r6YrzD40+CU8S+E5dTtYh/aenKZUZR80kQ5ZP/Zh7j3oA9NVgyhlIIIyCO9Oryj4HeNH8R+GG0m8kDX+mBUBJ5kh/hP4dPyr1egAptOpD1oASiiigAooooABRQKKACiiigAooooAKKKKACsbxXejTvDGo3ROPLhZgffBrZrgfjFe/Yvh1qODgumz8+KAPIvgLaG/8dXN4wysMbSZ/2ieP619O14f+zxozW+k6lqrjid1iQ+w54/OvcKAEIBGD0rzTxX8FPDXiWd7u3V9Mu35Z7cDYx9SvTP0r0yigDwG3/ZtUXX+keICbfPSODDEficV7F4Y8K6T4R0ldP0qARR5y7nl5G9WPc1uUUAFU9S1CDStMu9QuXCQW0TSyMewUZNXK8O+P3jVbTTI/C1pJ++uQJLsqfuoDkL+JH5UAfPup38up6rd38xzLczPK31Yk/wBaqCkrX8NaPLr/AIj0/S4VLNcTqh9hnk/lmgD7K8HRtD4J0OOT7y2MQP8A3wK1hcw+Z5fmLvHbPNIkAgsUgiGBHGFX8BivCP8AhGvHY+LP9oefL9h8/Ik8w7PL/ubM9ce3XmgD6AFNY456Ad6bHlIlDfeA55zXmHxf8ef8I3pJ0fTX3avfrsAB5hjPVj7noKAOdlvV+I/xlS2jfdpWl/uwR0YgZc/iRtrvviV49h8B6ELkIs1/cEpawnoT3ZvYcVyvwJ0NbLSL3UDuLySeWXZfvngkg/561wP7Q9/LP44tLIsTFb2aso7ZZmyf0FAGd4e8UeLPiD4wtrG78SzWguJAB5cnlon0A6nsB3JAr1zUbvxL8MlgvL7VG1rQmlEcplGJY+Oo9O/cjjtmvlq2uprOdZoHKSKcgit/VfHniDWdKTTb2/lltUxiNmJUYGBj29qAPtK0u4L+0hu7aQSQTIJI3XoykZBqYgMCCMg8GvLvgLq02p/DwW8xZjY3DQozHOV4YD8M4r1FmCKWYgKBkk9qAPmrwKx8JftA32jxAx209xNbiNeBtPzoPw4r6Xr5k8GO3i39oWfVbfmCK4luNw6FFGxT+PFfTdABSGlooAbRRRQAUUUUAAooFFABRRRQAUUUUAFFFFABXj37QV35XhCC1DYaeZeM9gc17DXgH7QF0JdV0SwHPzl8fjigD0v4UaaNM+H2noMfvQZP6f0rtqyPDNsLPwxpkAXG22jz9SoJ/UmtegAooooAKKKx/EXiPTPC+lSajqdwsUSA7Rn5nPoo7mgCn4z8XWPgzw/Lqd6wLD5YYgfmkfsB/WvjbXNZu/EGtXOqXz77i4cu3oPYe1bfj3xxe+ONfe9uMpax5W2gzxGn+J71yVABX0D+z94LZTN4qvIiMgw2m4df7zD+X515/wDDX4b3fjbVklmR4tIhYGebGN/P3V9z+lfWljY22mWEFjZxLFbwII40UcKB0oAtU3Yu7dtGfXvUN5e21hbtcXc6QxL1ZzgV5N41+Nmn6XaS22hgzXpyolYfKnvjuaAOm+IfxFsPA+nNlkm1OVT9ntgcnP8Aeb0FeA+FNK1j4jeMJbq4dpJ523zTtnCJ/QdhWDZWWvfEPxPsiEt5dztmSR8kIM9WPYV9XeCPCFp4M0BLGAK9w+Gnlx99v8BQBraPpFpoWkwafZoEiiHOP4jjkn614b+0T4ak+06f4kgjJhKfZZyB90gkqT+ZFfQQ9TWB4u1bw7YaJcQ+IpoPscyFXhkOS49ABzQB8RVraD4e1PxLqcen6XayXE7kAgDhR6sewr0iX4T6b4pikv8AwFqrTQAZ+yXysjg55AfbjFc3Y6L8RPA2rOdP0zVrO6b5C8NuZEkHXrgqaAPqDwP4Vt/BnhS00mFw7xjfPL/fkPLH6entXm3xZ+K0MNtL4Z8NTtPqM58qeeA5EYPBRSOrHpx0rmodC+MfjaAW+pX11Z2T43GdlgBU+oQAkexr07wH8ItE8GBLyUC/1UDm4lX5UP8AsL2+vWgCr8HPh/J4O0F73UU26rfANImOYUHRPr3P5dq9PoooAKKKKAENJSmkoAKKKKAAUUCigAooooAKKKKACiigDNACn1r5q+Jsw1n4zadpwO4I0cWB6s3NfSUriOJnJwFGSa+afB0LeLvjzPfkFoLaZ5ix7bOF/WgD6VjjWJFjRQqKAqgdgKlzTf8AOKilnjhjMksiRoOrOcAfjQBPRXAeJfi/4S8NiSNr8Xt0oOIbT5+fQt0FeKeLfjj4i17zLfTcaZZtkYjOZGHu3+FAHuPjj4n6F4KgZJZRdagyny7WJgTn/aP8Ir5d8XeM9X8Z6mbzVJyVBPlQKfkiHoB/WqumaBrvia4f+ztPvL+XksyIX/M12dn8L7PTIEu/F3iG00xAN0llH89wO4Ujp/OgDzeGCS4lWKGNpHY4CqMk17F4C+B99qUkeoeJt1jYKVYW/SSYdcH+6P1quPiR4d8Ix/ZvBuhw+Ygx9tulDysfXPQVzOo+PfGvihxG93dTIx+WOJGC/pQB9L3PiXwr4M02OyjlhgghTCQwAcCvM/Ffx5wjQaPD5X+2Tlj/AIV55pvw48c+ICrfYJY0bnfcNj/69d7oP7OxJWTXdTOP4orcf1oA8t1fx14i8Syqk93PIWOFQMWP4V1Hg74L6/4mlS71UPp9ixyWlH7xx7Cvf/Dvw68NeGUU2GmxeeAMzSDc/wCddVwooAwfDHhHSfCWnLZaVarEuBvkPLyH1JrYuru2sbZp7mVIYkGSztgCuE8ZfFrRfDbPaWh/tDURwsMJyAfQmuIsvC/jP4nXMeoeI7mTT9JZspbrlcr7D+poA1/E3xjkubo6T4Ks31C9b5fP2Eop9h3/ABqLw/8ACK/1y8Gs+Or6S7mf5haBzgex/wABXpPhvwfovhW0EGmWiocfNKwy7fU1vgYoAqWGnWml2qWtlbR29vGMKkYwAKt0UUAFFFFABRRRQAUUUUAIaSlNJQAUUUUAAooFFABRRRQAUUUo9aADFGcDJ6VBc3UNpbPcTyLHEgyWY4AHrXmOp+L9f8XXs2leC4NsQO2XU5hhB/u5oA6nxb4q0TStOntdQ1aOxkmRoxxvZcjrtzmvIfCvjrwN4JS7k0G01XUdRuCFkeVBuk75GOgz25rTtdF8LWPjGDw5dadN4q1+b57u5nmKx2/c/WvY7fStJ0i3P2WytbaNFySqBQAB3NAHjF58R/iZr6Y0PwxJYQPwJpIjn67nwK53U/h/8Q9eVrvxHrttBGcA/bL3YoH0HFdl4++N9lpjSWHhyOO8uk+U3TDMSH29TXlNjofjX4n6oZz9ou8n5riclYk+nb8qAJ/+ES8FabGzat40W6bIULplsZD+JbA/nVyz8SaBo9z9k8F+E/7Vlb711qcXnOwP91Bwo/OvRPDfwC0jToxc6/dNeyqNxiT5Yx/jXovhSz0P+x47jSdNgt4WJVdqDJwcdaAPE49F+KfiuBIsLpFl/wA8oVFuh/4AoGT71sad+z3JcyCfW9bllkJywQZ/U17wB2AGAPyp1AHn2jfBnwdpBDtp4u3Heckj/wCvXZW+j6bZPm1sLaA5B/dRKv8AKr2aWgBoAA4AAoxjpVTU9VsdHtHutQuoreBBks7Yrwzxz8emJksvDCYGCrXcg5H+6KAPXPE/jbRPCVsZNTvESQrlIV5dvwryiXxF42+K9xJa6BG+l6Luw85OCR7nv9BXg+oalfardPdX11LcTucs8rlifxNdz8O/ipqXgphayILrTGbLwE4K+6mgD3zwf8KdD8MbbmWP7bqHBaeYZw3sK70Liuc8KeN9G8X2In024UyAZeBjh0+tdHmgAAxS0UZxQAUUZqrqF/baZZS3l3KsUEKF3Zj0AoAqaxrtpo72UdwSZbuYQxIvUk9/oOtagrzTwmk3jnxK/i+8jKadas0GlwsDkjvIR79K9LFAC0UUUAFFFFACHrSUp60lABRRRQACigUUAFFFFAB3qK4njgiaWV1SNBudj2FTDis27sTqEipOc2wO5k/vntn2oA5SXTbnx5P5l60ttoSN8kA+VrjHc+i1Y8W65ZeA/Daw6bboLyb9xYWkQ5kkPTj0FbmsatBoloiiJ5p3+WC1hHzSH0HoPesXQvDE8msHxN4iKz6w67YIgcx2aH+FPf1agDN+H3hBfCGl3et67Kjaxegz3txIeIl67cn0715D8TvixeeKLmTR9DeWHSg2xmTh7k++O3tWt8b/AIiPe3z+FtKmItoW/wBMkU/6x/7n0H86ufBb4aJKkfinWYNwzmyhcen8ZH8hQBF8N/gibuOHV/FCFImG+KxHBb0L+n0r32zs7ewto7a0gjghjGFSNcACp8YGP5Uv40Ac9401ZND8H6lfO2DHA2056nGKo/DGJ0+HejGXIklg8w/8COa5j4v3M+rz6R4M08k3WpThpQv8MYOSTXp2m2Mem6bbWcQASCJY1x6AYoAsqoUYFBpay9Y1ux0Wxku7yUBE42ryzH0A9aANB3WNC7sFUdSTgCvLvG3xt0fw8XtNJxqF8MgkH92h9z3NeY/En4j674kuJLSwhurTTFH3QpDP7kivJ2B3HdnPqaAPWdP8OeNPi7K2oXF+Esg//LRztT2Ciuoi/Zxi8v8Ae60Q2Ooj715T4M+IWueCrktYThrZyPMt5OVb/A19I+DPivoXiyFImmWzvsfNDK2Mn2PegDy3U/2ddXhBaw1KCfHZwVNcFrXwz8W6EGa50i5eJeskKF1/MCvswHIz1FBUMuGANAHwvpGr6p4d1JLvT55ba5jPbj8x3r37wR8eLK+RLXxNttrg4AuEX5GPv6V6Dr/w38LeIyz3+mRiUjHmxfI36V5lr/7PMLNv0PUCo6bLgc/mKAPbrLULTULVLmzuI54H+7JGwIP41zGo+JJ7jx9p/h3TSWEK/ab9xyETHyqfTJrzGy0yP4QaQ8TzJqHibUX8q2ghJPlDGAcepz19q7PS/AeuR+GJIk1JbLWNUPmajf43yAc/Io/IZyMUAdVr/jPQfDcRbUb+NJMcQqdzsfQKOa87vdK8XfFDVIHv7Z9J8MRyBhBKcSXAHcj3966Xw18I9C0C6ivbgy6lfJ0muTkA+oFegDhfYUAQWFlb6dYw2drGI4IVCIg7AVYoooAKKKKACiikJoADSUUUAFFFFAAKKBRQAUUUUAFJ7ClooAowafBDcvclfMuH6ytyceg9K574j+KB4S8GXt/GwFyy+XAD/fPGa6/+dfPH7RGsF73TdIRsIimVl+vT+tAHm3gbw5N408a2ljIWZZJPNuHIz8o5bP1/rX2TbW8VpaxW8CCOGJQiIOgUcAV4f+znoYWz1PXZF+Z2FvEfbq364r3egAFQXdzDZWkt1cOEhhQu7HsBzU9Ur3T4dSjWG4XfDuDMnZsdAaAOQ8FaHPqGuX3jTVo8Xd5+7som/wCWEA6D6nrXfUiqFUKowAMAUtACGohBGpcrGgL/AHsAfN9amoxQBVews5M77SBieuY15rA1j4e+FtcjKXej2wY/xxIEb8wK6jFGKAPnvxf+z9JAk134bujKByLWXhvwbv8AlXj2paDrWg3fl3tlc2sy8glSP1r7lxUM9pb3S7bi3imHpIgYfrQB8u+C/jJrnhvy7bUWkvrEYGJcllHsa9u0n4u+ENUt1dtSW2c9UlU8H6gVr6l4C8MasMXei2pPqiBT+lYv/CnPBQzjSzz/ANNGoA0br4meEbRN8mswMMZ+TLfyrmpviHq3im5Wx8F6bIUdsPqFymI0XuQO5roNN+Fvg/TLgTw6LBJIOhnzIB+B4rrYbaG3jVIo0jReioMAUAcV4b+GWnaPqh1vUriXVtcdt7Xlx/Af9le3pnr9Old0OlJnFLQAUUUUAFFFFABRSE0lAATmiiigAooooAKKKKAAUUCigAooooAKKKKAAnAr5J+Nd2bn4i3ILZ8uNV+nX/GvrR+I2Psa+PPi1n/hYupZ9V/lQB9B/BWyFl8MtN+XBnLzH8TXoVcp8M0CfDbQAMf8eimuroAKUCgCloAKKKKACkPWlpMUAGaM0YoxQAZozRik2L6UALmjNG1fSgACgAzRmloxQA2ilxRigBKM0uKSgBc0ZpKKACiiigAooooAKKKKACiiigAFFAooAKKKKACiiigBrjMbj2NfI/xlh8n4hXRx9+NW/wA/lX11Xy/8fLEw+J7S6xjzIih+oJP9aAPcfhdKJfhpoLA5xaha6+vOfgheC7+GViM8wSPEfwNejUAKKWminUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUgFLSDpQAYpKcelNoAKKKKACiiigAooooABRQKKACiiigAooooAK8J/aE0zfpdpfAY8mfbkejD/wCtXu1cB8XNJ/tTwRfqq7nWIun1XmgDi/2ctZWTTNV0d2+aJxPGP9k8H9cV7nnIr5F+Deu/2F8RLPzG2w3YNvIT79P1FfXNAC0o6UlC/pigB1FFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFNpx6U0HPPbtQAoHFLigdKKAENJSmkoAKKKKAAUUCigAooooAKKKKACs3W7VbvTJonGQQVP0IrS7UyVBLE6HowoA+HNTtptB8SXMK5WWzuTtPTG1uK+x/Buvx+JfCem6rGwZpYR5ns44YfnXzR8Z9IOneNWuQuEvE35/wBocGu0/Z68UhZrzwzcSYD5uLYH1/iH9aAPoLr2oFFFADqKRTlR1/GloAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkJApaKAEJ7d6TuaXFGKAFHSigUUAIaSlNJQAUUUUAAooFFABRRRQAUUUUAFFFFAHh3x/0Tz9Fh1FEy1tLlm/2W/+vivDPDet3Hh3xBY6tbkiS2lDkf3h3H5V9c+P9HXWvC97aMufMhYD/eAyP5V8f2OmyXc9xbDi4iRmCHuV6j60Afb+lajBq+lWuo2zBoLiMSIR6GrleJ/ADxabzSLnw1dP++tP3tvuPJjJ5H4H+de2d6AAU6m0ooAWiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBDSU6igBtFOooAaKKdRQA2iiigAooooAKKKKAK97F51nIpGTjNfI3iKD/hE/ipI23EC3Ky9PvIxyf5mvsHAIx+dfNXx80f7Nq9jqSrw4MLemRyM/gaAOfuGm+GvxQt9Qt8/YndZ4z2eF+o/z6V9WWlzDe2kN1buHhmRZEYdwRxXz/wCI9D/4TH4P6PrEC772zt85HUgcMv8AI11vwG8Wf2x4WfRZ5N11px+XJ5MRPH5dKAPXKKKKAHCiminUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUANooooAKKKKACiiigAryj446T9t8GzzKuXgZZR/WvV65rx1YDUfCt9bkZLwuv444oA84+BV0NV8A3+mOdxtbgsoPow/+sa462Z/hd8YoZlBTS718Y6Dy3PT/AICf5Vpfs63Zg8QazpxP34g2PdTj+tdj8Z/CX9s+HZbm3TNza/v4yB1H8Q/LmgD1hHEiqyEMpGQR6U8CuD+E3ib/AISXwFZSyvuubUfZ5j3JUcH8sV3goAMUtFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFADaKKKACiiigAooooAKp6nGJdPlX2q5UN2M2so/2aAPmz4Qj+z/jTfWg6FZ0/XNfRmp2q3djIjIG4Py+o7ivnf4fpj9oK9CdA835cV9KADHPpQB4f8NC/hD4paz4XkJFrfL9ot89Mjn+uPwr3IdTXi3xKtjoHjDw74mjGPst4sUzD+4x4/rXtCMHQMvQjIoAdRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA2iiigAooooAKKKKACobs/6LLn+6amqrqUgi02eQ9FQ/yoA+fPhaguPjnq03ZEmP6ivo0Cvnr4Eobvx7r9+RnCsM/Vv/AK1fQnagDgPi3pf9oeCr9gm544vOH+8hBH9a6nwteHUPCulXZOTLaxsf++ad4htVvNIuIWGQ6Mh/EGsv4cZXwFpUROTFF5f5GgDq6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAG0UUUAFFFFABRRRQAVg+M7wWPhHU7gnGyBz+lb1ec/GvUhp/wAO7xQcNPiIfjQByP7OloWstd1Bh/rZUQH8yf517p/WvMfgPpv2D4bxTMPnup3l/DgD+Vend6AILtPMt2GM5/wrN8L2LafocduwxhmIH1NbJ5FKMcgUALRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA2iiigAooooAKKKKACvA/2h9WLvpeiwnLM3mlR1PYV72WCgknAAyTXzJcufiF8e4ok+e0guOh6eXHyf1FAHv8A4O00aN4P0nTwMeTbID9SM1u0igAAKMADAHpS0AFKKSlFAC0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUANooooAKKKKACiioZpY4YXlldUjQEszHgAetAHI/EvxTH4W8GXl0HxczKYYF7lj3/KuA/Z/wDDTJa3/ia7QmS4YwwMw6j+Jh9TkfhXI+L9Zuvix8RrXRNKLHT4ZPLiYdNo+9Ia+jdE0m20LRrTTbNAkNtGEUAdeOT+J5oA06WiigApRSUooAWiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBtFFJnjj8KAFxTHdY0LOQqjuxwK8e8b/F+4h1RtA8JQrcXgYJJc43AMf4VXua8h8bX3jq0u1i8SXuoRPMgcRuxRSPXAoA+mtf+Ifhfw7E5vtWg8xR/qYm3u30ArwD4ifGK/8AFcT6ZpSPZaW3Dc/vJh746D2rywsWfczFiepPNes/B34cN4i1Rdc1OI/2VauDGrf8t5Bzj6DvQB6T8FfAv/CO6GdZv4dupXygqGHMcXYfU9TXrHakAAAAwAOmKWgAooooAKUUlKKAFooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAb1rL195l0K7W24neJlQjqGINalRzQrPEY3GVNAHxn4b8SXngzxY2otbJLdQSOGSYZ+Y8H8ar+L/GOqeMtS+26jKXYDCqBhUX0Udh/k19E+LPhBpPiW4a5KmC6PWeHALf7w6GqPh/4BeHtOuVuNRmmvypyInwFP1x1oA8l+G/wwvfGt8lxcq9vo8bZln6eZ/sr/AI19V6dp9rpWnwWNlCsNtAoVI1GMAVJbWsFnbR21tEkMMY2oiDCqParGKACiiigAooooAKUUlKKAFooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAbRRRQAUUUUAFFFFABRRRQAUUUUAFKKSlFAC0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/2Q=="></div><div class="loader-item">Scene name: <h3 class="otf-editable">scene-name</h3> <div class="on-edit"><form action="php-stubs/scenes.php" method="post"><input id="scene-id" name="scene-id" value="456" type="hidden"><input class="stringkey" id="title-456" size="32" value="título cargado" name="scene-name" type="text"> <br clear="all"></form></div><br>File name: <h4>Panorama 2</h4><div class="ok" style="display: inline-block;"></div><p>Upload complete!<br>Now you can add hotspots to this scene</p>					 </div><br clear="all">                    <a href="#" class="delete-item" title="Delete item"></a>					<a href="#" class="add-element border-radius-2 edit-hotspots">	                    Edit hotspots	                </a>					<a href="#" class="drag-item"></a>               </div></div>
+                
+                
+<script src="js/jquery.filedrop.js"></script>	  
+<script src="js/jquery.filedrop.start.js"></script>	  
+	    
+        
+        
+				<!--tabs-->	
+                <div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="tabs">
+                  <ul role="tablist" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+                    <li aria-selected="true" aria-labelledby="ui-id-1" aria-controls="tabs-1" tabindex="0" role="tab" class="ui-state-default ui-corner-top ui-tabs-active ui-state-active"><a id="ui-id-1" tabindex="-1" role="presentation" href="#tabs-1" class="tab-button ui-tabs-anchor">Basic Info</a></li>
+                    <li aria-selected="false" aria-labelledby="ui-id-2" aria-controls="tabs-2" tabindex="-1" role="tab" class="ui-state-default ui-corner-top"><a id="ui-id-2" tabindex="-1" role="presentation" href="#tabs-2" class="tab-button ui-tabs-anchor">User Interactions</a></li>
+                  </ul>
+                  <div aria-hidden="false" aria-expanded="true" role="tabpanel" aria-labelledby="ui-id-1" id="tabs-1" class="tabs-content ui-tabs-panel ui-widget-content ui-corner-bottom">
+  					<div class="column">
+                    <label class="title">
+                        <p>Title * </p>
+                        <input class="info-tour border-radius-4 form-user" name="title" value="">
+                    </label>
+                    <label class="description">
+                        <p>Description * </p>
+                        <textarea class="info-tour border-radius-4 form-user" name="description"></textarea>
+                    </label>
+
+                    <label class="frendly">
+                        <p>URL * </p>
+                        <input class="info-tour border-radius-4 form-user" value="" name="friendly_url">
+                        <br clear="all">
+                    </label>
+
+
+                    <label class="frendly">
+                        <p>Thumb * </p>
+                        <input class="info-tour border-radius-4 form-user" value="" name="thumb" type="file">
+                        <br clear="all">
+                    </label>
+
+<!--
+                    <label class="frendly">
+                        <p>Frendly URL</p>
+                        <font>https://www.spinattic.com/ </font>
+                        <input class="info-tour border-radius-4 form-user" value="Panoramas" name="friendly_url">
+                        <br clear="all">
+                    </label>
+
+-->
+
+                    <label class="tags" style="width:93%;">
+                        <p>Tags * <a original-title="Lorem ipsum lorem ipsum, lorem ipsum" href="#" class="help"></a></p>
+                        <input style="display: none;" class="info-tour border-radius-4 form-user" value="" name="tags_loaded" id="tags-loaded"><div style="width: auto; min-height: 100px; height: 100%;" id="tags-loaded_tagsinput" class="tagsinput"><div id="tags-loaded_addTag"><span class="ui-helper-hidden-accessible" aria-live="polite" role="status"></span><input autocomplete="off" class="ui-autocomplete-input" style="color: rgb(102, 102, 102); width: 151px;" id="tags-loaded_tag" value="" data-default="add a tag"></div><div class="tags_clear"></div></div>
+                    </label>                    
+					</div>                    
+  					<div class="column">
+	                 <label class="privacy-config">               
+                        <p>Privacy Configuration <a original-title="Lorem ipsum lorem ipsum, lorem ipsum" href="#" class="help"></a></p>
+                        <select class="info-tour border-radius-4 form-user" name="privacy">
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                            <option value="notlisted">Not listed</option>
+                        </select>
+                        <p><font>Anyone can search for and view</font></p>
+                    </label>
+                    
+	                 <label class="category">               
+                        <p>Category * <a original-title="Lorem ipsum lorem ipsum, lorem ipsum" href="#" class="help"></a></p>
+                        <select class="info-tour border-radius-4 form-user" name="category">
+                            <option value="">Choose category</option>
+                            
+                            <option value="Destinations">Destinations</option>
+                            
+                            
+                            <option value="Events">Events</option>
+                            
+                            
+                            <option value="Hotels">Hotels</option>
+                            
+                            
+                            <option value="Miscellaneous">Miscellaneous</option>
+                            
+                            
+                            <option value="Museums">Museums</option>
+                            
+                            
+                            <option value="Nature">Nature</option>
+                            
+                            
+                            <option value="Parks">Parks</option>
+                            
+                            
+                            <option value="Real Estate">Real Estate</option>
+                            
+                            
+                            <option value="Resorts">Resorts</option>
+                            
+                            
+                            <option value="Restaurants">Restaurants</option>
+                            
+                            
+                            <option value="Universities">Universities</option>
+                            
+                            
+                            <option value="Vehicles">Vehicles</option>
+                            
+                        </select>
+                    </label>
+                    <br clear="all">
+
+                    
+					<div class="map-location">
+						<p>Location on Map</p>
+						<div style="position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" id="map_canvas"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;"><div style="position: absolute; left: 0px; top: 0px; width: 100%; z-index: 200;"><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div></div><div style="position: absolute; left: 0px; top: 0px; width: 100%; z-index: 201;"><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1;"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -26px; top: 26px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 230px; top: 26px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -26px; top: -230px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -26px; top: 282px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 230px; top: -230px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 230px; top: 282px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -282px; top: 26px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 486px; top: 26px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -282px; top: -230px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -282px; top: 282px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 486px; top: -230px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 486px; top: 282px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; width: 100%; z-index: 202;"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1;"><div style="width: 256px; height: 256px; position: absolute; left: -26px; top: 26px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 230px; top: 26px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -26px; top: -230px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -26px; top: 282px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 230px; top: -230px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 230px; top: 282px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -282px; top: 26px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 486px; top: 26px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -282px; top: -230px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -282px; top: 282px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 486px; top: -230px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 486px; top: 282px;"></div></div></div></div><div style="position: absolute; z-index: 0; left: 0px; top: 0px;"><div style="overflow: hidden;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1;"><div style="position: absolute; left: -26px; top: -230px;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/transparent.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="position: absolute; left: 230px; top: -230px;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/transparent.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="position: absolute; left: -282px; top: -230px;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/transparent.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="position: absolute; left: 486px; top: -230px;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/transparent.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -26px; top: 26px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img draggable="false" src="http://mt0.googleapis.com/vt?lyrs=m@246000000&amp;src=apiv3&amp;hl=en&amp;x=0&amp;y=0&amp;z=1&amp;style=47,37%7Csmartmaps" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 486px; top: 26px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img draggable="false" src="http://mt0.googleapis.com/vt?lyrs=m@246000000&amp;src=apiv3&amp;hl=en&amp;x=0&amp;y=0&amp;z=1&amp;style=47,37%7Csmartmaps" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 230px; top: 26px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img draggable="false" src="http://mt1.googleapis.com/vt?lyrs=m@246000000&amp;src=apiv3&amp;hl=en&amp;x=1&amp;y=0&amp;z=1&amp;style=47,37%7Csmartmaps" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -282px; top: 26px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img draggable="false" src="http://mt1.googleapis.com/vt?lyrs=m@246000000&amp;src=apiv3&amp;hl=en&amp;x=1&amp;y=0&amp;z=1&amp;style=47,37%7Csmartmaps" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -26px; top: 282px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img draggable="false" src="http://mt0.googleapis.com/vt?lyrs=m@246000000&amp;src=apiv3&amp;hl=en&amp;x=0&amp;y=1&amp;z=1&amp;style=47,37%7Csmartmaps" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 486px; top: 282px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img draggable="false" src="http://mt0.googleapis.com/vt?lyrs=m@246000000&amp;src=apiv3&amp;hl=en&amp;x=0&amp;y=1&amp;z=1&amp;style=47,37%7Csmartmaps" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 230px; top: 282px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img draggable="false" src="http://mt1.googleapis.com/vt?lyrs=m@246000000&amp;src=apiv3&amp;hl=en&amp;x=1&amp;y=1&amp;z=1&amp;style=47,37%7Csmartmaps" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -282px; top: 282px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img draggable="false" src="http://mt1.googleapis.com/vt?lyrs=m@246000000&amp;src=apiv3&amp;hl=en&amp;x=1&amp;y=1&amp;z=1&amp;style=47,37%7Csmartmaps" style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a title="Click to see this area on Google Maps" href="http://maps.google.com/maps?ll=50,0&amp;z=1&amp;t=m&amp;hl=en&amp;gl=US&amp;mapclient=apiv3" target="_blank" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 62px; height: 26px; cursor: pointer;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/google_white2.png" style="position: absolute; left: 0px; top: 0px; width: 62px; height: 26px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></a></div><div style="z-index: 1000001; position: absolute; right: 70px; bottom: 0px; width: 12px;" class="gmnoprint"><div class="gm-style-cc" style="-moz-user-select: none;" draggable="false"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span style="display: none;"></span></div></div></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto,Arial,sans-serif; color: rgb(34, 34, 34); box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 80px; top: 110px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;"></div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div><div style="position: absolute; right: 0px; bottom: 0px;" class="gmnoscreen"><div style="font-family: Roboto,Arial,sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);"></div></div><div draggable="false" style="z-index: 1000001; position: absolute; -moz-user-select: none; right: 0px; bottom: 0px;" class="gmnoprint gm-style-cc"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a target="_blank" href="http://www.google.com/intl/en_US/help/terms_maps.html" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><div class="gm-style-cc" style="-moz-user-select: none; position: absolute; right: 0px; bottom: 0px;" draggable="false"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; display: none;"><a href="http://maps.google.com/maps?ll=50,0&amp;z=1&amp;t=m&amp;hl=en&amp;gl=US&amp;mapclient=apiv3&amp;skstate=action:mps_dialog$apiref:1&amp;output=classic" style="font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;" title="Report errors in the road map or imagery to Google" target="_new">Report a map error</a></div></div><div controlheight="356" controlwidth="78" draggable="false" style="margin: 5px; -moz-user-select: none; position: absolute; left: 0px; top: 0px;" class="gmnoprint"><div style="cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; width: 78px; height: 78px; position: absolute; left: 0px; top: 0px;" controlheight="80" controlwidth="78" class="gmnoprint"><div style="width: 78px; height: 78px; position: absolute; left: 0px; top: 0px;" controlheight="80" controlwidth="78" class="gmnoprint"><div style="visibility: hidden;"><svg viewBox="0 0 78 78" height="78px" width="78px" overflow="hidden" version="1.1" style="position: absolute; left: 0px; top: 0px;"><circle stroke="#f2f4f6" fill="#f2f4f6" fill-opacity="0.2" stroke-width="3" r="35" cy="39" cx="39"></circle><g transform="rotate(0 39 39)"><rect fill="#f2f4f6" stroke-width="1" stroke="#a6a6a6" height="11" width="12" ry="4" rx="4" y="0" x="33"></rect><polyline stroke="#000" fill="#f2f4f6" stroke-width="1.5" stroke-linejoin="bevel" points="36.5,8.5 36.5,2.5 41.5,8.5 41.5,2.5"></polyline></g></svg></div></div><div style="position: absolute; left: 10px; top: 11px;" controlheight="59" controlwidth="59" class="gmnoprint"><div style="width: 59px; height: 59px; overflow: hidden; position: relative;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" style="position: absolute; left: 0px; top: 0px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><div title="Pan left" style="position: absolute; left: 0px; top: 20px; width: 19.6667px; height: 19.6667px; cursor: pointer;"></div><div title="Pan right" style="position: absolute; left: 39px; top: 20px; width: 19.6667px; height: 19.6667px; cursor: pointer;"></div><div title="Pan up" style="position: absolute; left: 20px; top: 0px; width: 19.6667px; height: 19.6667px; cursor: pointer;"></div><div title="Pan down" style="position: absolute; left: 20px; top: 39px; width: 19.6667px; height: 19.6667px; cursor: pointer;"></div></div></div></div><div controlheight="40" controlwidth="32" style="cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; position: absolute; left: 23px; top: 85px;"><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" style="position: absolute; left: -9px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" style="position: absolute; left: -107px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" style="position: absolute; left: -58px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" style="position: absolute; left: -205px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div><div controlheight="0" controlwidth="0" style="opacity: 0.6; display: none; position: absolute;" class="gmnoprint"><div title="Rotate map 90 degrees" style="width: 22px; height: 22px; overflow: hidden; position: absolute; cursor: pointer;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" style="position: absolute; left: -38px; top: -360px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div><div controlheight="226" controlwidth="25" style="position: absolute; left: 27px; top: 130px;" class="gmnoprint"><div title="Zoom in" style="width: 23px; height: 24px; overflow: hidden; position: relative; cursor: pointer; z-index: 1;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" style="position: absolute; left: -17px; top: -400px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div title="Click to zoom" style="width: 25px; height: 178px; overflow: hidden; position: relative; cursor: pointer; top: -4px;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" style="position: absolute; left: -17px; top: -87px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div title="Drag to zoom" style="width: 21px; height: 14px; overflow: hidden; position: absolute; transition: top 0.25s ease 0s; z-index: 2; cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; left: 2px; top: 180px;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" style="position: absolute; left: 0px; top: -384px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div title="Zoom out" style="width: 23px; height: 23px; overflow: hidden; position: relative; cursor: pointer; top: -4px; z-index: 3;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" style="position: absolute; left: -17px; top: -361px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div></div><div style="margin: 5px; z-index: 0; position: absolute; cursor: pointer; right: 0px; top: 0px;" class="gmnoprint"><div class="gm-style-mtc" style="float: left;"><div title="Show street map" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 1px 6px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; background-clip: padding-box; border: 1px solid rgba(0, 0, 0, 0.15); box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); min-width: 22px; font-weight: 500;">Map</div><div style="background-color: white; z-index: -1; padding-top: 2px; background-clip: padding-box; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); position: absolute; left: 0px; top: 18px; text-align: left; display: none;"><div title="Show street map with terrain" draggable="false" style="color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 5px; direction: ltr; text-align: left; white-space: nowrap;"><span style="position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px 1px 1px 1px; width: 13px; height: 13px; vertical-align: middle;" role="checkbox"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/mv/imgs8.png" style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div class="gm-style-mtc" style="float: left;"><div title="Show satellite imagery" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 1px 6px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; background-clip: padding-box; border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); min-width: 38px;">Satellite</div><div style="background-color: white; z-index: -1; padding-top: 2px; background-clip: padding-box; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); position: absolute; right: 0px; top: 18px; text-align: left; display: none;"><div title="Zoom in to show 45 degree view" draggable="false" style="color: rgb(184, 184, 184); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 5px; direction: ltr; text-align: left; white-space: nowrap; display: none;"><span style="position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(241, 241, 241); border-radius: 1px 1px 1px 1px; width: 13px; height: 13px; vertical-align: middle;" role="checkbox"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/mv/imgs8.png" style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">45°</label></div><div title="Show imagery with street names" draggable="false" style="color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 5px; direction: ltr; text-align: left; white-space: nowrap;"><span style="position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px 1px 1px 1px; width: 13px; height: 13px; vertical-align: middle;" role="checkbox"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img draggable="false" src="http://maps.gstatic.com/mapfiles/mv/imgs8.png" style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div></div></div>
+                    </div>
+                    
+                   
+		            <label class="latitude">
+                        <p>Latitude</p>
+                        <input name="lat" id="latFld" class="info-tour border-radius-4 form-user" value="000.000" readonly="">
+                    </label>
+		            <label class="longitude">
+                        <p>Longitude</p>
+                        <input name="lon" id="lngFld" class="info-tour border-radius-4 form-user" value="000.000" readonly="">
+                    </label>
+
+	                 <label class="location-info">               
+                        <p>Location * <a original-title="Lorem ipsum lorem ipsum, lorem ipsum" href="#" class="help"></a></p>
+                        <input class="info-tour border-radius-4 form-user" id="location" name="location" style="width:450px">
+                        <br clear="all">
+                    </label>
+                    
+
+
+                    <br clear="all">
+
+					
+
+                    </div>
+                    <br clear="all">
+
+                    <a href="#" onclick="return verificar()" class="red-button border-radius-4">SAVE</a>
+                    <br clear="all">
+
+                    
+                  </div>
+                  <div aria-hidden="true" aria-expanded="false" style="display: none;" role="tabpanel" aria-labelledby="ui-id-2" id="tabs-2" class="tabs-content tab-user-interaction ui-tabs-panel ui-widget-content ui-corner-bottom">
+                  	<h3>Comments and responses</h3>
+					<label>
+                        <input class="info-tour border-radius-4 form-user" name="allow_comments" type="checkbox">
+                        Allow Comments
+                    </label>
+					<label>
+                        <input class="info-tour border-radius-4 form-user" name="allow_social" type="checkbox">
+                        Allow Social Sharing
+                    </label>
+					<label>
+                        <input class="info-tour border-radius-4 form-user" name="allow_embed" type="checkbox">
+                        Allow Embed Code
+                    </label>
+					<label>
+                        <input class="info-tour border-radius-4 form-user" name="allow_votes" type="checkbox">
+                        Allow Users votes
+                    </label>
+                    <a href="#" onclick="return verificar()" class="red-button border-radius-4">SAVE</a>
+                    <br clear="all">
+                  </div>
+                </div> 
+            </form></div>
+        
+
+	
+    
+<tester id="tags-loaded_tag_autosize_tester" style="position: absolute; top: -9999px; left: -9999px; width: auto; font-size: 13px; font-family: helvetica; font-weight: 400; letter-spacing: 0px; white-space: nowrap;"></tester><ul style="display: none;" tabindex="0" id="ui-id-3" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all"></ul></body>​​​​​</html>
