@@ -139,6 +139,10 @@
 				<simple_menu_settings template_id="6" tag_ident="3" prev_tag_ident="1" segment="SKILLS" kind="Thumbs Menu" title="false" thumbs_width="200" thumbs_height="100" thumbs_padding="10" thumbs_opened="true" thumbs_text="true" thumbs_dragging="true" thumbs_onhoverscrolling="false" thumbs_scrollbuttons="true" thumbs_scrollindicator="true" thumbs_y_offset="12" tooltips_thumbs="true" design_bgcolor="0x000000" design_bgalpha="0.6" design_bgborder="1 0x000000 1.0" design_bgroundedge="2" design_thumbborder_bgborder="5 0xFFFFFF 1.0" design_thumbborder_padding="2" design_thumbborder_bgroundedge="0" title_mobiles="false" layout_width="100%" layout_align="right" title_align="left" title_color="#FFFFFF" title_font="sans-serif" title_weight="normal" title_padding="0 0 0 85" button_position="left" button_x="10"></simple_menu_settings>
 		</skill>
 
+		<skill template_id="4" tag_ident="1" prev_tag_ident="0" segment="SKILLS" kind="Signature">
+				<plugin template_id="4" tag_ident="2" prev_tag_ident="1" segment="SKILLS" kind="Signature" align="bottomright" alpha="0.6" keep="true" name="skill_signature" onclick="openurl(http://www.spinattic.com/,_blank);" onout="tween(alpha,0.6)" onover="tween(alpha,1)" url="http://dev.spinattic.com/styles/skills/spinattic_signature.png" x="3" y="5" zorder="102"></plugin>
+		</skill>
+
 			<!-- DEFAULT SKILLS -->
 			
 			<!-- FREE HOTSPOTS STYLES -->

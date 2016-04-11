@@ -125,6 +125,9 @@
 					linkurl="http://www.spinattic.com"
 				/>
 
+				<plugin align="bottomright" alpha="0.6" keep="true" name="skill_signature" onclick="openurl(http://www.spinattic.com/,_blank);" onout="tween(alpha,0.6)" onover="tween(alpha,1)" url="http://dev.spinattic.com/styles/skills/spinattic_signature.png" x="3" y="5" zorder="102"></plugin>
+		
+
 		
 		
 			<!-- DEFAULT SKILLS -->
