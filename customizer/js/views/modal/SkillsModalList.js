@@ -210,6 +210,19 @@ define([
 					var x2js = new X2JS({attributePrefix:"_"});
 					var tourSkill =  x2js.xml_str2json( data );
 					//tourSkill.skill._no_delete_if_free = $elem.data("no_delete_if_free");
+					if(skill.id=="4"){
+					
+						$.ajax({
+							url:"data/json.php?t=dg",
+							dataType:"json",
+							async:false, 
+							success:function(data){
+								console.log(tourSkill)	
+								tourSkill.skill.plugin._url = data.url;
+								}
+							})
+
+					}
 					
 					skillItemModel = new SkillItemModel({tourSkill:tourSkill.skill,no_delete_if_free:$elem.data("no_delete_if_free"),customizable:$elem.data("customizable")});
 

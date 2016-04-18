@@ -11,7 +11,7 @@ require_once("../php/functions.php");
  * "t" para mostrar datos de un tour
  * "u" para mostrar datos de un usuario
  * "s" para mostrar listado de skills (recibo d para draft o no y id_tour)
- * "c" para mostrar listado de categorías de tours 
+ * "c" para mostrar listado de categorï¿½as de tours 
  * "p" para mostrar listado de privacidades para tours
  * "chk_friendly" para ver si existe esa friendly para ese usuario 
  * "panos" para mostrar listado de panos from collection
@@ -28,7 +28,7 @@ require_once("../php/functions.php");
  * 
  * Para Friendly URL:
  * id el id del tour
- * friendly lo que ingresó como friendly
+ * friendly lo que ingresï¿½ como friendly
  */
 
 $user_id = $_SESSION['usr'];
@@ -386,7 +386,7 @@ if(isset($_GET['t']) && $_GET['t'] != ''){
 				$friendly_URL = "";
 				
 				if($_GET["friendly"] == ''){
-					$friendly_URL = $_GET["id"]; //Si llega vacío devuelvo el id del tour
+					$friendly_URL = $_GET["id"]; //Si llega vacï¿½o devuelvo el id del tour
 				}else{
 					//Si no, chequeo que no exista para este usuario
 					$try_friendly = $_GET["friendly"];

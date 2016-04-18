@@ -61,6 +61,23 @@ define([
 				krpano.set("plugin["+tourSkill.plugin._name+"].url",$("#signature-skill-editor-img").data("imgsrc"));
 			});
 
+		
+		$.ajax({
+				//url:"data/sign_json.json",
+				url:"data/json.php?t=g",
+				dataType:"json",
+				success:function(data){
+					if(data){
+						
+						_.each(data,function(elem,ind){
+							var $li = $('<li><div class="check-wrap"><span class="fa fa-check"></span></div><img src="'+elem.path+'"/><span class="fa fa-close"></span></li>')
+							$("#custome-signate-list").append($li);
+						})
+					
+					}
+				}
+			})		
+
 		},
 
 		alignSignature:function(e){
@@ -87,7 +104,6 @@ define([
 			var myid = this.myid;
 			var tourSkill = this.model.get("tourSkill");
 			
-			console.log(tourSkill)
 			
 			tourSkill.plugin._url = $("#signature-skill-editor-img").data("imgsrc");
 			tourSkill.plugin._x = $("#signature-skill-x").val();
