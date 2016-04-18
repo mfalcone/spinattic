@@ -1,3 +1,9 @@
+<?
+
+require("../inc/conex.inc");
+
+?>
+
 <!DOCTYPE html>
 		<html>
 		<head>
@@ -23,14 +29,15 @@
 		<div id="pano" style="width:100%; height:100%;">
 			<noscript><table style="width:100%;height:100%;"><tr style="valign:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
 			<script>
-				mypanos = ["7","6","5"];
+				<?php if($environment == 'dev'){?>
+				mypanos = ["63"];
+				<?php }else{?>
+				mypanos = [564, 568, 569, 729, 535, 34, 16, 813, 143, 147, 174, 544, 549, 177, 96, 99, 81, 93, 74, 73];
+				<?php }?>
 				randompano = mypanos[Math.floor(Math.random()*mypanos.length)];
 
-				embedpano({swf:"../player/tour.swf", xml:"../panos/"+randompano+"/index.xml", target:"pano", html5:"auto", wmode:"opaque", passQueryParameters:true});
-							function krpano()
-							{
-								krpano().call("trace(hola!)");
-							}
+				embedpano({swf:"../player/tour.swf", xml:"<?echo $cdn;?>/panos/"+randompano+"/pano.xml", target:"pano", html5:"prefer", wmode:"opaque", passQueryParameters:true});
+
 			</script>
 		</div>
 

@@ -64,7 +64,7 @@ define([
 					case "FREE":
 					user_level = 0;
 					break;
-					case "ADV":
+					case "ADVANCED":
 					user_level = 1;
 					break;
 					case "PRO":
@@ -86,7 +86,7 @@ define([
 							case "FREE":
 							elem.nivel = 0;
 							break;
-							case "ADV":
+							case "ADVANCED":
 							elem.nivel = 1;
 							break;
 							case "PRO":
@@ -97,10 +97,6 @@ define([
 						if(elem.blocked_description == "added"){
 							$bt =$('<span class="added-skill">Added</span>')
 						}else{
-							console.log(title)
-							console.log(user_level);
-
-							console.log(elem.nivel);
 							
 							if(user_level<elem.nivel){
 								$bt = $('<a href="" id="add-item-'+elem.id+'" class="upgrade-skill">Upgrade</a>').data("skill",elem);	
@@ -111,6 +107,8 @@ define([
 							$bt.data("no_delete_if_free",elem.no_delete_if_free);
 							$bt.data("blocked_description",elem.blocked_description);
 							$bt.data("customizable",elem.customizable);
+							$bt.data("allow_customize",elem.allow_customize);
+
 						}
 						
 						var $li = $('<li id="item'+elem.id+'">'+title+descrip+'</li>');
@@ -119,9 +117,11 @@ define([
 							$("#"+myid+" .free-skills ul").append($li);   
 						}else if(elem.level == "PRO"){
 							$("#"+myid+" .pro-skills ul").append($li); 
-						}else{
+						}else if(elem.level == "ADVANCED"){
 							$("#"+myid+" .advanced-skills ul").append($li); 
-						}                     
+						}else{
+							delete $li;
+						}                  
 					})
 
 					$("#skill-list-search").autocomplete({
@@ -211,7 +211,7 @@ define([
 					var tourSkill =  x2js.xml_str2json( data );
 					//tourSkill.skill._no_delete_if_free = $elem.data("no_delete_if_free");
 					
-					skillItemModel = new SkillItemModel({tourSkill:tourSkill.skill,no_delete_if_free:$elem.data("no_delete_if_free"),customizable:$elem.data("customizable")});
+					skillItemModel = new SkillItemModel({tourSkill:tourSkill.skill,no_delete_if_free:$elem.data("no_delete_if_free"),customizable:$elem.data("customizable"),allow_customize:$elem.data("allow_customize")});
 
 					var skinCustomizerItem = new SkinCustomizerItem({model:skillItemModel});
 					skinCustomizerItem.render();
