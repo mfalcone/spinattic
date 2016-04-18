@@ -32,16 +32,18 @@ define([
 
                 var no_delete_if_free;
                 var customizable;
+                var allow_customize;
                 var SkillItemModel = Backbone.Model.extend({});
                 _.each(skill_del,function(elem,indice){
                     if(elem.skill_id == skl._template_id){
 
                         no_delete_if_free = elem.no_delete_if_free;
                         customizable = elem.customizable;
+                        allow_customize=elem.allow_customize;
                     }
                 })
 
-                skillItemModel = new SkillItemModel({tourSkill:skl,no_delete_if_free:no_delete_if_free,customizable:customizable});
+                skillItemModel = new SkillItemModel({tourSkill:skl,no_delete_if_free:no_delete_if_free,customizable:customizable,allow_customize:allow_customize});
                 var skinCustomizerItem = new SkinCustomizerItem({model:skillItemModel});
                 skinCustomizerItem.render();
 

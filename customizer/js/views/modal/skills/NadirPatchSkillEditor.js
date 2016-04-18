@@ -47,9 +47,9 @@ define([
 			
 			var tour_id = location.hash.split("/")[1];
 			var caso = 'skills';
-
+			var imagepath = tourSkill.skill_nadirpatch_settings._image.replace("%SWFPATH%","http://"+location.host+"/player")
 			var SingleUploaderModel = Backbone.Model.extend({});
-			var singleUploaderModel = new SingleUploaderModel({myid:"nadirPatch-skill-editor-img",imgsrc:tourSkill.skill_nadirpatch_settings._image,tour_id:tour_id,caso:caso})
+			var singleUploaderModel = new SingleUploaderModel({myid:"nadirPatch-skill-editor-img",imgsrc:imagepath,tour_id:tour_id,caso:caso})
 			var singleUploader = new SingleUploader({model:singleUploaderModel});
 			singleUploader.render(function(){
 				este.krpano.set("skill_nadirpatch_settings.image",$("#nadirPatch-skill-editor-img").data("imgsrc"))

@@ -39,10 +39,10 @@ define([
 			var disable = false;
 			var no_delete_if_free = this.model.get("no_delete_if_free");
 			var customizable = this.model.get("customizable");
-			if($(".main-header .user").data("level") == "FREE"){
-				if(no_delete_if_free == "1"){
-					var disable = true;
-				}
+			var allow_customize = this.model.get("allow_customize");
+			console.log(allow_customize);
+			if(allow_customize == "0"){
+				var disable = true;
 			}
 			var tourSkill = this.model.get("tourSkill");
 			var compiledTemplate = _.template(skincustomizeritem,{tourSkill:tourSkill,disable:disable,customizable:customizable});
@@ -66,15 +66,15 @@ define([
 			var tourSkill = this.model.get("tourSkill");
 
 			var no_delete_if_free = this.model.get("no_delete_if_free");
+			var allow_customize = this.model.get("allow_customize");
+			console.log(allow_customize)
 			var este = this;
 
-			if($(".main-header .user").data("level") == "FREE"){
-				if(no_delete_if_free == "1"){
+				if(allow_customize == "0"){
 					este.showMsg(este.disableMessage);
 					return;
 				}
-			}
-
+			
 			switch(tourSkill._template_id){
 				case "1":
 				var mview = ContextMenuSkillEditor;
