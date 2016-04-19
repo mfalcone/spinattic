@@ -6,7 +6,7 @@ define([
 	'models/main/ModalModel',
 	'views/modal/AlertView',
 	'helpers/ManageData',
-    //'async!http://maps.googleapis.com/maps/api/js?libraries=places&sensor=fals',
+    'async!https://maps.googleapis.com/maps/api/js?libraries=places&sensor=fals',
 	
 
 ], function($, _, Backbone,map,ModalModel,AlertView,ManageData){

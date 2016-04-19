@@ -100,7 +100,7 @@ define([
 				$("#tourTitleBar form").append($bt)
 				$bt.click(function(e){
 					e.preventDefault();
-					window.open("http://"+location.host+"/"+$(".user").data("nickname")+"/"+tourData.krpano.datatour.friendlyURL,'_blank');
+					window.open(location.protocol+"//"+location.host+"/"+$(".user").data("nickname")+"/"+tourData.krpano.datatour.friendlyURL,'_blank');
 				})
 			}else{
 				$("#tourTitleBar .open-live-tour").remove();

@@ -47,7 +47,7 @@ define([
 			
 			var tour_id = location.hash.split("/")[1];
 			var caso = 'skills';
-			var imagepath = tourSkill.skill_nadirpatch_settings._image.replace("%SWFPATH%","http://"+location.host+"/player")
+			var imagepath = tourSkill.skill_nadirpatch_settings._image.replace("%SWFPATH%",location.protocol+"//"+location.host+"/player")
 			var SingleUploaderModel = Backbone.Model.extend({});
 			var singleUploaderModel = new SingleUploaderModel({myid:"nadirPatch-skill-editor-img",imgsrc:imagepath,tour_id:tour_id,caso:caso})
 			var singleUploader = new SingleUploader({model:singleUploaderModel});

@@ -124,7 +124,7 @@ define([
       } 
     },
     createNewTour:function(){
-      var url = "http://"+location.host+"/customizer/";
+      var url = location.protocol+"//"+location.host+"/customizer/";
       location.href = url;
     }
 
