@@ -63,7 +63,7 @@ define([
 			cache: false,
 			success: function(res){
 				if(res == "1"){
-					location.href=  "http://"+location.host+"/index.php?login";
+					location.href=  location.protocol+"//"+location.host+"/index.php?login";
 				}else{
 					$.ajax({
 						dataType:"json",
@@ -108,11 +108,7 @@ define([
 
 
 					var x2js = new X2JS({attributePrefix:"_"});
-					console.log("===========================XML===========================")
-					console.log(data);
 					tourData =  x2js.xml_str2json( data );
-					console.log("===========================JSON===========================")
-					console.log(tourData)
 					helpFunctions.prepareConditionsForTour();
 
 					$.ajax({
@@ -121,7 +117,7 @@ define([
 						success:function(datatour){
 
 							if(datatour.owner_id != userid){
-								location.href = "http://"+location.host+"/tours"
+								location.href = location.protocol+"//"+location.host+"/tours"
 							}
 
 							 $(".main-footer").show();
