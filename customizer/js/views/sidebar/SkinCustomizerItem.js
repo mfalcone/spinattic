@@ -40,7 +40,6 @@ define([
 			var no_delete_if_free = this.model.get("no_delete_if_free");
 			var customizable = this.model.get("customizable");
 			var allow_customize = this.model.get("allow_customize");
-			console.log(allow_customize);
 			if(allow_customize == "0"){
 				var disable = true;
 			}
@@ -67,7 +66,6 @@ define([
 
 			var no_delete_if_free = this.model.get("no_delete_if_free");
 			var allow_customize = this.model.get("allow_customize");
-			console.log(allow_customize)
 			var este = this;
 
 				if(allow_customize == "0"){

@@ -24,7 +24,9 @@ define([
 			"click .skillModal #Context-menu-finish":"doneEdition",
 			"click #signature-skill-align .selected":"alignSignature",
 			"change .signature-skill-editor input":"changeVal",
-			"click #custome-signate-list .check-wrap":"selectSignature"
+			"click #custome-signate-list .check-wrap":"selectSignature",
+			"click #custome-signate-list li .fa-close":"deleteSignatureImage",
+			"click .signature-skill-editor .defaultset .fa":"setDefault"
 		},
 		
 		renderExtend:function(){
@@ -58,24 +60,35 @@ define([
 			this.oldImg  = tourSkill.plugin._url;
 
 			var SingleUploaderModel = Backbone.Model.extend({});
-			var singleUploaderModel = new SingleUploaderModel({myid:"signature-skill-editor-img",tour_id:tour_id,caso:caso,textMessage:txtmsg})
-			
+			var singleUploaderModel = new SingleUploaderModel({myid:"signature-skill-editor-img",tour_id:tour_id,caso:caso,textMessage:txtmsg,skill_id:tourSkill._template_id})
+			var este = this;
 			var singleUploader = new SingleUploader({model:singleUploaderModel});
 			singleUploader.render(function(){
+				$("#"+myid +" .over-edit").trigger("click");
+				tourSkill.plugin._url=$("#signature-skill-editor-img").data("imgsrc");
+				este.model.set("tourSkill",tourSkill);
+				este.loadImages();
 				var krpano = document.getElementById("krpanoSWFObject");
 				krpano.set("plugin["+tourSkill.plugin._name+"].url",$("#signature-skill-editor-img").data("imgsrc"));
+				
 			});
 
-		
-		$.ajax({
-				url:"data/sign_json.json",
-				//url:"data/json.php?t=g",
+		this.loadImages();
+				
+
+		},
+
+		loadImages:function(){
+			var tourSkill = this.model.get("tourSkill");
+			$.ajax({
+				//url:"data/sign_json.json",
+				url:"data/json.php?t=g",
 				dataType:"json",
 				success:function(data){
 					if(data){
-						
+						$("#custome-signate-list").html("");
 						_.each(data,function(elem,ind){
-							var $li = $('<li><div class="check-wrap"></div><img src="'+elem.path+'"/><span class="fa fa-close"></span></li>')
+							var $li = $('<li id="'+elem.id+'" data-default="'+elem.default+'"><div class="check-wrap"></div><img src="'+elem.path+'"/><span class="fa fa-close"></span></li>')
 							if(elem.path==tourSkill.plugin._url){
 								$li.find(".check-wrap").html('<span class="fa fa-check"></span>');
 							}
@@ -85,8 +98,7 @@ define([
 						
 					}
 				}
-			})		
-
+			})
 		},
 
 		alignSignature:function(e){
@@ -130,28 +142,67 @@ define([
 		},
 
 		selectSignature:function(e){
+			$("#custome-signate-list li .fa-check").remove();
 			var krpano = document.getElementById("krpanoSWFObject");
 
 			if($(e.target).attr('class')=="fa fa-check"){
 				$(e.target).remove();
 				if(this.oldImg){
-						krpano.set("plugin[skill_signature].url",this.oldImg)
+						krpano.set("plugin[skill_signature].url",this.oldImg);
+						$(".signature-skill-editor .defaultset").hide();
 					}
 				}else{
 					if($(e.target).children().length){
 						$(e.target).children().remove();
 						if(this.oldImg){
-							krpano.set("plugin[skill_signature].url",this.oldImg)
+							krpano.set("plugin[skill_signature].url",this.oldImg);
+							$(".signature-skill-editor .defaultset").hide();
 						}
 					}else{
 						$(e.target).append('<span class="fa fa-check"></span>');
-						
+						var myid = $(e.target).parent().attr("id");
+						$(".signature-skill-editor .defaultset").show();
+						$(".signature-skill-editor .defaultset").data("default_id",myid);
+						if($(e.target).parent().data("default")=="1"){
+							$(".signature-skill-editor .defaultset .fa").attr("class","fa fa-circle")
+						}
 						var imgsrc = $(e.target).parent().find("img").attr("src");
 						console.log(imgsrc)
 						krpano.set("plugin[skill_signature].url",imgsrc)
 					}
 				}
+			},
+
+		deleteSignatureImage:function(e){
+			var myid = $(e.target).parent().attr("id");
+			$(e.target).parent().append('<div class="delete-overlay">deleting...</div>')
+			$.ajax({
+				url:"php/updater.php?action=del_signature&id="+myid,
+				//url:"data/json.php?t=g",
+				dataType:"json",
+				success:function(data){
+					$("#custome-signate-list li#"+myid).remove();
+				}	
+			})
+
+		},
+
+		setDefault:function(e){
+			if($(e.target).hasClass("fa-circle-o")){
+				$(e.target).attr("class","fa fa-circle");
+				var default_id = $(e.target).parent().data("default_id");
+				console.log(default_id);
+				$.ajax({
+					url:"php/updater.php?action=change_default_signature&id="+default_id,
+					//url:"data/json.php?t=g",
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+					}	
+				})
 			}
+		}
+
 	});
 
 	return SignatureSkillEditor;

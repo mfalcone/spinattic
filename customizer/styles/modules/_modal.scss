@@ -1721,6 +1721,22 @@
 		.column3{
 			padding:5px; 
 		}
+
+		.defaultset{
+			width: 200px;
+			margin-bottom: 25px;
+			display:none;
+			
+			.fa{
+				margin-left: 3px;
+   				margin-top: 3px;
+			}
+
+			.label{
+				width: 180px;
+				float:right;
+			}
+		}
 	} 
 
 	#skillsEditor-6, #skillsEditor-8{
@@ -2029,6 +2045,7 @@
 	 	display: flex;
     	align-items: center;
     	justify-content: center;
+    	position:relative;
 	 	.check-wrap{
 	 		border: 1px solid;
 	 		border-color:$light-gray;
@@ -2059,6 +2076,17 @@
 		    color: #900;
 		    visibility: hidden;
 		    cursor:pointer;
+	 	}
+
+	 	.delete-overlay{
+	 		background:rgba(0,0,0,0.5);
+	 		position:absolute;
+	 		left:0;
+	 		width: 100%;
+	 		height: 100%;
+	 		text-align: center;
+	 		padding-top:20%;
+	 		font-size:1.5rem;
 	 	}
 
 	 	&:hover{

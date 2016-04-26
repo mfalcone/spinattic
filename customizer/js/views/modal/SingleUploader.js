@@ -23,7 +23,7 @@ define([
 			if(cbackFun){
 				this.CallBack = cbackFun;
 			}
-			
+			console.log(this.model.get("skill_id"));
 			var myid = this.model.get("myid");
 			if(this.model.get("imgsrc")){
 			
@@ -77,7 +77,7 @@ define([
 			var dropbox = $('#single-drop-zone');
 			var tour_id = este.model.get("tour_id");
 			var caso = este.model.get("caso");
-
+			var skill_id = este.model.get("skill_id");
 			dropbox.filedropSingle({
 				paramname:'pic',
 				refresh: 100,
@@ -86,7 +86,8 @@ define([
 				url: 'php/upload-single-file.php',
 				data:{
 					tour_id:tour_id,
-					caso: caso
+					caso: caso,
+					skill_id:skill_id,
 					},
 				error: function(err, file) {
 
