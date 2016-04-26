@@ -23,7 +23,8 @@ define([
 		events:{
 			"click .skillModal #Context-menu-finish":"doneEdition",
 			"click #signature-skill-align .selected":"alignSignature",
-			"change .signature-skill-editor input":"changeVal"
+			"change .signature-skill-editor input":"changeVal",
+			"click #custome-signate-list .check-wrap":"selectSignature"
 		},
 		
 		renderExtend:function(){
@@ -52,8 +53,12 @@ define([
 			var tour_id = location.hash.split("/")[1];
 			var caso = 'skills';
 			
+			
+			txtmsg="*JPG, PNG or GIF formats.Upload images twice the screen size. They'll be set to 1/2 scale for correct mobile screen display"
+			this.oldImg  = tourSkill.plugin._url;
+
 			var SingleUploaderModel = Backbone.Model.extend({});
-			var singleUploaderModel = new SingleUploaderModel({myid:"signature-skill-editor-img",imgsrc:tourSkill.plugin._url,tour_id:tour_id,caso:caso})
+			var singleUploaderModel = new SingleUploaderModel({myid:"signature-skill-editor-img",tour_id:tour_id,caso:caso,textMessage:txtmsg})
 			
 			var singleUploader = new SingleUploader({model:singleUploaderModel});
 			singleUploader.render(function(){
@@ -63,17 +68,21 @@ define([
 
 		
 		$.ajax({
-				//url:"data/sign_json.json",
-				url:"data/json.php?t=g",
+				url:"data/sign_json.json",
+				//url:"data/json.php?t=g",
 				dataType:"json",
 				success:function(data){
 					if(data){
 						
 						_.each(data,function(elem,ind){
-							var $li = $('<li><div class="check-wrap"><span class="fa fa-check"></span></div><img src="'+elem.path+'"/><span class="fa fa-close"></span></li>')
+							var $li = $('<li><div class="check-wrap"></div><img src="'+elem.path+'"/><span class="fa fa-close"></span></li>')
+							if(elem.path==tourSkill.plugin._url){
+								$li.find(".check-wrap").html('<span class="fa fa-check"></span>');
+							}
 							$("#custome-signate-list").append($li);
+						
 						})
-					
+						
 					}
 				}
 			})		
@@ -118,7 +127,31 @@ define([
 			this.removeModal(e);
 			this.undelegateEvents();
 		
-		}
+		},
+
+		selectSignature:function(e){
+			var krpano = document.getElementById("krpanoSWFObject");
+
+			if($(e.target).attr('class')=="fa fa-check"){
+				$(e.target).remove();
+				if(this.oldImg){
+						krpano.set("plugin[skill_signature].url",this.oldImg)
+					}
+				}else{
+					if($(e.target).children().length){
+						$(e.target).children().remove();
+						if(this.oldImg){
+							krpano.set("plugin[skill_signature].url",this.oldImg)
+						}
+					}else{
+						$(e.target).append('<span class="fa fa-check"></span>');
+						
+						var imgsrc = $(e.target).parent().find("img").attr("src");
+						console.log(imgsrc)
+						krpano.set("plugin[skill_signature].url",imgsrc)
+					}
+				}
+			}
 	});
 
 	return SignatureSkillEditor;
