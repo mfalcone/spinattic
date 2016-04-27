@@ -68,6 +68,7 @@ define([
 				tourSkill.plugin._url=$("#signature-skill-editor-img").data("imgsrc");
 				este.model.set("tourSkill",tourSkill);
 				este.loadImages();
+				$(".signature-skill-editor .defaultset .fa").attr("class","fa fa-circle-o");
 				var krpano = document.getElementById("krpanoSWFObject");
 				krpano.set("plugin["+tourSkill.plugin._name+"].url",$("#signature-skill-editor-img").data("imgsrc"));
 				
@@ -89,13 +90,16 @@ define([
 						$("#custome-signate-list").html("");
 						_.each(data,function(elem,ind){
 							var $li = $('<li id="'+elem.id+'" data-default="'+elem.default+'"><div class="check-wrap"></div><img src="'+elem.path+'"/><span class="fa fa-close"></span></li>')
-							if(elem.path==tourSkill.plugin._url){
-								$li.find(".check-wrap").html('<span class="fa fa-check"></span>');
-							}
 							$("#custome-signate-list").append($li);
-						
+							if(elem.path==tourSkill.plugin._url){
+								$li.find(".check-wrap").trigger('click')
+							}
 						})
-						
+
+						$("#custome-signate-list").mCustomScrollbar({
+							theme:"minimal-dark",
+							scrollInertia:300
+						});
 					}
 				}
 			})
@@ -126,7 +130,7 @@ define([
 			var tourSkill = this.model.get("tourSkill");
 			
 			
-			tourSkill.plugin._url = $("#signature-skill-editor-img").data("imgsrc");
+			tourSkill.plugin._url = $("#custome-signate-list .fa-check").parent().next().attr("src");
 			tourSkill.plugin._x = $("#signature-skill-x").val();
 			tourSkill.plugin._y = $("#signature-skill-y").val();
 			tourSkill.plugin._zorder = $("#signature-skill-zorder").val();
@@ -165,9 +169,10 @@ define([
 						$(".signature-skill-editor .defaultset").data("default_id",myid);
 						if($(e.target).parent().data("default")=="1"){
 							$(".signature-skill-editor .defaultset .fa").attr("class","fa fa-circle")
+						}else{
+							$(".signature-skill-editor .defaultset .fa").attr("class","fa fa-circle-o")
 						}
 						var imgsrc = $(e.target).parent().find("img").attr("src");
-						console.log(imgsrc)
 						krpano.set("plugin[skill_signature].url",imgsrc)
 					}
 				}
@@ -182,6 +187,9 @@ define([
 				dataType:"json",
 				success:function(data){
 					$("#custome-signate-list li#"+myid).remove();
+					if(!$("#custome-signate-list li:eq(0) .check-wrap").children().size()){
+						$("#custome-signate-list li:eq(0) .check-wrap").trigger('click')
+					}
 				}	
 			})
 

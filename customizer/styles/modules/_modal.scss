@@ -1737,6 +1737,10 @@
 				float:right;
 			}
 		}
+
+		.cancel-img{
+			display: none;
+		}
 	} 
 
 	#skillsEditor-6, #skillsEditor-8{
@@ -2037,6 +2041,9 @@
 }
 
 #custome-signate-list{
+	height:105px;
+	overflow:auto;
+	margin-top:-10px;
 	 li{
 	 	background:$dark-gray3;
 	 	border:1px solid;
@@ -2066,6 +2073,9 @@
 
 		img{
 			margin-right: auto;
+			-moz-transform:scale(0.5);
+			-webkit-transform:scale(0.5);
+			transform:scale(0.5);
 		}
 
 	 	.fa-close{
