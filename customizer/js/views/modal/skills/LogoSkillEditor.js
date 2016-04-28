@@ -53,7 +53,7 @@ define([
 			var caso = 'skills';
 
 			var SingleUploaderModel = Backbone.Model.extend({});
-			var singleUploaderModel = new SingleUploaderModel({myid:"logo-skill-editor-img",imgsrc:tourSkill.plugin._url,tour_id:tour_id,caso:caso,skill_id:tourSkill._template_id})
+			var singleUploaderModel = new SingleUploaderModel({myid:"logo-skill-editor-img",imgsrc:tourSkill.plugin._url,caso:caso,skill_id:tourSkill._template_id})
 			var singleUploader = new SingleUploader({model:singleUploaderModel});
 			singleUploader.render(function(){
 				var krpano = document.getElementById("krpanoSWFObject");

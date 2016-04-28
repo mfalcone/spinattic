@@ -60,7 +60,7 @@ define([
 			this.oldImg  = tourSkill.plugin._url;
 
 			var SingleUploaderModel = Backbone.Model.extend({});
-			var singleUploaderModel = new SingleUploaderModel({myid:"signature-skill-editor-img",tour_id:tour_id,caso:caso,textMessage:txtmsg,skill_id:tourSkill._template_id})
+			var singleUploaderModel = new SingleUploaderModel({myid:"signature-skill-editor-img",caso:caso,textMessage:txtmsg,skill_id:tourSkill._template_id})
 			var este = this;
 			var singleUploader = new SingleUploader({model:singleUploaderModel});
 			singleUploader.render(function(){
