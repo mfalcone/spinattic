@@ -347,7 +347,7 @@ define([
 						res = JSON.parse(res);
 						if(res.result=="ERROR"){
 							var helpFunctions = new HelpFunctions();
-							helpFunctions.showErrorNextToInput($("#friendlyURLTour"),"Special characters not allowed in URLs. Only a-z 0-9","width:500px;margin-top:-20px");
+							helpFunctions.showErrorNextToInput($("#friendlyURLTour"),res.msg);
 						}
 						
 						var finalfriendlyURL = res.friendly_URL;

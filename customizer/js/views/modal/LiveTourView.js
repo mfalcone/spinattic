@@ -309,7 +309,7 @@ define([
 
 						if(res.result=="ERROR"){
 							var helpFunctions = new HelpFunctions();
-							helpFunctions.showErrorNextToInput($("#firendlyUrl"),"Special characters not allowed in URLs. Only a-z 0-9","width:260px;margin-top:10px");
+							helpFunctions.showErrorNextToInput($("#firendlyUrl"),res.msg);
 						}
 
 						var finalfriendlyURL = res.friendly_URL;

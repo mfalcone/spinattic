@@ -68,6 +68,11 @@
 	font-size: 14px;
 }
 
+.pricing .column li.coming{
+	height: 234px;
+    padding-top: 250px;
+}
+
 .pricing .column li span{
 	font-weight:normal;
 }

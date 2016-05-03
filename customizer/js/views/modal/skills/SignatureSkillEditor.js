@@ -87,6 +87,7 @@ define([
 				dataType:"json",
 				success:function(data){
 					if(data){
+						$("#custome-signate-list").mCustomScrollbar('destroy');
 						$("#custome-signate-list").html("");
 						_.each(data,function(elem,ind){
 							var $li = $('<li id="'+elem.id+'" data-default="'+elem.default+'"><div class="check-wrap"></div><img src="'+elem.path+'"/><span class="fa fa-close"></span></li>')
@@ -95,11 +96,11 @@ define([
 								$li.find(".check-wrap").trigger('click')
 							}
 						})
-
-						$("#custome-signate-list").mCustomScrollbar({
-							theme:"minimal-dark",
-							scrollInertia:300
-						});
+							$("#custome-signate-list").mCustomScrollbar({
+								theme:"minimal-dark",
+								scrollInertia:300
+							});
+						
 					}
 				}
 			})

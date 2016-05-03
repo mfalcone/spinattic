@@ -1,20 +1,16 @@
 <?
   
-
-	
-	
-  
 	$restrict = 1;
 	
-	require_once("inc/conex.inc");
-	require_once ("inc/functions.inc");
+	require_once(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/conex.inc");
+	require_once (realpath($_SERVER["DOCUMENT_ROOT"])."/inc/functions.inc");
 
 	session_start();
 	
 	$level = get_level($_SESSION['usr']);
 		
 	$page_title = "Spinattic | Pricing";
-	require("inc/header.php");
+	require(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/header.php");
 	
 	
 	//Get Actual Rates
@@ -32,7 +28,7 @@
 		
 	?>	
 	
-	<link rel="stylesheet" type="text/css" href="css/pricing.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $http.$_SERVER[HTTP_HOST];?>/css/pricing.css">
 	    <script type="text/javascript">
 
 	    	
@@ -73,7 +69,7 @@
 		</div>
 		<hr class="space180px">
 		<div class="wrapper pricing">
-			<h3>Everything your business need: <br>Choose your plan and start creating, customizing and sharing amazing Virtual Tours.</h3>
+			<h3>Everything your business needs: <br>Choose your plan and start creating, customizing and sharing amazing Virtual Tours.</h3>
 			<div class="column-wrap">
 				<div class="column">
 					<h3>Free</h3>
@@ -114,7 +110,11 @@
 						<li>Pano formats: JPG, TIFF, PNG</li>
 						<li>Max file size: 50 mb</li>
 						<li>Max px width: 50 000 px</li>
-						<li>Set max tile size</li>
+						<li>
+							Set max tile size<br>
+							<span class="small">(coming soon)</span>
+						</li>
+						<li>Add your Custom Signature</li>
 						<li>Mouse control settings</li>
 						<li>Autorrotation settings</li>
 						<li class="tooltipped">
@@ -123,8 +123,8 @@
 								<dt>ADVANCED plugins pack:</dt>
 								<dd><span class="fa fa-plug"></span>Tour info panel</dd>
 								<dd><span class="fa fa-plug"></span>Logo</dd>
-								<dd><span class="fa fa-plug"></span>Signature (add your own)</dd>
-								<dd><span class="fa fa-plug"></span>Audio</dd>
+								<dd><span class="fa fa-plug"></span>Your Custom Signature</dd>
+								<dd><span class="fa fa-plug"></span>Audio Plugin</dd>
 								<dd><span class="fa fa-plug"></span>Link button</dd>
 								<dd><span class="fa fa-plug"></span>Context menu</dd>
 								<dd><span class="fa fa-plug"></span>Nadir Patch</dd>
@@ -132,10 +132,9 @@
 							</dl>
 						</li>
 						<li>
-							Real Estate pack: <br>
-							<span class="small">3 customizable interface layouts dedicated to Real estate business.</span>
+							Advanced Layouts pack: <br>
+							<span class="small">(coming soon)</span>
 						</li>
-						<li>Remove Spinattic Signature</li>
 					</ul>
 					<footer>
 						<?php if($level == 'ADVANCED'){
@@ -144,7 +143,7 @@
 							if($level == 'PRO'){
 								$current = '<i class="fa fa-check"></i>';
 							}else{
-								$current = '<a href="make_payment.php?nl=1">Get Advanced</a>';
+								$current = '<a href="'.$http.$_SERVER[HTTP_HOST].'/account/checkout?nl=1">Get Advanced</a>';
 							}
 						}?>
 						<p class="prize">$<?php echo $advanced_yearly_rate;?> / year<br><span class="small">($<?php echo $advanced_yearly_rate/12;?>/mo)</span></p>
@@ -155,6 +154,11 @@
 					<h3>Pro</h3>
 					<div class="expand"><span class="text-inf">Expand details</span><span class="fa  fa-chevron-down"></span></div>
 					<ul>
+						<li class="coming red">
+							COMING SOON!	
+						</li>
+					</ul>
+					<?php /*$nxt ='<ul>
 						<li class="upper red">All of the advanced plan <br/> plus:</li>
 						<li>Max file sieze: 250 mb</li>
 						<li>Max px width: 150 000 px</li>
@@ -180,32 +184,46 @@
 						</li>
 						<li>PRO Layouts pack <br><span class="small">5 customizable interface layouts</span></li>
 						
-					</ul>
+					</ul>'*/?>
 					<footer>
+					
+					
+					<?php /* PARA CUANDO SE HABILITE PRO *************************************************************************************************************************************
 						<?php if($level == 'PRO'){
 							$current = 'Current';
 						}else{
-							$current = '<a href="make_payment.php?nl=2">Get Pro</a>';
+							$current = '<a href="'.$http.$_SERVER[HTTP_HOST].'/account/checkout?nl=2">Get Pro</a>';
 						}?>					
 						<p class="prize">$<?php echo $pro_yearly_rate;?> / year<br><span class="small">($<?php echo $pro_yearly_rate/12;?>/mo)</span></p>
 						<p class="position coming-soon upper single-line"><?php echo $current;?></p>
+					*/?>
+					
+					
+					
+						<p class="prize">---</p>
+						<p class="position coming-soon upper single-line">Coming soon</p>
 					</footer>
 				</div>
 				<div class="column">
 					<h3>Company</h3>
 					<div class="expand"><span class="text-inf">Expand details</span> <span class="fa  fa-chevron-down"></span></div>
 					<ul>
+						<li class="coming red">
+							COMING SOON!	
+						</li>
+					</ul>
+					<?php /*$nxt ='<ul>
 						<li class="upper red">All of the Pro plan <br/> plus:</li>
 						<li>Unlimited Customer accounts</li>
 						<li>10 Editor accounts</li>
-					</ul>
+					</ul>';*/?>
 					<footer>
-						<p class="prize">$360 / year<br><span class="small">($30/mo)</span></p>
+						<p class="prize">---</p>
 						<p class="position coming-soon upper single-line">Coming soon</p>
 					</footer>
 				</div>			
 			</div>
 		</div>
 
-	<?php require_once("inc/footer.php");?>
+	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/footer.php");?>
 </html>

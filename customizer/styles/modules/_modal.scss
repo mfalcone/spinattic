@@ -1720,6 +1720,7 @@
 
 		.column3{
 			padding:5px; 
+			width: 48%;
 		}
 
 		.defaultset{
@@ -1741,6 +1742,8 @@
 		.cancel-img{
 			display: none;
 		}
+
+
 	} 
 
 	#skillsEditor-6, #skillsEditor-8{
@@ -1908,7 +1911,7 @@
 
 
 #signature-skill-linkto{
-	width: 86%;
+	width: 100%;
 	margin-left: 10px;
 }
 
@@ -2036,14 +2039,12 @@
     height: 100px;
 }
 
-#signature-skill-editor-img{
-	width:230px;
-}
 
 #custome-signate-list{
 	height:105px;
 	overflow:auto;
 	margin-top:-10px;
+	width:267px;
 	 li{
 	 	background:$dark-gray3;
 	 	border:1px solid;
@@ -2053,6 +2054,7 @@
     	align-items: center;
     	justify-content: center;
     	position:relative;
+    	width: 99%;
 	 	.check-wrap{
 	 		border: 1px solid;
 	 		border-color:$light-gray;
@@ -2076,13 +2078,14 @@
 			-moz-transform:scale(0.5);
 			-webkit-transform:scale(0.5);
 			transform:scale(0.5);
+			max-width: 100%;
 		}
 
 	 	.fa-close{
 			float:right;
 			font-size: 15px;
 		    position: relative;
-		    right: 10px;
+		    right: 20px;
 		    color: #900;
 		    visibility: hidden;
 		    cursor:pointer;
@@ -2105,4 +2108,15 @@
 	 		}
 	 	}
 	 }
+}
+
+#skillsEditor-4{
+	width:620px;
+	margin-left: -330px;
+	.line-group input{
+			left:80%;
+		}
+	.position{
+		left:80%;
+	}
 }
