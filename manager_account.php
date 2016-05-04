@@ -1,6 +1,6 @@
 <?
 
-/*	$owe = 0;
+	$owe = 0;
 	$credit_b = 0; //Crédito a favor
 
 	$restrict = 1;
@@ -54,7 +54,7 @@
 	if($row = mysql_fetch_array($result)){
 		$credit_b = $row["credit"];
 	}	
-	*/
+	
 	
 ?>		<style type="text/css"></style>
 		<div>
@@ -73,30 +73,46 @@
 		   <table>
 			   <tr>
 					<td class="label">Account type:</td>
-					<td><span class="blue-link"><?php echo $level;?></span>
-						
-						<?php if($level != 'PRO'){?>
-							<a href="<?php echo $http.$_SERVER[HTTP_HOST];?>/account/pricing" class="changenow">Upgrade now</a><?php }?></td>               
+					<td class="bubble-wrapper"><span class="blue-link"><?php echo $level;?></span>
+						<div class="baloon">
+							<h3>Welcome!</h3>
+							<?php switch ($level) {
+								case 'FREE':
+									?><a href="<?php echo $http.$_SERVER[HTTP_HOST];?>/blog/free-accounts/" target="_blank" class="whatsnew">See whats included in your <span class="green">Free</span> account.</a>
+								<?php break;
+								case 'ADVANCED':
+									?><a href="<?php echo $http.$_SERVER[HTTP_HOST];?>/blog/advanced-accounts/" target="_blank" class="whatsnew">Check out what's new with your <span class="blue">Advanced</span> account.</a>
+								<?php break;
+								case 'PRO':
+									?><a href="<?php echo $http.$_SERVER[HTTP_HOST];?>/blog/pro-accounts/" target="_blank" class="whatsnew">Check out what's new with your <span class="red">PRO</span> account.</a>
+								<?php break;
+							}?>
+							<a href="#" class="dismiss">Dismiss</a>
+						</div>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								if(!$(".baloon").hasClass("dismissed")){
+									$(".baloon").delay(2000).animate({
+										opacity:1,
+										left:110
+									},1000)
+								}
+
+								$(".baloon .dismiss").click(function(e){
+									e.preventDefault();
+									$(".baloon").addClass("dismissed");
+								})
+							})
+						</script>
+						<?php 
+						/*if($level != 'PRO'){   PARA CUANDO SE HABILITE PRO (REEMPLAZAR EL IF DE ACA ABAJO POR ESTE)******************************************************************************************************************/ 
+						if($level == 'FREE'){
+						?>
+							<a href="<?php echo $http.$_SERVER[HTTP_HOST];?>/account/pricing" class="changenow">Upgrade now</a>
+						<?php }?>
+					
+					</td>               
 			   </tr>
-				<!-- tr>
-					<td class="label">Account started on:</td>
-					<td>2014-10-21</td>               
-			   </tr-->
-			   
-			   
-			   
-			   <!-- 
-			   <tr>
-					<td class="label">Billing cycle:</td>
-					<td>
-						<select name="billing_cicle" id="billing_cicle">
-							<option value="">Yealy</option>
-							<option value="">montly</option>
-						</select>
-						<span class="updated"><i class="fa fa-check-circle-o"></i> Updated. Next cycle will be monthly</span>
-					</td>
-		 	   </tr>
-		 	   -->
 		 	   
 		 	   <?php if($level != 'FREE' && $has_credit == 1){?>
 		 	   	<tr>
@@ -114,10 +130,7 @@
 		   	<a href="#" class="acountlink">modify</a> <span>-</span> <a href="#" class="acountlink">forget this card</a>
 		   	
 		   	-->			
-		   	<!-- Start of spinattic Zendesk Widget script -->
-<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","spinattic.zendesk.com");
-/*]]>*/</script>
-<!-- End of spinattic Zendesk Widget script -->
+
 
 		   	
 			<div style="clear-both"></div>

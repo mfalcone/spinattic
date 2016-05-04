@@ -10,9 +10,11 @@ define([
 	'helpers/HelpFunctions',
 	'helpers/ManageData',
 	'helpers/ManageTour',
+	'models/main/ModalModel',
+	'views/modal/AlertView',
 
 
-], function($, _, Backbone,Modal,signatureSkillEditor,HelpFunctions,SingleUploader, mCustomScrollbar,HelpFunctions,ManageData,ManageTour){
+], function($, _, Backbone,Modal,signatureSkillEditor,HelpFunctions,SingleUploader, mCustomScrollbar,HelpFunctions,ManageData,ManageTour,ModalModel,AlertView){
 
 	var SignatureSkillEditor = Modal.extend({
 		
@@ -181,15 +183,29 @@ define([
 
 		deleteSignatureImage:function(e){
 			var myid = $(e.target).parent().attr("id");
+			var este = this;
 			$(e.target).parent().append('<div class="delete-overlay">deleting...</div>')
 			$.ajax({
 				url:"php/updater.php?action=del_signature&id="+myid,
 				//url:"data/json.php?t=g",
 				dataType:"json",
 				success:function(data){
-					$("#custome-signate-list li#"+myid).remove();
-					if(!$("#custome-signate-list li:eq(0) .check-wrap").children().size()){
-						$("#custome-signate-list li:eq(0) .check-wrap").trigger('click')
+					console.log(data);
+					if(data.state=="ERROR"){
+						var msg = "This signature is being used by the following tours: <br>";
+						var toursInuse = "";
+						_.each(data.desc,function(obj,ind){
+							toursInuse+='<a href="'+location.protocol+'//'+location.host+'/customizer/#tour/'+obj.id+'" target="_blank">'+obj.title+'</a><br>'
+						})
+						msg+= toursInuse;
+						msg+="If you want to delete this file, please remove it from these tours first.";
+						este.showMsg(msg);
+						$("#custome-signate-list li#"+myid+" .delete-overlay").remove();
+					}else{
+						$("#custome-signate-list li#"+myid).remove();
+						if(!$("#custome-signate-list li .fa-check").size()){
+							$("#custome-signate-list li:eq(0) .check-wrap").trigger('click')
+						}
 					}
 				}	
 			})
@@ -200,16 +216,24 @@ define([
 			if($(e.target).hasClass("fa-circle-o")){
 				$(e.target).attr("class","fa fa-circle");
 				var default_id = $(e.target).parent().data("default_id");
-				console.log(default_id);
 				$.ajax({
 					url:"php/updater.php?action=change_default_signature&id="+default_id,
 					//url:"data/json.php?t=g",
 					dataType:"json",
 					success:function(data){
 						console.log(data)
+						_.each($("#custome-signate-list li"),function(elem,ind){
+							$(elem).data("default","0")
+						})
+						$("#custome-signate-list li .fa-check").parents("li").data("default","1")
 					}	
 				})
 			}
+		},
+		showMsg: function(msg){
+			var modalModel = new ModalModel({msg:msg})
+			var alertView = new AlertView({model:modalModel});
+			alertView.render("alert",alertView.renderExtend);
 		}
 
 	});
