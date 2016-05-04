@@ -75,8 +75,17 @@ define([
 				krpano.set("plugin["+tourSkill.plugin._name+"].url",$("#signature-skill-editor-img").data("imgsrc"));
 				
 			});
-
-		this.loadImages();
+			/*$.ajax({
+				url:"data/json.php?t=dg",
+				dataType:"json",
+				async:false, 
+				success:function(data){
+					console.log(tourSkill)	
+					("#"+myid).data("defaultImage",data.url);
+					}
+				})
+			*/
+			this.loadImages();
 				
 
 		},
@@ -192,15 +201,21 @@ define([
 				success:function(data){
 					console.log(data);
 					if(data.state=="ERROR"){
-						var msg = "This signature is being used by the following tours: <br>";
-						var toursInuse = "";
-						_.each(data.desc,function(obj,ind){
-							toursInuse+='<a href="'+location.protocol+'//'+location.host+'/customizer/#tour/'+obj.id+'" target="_blank">'+obj.title+'</a><br>'
-						})
-						msg+= toursInuse;
-						msg+="If you want to delete this file, please remove it from these tours first.";
-						este.showMsg(msg);
+
+						if(data.desc.length>1){
+							var msg = "This signature is being used by the following tours: <br>";
+							var toursInuse = "";
+							_.each(data.desc,function(obj,ind){
+								toursInuse+='<a href="'+location.protocol+'//'+location.host+'/customizer/#tour/'+obj.id+'" target="_blank">'+obj.title+'</a><br>'
+							})
+							msg+= toursInuse;
+							msg+="If you want to delete this file, please remove it from these tours first.";
+							}else{
+							var msg = "This signature is being used in the current tour. Please select another and save the changes, then you can remove this file"
+						}
 						$("#custome-signate-list li#"+myid+" .delete-overlay").remove();
+						este.showMsg(msg);
+
 					}else{
 						$("#custome-signate-list li#"+myid).remove();
 						if(!$("#custome-signate-list li .fa-check").size()){
