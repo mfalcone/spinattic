@@ -75,7 +75,7 @@ define([
 			var este = this;
 			var myid = this.model.get("myid");
 			var dropbox = $('#single-drop-zone');
-			var tour_id = este.model.get("tour_id");
+			var tour_id = location.hash.split("/")[1];//este.model.get("tour_id");
 			var caso = este.model.get("caso");
 			var skill_id = este.model.get("skill_id");
 			dropbox.filedropSingle({
@@ -152,7 +152,9 @@ define([
 					}else{
 							
 						if (response.result == 'ERROR'){
-
+							if(response.msg=="notowner"){
+								location.href= location.protocol+"//"+location.host;
+							}
 							este.showMsg(response.msg);
 							este.render();
 							

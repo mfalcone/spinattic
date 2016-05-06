@@ -1,6 +1,6 @@
             <?php $search       = isset($_REQUEST["search"])? $_REQUEST["search"] : ''; // inicializar correctamente ?>
 
-	        <a href="http://<?php echo $_SERVER[HTTP_HOST];?>" class="spinattic"><img src="http://<?php echo $_SERVER[HTTP_HOST];?>/images/spinattic.png"></a>
+	        <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>" class="spinattic"><img src="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/images/spinattic.png"></a>
 			<!-- div class="language">
 	            <a href="#" class="language_btn">
 	            	<div class="icon"></div>

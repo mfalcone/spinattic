@@ -1,11 +1,11 @@
 <?
 
 //Detect if mobile
-/*require_once realpath($_SERVER["DOCUMENT_ROOT"]).'/dev.spinattic.com/php-stubs/Mobile_Detect.php';
+require_once realpath($_SERVER["DOCUMENT_ROOT"]).'/php-stubs/Mobile_Detect.php';
 $detect = new Mobile_Detect;
 
 if($detect->isMobile()) {
-	header('Location:'."http://".$_SERVER['HTTP_HOST'].'/mobile/');
+	header('Location:'.$http.$_SERVER[HTTP_HOST].'/mobile/');
 	exit;
 }
 
@@ -16,12 +16,12 @@ require_once("inc/functions.inc");
 
 
 if(!isset($page_title)){
-	$page_title = "Spinattic | 360 camera panoramic photography";
+	$page_title = "Spinattic | 360 Virtual Tours. Create Customize and Share ";
 }
 
 if(!isset($description_head)){
-	$description_head = "Create, customize and share virtual tours with 360 panoramas from your 360 camera";
-}	*/
+	$description_head = "Create, customize and share virtual tours with 360 panoramas. Online Software to customize 360 Virtual tours with tour navigation and virtual tour plugins.";
+}	
 ?>
 
 <!DOCTYPE html>
@@ -29,41 +29,41 @@ if(!isset($description_head)){
 	<head>
 		<meta charset="UTF-8">
 		<meta name="description" content="<? echo $description_head; ?>">  
-		<?//require("inc/fk-meta.inc");?>
-		<? 
-		$_SERVER['HTTP_HOST'] = "localhost/dev.spinattic.com";?>
+		<?require("inc/fk-meta.inc");?>
+
         
-		<link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/images/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/images/favicon.ico" type="image/x-icon">
 		<title><? echo $page_title; ?></title>
 
 	    <!--google font-->
 
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+		<link href='<?echo $http;?>fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='<?echo $http;?>fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 		<!-- custom scrollbar -->
-		<link rel="stylesheet" type="text/css" href="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>css/jquery.mCustomScrollbar.css?r=<?echo $ver;?>" />
+		<link rel="stylesheet" type="text/css" href="<?echo $http.$_SERVER[HTTP_HOST]."/";?>css/jquery.mCustomScrollbar.css?r=<?echo $ver;?>" />
+		<link rel="stylesheet" type="text/css" media="screen" href="<?echo $http.$_SERVER[HTTP_HOST]."/";?>css/font-awesome.min.css" />
+	    
 		<!-- css main -->        
-	    <link rel="stylesheet" type="text/css" media="screen" href="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>css/font-awesome.min.css" />
-	    <link rel="stylesheet" type="text/css" media="screen" href="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>css/main.css?r=<?echo $ver;?>" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="<?echo $http.$_SERVER[HTTP_HOST]."/";?>css/main.css?r=<?echo $ver;?>" />
 
 	    <!-- jquery -->    
 		    
-	    <script type="text/javascript" src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/jquery-1.9.1.min.js"></script>
-	    <script type="text/javascript" src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/jquery.easing.1.3.js"></script>
+	    <script type="text/javascript" src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/jquery-1.9.1.min.js"></script>
+	    <script type="text/javascript" src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/jquery.easing.1.3.js"></script>
 	    <!--custom scroll bar-->
-	    <script type="text/javascript" src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/jquery.mCustomScrollbar.concat.min.js"></script>
+	    <script type="text/javascript" src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/jquery.mCustomScrollbar.concat.min.js"></script>
 	    <!-- jquery ui -->        
 	    <!-- script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script-->
-	    <script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/jquery-ui.js"></script>
+	    <script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/jquery-ui.js"></script>
         
-	    <script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/custom.js?r=<?echo $ver;?>"></script>
-		<script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/core-utils.js?r=<?echo $ver;?>"></script>
-		<script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/ajaxlike.js?r=<?echo $ver;?>"></script>
-		<script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/ajaxscrollnotif.js?r=<?echo $ver;?>"></script>
+	    <script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/custom.js?r=<?echo $ver;?>"></script>
+		<script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/core-utils.js?r=<?echo $ver;?>"></script>
+		<script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/ajaxlike.js?r=<?echo $ver;?>"></script>
+		<script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/ajaxscrollnotif.js?r=<?echo $ver;?>"></script>
 		
 		
 		<?php if($restrict == 1){?>
-		<script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/check_session.js?r=<?echo $ver;?>"></script>
+		<script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/check_session.js?r=<?echo $ver;?>"></script>
 		<?php }?>
 	
 
@@ -96,16 +96,16 @@ if(!isset($description_head)){
 				
 			</script><!-- end Mixpanel -->
 			
-			<?php /*if($environment=='prod'){
+			<?php if($environment=='prod'){
 				require_once("inc/ganalitycs.inc");
-			}*/?>	
+			}?>	
 	
 	
 	</head>
 <body>
 	<input type="hidden" value="<?php echo $cdn;?>" id="cdn">
     <input type="hidden" value="" id="regban">
-	<script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>player/tour.js"></script>
+	<script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>player/tour.js"></script>
 	<div id="loading" class="loading" style="display: none;">
 	        <div class="loading_img"></div>
     </div>  
@@ -114,7 +114,7 @@ if(!isset($description_head)){
     	<header class="header">
 			<?php $search       = isset($_REQUEST["search"])? $_REQUEST["search"] : ''; // inicializar correctamente ?>
 
-            <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>" class="spinattic"><img src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>images/spinattic.png" alt="Spinattic logo"></a>
+            <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>" class="spinattic"><img src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>images/spinattic.png" alt="Spinattic 360 virtual tours" ></a>
             <!-- div class="language">
                 <a href="#" class="language_btn">
                     <div class="icon"></div>
@@ -133,7 +133,7 @@ if(!isset($description_head)){
                 $valors = 'Search';
             }?>
                 <div class="bg_search">
-                <form action="<?echo "http://".$_SERVER['HTTP_HOST']."/search.php";?>" name="formsearch" method="GET">
+                <form action="<?echo $http.$_SERVER[HTTP_HOST]."/search.php";?>" name="formsearch" method="GET">
                     <input type="text" value="<?echo  htmlspecialchars($valors);?>" id="search-input" onclick="if(this.value == 'Search'){this.value=''};" onfocus="this.select()" onblur="this.value=!this.value?'Search':this.value;" name="search">
                     <!--a href="#" class="clear_input"></a--><!-- CRUZ PARA LIMPIAR BUSQUEDA-->
                     <a href="#" class="glass_input" onclick="if (document.formsearch.search.value != '' && document.formsearch.search.value != 'Search'){document.formsearch.submit();};"></a><!-- LUPA DE BUSQUEDA-->
@@ -147,8 +147,8 @@ if(!isset($description_head)){
 
         <div class="nav">
         <input type="hidden" value="<?php echo $_SESSION["usr"];?>" id="s_h">
-			<script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/fb.js?r=<?echo $ver;?>"></script>
-			<script src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>js/gp.js?r=<?echo $ver;?>"></script>
+			<script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/fb.js?r=<?echo $ver;?>"></script>
+			<script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/gp.js?r=<?echo $ver;?>"></script>
 	        <!--popup login-->
 	        <div class="overlay forgotpassword">
 	            <div class="pop">
@@ -217,7 +217,7 @@ if(!isset($description_head)){
 		                        <div class="terms">
 		    	                    <input type="checkbox" id="terminos">
 		    		                <p>
-		                                I have read and agree to Spinattic's <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/terms.php">Terms of Service</a>.
+		                                I have read and agree to Spinattic's <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/terms.php">Terms of Service</a>.
 		                            </p>
 		    				    </div>
 		    				    <div class="terms">
@@ -233,22 +233,33 @@ if(!isset($description_head)){
 			<div class="ballon hide"></div>
 
 
-		    <div class="login-register">
+		    <div class="login-register" <?if ($logged == 1){echo 'style="display:none"';}?>>
 		        <div class="or"></div>
 	    	    <a href="#" class="login">Log in</a>
-		        <a href="#" class="register">Register</a>
+		        <a href="/pricing" class="register_style">Register</a>
 	        </div>
 	            
 
 
 		        <div class="user_login" <?if ($logged == 1){echo 'style="display:block"';}?>>
-		        <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/<?echo $_SESSION["friendly_url"];?>" class="user_image"><img id="nav_avatar" width="47" height="47" src="<?echo "http://".$_SERVER['HTTP_HOST']."/";?>images/users/<?echo $_SESSION["avatar"];?>" alt="<?echo $_SESSION["username"];?>"></a>
+		        <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/<?echo $_SESSION["friendly_url"];?>" class="user_image"><img id="nav_avatar" width="47" height="47" src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>images/users/<?echo $_SESSION["avatar"];?>" alt="<?echo $_SESSION["username"];?>"></a>
 	            	<div class="user_name">
-	                	<a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/<?echo $_SESSION["friendly_url"];?>"><p><?echo $_SESSION["username"];?></p></a>
+	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/<?echo $_SESSION["friendly_url"];?>"><p><?echo $_SESSION["username"];?></p></a>
 						<div class="action_user">
-	                		<a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/editprofile">Edit profile </a>/
-	                    	<a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/lo"><strong> Logout</strong></a>
+	                		<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/editprofile">Edit profile </a>/
+	                    	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/lo"><strong> Logout</strong></a>
 						</div>
+						<?php 
+						$level = ucfirst(strtolower((get_level($_SESSION["usr"]))));
+						$level_class = "green";
+						if($level == 'Advanced'){
+							$level_class = "blue";
+						};
+						if($level == 'Pro'){
+							$level_class = "red";
+						};
+						?>
+						<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/account" class="my_account">My Account: <span class="<?php echo $level_class;?>"><?php echo $level;?></span></a>
 	                </div>
 	            </div>
 
@@ -258,11 +269,116 @@ if(!isset($description_head)){
 
 	            <ul class="menu">
 
-	
+				<?if ($logged == 1){?>
 	                <li>
-	                    <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/index.php?explore" class="home-btn">Explore</a>
-	                    <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/leaderboard" class="leader-board">Leader board</a>
-	                    <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/worldmap" class="world-map">World Map</a>
+	                         <span class="btn-social">Social</span>
+	                  <ul class="submenu">
+	                    <li>
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/home">Home 
+	                          <!-- <span class="contador">+99</span>-->
+	                          </a>
+	                          
+	                          <a href="" id="notifications">Notifications
+								<?
+								session_start();
+								$cuenta = 0;
+								$ssqlp_nav = "SELECT count(*) as cuenta FROM notifications where leido = 0 and target_id = ".$_SESSION["usr"];
+								$result_nav = mysql_query($ssqlp_nav);	
+								$row_nav = mysql_fetch_array($result_nav);
+								if($row_nav["cuenta"] > 0){
+									$cuenta = $row_nav["cuenta"];
+								?>
+	                          
+								<i class="campana"><span class="burbuja"><?echo abbr_number($cuenta);?></span></i>
+								
+								<?}?>
+	                          
+	                          </a>
+	                          
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/<?php echo $_SESSION["friendly_url"];?>?followers">followers 
+
+								<?
+								session_start();
+								$ssqlp_nav = "SELECT count(*) as cuenta FROM follows, users where id_following = ".$_SESSION["usr"]." and id_follower = users.id and users.status = 1";
+								$result_nav = mysql_query($ssqlp_nav);	
+								$row_nav = mysql_fetch_array($result_nav);
+								$cuenta = $row_nav["cuenta"];
+					
+								?>
+	                          
+	                          <span class="counter" id="nav_followers"><?echo abbr_number($cuenta);?></span>
+
+	                          </a>
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/<?php echo $_SESSION["friendly_url"];?>?following">following 
+								<?
+								session_start();
+								$ssqlp_nav = "SELECT count(*) as cuenta FROM follows, users where id_follower = ".$_SESSION["usr"]." and id_following = users.id and users.status = 1";
+								$result_nav = mysql_query($ssqlp_nav);	
+								$row_nav = mysql_fetch_array($result_nav);
+								$cuenta = $row_nav["cuenta"];
+						
+								?>                          
+	                          		<span class="counter" id="nav_following"><?echo abbr_number($cuenta);?></span>
+	                          
+	                          </a>
+	                    </li>
+	                  </ul>
+	                </li>
+	                <li>
+	                  <span class="btn-production">production</span>
+	                  <ul class="submenu">
+	                    <li>
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/customizer" target="_blank">create new tour <span class="newtourbt"></span></a>
+	                          
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/tours">
+	                          	Manage tours
+	                          	<?php
+	                          	$ssqlp_nav = "SELECT count(*) as cuenta FROM tours_draft where iduser = ".$_SESSION["usr"];
+	                          	$result_nav = mysql_query($ssqlp_nav);
+	                          	$row_nav = mysql_fetch_array($result_nav);
+	                          	$cuenta = $row_nav["cuenta"];
+	                          	?>
+								<span class="counter" id="nav_followers"><?echo abbr_number($cuenta);?></span>
+	                          </a>
+	                          
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/panos">
+	                          	Manage pano files
+	                          	<?php
+	                          	$ssqlp_nav = "SELECT count(*) as cuenta FROM panos where user = ".$_SESSION["usr"];	                          	
+	                          	$result_nav = mysql_query($ssqlp_nav);
+	                          	$row_nav = mysql_fetch_array($result_nav);
+	                          	$cuenta = $row_nav["cuenta"];
+	                          	?>
+								<span class="counter" id="nav_followers"><?echo abbr_number($cuenta);?></span>
+	                          </a>
+	                    </li>
+	                  </ul>
+	                </li>
+	                <?php if($_SESSION['admin'] == 1){?>
+	                <li>
+	                  <span class="btn-production">master admin</span>
+	                  <ul class="submenu">
+	                    <li>
+	                    	  <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/edit_images.php">manage images</a>
+	                    		
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/edit_post.php">create new post</a>
+	                          
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/manager_posts.php">Manage posts</a>
+	                          
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/edit_static_page.php">create new page</a>
+
+	                          <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/manager_pages.php">Manage pages</a>
+
+	                    </li>
+	                  </ul>
+	                </li>
+	                <?php }?>
+	<?}?>
+
+	                <li>
+	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/index.php?explore" class="home-btn" title="360 virtual tours" >Explore</a>
+	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/leaderboard" class="leader-board" title="Panoramic photographers leader board" >Leader board</a>
+	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/worldmap" class="world-map" title="360 Virtual Tours World Map" >World Map</a>
 	                    
 	                        <div  class="acor">
 	                            <a href="#" class="browse" >Browse <span class="acor"></span></a>
@@ -271,7 +387,7 @@ if(!isset($description_head)){
 	                                    <?      $ssqlpcat = "SELECT * FROM categories ORDER BY category";
 	                                            $resultcat = mysql_query($ssqlpcat);    
 	                                            while($rowcat = mysql_fetch_array($resultcat)){?>
-	                                    <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/search.php?c=1&amp;search=<?echo urlencode($rowcat["category"]);?>"><?echo $rowcat["category"];?></a>
+	                                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/search.php?c=1&amp;search=<?echo urlencode($rowcat["category"]);?>"><?echo $rowcat["category"];?></a>
 	                                    <?}?>
 	                                </li>
 	                            </ul>
@@ -283,10 +399,17 @@ if(!isset($description_head)){
 	            	<h3>Spinattic recommends:</h3>
 	            	<ul>
 	            		<li>
-	            			<a href="http://www.spinattic.com/static-page.php?id=15" target="_blank">
-	            				<img src="http://<?php echo $_SERVER['HTTP_HOST'];?>/images/recommend/nodalninja_discount.jpg" alt="Nodal Ninja">
+	            			<a href="<?echo $http;?>www.spinattic.com/static-page.php?id=15" target="_blank">
+	            				<img src="<?echo $http;?>//<?php echo $_SERVER[HTTP_HOST];?>/images/recommend/nodalninja_discount.jpg" alt="Nodal Ninja">
 	            			</a>
 	            		</li>
+	            		<?php if($logged == 1){?>
+	            		<li>
+	            			<a href="<?echo $http;?>www.spinattic.com/blog-single-post.php?id=22" target="_blank">
+	            				<img src="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/images/recommend/spinattic10.jpg" alt="GeoPress">
+	            			</a>
+	            		</li>
+	            		<?php }?>	            		
 	            	</ul>
 	            </div>
 				<div class="sponsors">
@@ -303,10 +426,12 @@ if(!isset($description_head)){
 	                <a href="https://plus.google.com/116755088127889937384" class="googleplus" target="_blank" rel="publisher"></a>
 	                </div>
 	                <p>
-	                	<a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/blog">Blog</a><br>
-	                	<a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/faq.php">FAQs</a><br>
-	                	<a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/about.php">About us</a><br>
-	                    <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/terms.php">Terms of service</a> <br> <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/privacy.php">Privacy Policy</a>
+	                	<a href="http://<?php echo $_SERVER[HTTP_HOST];?>/pricing">Pricing</a><br>
+	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/blog" title="Blog virtual tours" >Blog</a><br>
+	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/faq">FAQs</a><br>
+	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/about">About us</a><br>
+	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/terms">Terms of service</a> <br>
+	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/privacy">Privacy Policy</a>
 	                    <br>
 	                    © All panoramas are property 
 	                    <br>

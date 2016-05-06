@@ -1,5 +1,22 @@
 <?
+	//Creación de cookie para dismiss de baloon (llamado por ajax)
+	if($_GET["dismiss"] == 1){
+		setcookie(
+				"dismiss",
+				"1",
+				time() + (10 * 365 * 24 * 60 * 60)
+		);
+		die("ok");
+	}
 
+
+	$dismiss = 0;
+	if (isset($_COOKIE['dismiss']) && $_COOKIE['dismiss'] ==1) {
+		$dismiss = 1;
+	}
+	
+	//echo "ACA".$_COOKIE['dismiss'];
+	
 	$owe = 0;
 	$credit_b = 0; //Crédito a favor
 
@@ -74,7 +91,7 @@
 			   <tr>
 					<td class="label">Account type:</td>
 					<td class="bubble-wrapper"><span class="blue-link"><?php echo $level;?></span>
-						<div class="baloon">
+						<div class="baloon <?php if($dismiss == 1){echo "dismissed";}?>">
 							<h3>Welcome!</h3>
 							<?php switch ($level) {
 								case 'FREE':
@@ -101,6 +118,12 @@
 								$(".baloon .dismiss").click(function(e){
 									e.preventDefault();
 									$(".baloon").addClass("dismissed");
+									$.ajax({
+										url : window.location.protocol+'//'+window.location.hostname+'/manager_account.php',
+										type: 'GET',
+										data: "dismiss=1",
+										cache : false
+									});
 								})
 							})
 						</script>

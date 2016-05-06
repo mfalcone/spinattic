@@ -62,6 +62,9 @@ define([
 					data:mydata,
 					success:function(res){
 						var res = res;
+						if(res.state!="saved"){
+							location.href= location.protocol+"//"+location.host;
+						}
 						$("#sceneMenu .ready-to-del").fadeOut(function(){
 							$(this).remove();
 							if($("#sceneMenu .ready-to-del").size() == 0){
@@ -272,6 +275,9 @@ define([
 					data:"action=reset_tour_thumb&id="+id,
 					success:function(res){
 						res = JSON.parse(res);
+						if(res.state!="saved"){
+							location.href= location.protocol+"//"+location.host;
+						}
 						tourData.krpano.datatour.tour_thumb_path = res.path;
 
 						cbak();
@@ -301,6 +307,9 @@ define([
 					dataType: "json",
 					data:{tourData:tourData},
 					success:function(res){
+						if(res.state!="saved"){
+							location.href= location.protocol+"//"+location.host;
+						}
 						if(fun){
 							fun()
 						}
@@ -330,7 +339,11 @@ define([
 					type:'POST',
 					data:mydata,
 					success:function(res){
+
 						var res = JSON.parse(res);
+						if(res.state!="saved"){
+							location.href= location.protocol+"//"+location.host;
+						}
 						if(toLive == "1"){
 							tourData.krpano.datatour.date_published = res.date;
 						}else{

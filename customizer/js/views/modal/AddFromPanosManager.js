@@ -321,12 +321,17 @@ define([
 					url:"php/add_pano_from_collection.php?idtour="+tourId+"&panoid="+panoId,
 					dataType:"json",
 					success: function( data ){
+
+						if(data.result == "ERROR"){
+							location.href= location.protocol+"//"+location.host;
+						}else{
 						counter ++
 						if(counter == total){
 							manageTour.reloadTour(cargarEscenas);
 								este.removeModal(e);
 								este.undelegateEvents();
 								$("#publishController").trigger("savedtour",[data.date])
+							}
 						}
 						
 					}

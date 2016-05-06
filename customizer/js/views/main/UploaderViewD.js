@@ -91,7 +91,7 @@ define([
 						},
 						onStatusChange:function(id,oldStatus,newStatus){
 							este.statusChange(id,oldStatus,newStatus);
-						},
+						},	
 
 						onProgress:function(id,str,uploadBytes,totalBytes){
 							este.uploaderProgress(id,str,uploadBytes,totalBytes)
@@ -140,6 +140,7 @@ define([
 							
 						},
 						onError:function(id, name, errorReason, xhrOrXdr) {
+							
 							console.log(qq.format("Error on file number {} - {}.  Reason: {}", id, name, errorReason));
 					       
 							if($(".qq-file-id-"+id+" img").size()){
@@ -332,6 +333,11 @@ define([
 						
 						var respuesta = JSON.parse(response);
 						if(respuesta.result == "ERROR"){
+
+						if(respuesta.msg=="notowner"){
+							location.href= location.protocol+"//"+location.host;
+						}
+
 						if(!respuesta.msg == "Something went wrong with your upload!"){
 							este.showMsg(respuesta.msg);
 							este.uploader.cancel(id)

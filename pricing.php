@@ -59,11 +59,15 @@
 								<dd><span class="fa fa-plug"></span>Simple Menu</dd>
 								<dd><span class="fa fa-plug"></span>Avatar and titles</dd>
 								<dd><span class="fa fa-plug"></span>Controls</dd>
-								<dd><span class="fa fa-plug"></span>Social buttons</dd>
+								<dd><span class="fa fa-plug"></span>Social buttons<br>
+									<span class="small">(coming soon)</span>
+								</dd>
 							</dl>
 						</li>
 						<li>WebVR Plugin</li>
-						<li>Gyroscope plugin</li>
+						<li>Gyroscope plugin<br>
+							<span class="small">(coming soon)</span>
+						</li>
 					</ul>
 					<footer>
 						<?php

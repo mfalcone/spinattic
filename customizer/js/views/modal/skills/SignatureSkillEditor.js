@@ -75,16 +75,17 @@ define([
 				krpano.set("plugin["+tourSkill.plugin._name+"].url",$("#signature-skill-editor-img").data("imgsrc"));
 				
 			});
-			/*$.ajax({
+			var este = this;
+			$.ajax({
 				url:"data/json.php?t=dg",
 				dataType:"json",
 				async:false, 
 				success:function(data){
-					console.log(tourSkill)	
-					("#"+myid).data("defaultImage",data.url);
+					$("#"+myid).data("defaultImage",data.id);
+					este.lastId = data.id;
 					}
 				})
-			*/
+			
 			this.loadImages();
 				
 
@@ -149,6 +150,15 @@ define([
 			tourSkill.plugin._onclick = "openurl("+$("#signature-skill-linkto").val()+",_blank);";
 			tourSkill.plugin._align = $("#signature-skill-align .selected").data("pos")
 			tourSkill.plugin._alpha = $("#signature-skill-alpha").val();
+			var default_id = $("#"+myid).data("defaultImage");
+			$.ajax({
+					url:"php/updater.php?action=change_default_signature&id="+default_id,
+					//url:"data/json.php?t=g",
+					dataType:"json",
+					success:function(data){
+						
+					}	
+				})
 
 			var manageData = new ManageData();
 			manageData.editSkill(tourSkill)
@@ -228,21 +238,20 @@ define([
 		},
 
 		setDefault:function(e){
+			var este = this;
+			var myid = this.myid;
 			if($(e.target).hasClass("fa-circle-o")){
 				$(e.target).attr("class","fa fa-circle");
 				var default_id = $(e.target).parent().data("default_id");
-				$.ajax({
-					url:"php/updater.php?action=change_default_signature&id="+default_id,
-					//url:"data/json.php?t=g",
-					dataType:"json",
-					success:function(data){
-						console.log(data)
-						_.each($("#custome-signate-list li"),function(elem,ind){
+				$("#"+myid).data("defaultImage",default_id);
+				_.each($("#custome-signate-list li"),function(elem,ind){
 							$(elem).data("default","0")
 						})
-						$("#custome-signate-list li .fa-check").parents("li").data("default","1")
-					}	
-				})
+				$("#custome-signate-list li .fa-check").parents("li").data("default","1")
+				
+			}else{
+				$(e.target).attr("class","fa fa-circle-o");
+				$("#"+myid).data("defaultImage",este.lastId);
 			}
 		},
 		showMsg: function(msg){
