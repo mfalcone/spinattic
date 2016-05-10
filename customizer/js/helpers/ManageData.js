@@ -61,7 +61,7 @@ define([
 					type:'POST',
 					data:mydata,
 					success:function(res){
-						var res = res;
+						res = JSON.parse(res);
 						if(res.state!="saved"){
 							location.href= location.protocol+"//"+location.host;
 						}
@@ -290,26 +290,26 @@ define([
 			}
 			this.saveServer = function(fun,action){
 				$("#publishController").trigger("savingtour");
-				//var jsonstr = JSON.stringify(tourData)
-				//jsonstr = encodeURIComponent(jsonstr);
+				var jsonstr = JSON.stringify(tourData)
+				jsonstr = encodeURIComponent(jsonstr);
 				var id = location.hash.split("/")[1];
-				var url;
+				var mydata;
 				if(action){
-					url = "php/updater.php?id="+action.scene_id+"&action="+action.accion+"&d=1"
+					mydata = "json="+jsonstr+"&id="+action.scene_id+"&action="+action.accion+"&d=1"
 				}else{
-					url = "php/updater.php?id="+id
+					mydata = "json="+jsonstr+"&id="+id
 				}
-				
-				
+
 				$.ajax({
-					url:url,
+					url:'php/updater.php',
 					type:'POST',
-					dataType: "json",
-					data:{tourData:tourData},
+					data:mydata,
 					success:function(res){
+						var res = JSON.parse(res);
 						if(res.state!="saved"){
 							location.href= location.protocol+"//"+location.host;
 						}
+
 						if(fun){
 							fun()
 						}
@@ -335,11 +335,10 @@ define([
 				}
 				var mydata = "json="+jsonstr+"&id="+id+"&tolive="+toLive;
 				$.ajax({
-					url:'php/updater.php', 
+					url:'php/updater.php',
 					type:'POST',
 					data:mydata,
 					success:function(res){
-
 						var res = JSON.parse(res);
 						if(res.state!="saved"){
 							location.href= location.protocol+"//"+location.host;
