@@ -121,11 +121,11 @@
 							Advanced plugins pack <i class="fa fa-search-plus"></i>
 							<dl>
 								<dt>ADVANCED plugins pack:</dt>
-								<dd><span class="fa fa-plug"></span>Tour info panel</dd>
+								<dd><span class="fa fa-plug"></span>Tour info panel <span class="small red">(coming soon)</span></dd>
 								<dd><span class="fa fa-plug"></span>Logo</dd>
 								<dd><span class="fa fa-plug"></span>Your Custom Signature</dd>
-								<dd><span class="fa fa-plug"></span>Audio Plugin</dd>
-								<dd><span class="fa fa-plug"></span>Link button</dd>
+								<dd><span class="fa fa-plug"></span>Audio Plugin <span class="small red">(coming soon)</span></dd>
+								<dd><span class="fa fa-plug"></span>Link button <span class="small red">(coming soon)</span></dd>
 								<dd><span class="fa fa-plug"></span>Context menu</dd>
 								<dd><span class="fa fa-plug"></span>Nadir Patch</dd>
 								<dd><span class="fa fa-plug"></span>Custom loader bar</dd>

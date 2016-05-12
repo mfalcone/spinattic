@@ -27,15 +27,21 @@
                         <%
                         var unit;
                         var cleanNumber;
+                        var max;
+                        var min;
                         if(tourSkill.layer._width.slice(-1) == "%"){
                             unit = "%";
                             cleanNumber = tourSkill.layer._width.replace("%","");
+                            max="100";
+                            min="10";
                         }else{
                             unit = "px";
                             cleanNumber = tourSkill.layer._width;
+                            max="1000";
+                            min="100";
                         }
                         %>
-                        <input type="number" id="loading-bar-width" value="<%=cleanNumber%>" data-name="<%=tourSkill.layer._name%>" data-prop="width">
+                        <input type="number" id="loading-bar-width" value="<%=cleanNumber%>" data-name="<%=tourSkill.layer._name%>" data-prop="width" max="<%=max%>" min="<%=min%>">
                         <div title="unitsWloading" id="unitsWloading" class="dropdown right-el unitsDD" style="margin-left:65px;">
                             <h2><span class="title"><%=unit%></span><span class="fa fa-caret-down fa-lg right"></span></h2>
                             <ul>
@@ -47,7 +53,7 @@
                         
                     <div class="line-group">
                         <label for="loading-bar-skill-height">Height:</label>
-                        <input type="number" id="loading-bar-skill-height" value="<%=tourSkill.layer._height%>" data-name="<%=tourSkill.layer._name%>" data-prop="height">
+                        <input type="number" id="loading-bar-skill-height" value="<%=tourSkill.layer._height%>" data-name="<%=tourSkill.layer._name%>" data-prop="height" max="100" min="1">
                     </div>
                 </div>
 
@@ -56,11 +62,11 @@
                 <div class="editor-group-2col">
                     <div class="line-group">
                         <label for="loading-bar-back-bgcolor">Background color:</label>
-                        <input type="text" class="colorpicker" id="loading-bar-back-bgcolor" value="<%=tourSkill.layer._bgcolor.replace('0x','')%>" data-name="<%=tourSkill.layer._name%>" data-prop="bgcolor">
+                        <input type="text" class="colorpicker" id="loading-bar-back-bgcolor" value="<%=tourSkill.layer._bgcolor.replace('0x','')%>" data-name="<%=tourSkill.layer._name%>" data-prop="bgcolor" max="1" min="0">
                     </div>
                     <div class="line-group">
                         <label for="loading-bar-skill-alpha">Background alpha:</label>
-                        <input type="number" id="loading-bar-skill-alpha" value="<%=tourSkill.layer._bgalpha%>" data-name="<%=tourSkill.layer._name%>" data-prop="bgalpha" >
+                        <input type="number" id="loading-bar-skill-alpha" value="<%=tourSkill.layer._bgalpha%>" data-name="<%=tourSkill.layer._name%>" data-prop="bgalpha" step="0.1" max="1" min="0" >
                     </div>
                 </div>
 
@@ -72,7 +78,7 @@
                     </div>
                     <div class="line-group">
                         <label for="loading-bar-bar-alpha">Bar alpha:</label>
-                        <input type="number" id="loading-bar-bar-alpha" value="<%=tourSkill.layer.layer.layer._bgalpha%>" data-name="<%=tourSkill.layer.layer.layer._name%>" data-prop="bgalpha">
+                        <input type="number" id="loading-bar-bar-alpha" value="<%=tourSkill.layer.layer.layer._bgalpha%>" data-name="<%=tourSkill.layer.layer.layer._name%>" data-prop="bgalpha" step="0.1" max="1" min="0">
                     </div>
                 </div>
             </div>

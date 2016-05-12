@@ -250,16 +250,16 @@ if(!isset($description_head)){
 	                    	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/lo"><strong> Logout</strong></a>
 						</div>
 						<?php 
-						$level = ucfirst(strtolower((get_level($_SESSION["usr"]))));
+						$my_level = ucfirst(strtolower((get_level($_SESSION["usr"]))));
 						$level_class = "green";
-						if($level == 'Advanced'){
+						if($my_level == 'Advanced'){
 							$level_class = "blue";
 						};
-						if($level == 'Pro'){
+						if($my_level == 'Pro'){
 							$level_class = "red";
 						};
 						?>
-						<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/account" class="my_account">My Account: <span class="<?php echo $level_class;?>"><?php echo $level;?></span></a>
+						<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/account" class="my_account">My Account: <span class="<?php echo $level_class;?>"><?php echo $my_level;?></span></a>
 	                </div>
 	            </div>
 

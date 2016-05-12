@@ -92,9 +92,14 @@ body										{ background:#f7f7f7; font-family:'Open Sans', sans-serif; overflo
 											  /*border redondeado>>*/ -webkit-border-radius:0 4px 4px 0; -moz-border-radius:0 4px 4px 0; border-radius:0 4px 4px 0; behavior:url(../js/PIE.htc);
 											}
 
+.login-register a.register_style			{ background-color:#6abb44;  margin-left:2px;
+											  /*border redondeado>>*/ -webkit-border-radius:0 4px 4px 0; -moz-border-radius:0 4px 4px 0; border-radius:0 4px 4px 0; behavior:url(../js/PIE.htc);
+											}
+
 .login-register a:hover						{ background-color:white;}
 .login-register a.login:hover 				{ color:#457ec1; }
 .login-register a.register:hover 			{ color:#6abb44; }
+.login-register a.register_style:hover 			{ color:#6abb44; }
 
 /*register mobile*/
 .register_mobile 							{ height:150px; background-color:#f6f7f6; margin:0; position:fixed; top:20px; left:20px; right:20px; z-index:102px;
@@ -112,7 +117,7 @@ body										{ background:#f7f7f7; font-family:'Open Sans', sans-serif; overflo
 .user_login .user_name						{ float:left; margin-left:10px; line-height:14px; font-size: 10px;width: 151px;position: absolute;left: 67px;}
 .user_login .user_name p					{ width: 133px;}
 .user_login .user_name a					{ width: 133px; color:#1a1a1a; font-size:12px; font-weight:700;}
-.user_login .user_name a.my_account 		{margin-top: 9px;display: block;width: 200px;font-size: 10px}
+.user_login .user_name a.my_account 		{margin-top: 9px;display: block;width: 150px;font-size: 10px}
 .user_login .user_name a.my_account .blue 	{color:#7a9dc5;}
 .user_login .user_name a.my_account .green 	{color:#849f58;}
 .user_login .user_name a.my_account .red 	{color:#8f4137;}
