@@ -224,23 +224,19 @@
 		font-size:12px;
 	}
 
-	.pricing .column{
-		min-height: 1000px;
-	}
+	
 
 }
 @media(max-width:767px){
 
 .pricing .column{
-	width: 44%;
+	width: 40%;
 }
 
 .pricing .column li{
 		font-size:14px;
 	}
 
-.pricing .column{
-		min-height: 850px;
-	}
+
 
 }

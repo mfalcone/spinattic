@@ -36,7 +36,7 @@
 		</div>
 		<hr class="space180px">
 		<div class="wrapper pricing">
-			<h3>Everything your business needs: <br>Choose your plan and start creating, customizing and sharing amazing Virtual Tours.</h3>
+			<h3>Everything you need to start creating, customizing and sharing amazing virtual tours.</h3>
 			<div class="column-wrap">
 				<div class="column">
 					<h3>Free</h3>

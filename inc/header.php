@@ -259,7 +259,7 @@ if(!isset($description_head)){
 							$level_class = "red";
 						};
 						?>
-						<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/account" class="my_account">My Account: <span class="<?php echo $level_class;?>"><?php echo $my_level;?></span></a>
+						<!--<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/account" class="my_account">My Account: <span class="<?php echo $level_class;?>"><?php echo $my_level;?></span></a>-->
 	                </div>
 	            </div>
 
@@ -426,12 +426,13 @@ if(!isset($description_head)){
 	                <a href="https://plus.google.com/116755088127889937384" class="googleplus" target="_blank" rel="publisher"></a>
 	                </div>
 	                <p>
-	                	<a href="http://<?php echo $_SERVER[HTTP_HOST];?>/pricing">Pricing</a><br>
+	                	<!--<a href="http://<?php echo $_SERVER[HTTP_HOST];?>/pricing">Pricing</a><br>-->
 	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/blog" title="Blog virtual tours" >Blog</a><br>
 	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/faq">FAQs</a><br>
 	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/about">About us</a><br>
 	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/terms">Terms of service</a> <br>
-	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/privacy">Privacy Policy</a>
+	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/privacy">Privacy Policy</a><br>
+	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/refund">Refund Policy</a>
 	                    <br>
 	                    © All panoramas are property 
 	                    <br>
