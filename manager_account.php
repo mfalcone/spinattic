@@ -185,7 +185,24 @@
 		   <?php }?>
 		   </footer>
 		   
+		   	<?php if($_GET["r"] == 1){?>
+			   	<div class="modal-thankyou">
+			   		<div class="thank-wrap">	
+						<h2>Thank You!</h2>
+						<p>Thank you for your payment. Your account will be upgraded in a few seconds. If you don't see any changes in your account, please contact us at <a href="mailto:support@spinattic.com">support@spinattic.com</a></p>
+						<a href="" id="buttonCloseModal" class="buttonModal ok">ok</a>
+					</div>
+				</div>
+			<?php }?>
+			
 			</div>
+			<script>
+				$("#buttonCloseModal").click(function(e){
+					e.preventDefault();
+					$(".modal-thankyou").fadeOut();
+				})
+			</script>
+			
 	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/footer.php");?>
 </html>
 
