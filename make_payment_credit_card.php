@@ -1,29 +1,35 @@
 <?
 //ini_set("display_errors", 1);
-require_once("inc/conex.inc");
-require_once ("inc/functions.inc");
+require_once(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/conex.inc");
+require_once (realpath($_SERVER["DOCUMENT_ROOT"])."/inc/functions.inc");
 session_start();
 
 	$level_text	= "ADVANCED";
 	$nl = 1;
 	$credit = 0;
 	
-	if(isset($_POST["nl"]) && ($_POST["nl"] == '1' || $_POST["nl"] == '2')){
+	//if(isset($_POST["nl"]) && ($_POST["nl"] == '1' || $_POST["nl"] == '2')){  //PARA CUANDO SE HABILITE PRO *********************************************************************
+	if(isset($_POST["nl"]) && ($_POST["nl"] == '1')){	
 		$nl = $_POST["nl"];
 		if($nl == 2){
 			$level_text	= "PRO";
 		}
 	}else{
-		header("Location: manager_account.php");
+		header("Location: ".$http.$_SERVER[HTTP_HOST]."/account");
 	}
 
 	$q = $_POST["q"]; //Tomo cantidad de ciclos
+	
 	$c = '';
+	$coupon_id_for_paypal = 'NONE';
 	
 	//Chequeo si aplicó cupón y si es válido (doble chequeo por hardcoding)
 	//Estos valores los aplico al rate, si no se modifican, la fórmula resulta en el rate original
 	$cporcentdiscount = 1;
 	$cvaluediscount = 0;
+	
+	
+	
 	if(isset($_POST["c"]) && $_POST["c"] != ''){
 		//Chequeo que no lo haya usado
 		$ssqlp = "select * from payments where LCASE(coupon_id) = '".strtolower($_POST["c"])."' and user_id = '".$_SESSION['usr']."'";
@@ -34,6 +40,7 @@ session_start();
 			$result = mysql_query($ssqlp);
 			if($row = mysql_fetch_array($result)){
 				$c = $_POST["c"];
+				$coupon_id_for_paypal = $c; 
 				$ctype = $row["type"];
 				$cvalue = $row["value"];
 				if($ctype == 'porcent'){
@@ -52,17 +59,17 @@ session_start();
 	//$allow_renew = allow_renew($_SESSION['usr'], $level); //verificación si deja renovar el level que tengo (1 mes antes del vencimiento)
 	//if(($level == 'PRO' || $level == 'ADVANCED' && $nl == 1) && $allow_renew == 0){
 	if($level == 'PRO'  && $nl == 1){
-		header("Location: manager_account.php");
+		header("Location: ".$http.$_SERVER[HTTP_HOST]."/account");
 	}	
 	
 	//Si soy PRO, no puedo aceptar otra cosa que nl = 2
 	if($level == 'PRO' && $nl != 2){
-		header("Location: manager_account.php");
+		header("Location: ".$http.$_SERVER[HTTP_HOST]."/account");
 	}
 
 	$restrict = 1;
 	$page_title = "Spinattic | CHECK OUT";
-	require("inc/header.php");
+	require(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/header.php");
 
 
 	//Check if has credit
@@ -70,9 +77,9 @@ session_start();
 
 	//$ssqlp = "select payments.*, DATE_ADD(cycle_end, INTERVAL ".$q." YEAR) as cycle_end_renew , DATEDIFF(cycle_end, now()) as remaining_days,amount/DATEDIFF(cycle_end, cycle_start) as amont_per_day, amount/DATEDIFF(cycle_end, cycle_start) * DATEDIFF(cycle_end, now()) as remaining_credit from payments where user_id = ".$_SESSION['usr']." and (cycle_start <= now() and cycle_end > now() or cycle_start > now()) and upgraded_to_level = '".$level."' order by cycle_start";
 
-	$ssqlp = "select payments.*, DATE_ADD(cycle_end, INTERVAL ".$q." YEAR) as cycle_end_renew , DATEDIFF(cycle_end, now()) as remaining_days, amount/DATEDIFF(cycle_end, cycle_start) as amount_per_day, amount/DATEDIFF(cycle_end, cycle_start) * DATEDIFF(cycle_end, now()) as remaining_credit from payments where user_id = ".$_SESSION['usr']." and cycle_start <= now() and cycle_end > now() and upgraded_to_level = '".$level."' ";
+	$ssqlp = "select payments.*, DATE_ADD(cycle_end, INTERVAL ".$q." YEAR) as cycle_end_renew , DATEDIFF(cycle_end, now()) as remaining_days, amount/DATEDIFF(cycle_end, cycle_start) * DATEDIFF(cycle_end, now()) as remaining_credit from payments where user_id = ".$_SESSION['usr']." and cycle_start <= now() and cycle_end > now() and upgraded_to_level = '".$level."' and upgraded = 0 ";
 	$ssqlp .= "UNION ";
-	$ssqlp .= "select payments.*, DATE_ADD(cycle_end, INTERVAL ".$q." YEAR) as cycle_end_renew , DATEDIFF(cycle_end, cycle_start) as remaining_days, amount/DATEDIFF(cycle_end, cycle_start) as amount_per_day, amount/DATEDIFF(cycle_end, cycle_start) * DATEDIFF(cycle_end, cycle_start) as remaining_credit from payments where user_id = ".$_SESSION['usr']." and cycle_start > now() and upgraded_to_level = '".$level."' order by cycle_start";	
+	$ssqlp .= "select payments.*, DATE_ADD(cycle_end, INTERVAL ".$q." YEAR) as cycle_end_renew , DATEDIFF(cycle_end, cycle_start) as remaining_days, amount/DATEDIFF(cycle_end, cycle_start) * DATEDIFF(cycle_end, cycle_start) as remaining_credit from payments where user_id = ".$_SESSION['usr']." and cycle_start > now() and upgraded_to_level = '".$level."' and upgraded = 0 order by id ";	
 	
 	$result = mysql_query($ssqlp);
 	
@@ -161,7 +168,7 @@ session_start();
 				var datastring = $("#myCCForm").serialize();
 				
 				$.ajax({
-					url : 'http://'+window.location.hostname+'/ajax_payment.php',
+					url : '<?echo $http;?>'+window.location.hostname+'/ajax_payment.php',
 					type: 'POST',
 					data: datastring,
 					cache : false,
@@ -196,8 +203,8 @@ session_start();
 			// Setup token request arguments
 			
 			var args = {
-			  sellerId: "901302756",
-			  publishableKey: "E9DC86CA-D9FE-4473-93D4-1586F411E979",
+			  sellerId: "<?php echo $seller_id;?>",
+			  publishableKey: "<?php echo $public_key;?>",
 			  ccNo: $("#ccNo").val(),
 			  cvv: $("#cvv").val(),
 			  
@@ -214,7 +221,7 @@ session_start();
 		  $(function() {
 
 			// Pull in the public encryption key for our environment
-			TCO.loadPubKey('sandbox');
+			TCO.loadPubKey('<?php echo $payment_env;?>');
 
 			$("#myCCForm").submit(function(e) {
 				
@@ -300,7 +307,7 @@ session_start();
 							if(form_er == 0){	
 								if(!($('#cert').is(':checked'))){
 								//if(!($('#cert:checked').hasClass('fa-check-square'))){
-									showModalMessage("Error", "You must certify you are an authorized user of the credit card");
+									showModalMessage("Error", "Please, check on the box to certify that you are an authorized user of this credit card");
 									form_er = 1;
 								}
 							}
@@ -404,13 +411,15 @@ session_start();
 		<div class="wrapper wrapper-user manage_account">
 			<header>
 				<h2>User ID: #<?php echo $_SESSION['usr'];?> - "<?php echo $_SESSION['username'];?>"</h2>
-				<a href="manager_account.php" class="back"><i class="fa fa-chevron-left"></i> back</a>
+				<a href="<?php echo $http.$_SERVER[HTTP_HOST];?>/account/checkout?nl=<?php echo $nl;?>" class="back"><i class="fa fa-chevron-left"></i> back</a>
 			</header>
+			
+
+			
+			<dl>
 			
 			<form id="myCCForm" action="payment.php" method="post">
 			
-			<dl>
-
 			   <dt class="first_dt"><i class="fa fa-user"></i>Billing information:<i class="fa fa-caret-down icon-left"></i></dt>
 			   <dd class="first_dt">
 			   
@@ -704,9 +713,12 @@ session_start();
 			   
 			   </dd>
 			
+			</form>
 			
-			   <dt class="sec_dt"><i class="fa fa-credit-card"></i>Credit card:<i class="fa fa-caret-down icon-left"></i></dt>
-				<dd class="sec_dt"> 
+			
+	<?php /*
+			   <dt class="sec_dt"><i class="fa fa-credit-card"></i>Credit card:<i class="fa fa-caret-left icon-left"></i></dt>
+				<dd class="sec_dt" style="display: none;"> 
 					<input name="token" type="hidden" value="." />
 					<input name="nl" type="hidden" value="<?php echo $nl;?>" />
 					
@@ -717,19 +729,19 @@ session_start();
 					   <tr>
 							<td class="label">Credit Card Number:</td>
 							<td>
-								<input value="4000000000000002" maxlength="16" oninput="maxLengthCheck(this)" id="ccNo" autocomplete="off" required class="onlynum">
+								<input value="<?php if($environment == 'dev'){echo '4000000000000002';}?>" maxlength="16" oninput="maxLengthCheck(this)" id="ccNo" autocomplete="off" required class="onlynum">
 							</td>
 						</tr>
 						<tr>
 							<td class="label">Name on card:</td>
 							<td>
-								<input type="text" name="name" value="Hernan">
+								<input type="text" name="name" value="<?php if($environment == 'dev'){echo 'Hernan';}?>">
 							</td>
 						</tr>
 						<tr>
 							<td class="label">Expiration date: <span>MMYYYY</span></td>
 							<td>
-								<input id="expDate"  value="072015" type="text" size="6" maxlength="6" oninput="maxLengthCheck(this)" autocomplete="off" class="onlynum">
+								<input id="expDate"  value="<?php if($environment == 'dev'){echo '072015';}?>" type="text" size="6" maxlength="6" oninput="maxLengthCheck(this)" autocomplete="off" class="onlynum">
 								
 								<!-- input id="expMonth" value="07" type="text" size="2" maxlength="2" required class="short-input" oninput="maxLengthCheck(this)">
 								<span> / </span>
@@ -739,7 +751,7 @@ session_start();
 						<tr>
 							<td class="label">Card Security code:</td>
 							<td>
-								<input id="cvv" value="132"  maxlength="4" class="short-input onlynum" oninput="maxLengthCheck(this)" autocomplete="off">
+								<input id="cvv" value="<?php if($environment == 'dev'){echo '132';}?>"  maxlength="4" class="short-input onlynum" oninput="maxLengthCheck(this)" autocomplete="off">
 							</td>
 						</tr>
 				   </table>
@@ -756,25 +768,48 @@ session_start();
 						   </footer>
 
 			   </dd>
+			   */?>
 			   
-			   			   
-			   <dt class="sec_dt"><i class="fa fa-paypal"></i>Paypal:<i class="fa fa-caret-left icon-left"></i></dt>
-			   <dd class="sec_dt" style="display:none;"></dd>
+			   <dt class="sec_dt"><i class="fa fa-paypal"></i>Paypal:<!-- i class="fa fa-caret-down icon-left"></i--></dt>
+			   <dd class="sec_dt pay-pal">
+			   
+			   <?php $pp_button_id = 'KD5YCG464YLZW';?>
+			   
+			   <footer style="max-width:505px">
+				   <div class="owe owe-large">
+						Total: $<?php echo $rate;?>.-
+					</div>
+					
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="<?php echo $pp_button_id;?>">
+						<input type="hidden" name="on0" value="options">
+						<input type="hidden" name="os0" value="<?php echo $coupon_id_for_paypal;?>">
+						<input type="hidden" name="currency_code" value="USD">
+						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+													
+			   </footer>			   
+			   
+							   
+
+			   </dd>
 		   </dl>
-	   		</form>
+
 	   		<div class="modal-wrapper" style="display:none;">
 				<div class="modal">
 					<h2 class="processing">Processing payment...</h2>
 					<p class="processing">Please, don't leave or close this page.</p>
 					<p class="error" style="display:none;">Error message. Mensaje de error</p>
 					<p class="thanks" style="display:none;">Thank you for your payment. ;)</p>
-					<a href="manager_account.php" id="buttonModal" class="buttonModal ok">ok</a>
+					<a href="<?php echo $http.$_SERVER[HTTP_HOST];?>/account" id="buttonModal" class="buttonModal ok">ok</a>
 					<a href="" id="buttonCloseModal" class="buttonModal ok">ok</a>
 				</div>
 			</div>
 					
 		</div>
-	<?php require_once("inc/footer.php");?>
+	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/footer.php");?>
 
 </html>
 

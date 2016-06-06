@@ -184,8 +184,19 @@
 		   	
 		   <?php }?>
 		   </footer>
-		   
+			   <div class="modal-thankyou">
+			   		<div class="thank-wrap">	
+						<h2>Thank You!</h2>
+						<a href="" id="buttonCloseModal" class="buttonModal ok">ok</a>
+					</div>
+				</div>
 			</div>
+			<script>
+				$("#buttonCloseModal").click(function(e){
+					e.preventDefault();
+					$(".modal-thankyou").fadeOut();
+				})
+			</script>
 	<?php require_once(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/footer.php");?>
 </html>
 

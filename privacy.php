@@ -5,111 +5,77 @@
         
         <div class="wrapper wrapper-terms wrapper-home">
         	<h1 class="privacy_policy">Privacy Policy</h1>
-	        <p>
-This privacy policy has been compiled to better serve those who are concerned with how their 'Personally identifiable information' (PII) is being used online. PII, as used in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</p>
-			<h2>What personal information do we collect from the people that visit our blog, website or app?</h2>
-	        <p>When ordering or registering on our site, as appropriate, you may be asked to enter your Name, Email address or other details to help you with your experience.</p>
-	        <h2>When do we collect information?</h2>
-	        <p>We collect information from you when you register on our site or enter information on our site.</p>
-	        <h2>How do we use your information?</h2>
-	        <p>We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:</p>
-	        <ul>
-	        	<li>To personalize user's experience and to allow us to deliver the type of content and product offerings in which you are most interested.</li>
-	        	<li>To improve our website in order to better serve you.</li>
-	        	<li>To allow us to better service you in responding to your customer service requests.</li>
-	        	<li>To administer a contest, promotion, survey or other site feature.</li>
-	        	<li>To quickly process your transactions.</li>
-	        	<li>To send periodic emails regarding your order or other products and services.</li>
-	        </ul>
-	        <h2>How do we protect visitor information?</h2>
-	        <ul>
-	        	<li>We do not use vulnerability scanning and/or scanning to PCI standards.</li>
-	        	<li>We do not use an SSL certificate</li>
-	        	<li>We only provide articles and information, and we never ask for personal or private information to maintain the safety of your personal information.</li>
-	        </ul>
-	        <h2>Do we use 'cookies'?</h2>
-	        <p>Yes. Cookies are small files that a site or its service provider transfers to your computer's hard drive through your Web browser (if you allow) that enables the site's or service provider's systems to recognize your browser and capture and remember certain information. For instance, we use cookies to help us remember and process the items in your shopping cart. They are also used to help us understand your preferences based on previous or current site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future.</p>
-	        <h2>We use cookies to:</h2>
-	        <p>Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools in the future. We may also use trusted third party services that track this information on our behalf.</p>
-	        <p>You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser (like Internet Explorer) settings. Each browser is a little different, so look at your browser's Help menu to learn the correct way to modify your cookies.</p>
-	        <p>If you disable cookies off, some features will be disabled It won't affect the users experience that make your site experience more efficient and some of our services will not function properly.</p>
-	        <p>However, you can still place orders .</p>
-	        <h2>Third Party Disclosure</h2>
-	        <p>No, we do not sell, trade, or otherwise transfer to outside parties your personally identifiable information unless we provide you with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to keep this information confidential. We may also release your information when we believe release is appropriate to comply with the law, enforce our site policies, or protect ours or others' rights, property, or safety. </p>
-	        <p>However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</p>
-	        <h2>Third party links</h2>
-	        <p>Occasionally, at our discretion, we may include or offer third party products or services on our website. These third party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.</p>
-	        <h2>Google</h2>
-	        <p>Google's advertising requirements can be summed up by Google's Advertising Principles. They are put in place to provide a positive experience for users. <a href="https://support.google.com/adwordspolicy/answer/1316548?hl=en" target="_blank">https://support.google.com/adwordspolicy/answer/1316548?hl=en</a> </p>
-	        <p>We have not enabled Google AdSense on our site but we may do so in the future.</p>
-	        <h2>California Online Privacy Protection Act</h2>
-	        <p>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law's reach stretches well beyond California to require a person or company in the United States (and conceivably the world) that operates websites collecting personally identifiable information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals with whom it is being shared, and to comply with this policy. - See more at: <a href="http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf">http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf</a></p>
-	        <h2>According to CalOPPA we agree to the following:</h2>
-	        <p>Users can visit our site anonymously</p>
-	        <p>Once this privacy policy is created, we will add a link to it on our home page, or as a minimum on the first significant page after entering our website.</p>
-	        <p>Our Privacy Policy link includes the word 'Privacy', and can be easily be found on the page specified above.</p>
-	        <p>
-	        	Users will be notified of any privacy policy changes:
-	        	<ul>
-	        		<li>On our Privacy Policy Page</li>
-	        	</ul>
-	        </p>
-	        <p>Users are able to change their personal information:
-			<ul>
-				<li>By logging in to their account</li>
-			</ul>
-	        </p>
-	        <h2>How does our site handle do not track signals?</h2>
-	        <p>We honor do not track signals and do not track, plant cookies, or use advertising when a Do Not Track (DNT) browser mechanism is in place.</p>
-	        <h2>Does our site allow third party behavioral tracking?</h2>
-	        <p>It's also important to note that we do not allow third party behavioral tracking</p>
-	        <h2>COPPA (Children Online Privacy Protection Act)</h2>
-	        <p>When it comes to the collection of personal information from children under 13, the Children's Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, the national's consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children's privacy and safety online.</p>
-	        <p>We do not specifically market to children under 13.</p>
-	        <h2>Fair Information Practices</h2>
-	        <p>The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information.</p>
-	        <h2>In order to be in line with Fair Information Practices we will take the following responsive action, should a data breach occur:</h2>
-	        <p>We will notify the users via email</p>
-	        <p>
-	        	We will notify the users via in site notification
-	        	<ul>
-	        		<li>Within 1 business day</li>
-	        	</ul>
-	        </p>
-	        <p>We also agree to the individual redress principle, which requires that individuals have a right to pursue legally enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or a government agency to investigate and/or prosecute non-compliance by data processors.</p>
-	        <h2>CAN SPAM Act</h2>
-	        <p>The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations.</p>
-	        <h2>We collect your email address in order to:</h2>
-	        <ul>
-	        	<li>Send information, respond to inquiries, and/or other requests or questions.</li>
-	        	<li>Process orders and to send information and updates pertaining to orders</li>
-	        	<li>We may also send you additional information related to your product and/or service.</li>
-	        	<li>Market to our mailing list or continue to send emails to our clients after the original transaction has occurred</li>
-	        </ul>
-	        <h2>To be accordance with CANSPAM we agree to the following:</h2>
-	        <ul>
-	        	<li>NOT use false, or misleading subjects or email addresses</li>
-	        	<li>Identify the message as an advertisement in some reasonable way</li>
-	        	<li>Include the physical address of our business or site headquarters</li>
-	        	<li>Monitor third party email marketing services for compliance, if one is used.</li>
-	        	<li>Honor opt-out/unsubscribe requests quickly</li>
-	        	<li>Allow users to unsubscribe by using the link at the bottom of each email</li>
-	        </ul>
-	        <h2>If at any time you would like to unsubscribe from receiving future emails, you can</h2>
-	        <ul>
-	        	<li>Follow the instructions at the bottom of each email.</li>
-	        </ul>
-	        <h2>Contacting Us</h2>
-	        <p>If there are any questions regarding this privacy policy you may contact us using the information below.</p>
-			<p>
-				www.spinattic.com <br>
-				Glens Falls <br>
-				US <br>
-				11 Sanford St <br>
-				NY <br>
-				12801 <br>
-				info@spinattic.com <br>
-			</p>
+
+<p>Spinattic, LLC created this policy to explain how we use and protect your personal information. We take your privacy seriously and will take all measures in our power to protect your personal information.</p>
+<p>We do <strong>NOT</strong> store your credit card information.  We have partnered with a Global billing agency, with superior fraud protection, to handle all recurring credit card transactions.  All credit card data is encrypted by an SSL/TLS, providing bidirectional encryption, and adheres to the PCI standards (Payment Card Industry Data Security Standard).</p>
+<p>We will <strong>NOT</strong> sell your information.  We will NOT redistribute your information to anyone without a business need to do so (i.e. employees, subcontractors, vendors) and our Privacy Policy will be adhered to throughout all of our business processes.</p>
+
+<h2>Information That May be Collected by Spinattic:</h2>
+<ul>
+	<li>Contact Information,</li>
+	<li>Financial Account information;</li>
+	<li>Transaction information;</li>
+	<li>User Account information, and</li> 
+	<li>User Content.</li>
+</ul>
+
+<p>Additionally, information may be collected on how users access the website using a tracking ID Unique to each user through the use of cookies.</p>
+<h2>About Cookies</h2>
+<p>A cookie is the term given to describe a type of message that is given to a Web browser by a Web server.  The main purpose of a cookie is to identify users and possibly prepare customized Web pages or to save site login information for you.</p>
+<p>When you enter a Web site using cookies, you may be asked to fill out a form providing personal information; like your name, e-mail address, and interests. This information is packaged into a cookie and sent to your Web browser, which then stores the information for later use. The next time you go to the same Web site, your browser will send the cookie to the Web server. The message is sent back to the server each time the browser requests a page from the server.</p>
+<p>A Web server has no memory so the hosted Web site you are visiting transfers a cookie file of the browser on your computer's hard disk so that the Web site can remember who you are and your preferences. This message exchange allows the Web server to use this information to present you with customized Web pages. So, for example, instead of seeing just a generic welcome page you might see a welcome page with your name on it.</p>
+
+<h2>Two Types of Cookies</h2>
+<h3>Session Cookie:</h3>
+<p> <strong>Also called a transient cookie, a cookie that is erased when you close the Web browser. The session cookie is stored in temporary memory and is not retained after the browser is closed. Session cookies do not collect information from your computer. They typically will store information in the form of a session identification that does not personally identify the user.</strong></p>
+<h3> Persistent cookie:</h3>
+<p> <strong>Also called a permanent cookie, or a stored cookie, a cookie that is stored on your hard drive until it expires (persistent cookies are set with expiration dates) or until you delete the cookie. Persistent cookies are used to collect identifying information about the user, such as Web surfing behavior or user preferences for a specific Web site.</strong></p>
+<p>Any personal information received for purchasing services or products will only be used to fill your order and will not be stored by Spinattic. We will not sell or redistribute your information to anyone.</p>
+
+<h2>How does Spinattic use your information?</h2>
+<p>We may use the personally identifiable information collected by Spinattic to contact customers regarding services and/or products offered by Spinattic, to the extent the user has agreed to it by its trusted affiliates, independent contractor and business partners.  We may also use this information and share it with trusted third parties for research purposes regarding the effectiveness of our website services, marketing, advertising and sales efforts, including, without limitation, for purposes of customer review.  We may also use this information to enable your use of the services available on the website, or to send you general (non-marketing) commercial communications, send you e-mail notifications, or deal with enquiries and complaints made by or about you relating to the website Spinattic will not sell or otherwise share this information with a third party for a third party for marketing purposes.</p>
+<p>We may also disclose aggregate, anonymous data based on information collected from users to investors and potential partners.  In such cases, only statistical information will be disclosed and personally identifiable date will be kept strictly confidential.  In the case that Spinattic is sold, the information collected from users may be transferred to the new owners.</p>
+
+<h2>Spinattic News and Updates:</h2>
+<p>To keep our users informed, Spinattic will occasionally send out emails and containing news and information on our services, products, and special offers.  To provide our users with a choice in receiving this information Spinattic gives the users the opportunity to opt-out from receiving these types of communications.<p>
+
+<h2>Maintenance/Service Announcements:</h2>
+<p>Continuous improvement in our software i.e. features and benefits to our users may prompt us to send out a strictly service–related announcement, i.e. our site is being taken down for maintenance, we will do that and provide prior knowledge when the situation allows for such.  Users may not opt-out of these important announcements.  These communications will not be promotional in nature.</p>
+
+<h2>Disclosures:</h2>
+<p>Spinattic may disclose information regarding your information collected by Spinattic to any of our employees, officers, vendors, customers, sub-contractors if it is deemed necessary to do so for business purposes as described in this Privacy policy. Should there be a circumstance where we are required by law to share information, or need to defend ourselves our legal rights, we will follow the legal proceedings, as directed to do so.  Additionally we may be asked to disclose information in the process of purchasing or selling assets.  In any case our privacy policy will be adhered to.</p>
+
+<h2>Third Party Web-Sites</h2>
+<p>Should Spinattic have links to other third party web-sites be aware the Spinattic is not responsible for the privacy practices of such other sites.  We encourage you to read the privacy statements of each and every website that collects personally identifiable information.  This privacy Policy applies solely the information that we collect.</p>
+
+<h2>Storage and Security:</h2>
+<p>Spinattic believes that the security of your information is a serious matter.  We utilize globally recognized hosting services that are fully-redundant with a secure back-up.   We may, from time to time, engage third parties, including its own subsidiaries and affiliated companies, to preserve, analyze and otherwise store or manipulate data received by Spinattic from its customers.  In all such cases, third party service providers will be required to treat all such data with the same degree of care as Spinattic and they will be prohibited from disclosing such data to any other person or party, except a otherwise provided for in this Privacy Policy.</p>
+
+<h2>User Responsibility:</h2>
+<p>You are responsible for the security of your Customer ID and passwords.  Make sure you keep them in a safe place and do not share them with others.  Always remember to log out after your session ends and ensure that others cannot access your private personal information.  We will not ask you for your password.  You are encouraged to update your account with your most current and accurate information.  This site allows for you to interact with other users, information shared in this public manner will not be protected by the privacy policy.  You may terminate your account with Spinattic at any time.</p>
+
+<p>The User is responsible for the content that they upload.  No pornographic, explicit, or inappropriate content is allowed on Spinattic.   Spinattic Representatives will remove anything that is not in the best interest of Spinattic or it’s users. </p>
+
+<h2>Notice to Users residing outside of the United States of America</h2>
+<p>Spinattic LLC is headquartered in the United States of America. Personal Information may be accessed by us or transferred to us in the United States or to Spinattic’s affiliates, business partners, vendors, or service providers elsewhere in the world. By providing us with Personal Information, you consent to this transfer. Spinattic will adhere to its Privacy Policy, regardless of where the Personal Information is processed or stored.</p>
+
+<h2>Changes to our Privacy Policy:</h2>
+<p>As we continue to expand and grow our business, Spinattic reserves the right to update our Privacy Policy.  As a result we will update the link to our privacy policy and add a notification of this change in policy. </p>
+
+<h2>Questions Concerning Spinattic’s Privacy Policy:</h2>
+<p>If you have any questions about this privacy policy or concern with security of information, please write to us by email to hello@spinattic.com</a>
+
+<p>Spinattic, LLC  P.O.<br> 
+Box 2285<br> 
+ Glens Falls, New York 12801 <br> 
+USA</p>
+
+<style>
+span.reverse {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+</style>
         </div>
     <?php require_once("inc/footer.php");?>
 </html>
