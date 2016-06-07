@@ -2207,6 +2207,7 @@ float: none;
 .manage_account .certificate{
 	font-size: 12px;
 	max-width: 510px;
+	margin-bottom: 20px;
 }
 
 .manage_account .certificate .fa{

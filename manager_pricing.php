@@ -69,7 +69,7 @@
 		</div>
 		<hr class="space180px">
 		<div class="wrapper pricing">
-			<h3>Everything your business needs: <br>Choose your plan and start creating, customizing and sharing amazing Virtual Tours.</h3>
+			<h3>Everything you need to start creating, customizing and sharing amazing virtual tours.</h3>
 			<div class="column-wrap">
 				<div class="column">
 					<h3>Free</h3>
@@ -121,11 +121,11 @@
 							Advanced plugins pack <i class="fa fa-search-plus"></i>
 							<dl>
 								<dt>ADVANCED plugins pack:</dt>
-								<dd><span class="fa fa-plug"></span>Tour info panel</dd>
+								<dd><span class="fa fa-plug"></span>Tour info panel <span class="small red">(coming soon)</span></dd>
 								<dd><span class="fa fa-plug"></span>Logo</dd>
 								<dd><span class="fa fa-plug"></span>Your Custom Signature</dd>
-								<dd><span class="fa fa-plug"></span>Audio Plugin</dd>
-								<dd><span class="fa fa-plug"></span>Link button</dd>
+								<dd><span class="fa fa-plug"></span>Audio Plugin <span class="small red">(coming soon)</span></dd>
+								<dd><span class="fa fa-plug"></span>Link button <span class="small red">(coming soon)</span></dd>
 								<dd><span class="fa fa-plug"></span>Context menu</dd>
 								<dd><span class="fa fa-plug"></span>Nadir Patch</dd>
 								<dd><span class="fa fa-plug"></span>Custom loader bar</dd>

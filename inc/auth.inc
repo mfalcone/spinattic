@@ -1,12 +1,12 @@
 <?
-require(realpath($_SERVER["DOCUMENT_ROOT"])."/dev.spinattic.com/inc/login.inc");
-require(realpath($_SERVER["DOCUMENT_ROOT"])."/dev.spinattic.com/inc/conex.inc");
+require(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/login.inc");
+require(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/conex.inc");
 
 session_start();
 
-//if($_SESSION['usr'] != ""){
+if($_SESSION['usr'] != ""){
 	$logged = 1;
-/*}else{
+}else{
 	//Si no esta seteada la session, verifico si tiene la cookie de hash por el recordarme y lo logeo
 	if($_COOKIE['hashregistro']!=''){
 		login($_COOKIE['hashregistro']);
@@ -14,7 +14,7 @@ session_start();
 	}
 }
 
-*/
+
 //Chequeo contra la BD por si se borró el usuario
 
 $ssqlp = "SELECT id FROM users where id = '".$_SESSION["usr"]."'";
@@ -29,8 +29,9 @@ if(!($row = mysql_fetch_array($result))){
 
 
 //Redireccion a form de login general que reemplazó al htaccess password
+
 if($environment == 'dev' && $logged != 1){
-	header('Location: http://'.$_SERVER[HTTP_HOST].'/login.php');
+	header('Location: '.$http.$_SERVER[HTTP_HOST].'/login.php');
 }
 
 

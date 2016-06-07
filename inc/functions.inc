@@ -1,4 +1,9 @@
 <?php
+function audit($sql, $comment, $tour_id, $affected_rows){
+	$ssqlp = "insert into audit (date, idtour, iduser, requester, thesql, comment, affected_rows, agent) values (now(), ".$tour_id.", ".$_SESSION['usr'].", '".$http.mysql_escape_string($_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI])."', '".mysql_escape_string($sql)."', '".mysql_escape_string($comment)."', '".$affected_rows."', '".mysql_escape_string($_SERVER['HTTP_USER_AGENT'])."')";
+	//echo $ssqlp;
+	mysql_query($ssqlp);
+}
 
 function abbr_number($size) {
 	$size = preg_replace('/[^0-9]/','',$size);
@@ -8,6 +13,31 @@ function abbr_number($size) {
 	} else {
 		return (round($size/pow(1000, ($i = floor(log($size, 1000)))), 0) . $sizes[$i]);
 	}
+}
+
+
+function get_level($id){
+
+	$ssqlp = "select level from users where id = ".$id;
+	$result = mysql_query($ssqlp);
+	$row = mysql_fetch_array($result);
+	return $row["level"];
+
+}
+
+function allow_renew($id, $my_level){ //chequea si puede renovar (desde 1 mes antes que se venza el último período pago) 
+
+	$ssqlp = "select * from payments where user_id = ".$id." and upgraded_to_level = '".$my_level."' group by user_id HAVING DATEDIFF(max(cycle_end), now()) <= 30";
+	$result = mysql_query($ssqlp);
+//	echo $ssqlp;
+	if($row = mysql_fetch_array($result)){
+	//	echo "1";
+		return "1";
+	}else{
+//		echo "0";
+		return "0";
+	}
+
 }
 
 function get_pro(){

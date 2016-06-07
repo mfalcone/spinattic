@@ -1,6 +1,6 @@
 <footer class="main-footer">
 	<ul>
-		<li><a href="<?echo $http.$_SERVER[HTTP_HOST]."/";?>pricing">Pricing</a>&bull;</li>
+		<!--<li><a href="<?echo $http.$_SERVER[HTTP_HOST]."/";?>pricing">Pricing</a>&bull;</li>-->
 		<li><a href="<?echo $http.$_SERVER[HTTP_HOST]."/";?>terms">Terms of service</a>&bull;</li>
 		<li><a href="<?echo $http.$_SERVER[HTTP_HOST]."/";?>privacy">Privacy Policy</a>&bull;</li>
 		<li><a href="<?echo $http.$_SERVER[HTTP_HOST]."/";?>refound">Refound Policy</a>&bull;</li>

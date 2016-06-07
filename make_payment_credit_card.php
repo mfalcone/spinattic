@@ -19,7 +19,6 @@ session_start();
 	}
 
 	$q = $_POST["q"]; //Tomo cantidad de ciclos
-	
 	$c = '';
 	$coupon_id_for_paypal = 'NONE';
 	
@@ -250,7 +249,54 @@ session_start();
 		           	 	$(this).removeClass("input_error");
 		            }
 				});
+								
 				
+				$("#ppal_submitter").click(
+						function(e){
+							e.preventDefault();
+
+							//Form checking
+							
+							form_er = 0;
+
+							if(form_er == 0){
+								$("#myCCForm input:not([type=hidden])").each(function(){ 
+						            if($(this).val() == ''){
+						            	$(this).addClass("input_error");
+						            	form_er = 1;
+						            }else{
+						           	 	$(this).removeClass("input_error");
+						            }
+								 });
+								if(form_er == 1){showModalMessage("Error", "Please complete all fields");}
+							}
+
+							if(form_er == 0){	
+								if($('#country').val() == ''){
+									showModalMessage("Error", "Please select a country");
+									form_er = 1;
+								}
+							}
+
+							if(form_er == 0){	
+								if(!($('#read').is(':checked'))){
+								//if(!($('#cert:checked').hasClass('fa-check-square'))){
+									showModalMessage("Error", "Please click on the checkbox to confirm that you have read and accept the Terms of Service, Refund Policy and Privacy Policy.");
+									form_er = 1;
+								}
+							}
+							
+							
+							//End form checking
+							
+							if(form_er == 0){
+								$('#ppal_custom').val('<?php echo $_SESSION["usr"];?>|'+$('#fname').val().replace("|", "@$@")+'|'+$('#address').val().replace("|", "@$@")+'|'+$('#city').val().replace("|", "@$@")+'|'+$('#state').val().replace("|", "@$@")+'|'+$('#zip').val().replace("|", "@$@")+'|'+$('#country').val().replace("|", "@$@")+'|<?php echo $nl;?>|<?php echo $c;?>');
+								$("#ppal_form").submit();
+							}
+							
+						});
+				
+
 				
 				$("#submitter").click(
 						function(e){
@@ -427,7 +473,7 @@ session_start();
 						<tr>
 							<td class="label">Full Name:</td>
 							<td>
-								<input type="text" name="fname" value="<?php echo $name;?>">
+								<input type="text" name="fname" value="<?php echo $name;?>" id="fname">
 							</td>
 						</tr>
 						<tr>

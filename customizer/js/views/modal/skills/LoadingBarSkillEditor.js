@@ -51,7 +51,7 @@ define([
 
             //limit values
             $('#loading-bar-bar-alpha').change(function(e){
-                helpFunctions.limitInputs(e.target,0.1, 1)
+                helpFunctions.limitInputs(e.target,0, 1)
             });
             $('#loading-bar-skill-alpha').change(function(e){
                 helpFunctions.limitInputs(e.target,0, 1)
@@ -60,9 +60,9 @@ define([
                 var units = $('#unitsWloading .title').text();
 
                 if (units === 'px') {
-                    helpFunctions.limitInputs(e.target,10);
+                    helpFunctions.limitInputs(e.target,100,1000);
                 } else if (units === '%'){
-                    helpFunctions.limitInputs(e.target,1, 100);
+                    helpFunctions.limitInputs(e.target,10, 100);
                 }
             });
             $('#loading-bar-skill-height').change(function(e){
@@ -90,9 +90,25 @@ define([
         },
 
         changeUnit:function(e){
-            console.log("a")
             var krpano = document.getElementById("krpanoSWFObject");
             var type = $(e.target).data("value")
+            if(type=="%"){
+                $("#loading-bar-width").attr("max","100");
+                $("#loading-bar-width").attr("min","10");
+                if($("#loading-bar-width").val()>100){
+                    $("#loading-bar-width").val(100)
+                }else if($("#loading-bar-width").val()<10){
+                    $("#loading-bar-width").val(10);
+                }
+            }else{
+                $("#loading-bar-width").attr("max","1000");
+                $("#loading-bar-width").attr("min","100");
+                if($("#loading-bar-width").val()>1000){
+                    $("#loading-bar-width").val(1000)
+                }else if($("#loading-bar-width").val()<100){
+                    $("#loading-bar-width").val(100);
+                }
+            }
             krpano.set("layer[loadingbar_bg].width",$("#loading-bar-width").val()+type);
         },
     

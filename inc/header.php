@@ -426,13 +426,12 @@ if(!isset($description_head)){
 	                <a href="https://plus.google.com/116755088127889937384" class="googleplus" target="_blank" rel="publisher"></a>
 	                </div>
 	                <p>
-	                	<a href="http://<?php echo $_SERVER[HTTP_HOST];?>/pricing">Pricing</a><br>
+	                	<!--<a href="http://<?php echo $_SERVER[HTTP_HOST];?>/pricing">Pricing</a><br>-->
 	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/blog" title="Blog virtual tours" >Blog</a><br>
 	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/faq">FAQs</a><br>
 	                	<a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/about">About us</a><br>
 	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/terms">Terms of service</a> <br>
-	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/privacy">Privacy Policy</a><br>
-	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/refound">Refound Policy</a>
+	                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/privacy">Privacy Policy</a>
 	                    <br>
 	                    © All panoramas are property 
 	                    <br>
