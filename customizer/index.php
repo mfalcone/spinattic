@@ -16,6 +16,9 @@ require(realpath($_SERVER["DOCUMENT_ROOT"])."/inc/conex.inc");*/
 <!--[if IE 9]>    <html class="no-js ie9 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 9]>  <html> <![endif]-->
 <!--[if !IE]><!--> <html>             <!--<![endif]-->
+<script type="text/javascript">
+	version = <?php echo $ver;?>
+</script>
 	<head>
 	    <title>Customizer</title>
 	    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
