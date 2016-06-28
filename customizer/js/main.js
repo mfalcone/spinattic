@@ -22,7 +22,7 @@ require.config({
     colorpicker:['jquery','jqueryui'],
     socialshare: ['jquery']
   },
-  urlArgs: "v=0.1.4" 
+  urlArgs: "v=0.1.6" 
 
 });
 

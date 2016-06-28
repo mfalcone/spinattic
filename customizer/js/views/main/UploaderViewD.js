@@ -81,13 +81,15 @@ define([
 					callbacks:{
 
 						onSubmit:function(id,filename){
+							/*console.log(window.proc_id[id])
 							newParams = {
 								proc_id: window.proc_id[id],
-								tour_id: window.gTour_id
+								tour_id: window.gTour_id,
+								test:"test"+id
 							}
 							uplder = este.uploader;
-	            			uplder.setParams(newParams);
-							
+	            			//uplder.setParams(newParams);
+							*/
 						},
 						onStatusChange:function(id,oldStatus,newStatus){
 							este.statusChange(id,oldStatus,newStatus);
@@ -279,7 +281,16 @@ define([
 				var este = this;
 				$(".qq-file-id-"+id+" .queueText").hide();
 
-				$(".qq-file-id-"+id+" img").load(function(){
+				newParams = {
+								proc_id: window.proc_id[id],
+								tour_id: window.gTour_id,
+								test:"test"+id
+							}
+
+				uplder.setParams(newParams);
+
+
+				/*$(".qq-file-id-"+id+" img").load(function(){
 					var width = $(".qq-file-id-"+id+" img").width();
 					var height = $(".qq-file-id-"+id+" img").height();
 					
@@ -289,7 +300,7 @@ define([
 						uplder.cancel(id)
 					
 					}
-				})
+				})*/
 			}
 
 			if(newStatus =="canceled"){
@@ -324,7 +335,7 @@ define([
 			
 			$(".qq-file-id-"+id+" .qq-upload-status-text").text("wait...");
 			$(".qq-file-id-"+id+" .qq-upload-status-text").addClass("process-text")
-
+			
 			$.ajax({
 					url:'php/general_process.php?done',
 					type:'POST',
