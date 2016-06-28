@@ -1,0 +1,54 @@
+body{
+	background: #FFF;
+}
+
+.overlay{
+	background: #FFF;
+}
+
+#signatureuploader .skillModal{
+	width: 100%;
+	height: 100%;
+	background: #FFF;
+    color: #333;
+    border:0;
+}
+
+.skillModal .column3{
+	float: left;
+	width: 48%;
+	padding: 1%;
+}
+
+#custome-signate-list{
+	height: 50vh;
+}
+
+.overlay .modal header{
+	background: #FFF;
+}
+
+#custome-signate-list{
+	width: auto;
+}
+
+#signatureuploader input{
+	background:#FFF;
+	color: #333;
+}
+
+.defaultset{
+	margin-bottom: 20px;
+}
+
+.image-uploader-wrapper{
+	background: #FFF;
+}
+
+#custome-signate-list li{
+	background: #FFF;
+}
+
+.cancel-img{
+	display: none;
+}
