@@ -1217,7 +1217,8 @@ div.ok 				{ background:url(../images/icons/ok.png) 0 0 no-repeat; height:20px; 
 
 .manager_tour 					{ background-color:#f0f0f0; border:1px solid #e1e1e0; margin-top:0; padding-bottom:10px; position:relative; }
 .manager_tour_drag_top 			{ margin-top:10px;}
-
+.manager_tour_controls			{ height: 30px;margin-bottom: 10px;}
+.manager_tour_controls #new-tour{right:150px;}
 #orderBy{
 	background:url(../images/asc_desc.png) no-repeat;
 	text-indent: -1000px;
@@ -2127,6 +2128,12 @@ font-weight: bold;
 	width: auto;
 }
 
+
+.manage_account dd .certificate input[type="checkbox"]{
+	margin-right: 10px;
+}
+
+
 .manage_account dd input[type="image"]{
 border:none;
 padding: 0;
@@ -2157,6 +2164,7 @@ padding: 0;
     border-radius: 10px;
     text-align: center;
     top:20%;
+    padding:10px;
 }
 .manage_account .thank-wrap #buttonCloseModal{
 float: none;
@@ -2174,9 +2182,18 @@ float: none;
 
 .manage_account .thank-wrap h2{
     font-weight: normal;
-    margin-top: 90px;
-    font-size: 3rem;
+    margin-top: 70px;
+    font-size: 2.4rem;
     color: #666;
+}
+
+.manage_account .thank-wrap p{
+	margin:0;
+	padding: 10px;
+}
+
+.manage_account .thank-wrap p a{
+	color:#849f58;
 }
 
 .pay-pal.sec_dt{
@@ -2256,7 +2273,7 @@ float: none;
 	color:#6bba45;
 }
 
-.manage_account  .modal-wrapper{
+.manage_account  .modal-wrapper, .modal-signature{
 	position: absolute;
     background: rgba(0,0,0,0.5);
     top: 0;
@@ -2265,7 +2282,7 @@ float: none;
     height: 100%;
 }
 
-.manage_account  .modal-wrapper .modal{
+.manage_account  .modal-wrapper .modal, .modal-signature .modal{
     background: #FFF;
     max-width: 500px;
     border-radius: 5px;
@@ -2275,6 +2292,31 @@ float: none;
 	margin-right: auto;
 	padding:20px;
 }
+
+ .modal-signature{
+ 	position: fixed;
+ 	z-index: 5000;
+ 	display:none;
+ }
+
+.modal-signature .modal{
+	max-width: 950px;
+	top: 5%;
+    height: 85%;
+}
+
+.modal-signature .modal iframe{
+	height: 95%;
+    width: 100%;
+}
+
+.modal-signature a.buttonModal{
+	position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #51ace5;  
+}
+
 
 .manage_account  .modal-wrapper .modal h2,
 .manage_account  .modal-wrapper .modal p{

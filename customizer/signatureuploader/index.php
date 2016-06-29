@@ -11,6 +11,7 @@
 	    <meta charset="UTF-8">
 		<script data-main="../js/mainSignatureUploader" src="../js/lib/require/require.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/main.css?02262016">
+		<link rel="stylesheet" type="text/css" href="../css/signature.css?02262016">
 	</head>
 	<body>
 		
