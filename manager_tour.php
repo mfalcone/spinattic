@@ -25,10 +25,11 @@
 ?>
 
             
-        <link rel="stylesheet" type="text/css" href="css/tipsy.css" />	
-        <script type="text/javascript" src="<?echo "http://".$_SERVER[HTTP_HOST]."/";?>js/jquery.tipsy.js"></script>
-        <script src="<?echo "http://".$_SERVER[HTTP_HOST]."/";?>js/core-actions.js"></script>
-        <script src="<?echo "http://".$_SERVER[HTTP_HOST]."/";?>js/core.manager-tours.inc.js"></script>   
+        <link rel="stylesheet" type="text/css" href="css/tipsy.css" />
+        <meta name="robots" content="noindex">	
+        <script type="text/javascript" src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/jquery.tipsy.js"></script>
+        <script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/core-actions.js"></script>
+        <script src="<?echo $http.$_SERVER[HTTP_HOST]."/";?>js/core.manager-tours.inc.js"></script>   
 
 
 <div class="overlay confirm-action" style="display:none;">
@@ -124,7 +125,12 @@
                 <input type="hidden" name="val_orderBy" id="val_orderBy" value="<?php echo $order;?>">
 </form>                    
 
-                <a href="http://<?php echo $_SERVER[HTTP_HOST];?>/customizer/" class="green-button border-radius-4" target="_blank">Create New Tour</a>
+                
+                </div>
+                <div class="manager_tour manager_tour_drag_top manager_tour_controls">
+                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/customizer/" id="new-tour" class="green-button border-radius-4" target="_blank">Create New Tour</a>
+                
+                    <a href="#" id="custom-sign" class="green-button border-radius-4">Custom signature</a>
 
                 </div>
 
@@ -202,9 +208,10 @@
                     <label class="check_action">
                         <input class="form-user border-radius-4 tour-batch-checkbox" type="checkbox" value="<?echo $row["id"];?>" name="ids[]" >                        
                     </label>
-                    <a href="http://<?php echo $_SERVER[HTTP_HOST];?>/customizer/#tour/<?echo $row["id"];?>" target="_blank">
+                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/customizer/#tour/<?echo $row["id"];?>" target="_blank">
                         <div class="thumb-pano">
                         <?php
+						$thumb = $http.$_SERVER[HTTP_HOST].'/images/thumb200x100.jpg';
                         //$thumb = 'panos/thumb200x100.jpg';
                         
                         //$file = $cdn.'/panos/'.$rowthumb["idpano"].'/pano.tiles/thumb200x100.jpg';
@@ -231,7 +238,7 @@
                         </div>
                     </a>
                     <div class="loader-item">
-                        <a href="http://<?php echo $_SERVER[HTTP_HOST];?>/customizer/#tour/<?echo $row["id"];?>" target="_blank"><h3><?echo $row["title"];?></h3></a>
+                        <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/customizer/#tour/<?echo $row["id"];?>" target="_blank"><h3><?echo $row["title"];?></h3></a>
                         <p><?echo $row["fecha"];?></p>
                         <p>Status:
                         <?if(ucfirst(trim($row["sourcetable"])) == 'Published'){
@@ -242,7 +249,7 @@
                         
                         </p>
                         <p>
-	                        <?php if($row["state"] == 'publish'){?><a href="http://<?php echo $_SERVER[HTTP_HOST].'/'.$_SESSION["friendly_url"].'/'.$row["friendly_url"];?>" style="color:#457EC1;" target="_blank">Open tour page &raquo;</a><?php }?>
+	                        <?php if($row["state"] == 'publish'){?><a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST].'/'.$_SESSION["friendly_url"].'/'.$row["friendly_url"];?>" style="color:#457EC1;" target="_blank">Open tour page &raquo;</a><?php }?>
                         </p>
                         
            <!--
@@ -254,7 +261,7 @@
                     </div>
                     <br clear="all">
                     <a href="#" title="Delete Tour" class="delete-item tour-remove" rel="id=<?echo $row["id"];?>;"></a>
-                    <a href="http://<?php echo $_SERVER[HTTP_HOST];?>/customizer/#tour/<?echo $row["id"];?>" class="edit-buttom" title="Edit tour" target="_blank"></a>
+                    <a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/customizer/#tour/<?echo $row["id"];?>" class="edit-buttom" title="Edit tour" target="_blank"></a>
 
                     
                     <a href="#" class="<?echo $row["privacy"];?> visibility tour-privacy" title="<?echo $descprivacy;?>" rel="id=<?echo $row["id"];?>;"></a>
@@ -263,7 +270,7 @@
 <?}}
 }else{?>
 <div class="message_box centered_m">
-    <p>There are no tours in your portfolio yet. <br><a href="http://<?php echo $_SERVER[HTTP_HOST];?>/customizer" target="_blank">Create your first tour.</a></p>
+    <p>There are no tours in your portfolio yet. <br><a href="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/customizer" target="_blank">Create your first tour.</a></p>
 </div>
 <?}?>  
 
@@ -296,7 +303,14 @@
 </div>              
               
             </div>
+                
     <?php require_once("inc/footer.php");?>
+    <div class="modal-wrapper modal-signature">
+        <div class="modal">
+            <h2 class="">Custom signature</h2>
+            <iframe src="<?echo $http;?><?php echo $_SERVER[HTTP_HOST];?>/customizer/signatureuploader/index.php" frameborder="0"></iframe>
+        </div>
+    </div>  
 </html>
 
 

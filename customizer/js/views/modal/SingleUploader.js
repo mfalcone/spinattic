@@ -83,7 +83,7 @@ define([
 				refresh: 100,
 				maxfiles: 1,
 				maxfilesize: 5,
-				url: 'php/upload-single-file.php',
+				url: location.protocol+"//"+location.host+'/customizer/php/upload-single-file.php',
 				data:{
 					tour_id:tour_id,
 					caso: caso,
